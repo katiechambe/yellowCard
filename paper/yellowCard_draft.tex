@@ -1,28 +1,45 @@
-\documentclass{aastex631}
+\documentclass[modern]{aastex631}
 
-\newcommand{\vdag}{(v)^\dagger}
-\newcommand\aastex{AAS\TeX}
-\newcommand\latex{La\TeX}
+% Packages
+\usepackage{microtype}  % ALWAYS!
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+% Style tweaks
+\renewcommand{\twocolumngrid}{\onecolumngrid}
+\setlength{\parindent}{1.1\baselineskip}
+\sloppy\sloppypar\raggedbottom\frenchspacing
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\shorttitle{}
-\shortauthors{}
+\shorttitle{Timing argument blah blah}
+\shortauthors{Chamberlain, Price-Whelan et al.}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \graphicspath{{./}{figures/}}
+\input{math_definitions.tex}
+
+% Affiliations
+\newcommand{\affuofa}{University of Arizona, 933 N. Cherry Ave,
+    Tucson, AZ 85721, USA}
+\newcommand{\affcca}{Center for Computational Astrophysics, Flatiron Institute,
+    Simons Foundation, 162 Fifth Avenue, New York, NY 10010, USA}
+
 %% This is the end of the preamble.  Indicate the beginning of the
 %% manuscript itself with \begin{document}.
 
 \begin{document}
 
-\title{Timing argument draft}
+\title{
+    A timing argument mass for the Local Group accounting for the
+    Milky Way--LMC reflex motion
+}
 
-\author[0000-0001-8765-8670]{Katie Chamberlain}
-\affiliation{University of Arizona \\
-933 N. Cherry Ave \\
-Tucson, AZ 85721, USA}
+\author[0000-0001-8765-8670]{Katie~Chamberlain}
+\affiliation{\affuofa}
 
-\author{Adrian Price-Whelan}
-\affiliation{}
+\author[0000-0003-0872-7098]{Adrian~M.~Price-Whelan}
+\affiliation{\affcca}
 
 \begin{abstract}
 
@@ -36,7 +53,7 @@ Tucson, AZ 85721, USA}
 \appendix
 For baddies only.
 
-\bibliography{sample631}{}
+\bibliography{refs}{}
 \bibliographystyle{aasjournal}
 
 \end{document}

@@ -1,0 +1,19 @@
+# Latex
+*.aux
+*.bbl
+*.blg
+*.brf
+*.log
+*.out
+joaquin-dr17.pdf
+*.synctex.gz*
+*Notes.bib
+*.png
+gitstuff.tex
+*.fdb_latexmk
+*.fls
+submit
+*.fits
+*.zip
+arxiv
+*~
