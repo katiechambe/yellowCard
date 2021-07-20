@@ -83,7 +83,6 @@ def get_galcen_to_lg_transform(lg_frame, galcen_frame, matrix_only=False,
     """
     # shorthand
     lg = lg_frame
-    M_M31 = lg.M_LG / (1 + lg.M_MW_over_M_M31)
 
     # Get the line connecting M31 to MW center, and angular momentum
     # vector to specify the orientation / rotation around the line
@@ -105,6 +104,9 @@ def get_galcen_to_lg_transform(lg_frame, galcen_frame, matrix_only=False,
             return R.T
         else:
             return R
+
+    # Compute the offset as well: we then need masses and mass ratios
+    M_M31 = lg.M_LG / (1 + lg.M_MW_over_M_M31)
 
     # Positional offset to the barycenter
     # - This is defined already in the LG frame!
