@@ -10,12 +10,24 @@ class LGKepler:
     '''
 
     def __init__(self, semiMajorAxis, eccentricity, eccentricAnomaly, totalMass):
-         # initializing the cosmology
-        self.a    = semiMajorAxis    # in kpc
-        self.e    = eccentricity     # dimensionless
-        self.eta  = eccentricAnomaly # dimensionless
-        self.Mtot = totalMass       # in Msun
-        self.G    = G.to(u.Unit(self.a.unit)**3 / u.s**2 / u.Unit(self.Mtot.unit))  # to get in units with a and Mtot
+        # TODO: can i check to see if inputs have units and if not assume kpc and Msun? 
+        self.a    = semiMajorAxis    # semimajor axis of fictious keplerian orbit
+        self.e    = eccentricity     # eccentricity of fictious keplerian orbit
+        self.eta  = eccentricAnomaly # eccentric anomaly of fictious keplerian orbit
+        self.Mtot = totalMass        # total LG mass
+        self.G    = G                # gravitational constant
+        
+        try:
+            self.a.unit
+        except AttributeError:
+            print("Warning: Assuming units of semimajor axis are kpc")
+            self.a *= u.kpc
+            
+        try:
+            self.Mtot.unit
+        except AttributeError:
+            print("Warning: Assuming units of total mass are Msun")
+            self.Mtot *= u.Msun
 
     @property
     def separation(self):
