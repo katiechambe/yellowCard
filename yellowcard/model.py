@@ -3,42 +3,37 @@
 import astropy.coordinates as coord
 import numpy as np
 from .keplerianPlane import LGKepler
-from .coordinates import LocalGroupHalocentric
+from .coordinates import LocalGroupHalocentric, fiducial_m31_c
 from gala.units import UnitSystem
-
-
-def ln_normal(data_val, model_val, variance):
-    ''' computes ln normal given a data value and model predicted value '''
-    A = 2*np.pi*variance
-    B = ( (data_val - model_val)**2 / variance )
-    return -1/2 ( np.log(A) + B )
-
 
 class TimingArgumentModel:
 
     def __init__(self, distance, pm, radial_velocity, tperi,
                  distance_err, pm_err, radial_velocity_err, tperi_err, 
-                 pm_correlation=0., unit_system = None):
+                 pm_correlation=0., unit_system = None, prior_bounds = None, 
+                 galcen_frame = coord.Galactocentric()):
     
+        # this is because dictionaries are mutable
         if unit_system is None:
             unit_system = UnitSystem(u.kpc, u.Unit(1e12*u.Msun), u.Gyr, u.radian)
         self.unit_system = unit_system
             
-        self.dist = distance
-        self.pm   = pm
-        self.rv   = radial_velocity
+        self.dist  = distance
+        self.pm    = pm
+        self.rv    = radial_velocity
         self.tperi = tperi
         
-        self.dist_err = distance_err
-        self.pm_err   = pm_err
-        self.rv_err   = radial_velocity_err
-        self.pm_corr  = pm_correlation
+        self.dist_err  = distance_err
+        self.pm_err    = pm_err
+        self.rv_err    = radial_velocity_err
+        self.pm_corr   = pm_correlation
         self.tperi_err = tperi_err
         
         self.y = np.array([self.dist.decompose(self.unit_system).value, 
                            *self.pm.decompose(self.unit_system).value,
                            self.rv.decompose(self.unit_system).value,
                            self.tperi.decompose(self.unit_system).value])
+        
         # TODO: we're ignoring the pm correlation
         self.Cinv = np.diag([self.dist_err.decompose(self.unit_system).value**-2,
                              *self.pm_err.decompose(self.unit_system).value**-2,
@@ -56,6 +51,21 @@ class TimingArgumentModel:
         self._param_info['Lhatlg'] = 3
         
         self.frozen = {}
+        
+        # this is because dictionaries are mutable
+        if prior_bounds is None:
+            prior_bounds = {}
+            
+        # for now, these values are assumed to be in default unit system    
+        prior_bounds.setdefault('a',(500,5000))
+        prior_bounds.setdefault('ecoseta',(-1,1))
+        prior_bounds.setdefault('esineta',(-1,1))
+        prior_bounds.setdefault('M',(1,10))
+        prior_bounds.setdefault('Lhatlg', (-1,1))
+        
+        self.prior_bounds = prior_bounds
+        
+        self.galcen_frame= galcen_frame
 
     def unpack_pars(self, par_list):
         i = 0
@@ -89,6 +99,7 @@ class TimingArgumentModel:
     
     
         # calculate x,y, and vx, vy in kepler plane
+        r_kep = inst.separation
         x, y = inst.xy
         vx, vy = inst.vxy
         tperiModel = inst.time
@@ -98,13 +109,24 @@ class TimingArgumentModel:
         
         lghc_pole = coord.CartesianRepresentation(*par_dict['Lhatlg'])
         lghc_pole = lghc_pole/lghc_pole.norm() # unit vector
-
-        # TODO: construct a LocalGroupHalocentric instance with x, y, vx, vy
-        # (z=vz=0) and transform to ICRS
+        
+        # law of cosines crap
+        gamma = fiducial_m31_c.separation(self.galcen_frame.galcen_coord)
+        
+        # TODO: this is going to have to change when the halo center is offset from the disk center
+        sunToMWC S = 8.1*u.kpc # set this for now?
+        MWCtoM31 D = r_kep.to(u.kpc) # separation between MWHC and M31 given by model
+        
+        # TODO: guessing the sign of the radical is positive but check this
+        sunToM31 = ( sunToMWC * np.cos(gamma) ) + np.sqrt( (sunToMWC * np.cos(gamma))**2 - sunToMWC**2 + MWCtoM31**2 )
+        
+        # TODO: define the m31 coord:
+        # idk how to do this....
+        # m31_coord = SkyCoord(ra = , dec = , dist = sunToM31)?
 
         # define position and velocities in LGHC frame
         lghc = LocalGroupHalocentric(lghc_pos.with_differentials(lghc_vel),
-                                     lg_pole = lghc_pole)
+                                     lg_pole = lghc_pole, m31_coord = m31_coord)
         modelSol = lghc.transform_to(galactocentric_frame).transform_to(coord.ICRS)
         
         
@@ -122,6 +144,16 @@ class TimingArgumentModel:
 
     def ln_prior(self, par_dict):
         # TODO: need to discuss
+        
+        for name, shape in self._param_info.items():
+            if shape == 1:
+                if not self.prior_bounds[name][0] < par_dict[name] < self.prior_bounds[name][1]:
+                    return -np.inf
+            else:
+                for value in par_dict[name]:
+                    if not self.prior_bounds[name][0] < value < self.prior_bounds[name][1]:
+                        return -np.inf
+        
         return 0.
 
     def ln_posterior(self, par_dict):
@@ -136,3 +168,9 @@ class TimingArgumentModel:
 # Defining __call__ makes this possible:
 # model = TimingArgumentModel()
 # model([1., 5., 0., 1.])
+
+# def ln_normal(data_val, model_val, variance):
+#     ''' computes ln normal given a data value and model predicted value '''
+#     A = 2*np.pi*variance
+#     B = ( (data_val - model_val)**2 / variance )
+#     return -1/2 * ( np.log(A) + B )
