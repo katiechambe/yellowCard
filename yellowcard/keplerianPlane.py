@@ -1,23 +1,21 @@
 import numpy as np
 import astropy.units as u
 from astropy.constants import G
-import coordinates
 
 
 class LGKepler:
     '''
     This class defines the keplerian plane of the local group.
-    The
     -------
     '''
 
     def __init__(self, semiMajorAxis, eccentricity, eccentricAnomaly, totalMass):
          # initializing the cosmology
-        self.a    = semiMajorAxis * u.kpc    # in kpc
+        self.a    = semiMajorAxis    # in kpc
         self.e    = eccentricity     # dimensionless
         self.eta  = eccentricAnomaly # dimensionless
-        self.Mtot = totalMass * u.Msun       # in Msun
-        self.G    = G.to(u.kpc**3 / u.s**2 / u.Msun) # in kpc^3/s^2/Msun
+        self.Mtot = totalMass       # in Msun
+        self.G    = G.to(u.Unit(self.a.unit)**3 / u.s**2 / u.Unit(self.Mtot.unit))  # to get in units with a and Mtot
 
     @property
     def separation(self):
@@ -56,4 +54,12 @@ class LGKepler:
     @property
     def vxy(self):
         return self.vrad_kepler * np.cos( self.trueAnomaly ) - self.vtan_kepler * np.sin( self.trueAnomaly ),  self.vrad_kepler * np.sin( self.trueAnomaly ) + self.vtan_kepler * np.cos( self.trueAnomaly )
+    
+# attaching alternate def for xdot and ydot:
+#     @property
+#     def vxy(self):
+#         A = np.sqrt(self.G*self.Mtot/self.a)
+#         B = np.sin(self.trueAnomaly) / np.sqrt(1-self.e**2)
+#         C = (self.e + np.cos(self.trueAnomaly)) / np.sqrt(1-self.e**2)
+#         return -A * B, A*C
 
