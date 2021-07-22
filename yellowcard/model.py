@@ -2,8 +2,9 @@
 
 import astropy.coordinates as coord
 import numpy as np
-from keplerianPlane import LGKepler
-from coordinates import LocalGroupHalocentric
+from .keplerianPlane import LGKepler
+from .coordinates import LocalGroupHalocentric
+from gala.units import UnitSystem
 
 
 def ln_normal(data_val, model_val, variance):
@@ -15,82 +16,107 @@ def ln_normal(data_val, model_val, variance):
 
 class TimingArgumentModel:
 
-    def __init__(self, distance, pm, radial_velocity,
-                       distance_err, pm_err, radial_velocity_err, pm_correlation=0.)
+    def __init__(self, distance, pm, radial_velocity, tperi,
+                 distance_err, pm_err, radial_velocity_err, tperi_err, 
+                 pm_correlation=0., unit_system = None):
     
+        if unit_system is None:
+            unit_system = UnitSystem(u.kpc, u.Unit(1e12*u.Msun), u.Gyr, u.radian)
+        self.unit_system = unit_system
+            
         self.dist = distance
         self.pm   = pm
         self.rv   = radial_velocity
+        self.tperi = tperi
         
         self.dist_err = distance_err
         self.pm_err   = pm_err
         self.rv_err   = radial_velocity_err
         self.pm_corr  = pm_correlation
+        self.tperi_err = tperi_err
+        
+        self.y = np.array([self.dist.decompose(self.unit_system).value, 
+                           *self.pm.decompose(self.unit_system).value,
+                           self.rv.decompose(self.unit_system).value,
+                           self.tperi.decompose(self.unit_system).value])
+        # TODO: we're ignoring the pm correlation
+        self.Cinv = np.diag([self.dist_err.decompose(self.unit_system).value**-2,
+                             *self.pm_err.decompose(self.unit_system).value**-2,
+                             self.rv_err.decompose(self.unit_system).value**-2,
+                             self.tperi_err.decompose(self.unit_system).value**-2])
     
         # becoming webster
         self._param_info = {}
 
         # lengths of each of the parameters
-        self._param_info['semiMajorAxis'] = 1
-        self._param_info['eccentricity'] = 1
-        self._param_info['eccentricAnomaly'] = 1
-        self._param_info['totalMass'] = 1
+        self._param_info['a'] = 1
+        self._param_info['ecoseta'] = 1
+        self._param_info['esineta'] = 1
+        self._param_info['M'] = 1
+        self._param_info['Lhatlg'] = 3
+        
+        self.frozen = {}
 
+    def unpack_pars(self, par_list):
+        i = 0
+        par_dict = {}
+        for key, par_len in self._param_info.items():
+            if key in self.frozen:
+                par_dict[key] = self.frozen[key]
+            else:
+                par_dict[key] = np.squeeze(par_list[i:i+par_len])
+                i += par_len
 
-# uncomment when you actually use this
-#     def unpack_pars(self, par_list):
-#         i = 0
-#         par_dict = {}
-#         for key, par_len in self._param_info.items():
-#             if key in self.frozen:
-#                 par_dict[key] = self.frozen[key]
-#             else:
-#                 par_dict[key] = np.squeeze(par_list[i:i+par_len])
-#                 i += par_len
+        return par_dict
 
-#         return par_dict
-
-#     def pack_pars(self, par_dict):
-#         parvec = []
-#         for i, k in enumerate(self._param_info):
-#             if k not in self.frozen:
-#                 parvec.append(np.atleast_1d(par_dict[k]))
-#         return np.concatenate(parvec)
+    def pack_pars(self, par_dict):
+        parvec = []
+        for i, k in enumerate(self._param_info):
+            if k not in self.frozen:
+                parvec.append(np.atleast_1d(par_dict[k]))
+        return np.concatenate(parvec)
 
 
     def ln_likelihood(self, par_dict):
         
-        inst = LGKepler(**par_dict) # creating keplerian plane with parameters from par_dict
+        eccentricity = np.sqrt(par_dict['ecoseta']**2 + par_dict['esineta']**2)
+        eta = np.arctan2(par_dict['esineta'],par_dict['ecoseta']) 
+        
+        inst = LGKepler(eccentricity = eccentricity, 
+                        eta = eta, 
+                        semiMajorAxis = par_dict['a'], 
+                        totalMass= par_dict['M']) # creating keplerian plane with parameters from par_dict
+    
     
         # calculate x,y, and vx, vy in kepler plane
         x, y = inst.xy
         vx, vy = inst.vxy
+        tperiModel = inst.time
 
         lghc_pos = coord.CartesianRepresentation(x, y, z=0*u.kpc)
         lghc_vel = coord.CartesianDifferential(vx, vy, vz=0*u.km/u.s)
+        
+        lghc_pole = coord.CartesianRepresentation(*par_dict['Lhatlg'])
+        lghc_pole = lghc_pole/lghc_pole.norm() # unit vector
 
         # TODO: construct a LocalGroupHalocentric instance with x, y, vx, vy
         # (z=vz=0) and transform to ICRS
 
         # define position and velocities in LGHC frame
-        lghc = LocalGroupHalocentric(lghc_pos.with_differentials(lghc_vel))
-        lghc.transform_to(galactocentric_frame).transform_to(coord.ICRS)
+        lghc = LocalGroupHalocentric(lghc_pos.with_differentials(lghc_vel),
+                                     lg_pole = lghc_pole)
+        modelSol = lghc.transform_to(galactocentric_frame).transform_to(coord.ICRS)
         
+        
+        modely = np.array([modelSol.distance.decompose(self.unit_system).value, 
+                           modelSol.pm_ra_cosdec.decompose(self.unit_system).value,
+                           modelSol.pm_dec.decompose(self.unit_system).value,
+                           modelSol.radial_velocity.decompose(self.unit_system).value,
+                           tperiModel.decompose(self.unit_system).value])
 
-        # set these things to 0 for now
-        pred_dist = lghc.separation #do i need to pass 0,0,0 or is that default?
-        pred_pm_alpha_star = 0
-        pred_pm_delta = 0
-        pred_RV = 0
-
-        # compute log-Normal probability for each model predicted quantity
-        # (distance, proper motion, rv to M31)
-        ln_dist          = ln_normal(self.data_dist, pred_dist, self.var_dist)
-        ln_pm_alpha_star = ln_normal(self.data_pm_alpha_star, pred_pm_alpha_star, self.var_pm_alpha_star)
-        ln_pm_delta      = ln_normal(self.data_pm_delta, pred_pm_delta, self.var_pm_delta)
-        ln_RV            = ln_normal(self.data_RV, pred_RV, self.var_RV)
-
-        return ln_dist + ln_pm_alpha_star + ln_pm_delta + ln_RV
+        dy = self.y - modely
+    
+        return -0.5 * (dy.T) @ self.Cinv @ dy
 
 
 
@@ -100,7 +126,7 @@ class TimingArgumentModel:
 
     def ln_posterior(self, par_dict):
         # TODO: call ln_likelihood and ln_prior and add the values
-        return ln_likelihood(par_dict) + ln_prior(par_dict)
+        return self.ln_likelihood(par_dict) + self.ln_prior(par_dict)
 
     def __call__(self, par_arr):
         par_dict = self.unpack_pars(par_arr)
