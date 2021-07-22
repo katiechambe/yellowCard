@@ -15,6 +15,13 @@ fiducial_m31_c = coord.SkyCoord(
     radial_velocity=-300 * u.km/u.s
 )
 
+galcen_frame = coord.Galactocentric()
+m31_galcen = fiducial_m31_c.transform_to(galcen_frame)
+m31_galcen_pos = m31_galcen.data.without_differentials()
+m31_galcen_vel = m31_galcen.velocity
+L_mw_m31 = m31_galcen_pos.cross(m31_galcen_vel)
+fiducial_lg_pole = L_mw_m31 / L_mw_m31.norm()
+
 
 class LocalGroupHalocentric(coord.BaseCoordinateFrame):
     """
@@ -29,6 +36,12 @@ class LocalGroupHalocentric(coord.BaseCoordinateFrame):
     m31_coord = coord.CoordinateAttribute(
         frame=coord.ICRS,
         default=fiducial_m31_c
+    )
+
+    # Pole of Local Group coordinate system at MW Halocenter
+    lg_pole = coord.CartesianRepresentationAttribute(
+        default=fiducial_lg_pole,
+        unit=u.one
     )
 
 
@@ -88,9 +101,7 @@ def get_galcen_to_lg_transform(lg_frame, galcen_frame, matrix_only=False,
     # vector to specify the orientation / rotation around the line
     m31_galcen = lg.m31_coord.transform_to(galcen_frame)
     m31_galcen_pos = m31_galcen.data.without_differentials()
-    m31_galcen_vel = m31_galcen.velocity
-    L_mw_m31 = m31_galcen_pos.cross(m31_galcen_vel)
-    lg_pole = L_mw_m31 / L_mw_m31.norm()
+    lg_pole = lg.lg_pole
 
     # Rotation matrix to align x(Galcen) with the vector to M31 and
     # z(Galcen) with the LG angular momentum vector
@@ -104,6 +115,8 @@ def get_galcen_to_lg_transform(lg_frame, galcen_frame, matrix_only=False,
             return R.T
         else:
             return R
+
+    # TODO: possible broken below here
 
     # Compute the offset as well: we then need masses and mass ratios
     M_M31 = lg.M_LG / (1 + lg.M_MW_over_M_M31)
@@ -149,7 +162,7 @@ def lg_to_galactocentric(lg_coord, galactocentric_frame):
 
 
 @coord.frame_transform_graph.transform(
-    coord.transformations.StaticMatrixTransform,
+    coord.transformations.DynamicMatrixTransform,
     coord.Galactocentric,
     LocalGroupHalocentric
 )
@@ -159,7 +172,7 @@ def galactocentric_to_lghalocentric(galactocentric_coord, lg_frame):
 
 
 @coord.frame_transform_graph.transform(
-    coord.transformations.StaticMatrixTransform,
+    coord.transformations.DynamicMatrixTransform,
     LocalGroupHalocentric,
     coord.Galactocentric
 )
