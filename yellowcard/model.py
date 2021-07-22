@@ -1,6 +1,5 @@
 # Example: https://github.com/adrn/joaquin/blob/main/joaquin/joaquin.py
 
-# TODO: imports!
 import astropy.coordinates as coord
 import numpy as np
 from keplerianPlane import LGKepler
@@ -10,37 +9,33 @@ from coordinates import LocalGroupHalocentric
 def ln_normal(data_val, model_val, variance):
     ''' computes ln normal given a data value and model predicted value '''
     A = 2*np.pi*variance
-    B = -1/2 * ( (data_val - model_val)**2 / variance )
-    return -1/2 * np.log(A) - B
+    B = ( (data_val - model_val)**2 / variance )
+    return -1/2 ( np.log(A) + B )
 
 
 class TimingArgumentModel:
 
-    def __init__(self, data, data_var):
-    # Option 1: def __init__(self, data_y, data_C, unit_system):
-    # Option 2: def __init__(self, distance, pm, radial_velocity,
-    #                        distance_err, pm_err, rv_err, pm_correlation=0.)
-
-        # TODO: allow passing in the data (distance, proper motion, RV to M31)
-        # and uncertainties on the observed position/velocity of M31
-        self.data_dist, self.data_pm_alpha_star, self.data_pm_delta, self.data_RV = data
-        self.var_dist, self.var_pm_alpha_star, self.var_pm_delta, self.var_RV = data_var
-
-
-        # TODO: define self._param_info dictionary to store names of parameters
-        # (a, e, eta, ...etc)
-
+    def __init__(self, distance, pm, radial_velocity,
+                       distance_err, pm_err, radial_velocity_err, pm_correlation=0.)
+    
+        self.dist = distance
+        self.pm   = pm
+        self.rv   = radial_velocity
+        
+        self.dist_err = distance_err
+        self.pm_err   = pm_err
+        self.rv_err   = radial_velocity_err
+        self.pm_corr  = pm_correlation
+    
         # becoming webster
         self._param_info = {}
 
-        # is it okay to set these things as "default"?
-        # do they just end up getting updated so it doesn't matter? should i choose dif numbers?
-        self._param_info.update({"semi_major_axis": 1000}) # in kpc
-        self._param_info['semimajor_axis'] = 1
+        # lengths of each of the parameters
+        self._param_info['semiMajorAxis'] = 1
+        self._param_info['eccentricity'] = 1
+        self._param_info['eccentricAnomaly'] = 1
+        self._param_info['totalMass'] = 1
 
-        self._param_info.update({"eccentricity" : 0.1}) # dimensionless
-        self._param_info.update({"eccentric_anomaly": 0}) # radians
-        self._param_info.update({"Mtot": 4e12}) # in Msun
 
 # uncomment when you actually use this
 #     def unpack_pars(self, par_list):
@@ -64,30 +59,26 @@ class TimingArgumentModel:
 
 
     def ln_likelihood(self, par_dict):
-        # TODO: call observables class to compute x, y, vx, vy given the
-        # Keplerian elements / parameters
+        
         inst = LGKepler(**par_dict) # creating keplerian plane with parameters from par_dict
-        v_rad_kep, v_tan_kep = inst.vrad_kepler, inst.vtan_kepler # maybe don't need this?
+    
+        # calculate x,y, and vx, vy in kepler plane
+        x, y = inst.xy
+        vx, vy = inst.vxy
 
-        inst.separation =
-
-        lghc_coord = [r, 0, 0, v_rad_kep, v_tan_kep, 0] # since M31 sits at +x,0,0, (should vrad be negative?) +vtan by def of coordinate frame
         lghc_pos = coord.CartesianRepresentation(x, y, z=0*u.kpc)
         lghc_vel = coord.CartesianDifferential(vx, vy, vz=0*u.km/u.s)
 
         # TODO: construct a LocalGroupHalocentric instance with x, y, vx, vy
         # (z=vz=0) and transform to ICRS
 
-        # the output from this is a.... matrix? or lghc_coord in ICRS?
-        # lghc = LocalGroupHalocentric(lghc_pos.with_differentials(lghc_vel))
-        # lghc.transform_to(galactocentric_frame).transform_to(coord.ICRS)
-        someOutput = lgcoord.lghalocentric_to_galactocentric(lghc_coord, GalFrame)
+        # define position and velocities in LGHC frame
+        lghc = LocalGroupHalocentric(lghc_pos.with_differentials(lghc_vel))
+        lghc.transform_to(galactocentric_frame).transform_to(coord.ICRS)
+        
 
-        pos = someOutput[0:2]
-        vel = someOutput[3:]
-
-        # this is extra not right - need to think about this more
-        pred_dist = np.linalg.norm(pos) # (i'm) confused.... shouldn't the norm stay the same if the rotation matrix has det 1?
+        # set these things to 0 for now
+        pred_dist = lghc.separation #do i need to pass 0,0,0 or is that default?
         pred_pm_alpha_star = 0
         pred_pm_delta = 0
         pred_RV = 0
