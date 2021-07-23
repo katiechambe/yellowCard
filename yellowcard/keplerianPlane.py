@@ -17,17 +17,17 @@ class LGKepler:
         self.Mtot = totalMass        # total LG mass
         self.G    = G                # gravitational constant
         
-        try:
-            self.a.unit
-        except AttributeError:
-            print("Warning: Assuming units of semimajor axis are kpc")
-            self.a *= u.kpc
+        # try:
+        #     self.a.unit
+        # except AttributeError:
+        #     print("Warning: Assuming units of semimajor axis are kpc")
+        #     self.a *= u.kpc
             
-        try:
-            self.Mtot.unit
-        except AttributeError:
-            print("Warning: Assuming units of total mass are Msun")
-            self.Mtot *= u.Msun
+        # try:
+        #     self.Mtot.unit
+        # except AttributeError:
+        #     print("Warning: Assuming units of total mass are Msun")
+        #     self.Mtot *= u.Msun
 
     @property
     def separation(self):
@@ -36,7 +36,8 @@ class LGKepler:
     @property
     def time(self):
         A = self.a**3 / (self.G * self.Mtot)
-        B = self.eta - ( self.e * np.sin(self.eta) )
+        with u.set_enabled_equivalencies(u.dimensionless_angles()):
+            B = self.eta - ( self.e * np.sin(self.eta) )
         return A**(-1/2) * B
 
     @property

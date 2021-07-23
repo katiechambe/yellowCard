@@ -94,9 +94,9 @@ class TimingArgumentModel:
         eta = np.arctan2(par_dict['esineta'],par_dict['ecoseta']) 
         
         inst = LGKepler(eccentricity = eccentricity, 
-                        eta = eta, 
-                        semiMajorAxis = par_dict['a'], 
-                        totalMass= par_dict['M']) # creating keplerian plane with parameters from par_dict
+                        eccentricAnomaly = eta, 
+                        semiMajorAxis = par_dict['a']*self.unit_system['length'], 
+                        totalMass= par_dict['M']*self.unit_system['mass']) # creating keplerian plane with parameters from par_dict
     
     
         # calculate x,y, and vx, vy in kepler plane
@@ -105,8 +105,8 @@ class TimingArgumentModel:
         vx, vy = inst.vxy
         tperiModel = inst.time
 
-        lghc_pos = coord.CartesianRepresentation(x, y, z=0*u.kpc)
-        lghc_vel = coord.CartesianDifferential(vx, vy, vz=0*u.km/u.s)
+        lghc_pos = coord.CartesianRepresentation(x, y, 0*u.kpc)
+        lghc_vel = coord.CartesianDifferential(vx, vy, 0*u.km/u.s)
         
         lghc_pole = coord.CartesianRepresentation(*par_dict['Lhatlg'])
         lghc_pole = lghc_pole/lghc_pole.norm() # unit vector
@@ -123,12 +123,12 @@ class TimingArgumentModel:
         
         # TODO: define the m31 coord:
         # idk how to do this....
-        m31_coord = coord.SkyCoord(ra = fiducial_m31_c.ra, dec = fiducial_m31_c.dec, dist = sunToM31)
+        m31_coord = coord.SkyCoord(ra = fiducial_m31_c.ra, dec = fiducial_m31_c.dec, distance = sunToM31)
 
         # define position and velocities in LGHC frame
         lghc = LocalGroupHalocentric(lghc_pos.with_differentials(lghc_vel),
                                      lg_pole = lghc_pole, m31_coord = m31_coord)
-        modelSol = lghc.transform_to(self.galcen_frame).transform_to(coord.ICRS)
+        modelSol = lghc.transform_to(self.galcen_frame).transform_to(coord.ICRS())
         
         
         modely = np.array([modelSol.distance.decompose(self.unit_system).value, 
@@ -163,7 +163,10 @@ class TimingArgumentModel:
 
     def __call__(self, par_arr):
         par_dict = self.unpack_pars(par_arr)
-        return self.ln_posterior(par_dict)
+        ln_post = self.ln_posterior(par_dict)
+        if not np.isfinite(ln_post):
+            return -np.inf
+        return ln_post
 
 
 # Defining __call__ makes this possible:
