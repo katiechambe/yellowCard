@@ -5,6 +5,7 @@ import numpy as np
 from .keplerianPlane import LGKepler
 from .coordinates import LocalGroupHalocentric, fiducial_m31_c
 from gala.units import UnitSystem
+import astropy.units as u
 
 class TimingArgumentModel:
 
@@ -114,20 +115,20 @@ class TimingArgumentModel:
         gamma = fiducial_m31_c.separation(self.galcen_frame.galcen_coord)
         
         # TODO: this is going to have to change when the halo center is offset from the disk center
-        sunToMWC S = 8.1*u.kpc # set this for now?
-        MWCtoM31 D = r_kep.to(u.kpc) # separation between MWHC and M31 given by model
+        sunToMWC = self.galcen_frame.galcen_distance # set this for now?
+        MWCtoM31 = r_kep.to(u.kpc) # separation between MWHC and M31 given by model
         
         # TODO: guessing the sign of the radical is positive but check this
         sunToM31 = ( sunToMWC * np.cos(gamma) ) + np.sqrt( (sunToMWC * np.cos(gamma))**2 - sunToMWC**2 + MWCtoM31**2 )
         
         # TODO: define the m31 coord:
         # idk how to do this....
-        # m31_coord = SkyCoord(ra = , dec = , dist = sunToM31)?
+        m31_coord = coord.SkyCoord(ra = fiducial_m31_c.ra, dec = fiducial_m31_c.dec, dist = sunToM31)
 
         # define position and velocities in LGHC frame
         lghc = LocalGroupHalocentric(lghc_pos.with_differentials(lghc_vel),
                                      lg_pole = lghc_pole, m31_coord = m31_coord)
-        modelSol = lghc.transform_to(galactocentric_frame).transform_to(coord.ICRS)
+        modelSol = lghc.transform_to(self.galcen_frame).transform_to(coord.ICRS)
         
         
         modely = np.array([modelSol.distance.decompose(self.unit_system).value, 
@@ -138,7 +139,7 @@ class TimingArgumentModel:
 
         dy = self.y - modely
     
-        return -0.5 * (dy.T) @ self.Cinv @ dy
+        return -0.5 * dy.T @ self.Cinv @ dy
 
 
 
