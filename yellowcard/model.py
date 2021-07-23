@@ -103,10 +103,16 @@ class TimingArgumentModel:
         r_kep = inst.separation
         x, y = inst.xy
         vx, vy = inst.vxy
+        vrad_kep, vtan_kep = inst.vrad_kepler, inst.vtan_kepler
         tperiModel = inst.time
 
-        lghc_pos = coord.CartesianRepresentation(x, y, 0*u.kpc)
-        lghc_vel = coord.CartesianDifferential(vx, vy, 0*u.km/u.s)
+        # print(vx.to(u.km/u.s),vy.to(u.km/u.s))
+
+        # lghc_pos = coord.CartesianRepresentation(x, y, 0*u.kpc)
+        # lghc_vel = coord.CartesianDifferential(vx, vy, 0*u.km/u.s)
+
+        lghc_pos = coord.CartesianRepresentation(r_kep, 0*u.kpc, 0*u.kpc)
+        lghc_vel = coord.CartesianDifferential(vrad_kep, vtan_kep, 0*u.km/u.s)
         
         lghc_pole = coord.CartesianRepresentation(*par_dict['Lhatlg'])
         lghc_pole = lghc_pole/lghc_pole.norm() # unit vector
@@ -120,6 +126,8 @@ class TimingArgumentModel:
         
         # TODO: guessing the sign of the radical is positive but check this
         sunToM31 = ( sunToMWC * np.cos(gamma) ) + np.sqrt( (sunToMWC * np.cos(gamma))**2 - sunToMWC**2 + MWCtoM31**2 )
+
+        # print(sunToM31.to(u.kpc))
         
         # TODO: define the m31 coord:
         # idk how to do this....
