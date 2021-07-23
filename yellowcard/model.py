@@ -171,7 +171,12 @@ class TimingArgumentModel:
 
     def __call__(self, par_arr):
         par_dict = self.unpack_pars(par_arr)
-        ln_post = self.ln_posterior(par_dict)
+        try:
+            ln_post = self.ln_posterior(par_dict)
+        except Exception as e:
+            print(f"Step failed: {e!s}")
+            return -np.inf
+            
         if not np.isfinite(ln_post):
             return -np.inf
         return ln_post
