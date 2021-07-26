@@ -62,7 +62,7 @@ class TimingArgumentModel:
         prior_bounds.setdefault('ecoseta',(-1,1))
         prior_bounds.setdefault('esineta',(-1,1))
         prior_bounds.setdefault('lnM',(-1,3))
-        prior_bounds.setdefault('Lhatlg', (-1,1))
+        # prior_bounds.setdefault('Lhatlg', None)
         
         self.prior_bounds = prior_bounds
         
@@ -160,6 +160,9 @@ class TimingArgumentModel:
         # TODO: need to discuss
         
         for name, shape in self._param_info.items():
+            if name not in self.prior_bounds:
+                continue 
+            
             if shape == 1:
                 if not self.prior_bounds[name][0] < par_dict[name] < self.prior_bounds[name][1]:
                     return -np.inf
@@ -172,7 +175,9 @@ class TimingArgumentModel:
         lp += par_dict['lnr']
         lp += par_dict['lnM']
 
-        return 0.
+        lp += ln_normal(par_dict['Lhatlg'], 0, 1).sum()
+
+        return lp
 
     def ln_posterior(self, par_dict):
         # TODO: call ln_likelihood and ln_prior and add the values
@@ -195,8 +200,8 @@ class TimingArgumentModel:
 # model = TimingArgumentModel()
 # model([1., 5., 0., 1.])
 
-# def ln_normal(data_val, model_val, variance):
-#     ''' computes ln normal given a data value and model predicted value '''
-#     A = 2*np.pi*variance
-#     B = ( (data_val - model_val)**2 / variance )
-#     return -1/2 * ( np.log(A) + B )
+def ln_normal(data_val, model_val, variance):
+    ''' computes ln normal given a data value and model predicted value '''
+    A = 2*np.pi*variance
+    B = ( (data_val - model_val)**2 / variance )
+    return -1/2 * ( np.log(A) + B )
