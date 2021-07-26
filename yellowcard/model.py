@@ -45,7 +45,7 @@ class TimingArgumentModel:
         self._param_info = {}
 
         # lengths of each of the parameters
-        self._param_info['a'] = 1
+        self._param_info['r'] = 1
         self._param_info['ecoseta'] = 1
         self._param_info['esineta'] = 1
         self._param_info['M'] = 1
@@ -58,7 +58,7 @@ class TimingArgumentModel:
             prior_bounds = {}
             
         # for now, these values are assumed to be in default unit system    
-        prior_bounds.setdefault('a',(500,5000))
+        prior_bounds.setdefault('r',(500,5000))
         prior_bounds.setdefault('ecoseta',(-1,1))
         prior_bounds.setdefault('esineta',(-1,1))
         prior_bounds.setdefault('M',(1,10))
@@ -90,12 +90,13 @@ class TimingArgumentModel:
 
     def ln_likelihood(self, par_dict):
         
+        a = par_dict['r']/ (1 - par_dict['ecoseta'])
         eccentricity = np.sqrt(par_dict['ecoseta']**2 + par_dict['esineta']**2)
         eta = np.arctan2(par_dict['esineta'],par_dict['ecoseta']) 
         
         inst = LGKepler(eccentricity = eccentricity, 
                         eccentricAnomaly = eta, 
-                        semiMajorAxis = par_dict['a']*self.unit_system['length'], 
+                        semiMajorAxis = a*self.unit_system['length'], 
                         totalMass= par_dict['M']*self.unit_system['mass']) # creating keplerian plane with parameters from par_dict
     
     
@@ -111,8 +112,8 @@ class TimingArgumentModel:
         # lghc_pos = coord.CartesianRepresentation(x, y, 0*u.kpc)
         # lghc_vel = coord.CartesianDifferential(vx, vy, 0*u.km/u.s)
 
-        lghc_pos = coord.CartesianRepresentation(r_kep, 0*u.kpc, 0*u.kpc)
-        lghc_vel = coord.CartesianDifferential(vrad_kep, vtan_kep, 0*u.km/u.s)
+        lghc_pos = coord.CartesianRepresentation( r_kep, 0*u.kpc, 0*u.kpc)
+        lghc_vel = coord.CartesianDifferential( vrad_kep, vtan_kep, 0*u.km/u.s)
         
         lghc_pole = coord.CartesianRepresentation(*par_dict['Lhatlg'])
         lghc_pole = lghc_pole/lghc_pole.norm() # unit vector
