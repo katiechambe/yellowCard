@@ -45,10 +45,10 @@ class TimingArgumentModel:
         self._param_info = {}
 
         # lengths of each of the parameters
-        self._param_info['r'] = 1
+        self._param_info['lnr'] = 1
         self._param_info['ecoseta'] = 1
         self._param_info['esineta'] = 1
-        self._param_info['M'] = 1
+        self._param_info['lnM'] = 1
         self._param_info['Lhatlg'] = 3
         
         self.frozen = {}
@@ -58,10 +58,10 @@ class TimingArgumentModel:
             prior_bounds = {}
             
         # for now, these values are assumed to be in default unit system    
-        prior_bounds.setdefault('r',(500,5000))
+        prior_bounds.setdefault('lnr',(6,9.5))
         prior_bounds.setdefault('ecoseta',(-1,1))
         prior_bounds.setdefault('esineta',(-1,1))
-        prior_bounds.setdefault('M',(1,10))
+        prior_bounds.setdefault('lnM',(-1,3))
         prior_bounds.setdefault('Lhatlg', (-1,1))
         
         self.prior_bounds = prior_bounds
@@ -90,6 +90,10 @@ class TimingArgumentModel:
 
     def ln_likelihood(self, par_dict):
         
+        par_dict = par_dict.copy()
+        par_dict['r'] = np.exp(par_dict['lnr'])
+        par_dict['M'] = np.exp(par_dict['lnM'])
+
         a = par_dict['r']/ (1 - par_dict['ecoseta'])
         eccentricity = np.sqrt(par_dict['ecoseta']**2 + par_dict['esineta']**2)
         eta = np.arctan2(par_dict['esineta'],par_dict['ecoseta']) 
@@ -164,6 +168,10 @@ class TimingArgumentModel:
                     if not self.prior_bounds[name][0] < value < self.prior_bounds[name][1]:
                         return -np.inf
         
+        lp = 0 
+        lp += par_dict['lnr']
+        lp += par_dict['lnM']
+
         return 0.
 
     def ln_posterior(self, par_dict):
