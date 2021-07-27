@@ -15,13 +15,13 @@ class LGKepler:
         self.eta  = eccentricAnomaly # eccentric anomaly of fictious keplerian orbit
         self.Mtot = totalMass        # total LG mass
         self.G    = G                # gravitational constant
-        
+
         # try:
         #     self.a.unit
         # except AttributeError:
         #     print("Warning: Assuming units of semimajor axis are kpc")
         #     self.a *= u.kpc
-            
+
         # try:
         #     self.Mtot.unit
         # except AttributeError:
@@ -35,8 +35,11 @@ class LGKepler:
     @property
     def time(self):
         A = self.a**3 / (self.G * self.Mtot)
-        with u.set_enabled_equivalencies(u.dimensionless_angles()):
-            B = self.eta - ( self.e * np.sin(self.eta) )
+        if hasattr(self.eta, 'unit'):
+            eta = self.eta.to_value(u.rad)
+        else:
+            eta = self.eta
+        B = eta - ( self.e * np.sin(self.eta) )
         return A**(1/2) * B
 
     @property
@@ -66,7 +69,7 @@ class LGKepler:
     @property
     def vxy(self):
         return self.vrad_kepler * np.cos( self.trueAnomaly ) - self.vtan_kepler * np.sin( self.trueAnomaly ),  self.vrad_kepler * np.sin( self.trueAnomaly ) + self.vtan_kepler * np.cos( self.trueAnomaly )
-    
+
 # attaching alternate def for xdot and ydot:
 #     @property
 #     def vxy(self):
