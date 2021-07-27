@@ -45,9 +45,11 @@ class TimingArgumentModel:
         self._param_info = {}
 
         # lengths of each of the parameters
+        # eParam = 'ln(1-e)'
         self._param_info['lnr'] = 1
-        self._param_info['ecoseta'] = 1
-        self._param_info['esineta'] = 1
+        self._param_info['eParam'] = 1
+        self._param_info['coseta'] = 1
+        self._param_info['sineta'] = 1
         self._param_info['lnM'] = 1
         self._param_info['Lhatlg'] = 3
         
@@ -59,8 +61,9 @@ class TimingArgumentModel:
             
         # for now, these values are assumed to be in default unit system    
         prior_bounds.setdefault('lnr',(6,9.5))
-        prior_bounds.setdefault('ecoseta',(-1,1))
-        prior_bounds.setdefault('esineta',(-1,1))
+        prior_bounds.setdefault('eParam',(-18,0))
+#         prior_bounds.setdefault('coseta',(-1,1))
+#         prior_bounds.setdefault('sineta',(-1,1))
         prior_bounds.setdefault('lnM',(-1,3))
         # prior_bounds.setdefault('Lhatlg', None)
         
@@ -79,6 +82,17 @@ class TimingArgumentModel:
                 i += par_len
 
         return par_dict
+    
+    def whats_this(self, par_list):
+        ''' you can tell that i hard coded this function :) '''
+        what_dict = {}
+        what_dict['r'] = np.exp(par_list[0])*u.kpc
+        what_dict['e'] = 1 - np.exp(par_list[1])
+        etta = np.arctan2(par_list[3],par_list[2]) # *u.rad
+        what_dict['eta'] = etta%(2*np.pi)
+        what_dict['M'] = np.exp(par_list[4])*self.unit_system['mass']
+        what_dict['|L|'] = norm(np.array(par_list[5:7]))
+        return what_dict
 
     def pack_pars(self, par_dict):
         parvec = []
@@ -93,10 +107,11 @@ class TimingArgumentModel:
         par_dict = par_dict.copy()
         par_dict['r'] = np.exp(par_dict['lnr'])
         par_dict['M'] = np.exp(par_dict['lnM'])
+        par_dict['e'] = 1 - np.exp(par_dict['eParam'])
 
-        a = par_dict['r']/ (1 - par_dict['ecoseta'])
-        eccentricity = np.sqrt(par_dict['ecoseta']**2 + par_dict['esineta']**2)
-        eta = np.arctan2(par_dict['esineta'],par_dict['ecoseta']) # *u.rad
+        a = par_dict['r']/ (1 - par_dict['e']*par_dict['coseta'])
+        eccentricity = par_dict['e']
+        eta = np.arctan2(par_dict['sineta'],par_dict['coseta']) # *u.rad
         eta = eta%(2*np.pi)
         
         
@@ -119,7 +134,7 @@ class TimingArgumentModel:
         # lghc_vel = coord.CartesianDifferential(vx, vy, 0*u.km/u.s)
 
         lghc_pos = coord.CartesianRepresentation( r_kep, 0*u.kpc, 0*u.kpc)
-        lghc_vel = coord.CartesianDifferential( -vrad_kep, vtan_kep, 0*u.km/u.s)
+        lghc_vel = coord.CartesianDifferential( vrad_kep, vtan_kep, 0*u.km/u.s)
         
         lghc_pole = coord.CartesianRepresentation(*par_dict['Lhatlg'])
         lghc_pole = lghc_pole/lghc_pole.norm() # unit vector
@@ -177,7 +192,10 @@ class TimingArgumentModel:
         lp = 0 
         lp += par_dict['lnr']
         lp += par_dict['lnM']
+        lp += par_dict['eParam']
 
+        lp += ln_normal(par_dict['coseta'], 0, 1).sum()
+        lp += ln_normal(par_dict['sineta'], 0, 1).sum()
         lp += ln_normal(par_dict['Lhatlg'], 0, 1).sum()
 
         return lp
