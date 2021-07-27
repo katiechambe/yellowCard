@@ -96,7 +96,9 @@ class TimingArgumentModel:
 
         a = par_dict['r']/ (1 - par_dict['ecoseta'])
         eccentricity = np.sqrt(par_dict['ecoseta']**2 + par_dict['esineta']**2)
-        eta = np.arctan2(par_dict['esineta'],par_dict['ecoseta']) 
+        eta = np.arctan2(par_dict['esineta'],par_dict['ecoseta']) # *u.rad
+        eta = eta%(2*np.pi)
+        
         
         inst = LGKepler(eccentricity = eccentricity, 
                         eccentricAnomaly = eta, 
@@ -131,16 +133,17 @@ class TimingArgumentModel:
         
         # TODO: guessing the sign of the radical is positive but check this
         sunToM31 = ( sunToMWC * np.cos(gamma) ) + np.sqrt( (sunToMWC * np.cos(gamma))**2 - sunToMWC**2 + MWCtoM31**2 )
-
-        # print(sunToM31.to(u.kpc))
         
-        # TODO: define the m31 coord:
-        # idk how to do this....
-        m31_coord = coord.SkyCoord(ra = fiducial_m31_c.ra, dec = fiducial_m31_c.dec, distance = sunToM31)
+        m31_coord = coord.SkyCoord(ra = fiducial_m31_c.ra, 
+                                   dec = fiducial_m31_c.dec, 
+                                   distance = sunToM31)
+        
 
+        
         # define position and velocities in LGHC frame
         lghc = LocalGroupHalocentric(lghc_pos.with_differentials(lghc_vel),
-                                     lg_pole = lghc_pole, m31_coord = m31_coord)
+                                     lg_pole = lghc_pole, 
+                                     m31_coord = m31_coord)
         modelSol = lghc.transform_to(self.galcen_frame).transform_to(coord.ICRS())
         
         
