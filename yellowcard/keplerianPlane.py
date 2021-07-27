@@ -10,7 +10,6 @@ class LGKepler:
     '''
 
     def __init__(self, semiMajorAxis, eccentricity, eccentricAnomaly, totalMass):
-        # TODO: can i check to see if inputs have units and if not assume kpc and Msun? 
         self.a    = semiMajorAxis    # semimajor axis of fictious keplerian orbit
         self.e    = eccentricity     # eccentricity of fictious keplerian orbit
         self.eta  = eccentricAnomaly # eccentric anomaly of fictious keplerian orbit
@@ -38,7 +37,7 @@ class LGKepler:
         A = self.a**3 / (self.G * self.Mtot)
         with u.set_enabled_equivalencies(u.dimensionless_angles()):
             B = self.eta - ( self.e * np.sin(self.eta) )
-        return A**(-1/2) * B
+        return A**(1/2) * B
 
     @property
     def vrad_kepler(self):

@@ -117,7 +117,7 @@ class TimingArgumentModel:
         # lghc_vel = coord.CartesianDifferential(vx, vy, 0*u.km/u.s)
 
         lghc_pos = coord.CartesianRepresentation( r_kep, 0*u.kpc, 0*u.kpc)
-        lghc_vel = coord.CartesianDifferential( vrad_kep, vtan_kep, 0*u.km/u.s)
+        lghc_vel = coord.CartesianDifferential( -vrad_kep, vtan_kep, 0*u.km/u.s)
         
         lghc_pole = coord.CartesianRepresentation(*par_dict['Lhatlg'])
         lghc_pole = lghc_pole/lghc_pole.norm() # unit vector
