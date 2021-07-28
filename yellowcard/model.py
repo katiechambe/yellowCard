@@ -90,7 +90,7 @@ class TimingArgumentModel:
                 parvec.append(np.atleast_1d(par_dict[k]))
         return np.concatenate(parvec)
     
-    def whats_this(par_dict):
+    def whats_this(self, par_dict):
         ''' takes our original parameter set and transforms them to things we recognize '''
         what_dict = {}
         what_dict['r'] = np.exp(par_dict['lnr'])
