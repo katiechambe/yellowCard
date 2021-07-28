@@ -39,7 +39,7 @@ def model_testing():
 ###################################################
 # testing VDM 2012 with zero transverse velocity! #
 ###################################################
-def model_VDM_Rad():
+def model_vdm_rad():
     galcen_frame = coord.Galactocentric(galcen_distance = 8.29*u.kpc, 
                                         galcen_v_sun = [11.1, 12.24 + 239.3, 7.25] * u.km/u.s, z_sun = 0*u.pc)
 
