@@ -5,7 +5,9 @@ import numpy as np
 from .keplerianPlane import LGKepler
 from .coordinates import LocalGroupHalocentric, fiducial_m31_c
 from gala.units import UnitSystem
+from numpy.linalg import norm
 import astropy.units as u
+from astropy.coordinates.matrix_utilities import rotation_matrix
 
 class TimingArgumentModel:
 
@@ -51,7 +53,8 @@ class TimingArgumentModel:
         self._param_info['coseta'] = 1
         self._param_info['sineta'] = 1
         self._param_info['lnM'] = 1
-        self._param_info['Lhatlg'] = 3
+        self._param_info['sinalpha'] = 1
+        self._param_info['cosalpha'] = 1
 
         self.frozen = {}
 
@@ -60,12 +63,9 @@ class TimingArgumentModel:
             prior_bounds = {}
 
         # for now, these values are assumed to be in default unit system
-        prior_bounds.setdefault('lnr',(6,9.5))
+        prior_bounds.setdefault('lnr',(6,7))
         prior_bounds.setdefault('eParam',(-18,0))
-#         prior_bounds.setdefault('coseta',(-1,1))
-#         prior_bounds.setdefault('sineta',(-1,1))
         prior_bounds.setdefault('lnM',(-1,3))
-        # prior_bounds.setdefault('Lhatlg', None)
 
         self.prior_bounds = prior_bounds
 
@@ -82,17 +82,6 @@ class TimingArgumentModel:
                 i += par_len
 
         return par_dict
-    
-    def whats_this(self, par_list):
-        ''' you can tell that i hard coded this function :) '''
-        what_dict = {}
-        what_dict['r'] = np.exp(par_list[0])*u.kpc
-        what_dict['e'] = 1 - np.exp(par_list[1])
-        etta = np.arctan2(par_list[3],par_list[2]) # *u.rad
-        what_dict['eta'] = etta%(2*np.pi)
-        what_dict['M'] = np.exp(par_list[4])*self.unit_system['mass']
-        what_dict['|L|'] = norm(np.array(par_list[5:7]))
-        return what_dict
 
     def pack_pars(self, par_dict):
         parvec = []
@@ -100,6 +89,31 @@ class TimingArgumentModel:
             if k not in self.frozen:
                 parvec.append(np.atleast_1d(par_dict[k]))
         return np.concatenate(parvec)
+    
+    def whats_this(par_dict):
+        ''' takes our original parameter set and transforms them to things we recognize '''
+        what_dict = {}
+        what_dict['r'] = np.exp(par_dict['lnr'])
+        what_dict['e'] = 1 - np.exp(par_dict['eParam'])
+        etta = np.arctan2(par_dict['sineta'],par_dict['coseta']) # *u.rad
+        what_dict['eta'] = etta%(2*np.pi)
+        what_dict['M'] = np.exp(par_dict['lnM'])
+        allpha = np.arctan2(par_dict['sinalpha'],par_dict['cosalpha']) # *u.rad
+        what_dict['alpha'] = allpha%(2*np.pi)
+        return what_dict
+    
+    def whats_this_mean(self, par_dict):
+        ''' takes our original parameter set and transforms them to things we recognize
+            differs from whats_this by taking the mean of each recongizable parameter'''
+        what_dict = {}
+        what_dict['r'] = np.mean(np.exp(par_dict['lnr']))*u.kpc
+        what_dict['e'] = np.mean(1 - np.exp(par_dict['eParam']))
+        etta = np.arctan2(par_dict['sineta'],par_dict['coseta']) # *u.rad
+        what_dict['eta'] = np.mean(etta%(2*np.pi))
+        what_dict['M'] = np.mean(np.exp(par_dict['lnM'])*self.unit_system['mass'])
+        allpha = np.arctan2(par_dict['sinalpha'],par_dict['cosalpha']) # *u.rad
+        what_dict['alpha'] = np.mean(allpha%(2*np.pi))
+        return what_dict
 
 
     def ln_likelihood(self, par_dict):
@@ -117,52 +131,53 @@ class TimingArgumentModel:
             eta = eta.to_value(u.rad)
         eta = eta % (2*np.pi)
         
+        alpha = np.arctan2(par_dict['sinalpha'],par_dict['cosalpha']) # *u.rad
+        if hasattr(alpha, 'unit'):
+            alpha = alpha.to_value(u.rad)
+        alpha = alpha % (2*np.pi)
         
+        # creating keplerian plane with parameters from par_dict
         inst = LGKepler(eccentricity = eccentricity, 
                         eccentricAnomaly = eta, 
                         semiMajorAxis = a*self.unit_system['length'],
-                        totalMass= par_dict['M']*self.unit_system['mass']) # creating keplerian plane with parameters from par_dict
-
+                        totalMass= par_dict['M']*self.unit_system['mass']) 
 
         # calculate x,y, and vx, vy in kepler plane
         r_kep = inst.separation
         vrad_kep, vtan_kep = inst.vrad_kepler, inst.vtan_kepler
         tperiModel = inst.time
 
-        # print(vx.to(u.km/u.s),vy.to(u.km/u.s))
-
-        # lghc_pos = coord.CartesianRepresentation(x, y, 0*u.kpc)
-        # lghc_vel = coord.CartesianDifferential(vx, vy, 0*u.km/u.s)
-
         lghc_pos = coord.CartesianRepresentation( r_kep, 0*u.kpc, 0*u.kpc)
         lghc_vel = coord.CartesianDifferential( vrad_kep, vtan_kep, 0*u.km/u.s)
-        
-        lghc_pole = coord.CartesianRepresentation(*par_dict['Lhatlg'])
-        lghc_pole = lghc_pole/lghc_pole.norm() # unit vector
 
         # law of cosines crap
         gamma = fiducial_m31_c.separation(self.galcen_frame.galcen_coord)
 
         # TODO: this is going to have to change when the halo center is offset from the disk center
-        sunToMWC = self.galcen_frame.galcen_distance # set this for now?
+        sunToMWC = self.galcen_frame.galcen_distance 
         MWCtoM31 = r_kep.to(u.kpc) # separation between MWHC and M31 given by model
 
-        # TODO: guessing the sign of the radical is positive but check this
         sunToM31 = ( sunToMWC * np.cos(gamma) ) + np.sqrt( (sunToMWC * np.cos(gamma))**2 - sunToMWC**2 + MWCtoM31**2 )
 
         m31_coord = coord.SkyCoord(ra = fiducial_m31_c.ra,
                                    dec = fiducial_m31_c.dec,
                                    distance = sunToM31)
-
-
+        
+        m31_galcen = m31_coord.transform_to(self.galcen_frame)
+        xhat = m31_galcen.cartesian / m31_galcen.cartesian.norm()
+        sph = m31_galcen.represent_as('spherical')
+        Rz = rotation_matrix(-sph.lon, 'z')
+        Ry = rotation_matrix(sph.lat, 'y')
+        Rx = rotation_matrix(alpha, 'x')
+        yhat = (Rz @ Ry @ Rx) @ [0, 1, 0]
+        zhat = np.cross(xhat.xyz.value, yhat)
+        lghc_pole = coord.CartesianRepresentation(*zhat)
 
         # define position and velocities in LGHC frame
         lghc = LocalGroupHalocentric(lghc_pos.with_differentials(lghc_vel),
                                      lg_pole = lghc_pole,
                                      m31_coord = m31_coord)
         modelSol = lghc.transform_to(self.galcen_frame).transform_to(coord.ICRS())
-
-        print(modelSol)
 
         modely = np.array([modelSol.distance.decompose(self.unit_system).value,
                            modelSol.pm_ra_cosdec.decompose(self.unit_system).value,
@@ -175,8 +190,6 @@ class TimingArgumentModel:
         return -0.5 * dy.T @ self.Cinv @ dy
 
     def ln_prior(self, par_dict):
-        # TODO: need to discuss
-
         for name, shape in self._param_info.items():
             if name not in self.prior_bounds:
                 continue
@@ -194,9 +207,11 @@ class TimingArgumentModel:
         lp += par_dict['lnM']
         lp += par_dict['eParam']
 
-        lp += ln_normal(par_dict['coseta'], 0, 1).sum()
-        lp += ln_normal(par_dict['sineta'], 0, 1).sum()
-        lp += ln_normal(par_dict['Lhatlg'], 0, 1).sum()
+        lp += ln_normal(par_dict['coseta'], 0, 1)
+        lp += ln_normal(par_dict['sineta'], 0, 1)
+        
+        lp += ln_normal(par_dict['cosalpha'], 0, 1)
+        lp += ln_normal(par_dict['sinalpha'], 0, 1)
 
         return lp
 
@@ -215,7 +230,6 @@ class TimingArgumentModel:
         if not np.isfinite(ln_post):
             return -np.inf
         return ln_post
-
 
 # Defining __call__ makes this possible:
 # model = TimingArgumentModel()
