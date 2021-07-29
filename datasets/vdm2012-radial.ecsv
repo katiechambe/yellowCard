@@ -15,18 +15,38 @@
 # - {name: tperi_err, unit: Gyr, datatype: float64}
 # meta: !!omap
 # - {title: van der Marel et al. 2012 - radial only}
+# - galcen_frame_attrs:
+#     galcen_distance: !astropy.units.Quantity
+#       unit: &id003 !astropy.units.Unit {unit: kpc}
+#       value: 8.29
+#     galcen_v_sun: !astropy.coordinates.CartesianDifferential
+#       d_x: !astropy.units.Quantity
+#         unit: &id001 !astropy.units.Unit {unit: km / s}
+#         value: 11.1
+#       d_y: !astropy.units.Quantity
+#         unit: *id001
+#         value: 251.54000000000002
+#       d_z: !astropy.units.Quantity
+#         unit: *id001
+#         value: 7.25
+#     roll: !astropy.units.Quantity
+#       unit: &id002 !astropy.units.Unit {unit: deg}
+#       value: 0.0
+#     z_sun: !astropy.units.Quantity
+#       unit: !astropy.units.Unit {unit: pc}
+#       value: 0.0
 # - __serialized_columns__:
 #     dec:
 #       __class__: astropy.units.quantity.Quantity
-#       unit: &id002 !astropy.units.Unit {unit: deg}
+#       unit: *id002
 #       value: !astropy.table.SerializedColumn {name: dec}
 #     distance:
 #       __class__: astropy.units.quantity.Quantity
-#       unit: &id001 !astropy.units.Unit {unit: kpc}
+#       unit: *id003
 #       value: !astropy.table.SerializedColumn {name: distance}
 #     distance_err:
 #       __class__: astropy.units.quantity.Quantity
-#       unit: *id001
+#       unit: *id003
 #       value: !astropy.table.SerializedColumn {name: distance_err}
 #     pm_dec:
 #       __class__: astropy.units.quantity.Quantity
@@ -58,11 +78,11 @@
 #       value: !astropy.table.SerializedColumn {name: radial_velocity_err}
 #     tperi:
 #       __class__: astropy.units.quantity.Quantity
-#       unit: &id003 !astropy.units.Unit {unit: Gyr}
+#       unit: &id004 !astropy.units.Unit {unit: Gyr}
 #       value: !astropy.table.SerializedColumn {name: tperi}
 #     tperi_err:
 #       __class__: astropy.units.quantity.Quantity
-#       unit: *id003
+#       unit: *id004
 #       value: !astropy.table.SerializedColumn {name: tperi_err}
 # schema: astropy-2.0
 ra dec distance distance_err pm_ra_cosdec pm_ra_cosdec_err pm_dec pm_dec_err radial_velocity radial_velocity_err tperi tperi_err
