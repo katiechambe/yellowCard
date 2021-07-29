@@ -11,7 +11,10 @@
 # - {name: pm_dec_err, unit: uarcsec / yr, datatype: float64}
 # - {name: radial_velocity, unit: km / s, datatype: float64}
 # - {name: radial_velocity_err, unit: km / s, datatype: float64}
+# - {name: tperi, unit: Gyr, datatype: float64}
+# - {name: tperi_err, unit: Gyr, datatype: float64}
 # meta: !!omap
+# - {title: Simulated Two-body}
 # - __serialized_columns__:
 #     dec:
 #       __class__: astropy.units.quantity.Quantity
@@ -53,6 +56,14 @@
 #       __class__: astropy.units.quantity.Quantity
 #       unit: *id005
 #       value: !astropy.table.SerializedColumn {name: radial_velocity_err}
+#     tperi:
+#       __class__: astropy.units.quantity.Quantity
+#       unit: &id006 !astropy.units.Unit {unit: Gyr}
+#       value: !astropy.table.SerializedColumn {name: tperi}
+#     tperi_err:
+#       __class__: astropy.units.quantity.Quantity
+#       unit: *id006
+#       value: !astropy.table.SerializedColumn {name: tperi_err}
 # schema: astropy-2.0
-ra dec distance distance_err pm_ra_cosdec pm_ra_cosdec_err pm_dec pm_dec_err radial_velocity radial_velocity_err
-10.646285642999471 41.234566309794815 711.328060808294 11.0 44.93935960888754 3.0 -23.826337195004044 4.0 -300.0258017410786 2.0
+ra dec distance distance_err pm_ra_cosdec pm_ra_cosdec_err pm_dec pm_dec_err radial_velocity radial_velocity_err tperi tperi_err
+10.646285642999471 41.234566309794815 711.328060808294 11.0 44.93935960888754 3.0 -23.826337195004044 4.0 -300.0258017410786 2.0 14.310021975374264 0.11
