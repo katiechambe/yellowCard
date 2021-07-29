@@ -16,7 +16,8 @@ class TimingArgumentModel:
     def __init__(self, distance, pm, radial_velocity, tperi,
                  distance_err, pm_err, radial_velocity_err, tperi_err,
                  pm_correlation=0., unit_system=None, prior_bounds=None,
-                 galcen_frame=coord.Galactocentric(), m31_sky_c=None):
+                 galcen_frame=coord.Galactocentric(), m31_sky_c=None,
+                 title=''):
 
         # this is because dictionaries are mutable
         if unit_system is None:
@@ -77,6 +78,8 @@ class TimingArgumentModel:
             m31_sky_c = coord.SkyCoord.from_name('M31')
         self.m31_sky_c = coord.SkyCoord(m31_sky_c)
 
+        self.title = str(title)
+
     @classmethod
     def from_dataset(cls, data_file, **kwargs):
         '''
@@ -101,6 +104,8 @@ class TimingArgumentModel:
             kwargs.setdefault('galcen_frame', coord.Galactocentric(
                 **table.meta['galcen_frame_attrs'])
             )
+
+        kwargs.setdefault('title', table.meta.get('title', ''))
 
         instance = cls(distance=table['distance'],
                        pm=u.Quantity([table['pm_ra_cosdec'],
