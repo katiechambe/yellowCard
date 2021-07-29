@@ -10,12 +10,13 @@ import astropy.units as u
 from astropy.coordinates.matrix_utilities import rotation_matrix
 from astropy.table import QTable
 
+
 class TimingArgumentModel:
 
     def __init__(self, distance, pm, radial_velocity, tperi,
                  distance_err, pm_err, radial_velocity_err, tperi_err,
-                 pm_correlation=0., unit_system = None, prior_bounds = None,
-                 galcen_frame = coord.Galactocentric(), m31_sky_c=None):
+                 pm_correlation=0., unit_system=None, prior_bounds=None,
+                 galcen_frame=coord.Galactocentric(), m31_sky_c=None):
 
         # this is because dictionaries are mutable
         if unit_system is None:
@@ -64,9 +65,9 @@ class TimingArgumentModel:
             prior_bounds = {}
 
         # for now, these values are assumed to be in default unit system
-        prior_bounds.setdefault('lnr', (6,7))
-        prior_bounds.setdefault('eParam', (-18,0))
-        prior_bounds.setdefault('lnM', (-1,3))
+        prior_bounds.setdefault('lnr', (6, 7))
+        prior_bounds.setdefault('eParam', (-18, 0))
+        prior_bounds.setdefault('lnM', (-1, 3))
 
         self.prior_bounds = prior_bounds
 
@@ -79,8 +80,8 @@ class TimingArgumentModel:
     @classmethod
     def from_dataset(cls, data_file, **kwargs):
         '''
-        Reads dataset from file. 
-        
+        Reads dataset from file.
+
         Parameters
         ----------
         data_file : str
@@ -88,26 +89,30 @@ class TimingArgumentModel:
         **kwargs
             anything that initializer accepts
         '''
-        table = QTable.read(data_file)[0] # grab first (only) row
+        table = QTable.read(data_file)[0]  # grab first (only) row
         if "ra" not in table.colnames:
             m31_sky_c = None
         else:
             m31_sky_c = coord.SkyCoord(table['ra'], table['dec'])
 
-        tperi = kwargs.pop("tperi", 13.75*u.Gyr)
-        tperi_err = kwargs.pop("tperi_err", 0.1*u.Gyr)
-
         kwargs.setdefault("m31_sky_c", m31_sky_c)
-        
-        instance = cls( distance=table['distance'] , 
-                        pm = u.Quantity([table['pm_ra_cosdec'], table['pm_dec']]),
-                        radial_velocity = table['radial_velocity'],
-                        tperi = tperi,
-                        distance_err=table['distance_err'],
-                        pm_err=u.Quantity([table['pm_ra_cosdec_err'], table['pm_dec_err']]),
-                        radial_velocity_err=table['radial_velocity_err'],
-                        tperi_err=tperi_err,
-                        **kwargs)
+
+        if 'galcen_frame_attrs' in table.meta:
+            kwargs.setdefault('galcen_frame', coord.Galactocentric(
+                **table.meta['galcen_frame_attrs'])
+            )
+
+        instance = cls(distance=table['distance'],
+                       pm=u.Quantity([table['pm_ra_cosdec'],
+                                      table['pm_dec']]),
+                       radial_velocity=table['radial_velocity'],
+                       tperi=table['tperi'],
+                       distance_err=table['distance_err'],
+                       pm_err=u.Quantity([table['pm_ra_cosdec_err'],
+                                          table['pm_dec_err']]),
+                       radial_velocity_err=table['radial_velocity_err'],
+                       tperi_err=table['tperi_err'],
+                       **kwargs)
         return instance
 
     def unpack_pars(self, par_list):
