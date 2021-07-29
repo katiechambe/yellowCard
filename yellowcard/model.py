@@ -8,6 +8,7 @@ from gala.units import UnitSystem
 from numpy.linalg import norm
 import astropy.units as u
 from astropy.coordinates.matrix_utilities import rotation_matrix
+from astropy.table import QTable
 
 class TimingArgumentModel:
 
@@ -63,9 +64,9 @@ class TimingArgumentModel:
             prior_bounds = {}
 
         # for now, these values are assumed to be in default unit system
-        prior_bounds.setdefault('lnr',(6,7))
-        prior_bounds.setdefault('eParam',(-18,0))
-        prior_bounds.setdefault('lnM',(-1,3))
+        prior_bounds.setdefault('lnr', (6,7))
+        prior_bounds.setdefault('eParam', (-18,0))
+        prior_bounds.setdefault('lnM', (-1,3))
 
         self.prior_bounds = prior_bounds
 
@@ -74,6 +75,40 @@ class TimingArgumentModel:
         if m31_sky_c is None:
             m31_sky_c = coord.SkyCoord.from_name('M31')
         self.m31_sky_c = coord.SkyCoord(m31_sky_c)
+
+    @classmethod
+    def from_dataset(cls, data_file, **kwargs):
+        '''
+        Reads dataset from file. 
+        
+        Parameters
+        ----------
+        data_file : str
+            full path to dataset file
+        **kwargs
+            anything that initializer accepts
+        '''
+        table = QTable.read(data_file)[0] # grab first (only) row
+        if "ra" not in table.colnames:
+            m31_sky_c = None
+        else:
+            m31_sky_c = coord.SkyCoord(table['ra'], table['dec'])
+
+        tperi = kwargs.pop("tperi", 13.75*u.Gyr)
+        tperi_err = kwargs.pop("tperi_err", 0.1*u.Gyr)
+
+        kwargs.setdefault("m31_sky_c", m31_sky_c)
+        
+        instance = cls( distance=table['distance'] , 
+                        pm = u.Quantity([table['pm_ra_cosdec'], table['pm_dec']]),
+                        radial_velocity = table['radial_velocity'],
+                        tperi = tperi,
+                        distance_err=table['distance_err'],
+                        pm_err=u.Quantity([table['pm_ra_cosdec_err'], table['pm_dec_err']]),
+                        radial_velocity_err=table['radial_velocity_err'],
+                        tperi_err=tperi_err,
+                        **kwargs)
+        return instance
 
     def unpack_pars(self, par_list):
         i = 0
