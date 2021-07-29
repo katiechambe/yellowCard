@@ -1,0 +1,69 @@
+# %ECSV 1.0
+# ---
+# datatype:
+# - {name: ra, unit: deg, datatype: float64}
+# - {name: dec, unit: deg, datatype: float64}
+# - {name: distance, unit: kpc, datatype: float64}
+# - {name: distance_err, unit: kpc, datatype: float64}
+# - {name: pm_ra_cosdec, unit: mas / yr, datatype: float64}
+# - {name: pm_ra_cosdec_err, unit: uarcsec / yr, datatype: float64}
+# - {name: pm_dec, unit: mas / yr, datatype: float64}
+# - {name: pm_dec_err, unit: uarcsec / yr, datatype: float64}
+# - {name: radial_velocity, unit: km / s, datatype: float64}
+# - {name: radial_velocity_err, unit: km / s, datatype: float64}
+# - {name: tperi, unit: Gyr, datatype: float64}
+# - {name: tperi_err, unit: Gyr, datatype: float64}
+# meta: !!omap
+# - {title: van der Marel et al. 2012 - radial only}
+# - __serialized_columns__:
+#     dec:
+#       __class__: astropy.units.quantity.Quantity
+#       unit: &id002 !astropy.units.Unit {unit: deg}
+#       value: !astropy.table.SerializedColumn {name: dec}
+#     distance:
+#       __class__: astropy.units.quantity.Quantity
+#       unit: &id001 !astropy.units.Unit {unit: kpc}
+#       value: !astropy.table.SerializedColumn {name: distance}
+#     distance_err:
+#       __class__: astropy.units.quantity.Quantity
+#       unit: *id001
+#       value: !astropy.table.SerializedColumn {name: distance_err}
+#     pm_dec:
+#       __class__: astropy.units.quantity.Quantity
+#       unit: !astropy.units.Unit {unit: mas / yr}
+#       value: !astropy.table.SerializedColumn {name: pm_dec}
+#     pm_dec_err:
+#       __class__: astropy.units.quantity.Quantity
+#       unit: !astropy.units.Unit {unit: uarcsec / yr}
+#       value: !astropy.table.SerializedColumn {name: pm_dec_err}
+#     pm_ra_cosdec:
+#       __class__: astropy.units.quantity.Quantity
+#       unit: !astropy.units.Unit {unit: mas / yr}
+#       value: !astropy.table.SerializedColumn {name: pm_ra_cosdec}
+#     pm_ra_cosdec_err:
+#       __class__: astropy.units.quantity.Quantity
+#       unit: !astropy.units.Unit {unit: uarcsec / yr}
+#       value: !astropy.table.SerializedColumn {name: pm_ra_cosdec_err}
+#     ra:
+#       __class__: astropy.units.quantity.Quantity
+#       unit: *id002
+#       value: !astropy.table.SerializedColumn {name: ra}
+#     radial_velocity:
+#       __class__: astropy.units.quantity.Quantity
+#       unit: !astropy.units.Unit {unit: km / s}
+#       value: !astropy.table.SerializedColumn {name: radial_velocity}
+#     radial_velocity_err:
+#       __class__: astropy.units.quantity.Quantity
+#       unit: !astropy.units.Unit {unit: km / s}
+#       value: !astropy.table.SerializedColumn {name: radial_velocity_err}
+#     tperi:
+#       __class__: astropy.units.quantity.Quantity
+#       unit: &id003 !astropy.units.Unit {unit: Gyr}
+#       value: !astropy.table.SerializedColumn {name: tperi}
+#     tperi_err:
+#       __class__: astropy.units.quantity.Quantity
+#       unit: *id003
+#       value: !astropy.table.SerializedColumn {name: tperi_err}
+# schema: astropy-2.0
+ra dec distance distance_err pm_ra_cosdec pm_ra_cosdec_err pm_dec pm_dec_err radial_velocity radial_velocity_err tperi tperi_err
+10.68470833 41.26875 770.0 40.0 0.03877373921062788 1.0 -0.02161091522328607 1.0 -302.2225745352666 1.0 13.75 0.11
