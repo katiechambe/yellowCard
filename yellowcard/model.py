@@ -56,8 +56,8 @@ class TimingArgumentModel:
         self._param_info['coseta'] = 1
         self._param_info['sineta'] = 1
         self._param_info['lnM'] = 1
-        self._param_info['sinalpha'] = 1
         self._param_info['cosalpha'] = 1
+        self._param_info['sinalpha'] = 1
 
         self.frozen = {}
 
@@ -66,9 +66,9 @@ class TimingArgumentModel:
             prior_bounds = {}
 
         # for now, these values are assumed to be in default unit system
-        prior_bounds.setdefault('lnr', (6, 7))
+        prior_bounds.setdefault('lnr', (np.log(500), np.log(900)))
         prior_bounds.setdefault('eParam', (-18, 0))
-        prior_bounds.setdefault('lnM', (-1, 3))
+        prior_bounds.setdefault('lnM', (np.log(1), np.log(5)))
 
         self.prior_bounds = prior_bounds
 
@@ -79,6 +79,8 @@ class TimingArgumentModel:
         self.m31_sky_c = coord.SkyCoord(m31_sky_c)
 
         self.title = str(title)
+        
+        self.blobs_dtype = [("vrad",float),("vtan",float),("vscale",float),("sunToM31",float)]
 
     @classmethod
     def from_dataset(cls, data_file, **kwargs):
@@ -194,6 +196,7 @@ class TimingArgumentModel:
         # calculate x,y, and vx, vy in kepler plane
         r_kep = inst.separation
         vrad_kep, vtan_kep = inst.vrad_kepler, inst.vtan_kepler
+        vscale_kep = inst.vscale
         tperiModel = inst.time
 
         lghc_pos = coord.CartesianRepresentation( r_kep, 0*u.kpc, 0*u.kpc)
@@ -235,8 +238,13 @@ class TimingArgumentModel:
                            tperiModel.decompose(self.unit_system).value])
 
         dy = self.y - modely
+        
+        blobs = [vrad_kep.decompose(self.unit_system).value,
+                 vtan_kep.decompose(self.unit_system).value,
+                 vscale_kep.decompose(self.unit_system).value, 
+                 sunToM31.decompose(self.unit_system).value]
 
-        return -0.5 * dy.T @ self.Cinv @ dy
+        return -0.5 * dy.T @ self.Cinv @ dy, blobs# here, need to compute and export 
 
     def ln_prior(self, par_dict):
         for name, shape in self._param_info.items():
@@ -252,33 +260,32 @@ class TimingArgumentModel:
                         return -np.inf
 
         lp = 0
-        lp += par_dict['lnr']
-        lp += par_dict['lnM']
-        lp += par_dict['eParam']
+        lp += ln_normal( par_dict['lnr'], np.log(750), np.log(750)/4)
+        lp += ln_normal( par_dict['lnM'], np.log(4), np.log(4)/4)
+        lp += par_dict['eParam'] + np.log( 1 - np.exp(par_dict['eParam']) )
 
-        lp += ln_normal(par_dict['coseta'], 0, 1)
-        lp += ln_normal(par_dict['sineta'], 0, 1)
-
-        lp += ln_normal(par_dict['cosalpha'], 0, 1)
-        lp += ln_normal(par_dict['sinalpha'], 0, 1)
+        lp += ln_normal( par_dict['coseta']**2 + par_dict['sineta']**2, 0, 1)
+        lp += ln_normal( par_dict['cosalpha']**2 + par_dict['sinalpha']**2, 1, 0.1)
 
         return lp
 
     def ln_posterior(self, par_dict):
         # TODO: call ln_likelihood and ln_prior and add the values
-        return self.ln_likelihood(par_dict) + self.ln_prior(par_dict)
+        ll, blobs = self.ln_likelihood(par_dict)
+        lp =  self.ln_prior(par_dict)
+        return ll + lp, blobs
 
     def __call__(self, par_arr):
         par_dict = self.unpack_pars(par_arr)
         try:
-            ln_post = self.ln_posterior(par_dict)
+            ln_post, blobs = self.ln_posterior(par_dict)
         except Exception as e:
             print(f"Step failed: {e!s}")
-            return -np.inf
+            return (-np.inf, *np.full(len(self.blobs_dtype), np.nan))
 
         if not np.isfinite(ln_post):
-            return -np.inf
-        return ln_post
+            return (-np.inf, *np.full(len(self.blobs_dtype), np.nan))
+        return (ln_post, *blobs)
 
 # Defining __call__ makes this possible:
 # model = TimingArgumentModel()
@@ -289,3 +296,14 @@ def ln_normal(data_val, model_val, variance):
     A = 2*np.pi*variance
     B = ( (data_val - model_val)**2 / variance )
     return -1/2 * ( np.log(A) + B )
+
+
+# gaussian prior on mass centered with 4e12 with hard bounds and on separation w center at 700
+# make the prior on the angles within an anulus
+# make the prior on e proportional to e
+# vscale = sqrt gm/a
+# vrad
+# vtan
+# save sun-m31 distance
+# blobs
+# snippets ?? 
