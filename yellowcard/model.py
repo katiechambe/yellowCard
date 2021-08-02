@@ -5,7 +5,6 @@ import numpy as np
 from .keplerianPlane import LGKepler
 from .coordinates import LocalGroupHalocentric
 from gala.units import UnitSystem
-from numpy.linalg import norm
 import astropy.units as u
 from astropy.coordinates.matrix_utilities import rotation_matrix
 from astropy.table import QTable
@@ -21,7 +20,8 @@ class TimingArgumentModel:
 
         # this is because dictionaries are mutable
         if unit_system is None:
-            unit_system = UnitSystem(u.kpc, u.Unit(1e12*u.Msun), u.Gyr, u.radian)
+            unit_system = UnitSystem(
+                u.kpc, u.Unit(1e12*u.Msun), u.Gyr, u.radian)
         self.unit_system = unit_system
 
         self.dist  = distance
@@ -79,8 +79,13 @@ class TimingArgumentModel:
         self.m31_sky_c = coord.SkyCoord(m31_sky_c)
 
         self.title = str(title)
-        
-        self.blobs_dtype = [("vrad",float),("vtan",float),("vscale",float),("sunToM31",float)]
+
+        self.blobs_dtype = [
+            ("vrad", float),
+            ("vtan", float),
+            ("vscale", float),
+            ("sunToM31", float)
+        ]
 
     @classmethod
     def from_dataset(cls, data_file, **kwargs):
@@ -149,44 +154,33 @@ class TimingArgumentModel:
         ----------
         par_dict: dict
             dictionary containing all sampled parameters
-        
+
         Outputs
         -------
         trans_dict: dict
-            dictionary of all model parameters 
+            dictionary of all model parameters
         '''
         trans_dict = {}
         trans_dict['r'] = np.exp(par_dict['lnr'])
         trans_dict['e'] = 1 - np.exp(par_dict['eParam'])
-        etta = np.arctan2(par_dict['sineta'],par_dict['coseta']) # *u.rad
-        trans_dict['eta'] = etta%(2*np.pi)
+        trans_dict['eta'] = np.arctan2(np.asarray(par_dict['sineta']),
+                                       np.asarray(par_dict['coseta']))
+        trans_dict['eta'] %= 2 * np.pi
         trans_dict['M'] = np.exp(par_dict['lnM'])
-        allpha = np.arctan2(par_dict['sinalpha'],par_dict['cosalpha']) # *u.rad
+        trans_dict['alpha'] = np.arctan2(np.asarray(par_dict['sinalpha'](),
+                                         np.asarray(par_dict['cosalpha']))
         return trans_dict
 
     def ln_likelihood(self, par_dict):
-        par_dict = par_dict.copy()
-        par_dict['r'] = np.exp(par_dict['lnr'])
-        par_dict['M'] = np.exp(par_dict['lnM'])
-        par_dict['e'] = 1 - np.exp(par_dict['eParam'])
+        pars = self.transform_pars(par_dict).update(par_dict)
 
-
-        a = par_dict['r']/ (1 - par_dict['e']*par_dict['coseta'])
-        eccentricity = par_dict['e']
-        eta = np.arctan2(par_dict['sineta'],par_dict['coseta']) # *u.rad
-        if hasattr(eta, 'unit'):
-            eta = eta.to_value(u.rad)
-        eta = eta % (2*np.pi)
-
-        alpha = np.arctan2(par_dict['sinalpha'],par_dict['cosalpha']) # *u.rad
-        if hasattr(alpha, 'unit'):
-            alpha = alpha.to_value(u.rad)
+        a = pars['r'] / (1 - pars['e'] * pars['coseta'])
 
         # creating keplerian plane with parameters from par_dict
-        inst = LGKepler(eccentricity = eccentricity,
-                        eccentricAnomaly = eta,
-                        semiMajorAxis = a*self.unit_system['length'],
-                        totalMass= par_dict['M']*self.unit_system['mass'])
+        inst = LGKepler(eccentricity=pars['e'],
+                        eccentricAnomaly=pars['eta'],
+                        semiMajorAxis=a * self.unit_system['length'],
+                        totalMass=pars['M'] * self.unit_system['mass'])
 
         # calculate x,y, and vx, vy in kepler plane
         r_kep = inst.separation
@@ -204,7 +198,10 @@ class TimingArgumentModel:
         sunToMWC = self.galcen_frame.galcen_distance
         MWCtoM31 = r_kep.to(u.kpc) # separation between MWHC and M31 given by model
 
-        sunToM31 = ( sunToMWC * np.cos(gamma) ) + np.sqrt( (sunToMWC * np.cos(gamma))**2 - sunToMWC**2 + MWCtoM31**2 )
+        sunToM31 = (
+            sunToMWC * np.cos(gamma) +
+            np.sqrt((sunToMWC * np.cos(gamma))**2 - sunToMWC**2 + MWCtoM31**2)
+        )
 
         m31_coord = coord.SkyCoord(ra = self.m31_sky_c.ra,
                                    dec = self.m31_sky_c.dec,
@@ -215,7 +212,7 @@ class TimingArgumentModel:
         sph = m31_galcen.represent_as('spherical')
         Rz = rotation_matrix(-sph.lon, 'z')
         Ry = rotation_matrix(sph.lat, 'y')
-        Rx = rotation_matrix(alpha, 'x')
+        Rx = rotation_matrix(pars['alpha'], 'x')
         yhat = (Rz @ Ry @ Rx) @ [0, 1, 0]
         zhat = np.cross(xhat.xyz.value, yhat)
         lghc_pole = coord.CartesianRepresentation(*zhat)
@@ -224,22 +221,25 @@ class TimingArgumentModel:
         lghc = LocalGroupHalocentric(lghc_pos.with_differentials(lghc_vel),
                                      lg_pole = lghc_pole,
                                      m31_coord = m31_coord)
-        modelSol = lghc.transform_to(self.galcen_frame).transform_to(coord.ICRS())
+        model_galcen = lghc.transform_to(self.galcen_frame)
+        model_icrs = model_galcen.transform_to(coord.ICRS())
 
-        modely = np.array([modelSol.distance.decompose(self.unit_system).value,
-                           modelSol.pm_ra_cosdec.decompose(self.unit_system).value,
-                           modelSol.pm_dec.decompose(self.unit_system).value,
-                           modelSol.radial_velocity.decompose(self.unit_system).value,
-                           tperiModel.decompose(self.unit_system).value])
+        modely = np.array([
+            model_icrs.distance.decompose(self.unit_system).value,
+            model_icrs.pm_ra_cosdec.decompose(self.unit_system).value,
+            model_icrs.pm_dec.decompose(self.unit_system).value,
+            model_icrs.radial_velocity.decompose(self.unit_system).value,
+            tperiModel.decompose(self.unit_system).value
+        ])
 
         dy = self.y - modely
-        
+
         blobs = [vrad_kep.decompose(self.unit_system).value,
                  vtan_kep.decompose(self.unit_system).value,
-                 vscale_kep.decompose(self.unit_system).value, 
+                 vscale_kep.decompose(self.unit_system).value,
                  sunToM31.decompose(self.unit_system).value]
 
-        return -0.5 * dy.T @ self.Cinv @ dy, blobs# here, need to compute and export 
+        return -0.5 * dy.T @ self.Cinv @ dy, blobs
 
     def ln_prior(self, par_dict):
         for name, shape in self._param_info.items():
@@ -303,4 +303,4 @@ def ln_normal(data_val, model_val, variance):
 # vtan
 # save sun-m31 distance
 # blobs
-# snippets ?? 
+# snippets ??
