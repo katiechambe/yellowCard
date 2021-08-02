@@ -34,27 +34,32 @@ class LGKepler:
 
     @property
     def time(self):
-        A = self.a**3 / (self.G * self.Mtot)
+        A = self.a / self.vscale
         if hasattr(self.eta, 'unit'):
             eta = self.eta.to_value(u.rad)
         else:
             eta = self.eta
         B = eta - ( self.e * np.sin(self.eta) )
-        return A**(1/2) * B
+        return A * B
+    
+    @property
+    def vscale(self):
+        A = (self.G * self.Mtot) / self.a 
+        return A
 
     @property
     def vrad_kepler(self):
-        A = self.a / (self.G * self.Mtot)
+        A = self.vscale
         B = self.e * np.sin(self.eta)
         C = 1 - (self.e*np.cos(self.eta))
-        return A**(-1/2) * B/C
+        return A * B/C
 
     @property
     def vtan_kepler(self):
-        A = self.a / (self.G * self.Mtot)
+        A = self.vscale
         B = ( 1 - self.e**2 )**(1/2)
         C = 1 - ( self.e * np.cos(self.eta) )
-        return A**(-1/2) * B/C
+        return A * B/C
 
     @property
     def trueAnomaly(self):

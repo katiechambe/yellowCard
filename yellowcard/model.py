@@ -166,9 +166,7 @@ class TimingArgumentModel:
         what_dict['alpha'] = np.mean(allpha%(2*np.pi))
         return what_dict
 
-
     def ln_likelihood(self, par_dict):
-
         par_dict = par_dict.copy()
         par_dict['r'] = np.exp(par_dict['lnr'])
         par_dict['M'] = np.exp(par_dict['lnM'])
@@ -260,11 +258,11 @@ class TimingArgumentModel:
                         return -np.inf
 
         lp = 0
-        lp += ln_normal( par_dict['lnr'], np.log(750), np.log(750)/4)
-        lp += ln_normal( par_dict['lnM'], np.log(4), np.log(4)/4)
+#         lp += ln_normal( par_dict['lnr'], np.log(750), np.log(750)/4)
+#         lp += ln_normal( par_dict['lnM'], np.log(4), np.log(4)/4)
         lp += par_dict['eParam'] + np.log( 1 - np.exp(par_dict['eParam']) )
 
-        lp += ln_normal( par_dict['coseta']**2 + par_dict['sineta']**2, 0, 1)
+        lp += ln_normal( par_dict['coseta']**2 + par_dict['sineta']**2, 1, 0.1)
         lp += ln_normal( par_dict['cosalpha']**2 + par_dict['sinalpha']**2, 1, 0.1)
 
         return lp
@@ -282,9 +280,11 @@ class TimingArgumentModel:
         except Exception as e:
             print(f"Step failed: {e!s}")
             return (-np.inf, *np.full(len(self.blobs_dtype), np.nan))
+#             return (-np.inf, np.nan, np.nan, np.nan, np.nan)
 
         if not np.isfinite(ln_post):
             return (-np.inf, *np.full(len(self.blobs_dtype), np.nan))
+#             return (-np.inf, np.nan, np.nan, np.nan, np.nan)
         return (ln_post, *blobs)
 
 # Defining __call__ makes this possible:
