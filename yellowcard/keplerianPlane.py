@@ -45,7 +45,7 @@ class LGKepler:
     @property
     def vscale(self):
         A = (self.G * self.Mtot) / self.a 
-        return A
+        return np.sqrt(A)
 
     @property
     def vrad_kepler(self):
