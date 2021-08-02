@@ -141,30 +141,28 @@ class TimingArgumentModel:
                 parvec.append(np.atleast_1d(par_dict[k]))
         return np.concatenate(parvec)
 
-    def whats_this(self, par_dict):
-        ''' takes our original parameter set and transforms them to things we recognize '''
-        what_dict = {}
-        what_dict['r'] = np.exp(par_dict['lnr'])
-        what_dict['e'] = 1 - np.exp(par_dict['eParam'])
-        etta = np.arctan2(par_dict['sineta'],par_dict['coseta']) # *u.rad
-        what_dict['eta'] = etta%(2*np.pi)
-        what_dict['M'] = np.exp(par_dict['lnM'])
-        allpha = np.arctan2(par_dict['sinalpha'],par_dict['cosalpha']) # *u.rad
-        what_dict['alpha'] = allpha%(2*np.pi)
-        return what_dict
+    def transform_pars(self, par_dict):
+        '''
+        Transforms parametrized mcmc parameters to model params
 
-    def whats_this_mean(self, par_dict):
-        ''' takes our original parameter set and transforms them to things we recognize
-            differs from whats_this by taking the mean of each recongizable parameter'''
-        what_dict = {}
-        what_dict['r'] = np.mean(np.exp(par_dict['lnr']))*u.kpc
-        what_dict['e'] = np.mean(1 - np.exp(par_dict['eParam']))
+        Parameters
+        ----------
+        par_dict: dict
+            dictionary containing all sampled parameters
+        
+        Outputs
+        -------
+        trans_dict: dict
+            dictionary of all model parameters 
+        '''
+        trans_dict = {}
+        trans_dict['r'] = np.exp(par_dict['lnr'])
+        trans_dict['e'] = 1 - np.exp(par_dict['eParam'])
         etta = np.arctan2(par_dict['sineta'],par_dict['coseta']) # *u.rad
-        what_dict['eta'] = np.mean(etta%(2*np.pi))
-        what_dict['M'] = np.mean(np.exp(par_dict['lnM'])*self.unit_system['mass'])
+        trans_dict['eta'] = etta%(2*np.pi)
+        trans_dict['M'] = np.exp(par_dict['lnM'])
         allpha = np.arctan2(par_dict['sinalpha'],par_dict['cosalpha']) # *u.rad
-        what_dict['alpha'] = np.mean(allpha%(2*np.pi))
-        return what_dict
+        return trans_dict
 
     def ln_likelihood(self, par_dict):
         par_dict = par_dict.copy()
@@ -183,7 +181,6 @@ class TimingArgumentModel:
         alpha = np.arctan2(par_dict['sinalpha'],par_dict['cosalpha']) # *u.rad
         if hasattr(alpha, 'unit'):
             alpha = alpha.to_value(u.rad)
-        alpha = alpha % (2*np.pi)
 
         # creating keplerian plane with parameters from par_dict
         inst = LGKepler(eccentricity = eccentricity,
@@ -262,8 +259,8 @@ class TimingArgumentModel:
 #         lp += ln_normal( par_dict['lnM'], np.log(4), np.log(4)/4)
         lp += par_dict['eParam'] + np.log( 1 - np.exp(par_dict['eParam']) )
 
-        lp += ln_normal( par_dict['coseta']**2 + par_dict['sineta']**2, 1, 0.1)
-        lp += ln_normal( par_dict['cosalpha']**2 + par_dict['sinalpha']**2, 1, 0.1)
+        lp += ln_normal( np.sqrt(par_dict['coseta']**2 + par_dict['sineta']**2), 5, 0.1)
+        lp += ln_normal( np.sqrt(par_dict['cosalpha']**2 + par_dict['sinalpha']**2), 5, 0.1)
 
         return lp
 
