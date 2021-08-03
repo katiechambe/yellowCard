@@ -17,8 +17,8 @@ def init_kepler(m31_sky_c, galcen_frame, units,
     M = pm.Bound(pm.Normal, *Mlim)('M', 4.5, 2)  # 1e12 Msun
 
     eta = pmx.Angle('eta')  # radians
-    sineta = pm.Deterministic('sineta', eta.transformed[0])
-    coseta = pm.Deterministic('coseta', eta.transformed[1])
+    sineta = pm.Deterministic('sineta', tt.sin(eta))
+    coseta = pm.Deterministic('coseta', tt.cos(eta))
 
     ln1me = pm.Bound(pm.Uniform, -10, 0)('ln(1-e)', -10, 0)
     e = pm.Deterministic('e', 1 - np.exp(ln1me))
@@ -86,11 +86,11 @@ def setup_obs(m31_sky_c, galcen_frame, units, model=None):
         [-np.sin(m31_ra_rad),
          np.cos(m31_ra_rad),
          0.],
-        [-np.sin(m31_dec_rad)*np.cos(m31_ra_rad),
-         -np.sin(m31_dec_rad)*np.sin(m31_ra_rad),
+        [-np.sin(m31_dec_rad) * np.cos(m31_ra_rad),
+         -np.sin(m31_dec_rad) * np.sin(m31_ra_rad),
          np.cos(m31_dec_rad)],
-        [np.cos(m31_dec_rad)*np.cos(m31_ra_rad),
-         np.cos(m31_dec_rad)*np.sin(m31_ra_rad),
+        [np.cos(m31_dec_rad) * np.cos(m31_ra_rad),
+         np.cos(m31_dec_rad) * np.sin(m31_ra_rad),
          np.sin(m31_dec_rad)]
     ])
 
@@ -146,15 +146,15 @@ def setup_obs(m31_sky_c, galcen_frame, units, model=None):
 
     model_pmra = pm.Deterministic(
         'model_pmra',
-        v_I_tangent_plane[0] / model.named_vars['sun_m31_dist'] * v_per_D_to_masyr
+        v_I_tangent_plane[0] / model.named_vars['sun_m31_dist']
     )
     model_pmdec = pm.Deterministic(
         'model_pmdec',
-        v_I_tangent_plane[1] / model.named_vars['sun_m31_dist'] * v_per_D_to_masyr
+        v_I_tangent_plane[1] / model.named_vars['sun_m31_dist']
     )
     model_rv = pm.Deterministic(
         'model_rv',
-        v_I_tangent_plane[2] * v_to_kms
+        v_I_tangent_plane[2]
     )
 
     obs_m31_distance = pm.Data('obs_distance', np.nan)
