@@ -8,7 +8,7 @@ from aesara_theano_fallback import tensor as tt
 # __all__ []
 
 
-def init_kepler(m31_sky_c, galcen_frame, units,
+def init_kepler(galcen_frame, units,
                 rlim=(1e2, 1e4), Mlim=(0.5, 20),
                 model=None):
     model = pm.modelcontext(model)
@@ -43,7 +43,13 @@ def init_kepler(m31_sky_c, galcen_frame, units,
         a / vscale * ((eta % (2*np.pi)) - e * sineta)
     )
 
-    gamma = m31_sky_c.separation(galcen_frame.galcen_coord).to_value(u.radian)
+    m31_ra = pm.Data('obs_m31_ra', np.nan)
+    m31_dec = pm.Data('obs_m31_dec', np.nan)
+
+    gamma = tt_angular_separation(galcen_frame.galcen_coord.ra.radian,
+                                  galcen_frame.galcen_coord.dec.radian,
+                                  m31_ra,
+                                  m31_dec)
     sun_galcen_dist = galcen_frame.galcen_distance.to_value(
         units['length'])
     sun_m31_dist = pm.Deterministic(
@@ -55,17 +61,12 @@ def init_kepler(m31_sky_c, galcen_frame, units,
 
     pm.Deterministic(
         'm31_icrs_xyz',
-        tt_sph_to_xyz(sun_m31_dist, m31_sky_c.ra.radian, m31_sky_c.dec.radian)
+        tt_sph_to_xyz(sun_m31_dist, m31_ra, m31_dec)
     )
 
 
-def setup_obs(m31_sky_c, galcen_frame, units, model=None):
+def setup_obs(galcen_frame, units, model=None):
     model = pm.modelcontext(model)
-
-    # unit helpers
-    with u.set_enabled_equivalencies(u.dimensionless_angles()):
-        v_per_D_to_masyr = (units['velocity'] / units['length']).to(u.mas/u.yr)
-        v_to_kms = units['velocity'].to(u.km/u.s)
 
     # Matrix to go from ICRS to Galactocentric
     R_I2G, offset_I2G = coord.builtin_frames.galactocentric.get_matrix_vectors(
@@ -80,19 +81,19 @@ def setup_obs(m31_sky_c, galcen_frame, units, model=None):
     dvxyz_G2I = offset_G2I.differentials['s'].d_xyz.to_value(units['velocity'])
 
     # tangent bases: ra, dec, r
-    m31_ra_rad = m31_sky_c.ra.radian
-    m31_dec_rad = m31_sky_c.dec.radian
-    M = np.array([
-        [-np.sin(m31_ra_rad),
-         np.cos(m31_ra_rad),
-         0.],
-        [-np.sin(m31_dec_rad) * np.cos(m31_ra_rad),
-         -np.sin(m31_dec_rad) * np.sin(m31_ra_rad),
-         np.cos(m31_dec_rad)],
-        [np.cos(m31_dec_rad) * np.cos(m31_ra_rad),
-         np.cos(m31_dec_rad) * np.sin(m31_ra_rad),
-         np.sin(m31_dec_rad)]
-    ])
+    m31_ra_rad = model.named_vars['obs_m31_ra']
+    m31_dec_rad = model.named_vars['obs_m31_dec']
+    M = tt.as_tensor([
+        -tt.sin(m31_ra_rad),
+        tt.cos(m31_ra_rad),
+        0.,
+        -tt.sin(m31_dec_rad) * tt.cos(m31_ra_rad),
+        -tt.sin(m31_dec_rad) * tt.sin(m31_ra_rad),
+        tt.cos(m31_dec_rad),
+        tt.cos(m31_dec_rad) * tt.cos(m31_ra_rad),
+        tt.cos(m31_dec_rad) * tt.sin(m31_ra_rad),
+        tt.sin(m31_dec_rad)
+    ]).reshape((3, 3))
 
     # Coordinate system orientation:
     alpha = pmx.Angle('alpha')
@@ -238,3 +239,18 @@ def tt_rotation_matrix(angle_rad, axis):
         raise ValueError('borked')
 
     return tt.reshape(R, (3, 3))
+
+
+def tt_angular_separation(lon1, lat1, lon2, lat2):
+    sdlon = tt.sin(lon2 - lon1)
+    cdlon = tt.cos(lon2 - lon1)
+    slat1 = tt.sin(lat1)
+    slat2 = tt.sin(lat2)
+    clat1 = tt.cos(lat1)
+    clat2 = tt.cos(lat2)
+
+    num1 = clat2 * sdlon
+    num2 = clat1 * slat2 - slat1 * clat2 * cdlon
+    denominator = slat1 * slat2 + clat1 * clat2 * cdlon
+
+    return tt.arctan2(tt.sqrt(num1**2 + num2**2), denominator)
