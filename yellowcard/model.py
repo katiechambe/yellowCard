@@ -167,12 +167,13 @@ class TimingArgumentModel:
                                        np.asarray(par_dict['coseta']))
         trans_dict['eta'] %= 2 * np.pi
         trans_dict['M'] = np.exp(par_dict['lnM'])
-        trans_dict['alpha'] = np.arctan2(np.asarray(par_dict['sinalpha'](),
-                                         np.asarray(par_dict['cosalpha'])))
+        trans_dict['alpha'] = np.arctan2(np.asarray(par_dict['sinalpha']),
+                                         np.asarray(par_dict['cosalpha']))
         return trans_dict
 
     def ln_likelihood(self, par_dict):
-        pars = self.transform_pars(par_dict).update(par_dict)
+        pars = self.transform_pars(par_dict)
+        pars.update(par_dict)
 
         a = pars['r'] / (1 - pars['e'] * pars['coseta'])
 
