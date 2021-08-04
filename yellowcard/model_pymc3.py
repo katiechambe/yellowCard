@@ -91,14 +91,14 @@ class TimingArgumentModelPymc3(ModelMixin):
             rlim = (1e2, 1e4)
             Mlim = (0.5, 20)
             r = pm.Bound(pm.Normal, *rlim)('r', 700, 100)  # kpc
-            M = pm.Bound(pm.Normal, *Mlim)('M', 4.5, 2)  # 1e12 Msun
+            M = pm.Bound(pm.Normal, *Mlim)('M', 4.5, 3)  # 1e12 Msun
 
             eta = pmx.Angle('eta')  # radians
             sineta = pm.Deterministic('sineta', tt.sin(eta))
             coseta = pm.Deterministic('coseta', tt.cos(eta))
 
             ln1me = pm.Bound(pm.Uniform, -10, 0)('ln(1-e)', -10, 0)
-            e = pm.Deterministic('e', 1 - np.exp(ln1me))
+            e = pm.Deterministic('e', 1 - tt.exp(ln1me))
             pm.Potential('ln(1-e)_prior_factor', ln1me + tt.log(e))
 
             a = pm.Deterministic('a', r / (1 - e * coseta))
