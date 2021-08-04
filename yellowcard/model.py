@@ -24,7 +24,7 @@ class TimingArgumentModel:
         radial_velocity_err,
         tperi_err,
         pm_correlation=0.0,
-        unit_system=None,
+        units=None,
         prior_bounds=None,
         galcen_frame=coord.Galactocentric(),
         m31_sky_c=None,
@@ -32,11 +32,11 @@ class TimingArgumentModel:
     ):
 
         # this is because dictionaries are mutable
-        if unit_system is None:
-            unit_system = UnitSystem(
+        if units is None:
+            units = UnitSystem(
                 u.kpc, u.Unit(1e12 * u.Msun), u.Gyr, u.radian
             )
-        self.unit_system = unit_system
+        self.units = units
 
         self.dist = distance
         self.pm = pm
@@ -49,24 +49,21 @@ class TimingArgumentModel:
         self.pm_corr = pm_correlation
         self.tperi_err = tperi_err
 
-        self.y = np.array(
-            [
-                self.dist.decompose(self.unit_system).value,
-                *self.pm.decompose(self.unit_system).value,
-                self.rv.decompose(self.unit_system).value,
-                self.tperi.decompose(self.unit_system).value,
-            ]
-        )
+        self.y = np.array([
+            self.dist.to_value(self.units['length']),
+            *self.pm.to_value(self.units['angular velocity']),
+            self.rv.to_value(self.units['velocity']),
+            self.tperi.to_value(self.units['time'])
+        ])
 
         # TODO: we're ignoring the pm correlation
-        self.Cinv = np.diag(
-            [
-                self.dist_err.decompose(self.unit_system).value ** -2,
-                *self.pm_err.decompose(self.unit_system).value ** -2,
-                self.rv_err.decompose(self.unit_system).value ** -2,
-                self.tperi_err.decompose(self.unit_system).value ** -2,
-            ]
-        )
+        errs = np.array([
+            self.dist_err.to_value(self.units['length']),
+            *self.pm_err.to_value(self.units['angular velocity']),
+            self.rv_err.to_value(self.units['velocity']),
+            self.tperi_err.to_value(self.units['time'])
+        ])
+        self.Cinv = np.diag(1 / errs ** 2)
 
         # becoming webster
         self._param_info = {}
@@ -196,9 +193,9 @@ class TimingArgumentModel:
         )
 
         if with_units:
-            trans_dict["r"] = trans_dict["r"] * self.unit_system["length"]
+            trans_dict["r"] = trans_dict["r"] * self.units["length"]
             trans_dict["eta"] = trans_dict["eta"] * u.rad
-            trans_dict["M"] = trans_dict["M"] * self.unit_system["mass"]
+            trans_dict["M"] = trans_dict["M"] * self.units["mass"]
             trans_dict["alpha"] = trans_dict["alpha"] * u.rad
 
         return trans_dict
@@ -237,13 +234,13 @@ class TimingArgumentModel:
         p.update(self.get_orbit_pars(p))
 
         lghc_pos = coord.CartesianRepresentation(
-            p["r"].to(self.unit_system['length']),
+            p["r"].to(self.units['length']),
             0 * u.kpc,
             0 * u.kpc
         )
         lghc_vel = coord.CartesianDifferential(
-            p["vrad"].to(self.unit_system['velocity']),
-            p["vtan"].to(self.unit_system['velocity']),
+            p["vrad"].to(self.units['velocity']),
+            p["vtan"].to(self.units['velocity']),
             0 * u.km / u.s
         )
 
@@ -272,23 +269,21 @@ class TimingArgumentModel:
         model_galcen = lghc.transform_to(self.galcen_frame)
         model_icrs = model_galcen.transform_to(coord.ICRS())
 
-        modely = np.array(
-            [
-                model_icrs.distance.decompose(self.unit_system).value,
-                model_icrs.pm_ra_cosdec.decompose(self.unit_system).value,
-                model_icrs.pm_dec.decompose(self.unit_system).value,
-                model_icrs.radial_velocity.decompose(self.unit_system).value,
-                p['tperi'].decompose(self.unit_system).value,
-            ]
-        )
+        modely = np.array([
+            model_icrs.distance.to_value(self.units['length']),
+            model_icrs.pm_ra_cosdec.to_value(self.units['angular velocity']),
+            model_icrs.pm_dec.to_value(self.units['angular velocity']),
+            model_icrs.radial_velocity.to_value(self.units['velocity']),
+            p['tperi'].to_value(self.units['time'])
+        ])
 
         dy = self.y - modely
 
         blobs = [
-            p['vrad'].decompose(self.unit_system).value,
-            p['vtan'].decompose(self.unit_system).value,
-            p['vscale'].decompose(self.unit_system).value,
-            p['sun_m31_dist'].decompose(self.unit_system).value,
+            p['vrad'].decompose(self.units).value,
+            p['vtan'].decompose(self.units).value,
+            p['vscale'].decompose(self.units).value,
+            p['sun_m31_dist'].decompose(self.units).value,
         ]
 
         return -0.5 * dy.T @ self.Cinv @ dy, blobs
