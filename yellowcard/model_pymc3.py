@@ -29,6 +29,7 @@ class TimingArgumentModelPymc3(ModelMixin):
         galcen_frame=coord.Galactocentric(),
         m31_sky_c=None,
         title="",
+        include_vtravel=True
     ):
 
         # this is because dictionaries are mutable
@@ -50,6 +51,7 @@ class TimingArgumentModelPymc3(ModelMixin):
         self.tperi_err = tperi_err
 
         self.title = str(title)
+        self.include_vtravel = include_vtravel
 
         if m31_sky_c is None:
             m31_sky_c = coord.SkyCoord.from_name("M31")
@@ -189,6 +191,30 @@ class TimingArgumentModelPymc3(ModelMixin):
             zhat = tt_cross(xhat, yhat)
             R_LGtoG = tt.stack((xhat, yhat, zhat), axis=1)
 
+            # vtravel things here:
+            # TODO: make these variables
+            if self.include_vtravel is True:
+                vtravel_mag = pm.Normal("vtravel_mag",
+                                        (32*u.km/u.s).to_value(self.units["velocity"]), 
+                                        (4*u.km/u.s).to_value(self.units["velocity"]))
+
+                # these are in galactocentric 
+                vtravel_lon = pm.Normal("vtravel_lon",
+                                        (56*u.deg).to_value(u.rad), 
+                                        (9*u.deg).to_value(u.rad))
+
+                vtravel_lat = pm.Normal("vtravel_lat",
+                                        (-34*u.deg).to_value(u.rad), 
+                                        (9.5*u.deg).to_value(u.rad))
+                                        
+                vtravel_galcen_xyz = tt_sph_to_xyz(vtravel_mag, 
+                                                   vtravel_lon, 
+                                                   vtravel_lat)
+
+            else:
+                vtravel_galcen_xyz = tt.zeros(3)
+
+
             # x_LG = tt.as_tensor([
             #     model.named_vars['r'],
             #     0.,
@@ -201,7 +227,9 @@ class TimingArgumentModelPymc3(ModelMixin):
             ])
 
             # x_I = tt.dot(R_G2I, tt.dot(R_LGtoG, x_LG)) + dxyz_G2I
-            v_I = tt.dot(R_G2I, tt.dot(R_LGtoG, v_LG)) + dvxyz_G2I
+            v_G = tt.dot(R_LGtoG, v_LG) - vtravel_galcen_xyz 
+            v_I = tt.dot(R_G2I, v_G) + dvxyz_G2I
+
             v_I_tangent_plane = tt.dot(M, v_I)  # alpha, delta, radial
 
             model_pmra = pm.Deterministic(
