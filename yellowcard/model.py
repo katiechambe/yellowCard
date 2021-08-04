@@ -5,14 +5,15 @@ import astropy.coordinates as coord
 import astropy.units as u
 import numpy as np
 from astropy.coordinates.matrix_utilities import rotation_matrix
-from astropy.table import QTable
 from gala.units import UnitSystem
 
 from .coordinates import LocalGroupHalocentric
 from .keplerianPlane import LGKepler
+from .model_mixin import ModelMixin
 
 
-class TimingArgumentModel:
+class TimingArgumentModel(ModelMixin):
+
     def __init__(
         self,
         distance,
@@ -48,6 +49,16 @@ class TimingArgumentModel:
         self.rv_err = radial_velocity_err
         self.pm_corr = pm_correlation
         self.tperi_err = tperi_err
+
+        self.title = str(title)
+
+        if m31_sky_c is None:
+            m31_sky_c = coord.SkyCoord.from_name("M31")
+        self.m31_sky_c = coord.SkyCoord(m31_sky_c)
+
+        self.galcen_frame = galcen_frame
+
+        # ---
 
         self.y = np.array([
             self.dist.to_value(self.units['length']),
@@ -91,61 +102,12 @@ class TimingArgumentModel:
 
         self.prior_bounds = prior_bounds
 
-        self.galcen_frame = galcen_frame
-
-        if m31_sky_c is None:
-            m31_sky_c = coord.SkyCoord.from_name("M31")
-        self.m31_sky_c = coord.SkyCoord(m31_sky_c)
-
-        self.title = str(title)
-
         self.blobs_dtype = [
             ("vrad", float),
             ("vtan", float),
             ("vscale", float),
             ("sunToM31", float),
         ]
-
-    @classmethod
-    def from_dataset(cls, data_file, **kwargs):
-        """
-        Reads dataset from file.
-
-        Parameters
-        ----------
-        data_file : str
-            full path to dataset file
-        **kwargs
-            anything that initializer accepts
-        """
-        table = QTable.read(data_file)[0]  # grab first (only) row
-        if "ra" not in table.colnames:
-            m31_sky_c = None
-        else:
-            m31_sky_c = coord.SkyCoord(table["ra"], table["dec"])
-
-        kwargs.setdefault("m31_sky_c", m31_sky_c)
-
-        if "galcen_frame_attrs" in table.meta:
-            kwargs.setdefault(
-                "galcen_frame",
-                coord.Galactocentric(**table.meta["galcen_frame_attrs"]),
-            )
-
-        kwargs.setdefault("title", table.meta.get("title", ""))
-
-        instance = cls(
-            distance=table["distance"],
-            pm=u.Quantity([table["pm_ra_cosdec"], table["pm_dec"]]),
-            radial_velocity=table["radial_velocity"],
-            tperi=table["tperi"],
-            distance_err=table["distance_err"],
-            pm_err=u.Quantity([table["pm_ra_cosdec_err"], table["pm_dec_err"]]),
-            radial_velocity_err=table["radial_velocity_err"],
-            tperi_err=table["tperi_err"],
-            **kwargs,
-        )
-        return instance
 
     def unpack_pars(self, par_list):
         i = 0
