@@ -51,7 +51,7 @@ class TimingArgumentModel:
 
         self.y = np.array([
             self.dist.to_value(self.units['length']),
-            *self.pm.to_value(self.units['angular velocity']),
+            *self.pm.to_value(self.units['angular speed']),
             self.rv.to_value(self.units['velocity']),
             self.tperi.to_value(self.units['time'])
         ])
@@ -59,7 +59,7 @@ class TimingArgumentModel:
         # TODO: we're ignoring the pm correlation
         errs = np.array([
             self.dist_err.to_value(self.units['length']),
-            *self.pm_err.to_value(self.units['angular velocity']),
+            *self.pm_err.to_value(self.units['angular speed']),
             self.rv_err.to_value(self.units['velocity']),
             self.tperi_err.to_value(self.units['time'])
         ])
@@ -271,8 +271,8 @@ class TimingArgumentModel:
 
         modely = np.array([
             model_icrs.distance.to_value(self.units['length']),
-            model_icrs.pm_ra_cosdec.to_value(self.units['angular velocity']),
-            model_icrs.pm_dec.to_value(self.units['angular velocity']),
+            model_icrs.pm_ra_cosdec.to_value(self.units['angular speed']),
+            model_icrs.pm_dec.to_value(self.units['angular speed']),
             model_icrs.radial_velocity.to_value(self.units['velocity']),
             p['tperi'].to_value(self.units['time'])
         ])
