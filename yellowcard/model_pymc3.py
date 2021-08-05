@@ -29,7 +29,9 @@ class TimingArgumentModelPymc3(ModelMixin):
         galcen_frame=coord.Galactocentric(),
         m31_sky_c=None,
         title="",
-        include_vtravel=True
+        include_vtravel=True,
+        vtravel_mag=32,
+        vtravel_mag_err=4
     ):
 
         # this is because dictionaries are mutable
@@ -52,6 +54,8 @@ class TimingArgumentModelPymc3(ModelMixin):
 
         self.title = str(title)
         self.include_vtravel = include_vtravel
+        self.vtravel_mag = vtravel_mag
+        self.vtravel_mag_err = vtravel_mag_err
 
         if m31_sky_c is None:
             m31_sky_c = coord.SkyCoord.from_name("M31")
@@ -195,8 +199,8 @@ class TimingArgumentModelPymc3(ModelMixin):
             # TODO: make these variables
             if self.include_vtravel is True:
                 vtravel_mag = pm.Normal("vtravel_mag",
-                                        (32*u.km/u.s).to_value(self.units["velocity"]), 
-                                        (4*u.km/u.s).to_value(self.units["velocity"]))
+                                        (self.vtravel_mag*u.km/u.s).to_value(self.units["velocity"]), 
+                                        (self.vtravel_mag_err*u.km/u.s).to_value(self.units["velocity"]))
 
                 # these are in galactocentric 
                 vtravel_lon = pm.Normal("vtravel_lon",
