@@ -1,0 +1,4 @@
+- [van der Marel et al. 2012](https://ui.adsabs.harvard.edu/abs/2012ApJ...753....8V/abstract)
+- [Peñarrubia et al. 2016](https://ui.adsabs.harvard.edu/abs/2016MNRAS.456L..54P/abstract)
+- [Salomon et al. 2021](https://ui.adsabs.harvard.edu/abs/2020arXiv201209204S/abstract)
+- [Petersen & Peñarrubia 2021](https://ui.adsabs.harvard.edu/abs/2021NatAs...5..251P/abstract)
