@@ -31,7 +31,8 @@ class TimingArgumentModelPymc3(ModelMixin):
         title="",
         include_vtravel=True,
         vtravel_mag=32,
-        vtravel_mag_err=4
+        vtravel_mag_err=4,
+        **kwargs
     ):
 
         # this is because dictionaries are mutable
@@ -41,15 +42,15 @@ class TimingArgumentModelPymc3(ModelMixin):
             )
         self.units = units
 
-        self.dist = distance
+        self.distance = distance
         self.pm = pm
-        self.rv = radial_velocity
+        self.radial_velocity = radial_velocity
         self.tperi = tperi
 
-        self.dist_err = distance_err
+        self.distance_err = distance_err
         self.pm_err = pm_err
-        self.rv_err = radial_velocity_err
-        self.pm_corr = pm_correlation
+        self.radial_velocity_err = radial_velocity_err
+        self.pm_correlation = pm_correlation
         self.tperi_err = tperi_err
 
         self.title = str(title)
@@ -66,14 +67,14 @@ class TimingArgumentModelPymc3(ModelMixin):
         self.data = {
             'obs_m31_ra': self.m31_sky_c.ra.to_value(u.rad),
             'obs_m31_dec': self.m31_sky_c.dec.to_value(u.rad),
-            'obs_distance': self.dist.to_value(units['length']),
-            'obs_distance_err': self.dist_err.to_value(units['length']),
+            'obs_distance': self.distance.to_value(units['length']),
+            'obs_distance_err': self.distance_err.to_value(units['length']),
             'obs_pmra': self.pm[0].to_value(units['angular speed']),
             'obs_pmra_err': self.pm_err[0].to_value(units['angular speed']),
             'obs_pmdec': self.pm[1].to_value(units['angular speed']),
             'obs_pmdec_err': self.pm_err[1].to_value(units['angular speed']),
-            'obs_rv': self.rv.to_value(units['velocity']),
-            'obs_rv_err': self.rv_err.to_value(units['velocity']),
+            'obs_rv': self.radial_velocity.to_value(units['velocity']),
+            'obs_rv_err': self.radial_velocity_err.to_value(units['velocity']),
             'obs_tperi': self.tperi.to_value(units['time']),
             'obs_tperi_err': self.tperi_err.to_value(units['time']),
         }
