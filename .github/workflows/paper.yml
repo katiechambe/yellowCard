@@ -1,0 +1,24 @@
+name: Build latex manuscript
+on: [push]
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+#       - name: Compile LaTeX document
+#         uses: xu-cheng/latex-action@v2
+      - name: LaTeX compilation
+        uses: dante-ev/latex-action@2021-A
+        with:
+          working_directory: paper
+          root_file: yellowcard_draft.tex
+#       - name: HACK - remove gitignore so PDF is added and deployed
+#         run: rm tex/.gitignore
+      - name: Deploy PDF
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./paper
+          force_orphan: true
