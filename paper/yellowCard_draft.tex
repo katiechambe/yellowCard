@@ -6,6 +6,11 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 
+\newcommand{\mlg}{M$_{\rm LG}$}
+\definecolor{pink}{RGB}{232,132,161}
+\newcommand{\kc}[1]{\textcolor{pink}{\textbf{#1}} }
+
+
 % Style tweaks
 % \renewcommand{\twocolumngrid}{\onecolumngrid}
 % \setlength{\parindent}{1.1\baselineskip}
@@ -102,6 +107,15 @@
 
 \section{Data analysis and methods}
 \label{sec:methods}
+%%% Schematic %%%
+\begin{figure*}[htb]
+    \centering
+    \includegraphics[width=0.8\columnwidth]{schematic_placeholder.png}
+    \caption{\label{fig:schematic} Placeholder for whatever schematic we're going to end up creating
+    }
+  \end{figure*}
+
+\kc{need tables with the data values and referencces for the observables used to constrain our model}
 
 
 \section{Results: Local group mass estimates}
@@ -110,14 +124,16 @@
 \begin{figure*}[htb]
   \centering
   \includegraphics[width=\columnwidth]{analyze-runs-contour.png}
-  \caption{\label{fig:contour}
+  \caption{\label{fig:contour} Contours of sampled posterior distributions of the total mass of the Local Group (\mlg), the distance between the Sun and M31 ($r$), and the eccentricity of the orbit of M31 about a fixed MW ($e$), for two different observational datasets (yellow and pink).  \kc{need takeaway and more explanation}
   }
 \end{figure*}
 
+
+% 
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\columnwidth]{analyze-runs-MvV.png}
-    \caption{\label{fig:contour}
+    \caption{\label{fig:contour} \kc{add vertical lines with vtravel predictions from different tracer distances }
     }
   \end{figure}
 
