@@ -1,15 +1,17 @@
-\documentclass[modern]{aastex631}
+\documentclass[twocolumn]{aastex631}
 
 % Packages
 \usepackage{microtype}  % ALWAYS!
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{multirow}
 
 \newcommand{\mlg}{M$_{\rm LG}$}
 \definecolor{pink}{RGB}{232,132,161}
 \newcommand{\kc}[1]{\textcolor{pink}{\textbf{#1}} }
-
+\newcommand{\mud}{\mu_\delta}
+\newcommand{\mua}{\mu_\alpha^*}
 
 % Style tweaks
 % \renewcommand{\twocolumngrid}{\onecolumngrid}
@@ -18,7 +20,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\shorttitle{Timing argument blah blah}
+\shorttitle{Updated Local Group Mass from Timing Argument}
 \shortauthors{Chamberlain, Price-Whelan et al.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -73,10 +75,6 @@
 
 \begin{itemize}
     \item importance of knowing mass of the local group
-    \begin{itemize}
-            \item 
-            \item 
-          \end{itemize}
     \item ways to measure local group mass
     \item \begin{itemize}
             \item other tracers? 
@@ -97,13 +95,112 @@
     
 \end{itemize}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Methods}\label{sec:methods}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In this section, we will discuss our coordinate system and the 
 
-\section{The timing argument as a Local Group mass estimator}
-\label{sec:timing}
+% THings that go into Keplerian assumption
+% we can consider the dynamics of MW+M31 to be approximately simple because:
+  % MW+M31 are far enough apart that the 
+We first set up a coordinate system and model parameters 
+
+Local Group dynamics are dominated by the local gravitational potential, and the Hubble flow can be neglected~\cite{}. Since M31 and MW 
+
+On model parameters:
 
 
-\section{Data analysis and methods}
-\label{sec:methods}
+We can solve the equations of motion for a two body interaction analytically in the case of a Keplerian orbit:
+
+\begin{equation}\label{eq:r}
+  r = a(1-e\cos\eta)\\
+\end{equation}
+
+\begin{equation}\label{eq:t}
+  t=\bigg(\frac{a^3}{GM}\bigg)^{1/2}(\eta-e\sin\eta)
+\end{equation}
+
+\begin{equation}\label{eq:vrad}
+  v_{rad} = \bigg( \frac{a}{GM} \bigg)^{-1/2} \frac{e\sin\eta}{1-e\cos\eta}
+\end{equation}
+
+\begin{equation}\label{eq:vtan}
+  v_{tan}= \bigg( \frac{a}{GM} \bigg)^{-1/2} \frac{\sqrt{1-e^2}}{1-e\cos\eta}.
+\end{equation}
+where, in our model, $r$ is the distance between M31 and the center of mass of the MW halo, $t$ is the time that has elapsed since the Big Bang (the current age of the Universe), and $v_{rad}$ ($v_{tan}$) is the radial (tangential) velocity of M31 toward the center of mass of the MW halo. 
+
+Each of these observables can be translated to observables from the 
+
+Important to note is that each of these is an observable of the motion of Andromeda
+
+The dynamics of M31 and the MW are set in the case of a simple Keplerian orbit. In this case, their kinematics are completely set by 4 parameters: (\mlg, $a$, $e$, $\eta$) where \mlg is the mass of the Local Group, $a$, $e$, and $\eta$ are the semi-major axis, eccentricity, and eccentric anomaly of the orbit of M31 about the MW. 
+
+
+
+In order to transform from the model parameters to these "observable quantities", 
+
+
+
+% bit about how to include reflex velocity here.
+We must account for the reflex motion of the MW disk with respect to its outer halo. We adopt the notation of~\cite{Penarrubia2016}, where $v_{A\to B}$ represents the velocity vector of \textit{A} as measured in the reference frame of \textit{B}. Thus, the observed velocity vector of M31 from the Galactic frame is given by:
+\begin{equation}
+  v_{\rm M31 \to \odot} = v_{\rm M31 \to \rm MW} + 
+                          v_{\rm MW \to \rm \odot}
+\end{equation}
+However, the recent pericentric passage of the LMC has imparted a velocity boost on the disk and inner regions of the dark matter halo and disk of the Milky Way. Thus,
+\begin{equation}
+  v_{\odot \to \rm MW} = v_{\odot \to \rm MW_{D}} + v_{\rm MW_{D}\to \rm MW_{OH}} 
+\end{equation}
+where $v_{\rm MW_{D}\to \rm MW_{OH}}$ is the velocity vector of the center of the MW disk that is moving with travel velocity $v_{rm travel}$ from the reference frame of the barycenter of the outer, unperturbed dark matter halo of the MW.
+Then, $v_{\odot \to \rm MW_{D}}$ is the velocity vector of the Sun about the MW disk center, given by 
+\begin{equation}
+  v_{\odot \to \rm MW_{D}}=({\rm U}_\odot, {\rm V}_\odot + V_0, {\rm W}_\odot)  
+\end{equation}
+
+% what are our model parameters?
+
+
+We used \texttt{pymc3}~\citep{Salvatier2016} to sample from the 
+
+Details about our pymc3 run like \# chains, steps, etc.
+
+
+
+
+In order to translate between the 
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Datasets}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+We use heliocentric radial velocities and proper motions. 
+
+See~\ref{table:data} for values.
+\begin{table}
+  \centering
+  \begin{tabular}{lc|c}
+    \hline\hline
+                    & Dataset 1                     & Dataset 2 \\\hline
+  $D$               &  770 $\pm$ 40 \rm kpc\cite{}     &           \\
+  $v_{\rm rad}$     &           &           \\
+  $\mu_\alpha^*$    & 44.6$\pm$12.66\cite{} \\
+  $\mu_\delta$      & -32.1$\pm$12.21 $\mu\rm as/yr$ & \\
+  (U$_{\rm pec}$, V$_{\rm pec}$, W$_{\rm pec}$) & (11.1, 12.24, 7.25)& \\
+  V$_0$             & 239.3$\pm$10.3 km/s & \\
+  %              &           &           \\
+  %              &           &           \\ 
+  \hline\hline
+  
+  \end{tabular}
+  \caption{Observational datasets used for comparison throughout analysis.}
+\end{table}
+
+% \footnote{note: Dataset 1 values of the proper motions are given as ($v_{w}, v_{N}$), then $(\mu_\alpha^*, \mu_\delta)$ were derived given $v_W=-\mua D$ and $v_N=\mud D$}
+
 %%% Schematic %%%
 \begin{figure*}[htb]
     \centering
@@ -114,19 +211,18 @@
 
 \kc{need tables with the data values and referencces for the observables used to constrain our model}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results: Local group mass estimates}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:results}
 
 \begin{figure*}[htb]
   \centering
-  \includegraphics[width=\columnwidth]{analyze-runs-contour.png}
+  \includegraphics[width=\textwidth]{analyze-runs-contour.png}
   \caption{\label{fig:contour} Contours of sampled posterior distributions of the total mass of the Local Group (\mlg), the distance between the Sun and M31 ($r$), and the eccentricity of the orbit of M31 about a fixed MW ($e$), for two different observational datasets (yellow and pink).  \kc{need takeaway and more explanation}
   }
 \end{figure*}
 
-
-% 
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\columnwidth]{analyze-runs-MvV.png}
@@ -134,34 +230,33 @@
     }
   \end{figure}
 
-  \begin{figure}[htb]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=\columnwidth]{analyze-runs-MvsPM.png}
     \caption{\label{fig:contour}
     }
-  \end{figure}
+\end{figure}
 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Comparison to M33--M31 system}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary and Discussion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:discussion}
 
 
-\software{
-    Astropy \citep{astropy, astropy:2018},
-    gala \citep{gala},
-    IPython \citep{ipython},
-    numpy \citep{numpy},
-    % pymc3 \citep{Salvatier2016},
-    scipy \citep{scipy}
-}
+% \software{
+%     Astropy \citep{astropy, astropy:2018},
+%     gala \citep{gala},
+%     IPython \citep{ipython},
+%     numpy \citep{numpy},
+%     pymc3 \citep{Salvatier2016},
+%     scipy \citep{scipy}
+% }
 
-\appendix
-For baddies only.
 
 \bibliography{refs}{}
 \bibliographystyle{aasjournal}
