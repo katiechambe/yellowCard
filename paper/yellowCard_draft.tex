@@ -96,17 +96,19 @@
             \item bias and calibration of the timing argument 
             \item what a lower/higher group mass means (we're gonna be more consistent w other group mass measurements, I think?)
         \end{itemize}
+    \item\textbf{Par ?: The timing argument }
     
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Methods}\label{sec:methods}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-$\vel{M31}{\mwbary}$
+We 
+
 
 \textbf{Overview statement about what we did}
 
-\textbf{Par ?: The timing argument }
+
 
 \textbf{Par 1: The dynamics of the M31-MW system can be approximated by simple Keplerian orbits.}
 Local Group dynamics are dominated by the local gravitational potential where the Hubble flow can be neglected~\cite{}. We construct a Keplerian orbital model where the kinematics of the M31-MW system are completely set by 4 model parameters: (\mlg, $a$, $e$, $\eta$) where \mlg is the mass of the Local Group, and $a$, $e$, and $\eta$ are the semi-major axis, eccentricity, and eccentric anomaly of an orbit of M31 about the MW. The analytic equations for the separation, the elapsed time since pericenter, and the velocity components from the equations of motion for a two body Keplerian interaction are:
@@ -154,26 +156,28 @@ Then, $\vel{\odot}{\mwdisk}$ is the velocity vector of the Sun about the MW disk
 
 
 
-We used \texttt{pymc3}~\citep{Salvatier2016} to sample from the posterior distribution of model parameters \mlg, $a$, $e$, $\eta$, \kc{and $\alpha$, where $\alpha$ is a parameter that fixes the pole of the orbital plane of M31, and thus establishes the angle between the Keplerian tangential velocity and the proper motion measurements -- did we end up utilizing alpha?}. We set normal priors on the distance to M31 and the Local Group mass, a uniform prior on $\ln(1-e)$, and \kc{an angle prior implemented in the pymc3\_ext package, don't know how to describe this} (see Table~\ref{table:priors} for details).
+We used a No-U-Turn Sampler (NUTS) implemented with \texttt{pymc3}~\citep{Salvatier2016} to sample from the posterior distribution of model parameters \mlg, $a$, $e$, $\eta$, \kc{and $\alpha$, where $\alpha$ is a parameter that fixes the pole of the orbital plane of M31, and thus establishes the angle between the Keplerian tangential velocity and the proper motion measurements -- did we end up utilizing alpha?}. We set normal priors on the distance to M31 and the Local Group mass, a uniform prior on $\ln(1-e)$, and \kc{an angle prior implemented in the pymc3\_ext package, don't know how to describe this} (see Table~\ref{table:priors} for details). We ran our model with 1 chain for 4000 tuning steps and 2000 draws. 
 
-Details about our pymc3 run like \# chains, steps, etc.
-We ran our model with -- chains, for -- steps and with -- tuning steps. 
+
+
+
 \begin{table}
   \centering
-  \begin{tabular}{cc|c}
-    \hline\hline
-    Parameter & Prior dist.   & Properties \\\hline
-\multirow{2}{*}{\mlg}      & \multirow{2}{*}{$\mathcal{N}$} & $\mu$: $4.5\times10^{12}$\Msun, $\sigma$: $3\times10^{12}$\Msun\\
-    & & bounds: $[0.5,20]\times10^{12}$ \Msun\\
-  %              &           &           \\
-  \multirow{2}{*}{$r$}      & \multirow{2}{*}{$\mathcal{N}$} & $\mu$: 700kpc, $\sigma$: 100kpc\\
-    & & bounds: $[100,10000]$kpc\\
-  %              &           &           \\ 
-  \multirow{1}{*}{$\ln(1-e)$}      & \multirow{1}{*}{$\mathcal{U}$} & [-10,0]\\
-  \multirow{1}{*}{$\eta$}      & \multirow{1}{*}{angle} & [$-\pi,\pi$] or [0, $2\pi$]\\
+  \begin{tabular}{lc}
+  \hline\hline
+  Prior  & Description \\\hline
+  \mlg: $\mathcal{N}(4.5,3)\times10^{12}\Msun$ & Mass of the Local Group\\
+  %  
+  $r$: $\mathcal{N}(700,100)$kpc & Distance from M31 to $\mwdisk$\\
+  %
+  $\ln(1-e)$: $\mathcal{U}$(-10,0) & Eccentricity (close to 1) \\
+  %
+  $\eta$: angle(0,2$\pi$)& Eccentric anomaly\\
+  \multirow{2}{*}{$\alpha$: angle(0,2$\pi$)} & Angle between M31 orbital\\
+  & pole and Galactocentric\\
   \hline\hline
   \end{tabular}
-  \caption{\label{table:priors}Priors \kc{i do not like this table yet, change Properties to bounds and $\mathcal{N}(4.5e12, 3e12)$ etc }}
+  \caption{\label{table:priors}Priors \kc{note: on \mlg and $r$, we also set bounds? how should I show those here? or should they go in the text?}}
 \end{table}
 
 
@@ -201,7 +205,7 @@ See~\ref{table:data} for values.
   \hline\hline
   
   \end{tabular}
-  \caption{Observational datasets used for comparison throughout analysis.}
+  \caption{\label{table:data}Observational datasets used for comparison throughout analysis.}
 \end{table}
 
 % \footnote{note: Dataset 1 values of the proper motions are given as ($v_{w}, v_{N}$), then $(\mu_\alpha^*, \mu_\delta)$ were derived given $v_W=-\mua D$ and $v_N=\mud D$}
@@ -220,6 +224,7 @@ See~\ref{table:data} for values.
 \section{Results: Local group mass estimates}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:results}
+We used a Bayesian model to place constraints on the mass of the Local Group and the distance between M31 and the Sun using the Timing Argument. Our model of the Local Group includes the reflex motion of the Milky Way disk and results in new constrains on the mass of the Local Group to 4.69$\pm0.71 \times 10^{12}\Msun$. This mass is higher than reported by both~\cite{vdm2012} ($4.93\pm 1.63\times 10^{12}\Msun$) and~\cite{Penarrubia2016} ($\sim2.64\pm0.4\times 10^{12}\Msun$).
 
 \kc{Why are we interested in constraining local group mass?}
 \kc{What did we find Fig.~\ref{fig:contour}?}
@@ -250,7 +255,7 @@ See~\ref{table:data} for values.
   \centering
   \includegraphics[width=0.8\textwidth]{analyze-runs-contour-arrows.png}
   \caption{\label{fig:contour} 95\% contours of sampled posterior distributions for two observational datasets (pink and yellow) of a subset of our model parameters: the total mass of the Local Group (\mlg), the distance between the Sun and M31 ($r$), and the eccentricity of the orbit of M31 about a fixed MW ($e$). A stationary MW disk is shown in the dotted contours, while our model, which includes the reflex motion of the MW disk, is shown in solid lines.  
-  The distributions for the separations are unchanged between models, as we assume the barycenter of the MW halo and the MW disk are co-spatial. A comparison between the two models shows that \textbf{the inclusion of the reflex motion of the MW disk systematically lowers the inferred mass of the Local Group} regardless of observational dataset. See text for discussion on the effects on eccentricity.
+  The distributions for the separations are unchanged between models, as our model does not implement a spatial shift to the location of the MW disk. A comparison between the two models shows that \textbf{the inclusion of the reflex motion of the MW disk systematically lowers the inferred mass of the Local Group} regardless of observational dataset. See text for discussion on the effects on eccentricity.
   \kc{should I change this plot to have color represent our model and grey be no travel velocity?, also should I only include 2 sets of contours (68 and 95) instead of just 95? also not rn this is a bad quality screenshot but didn't know how to put arrows on the figure w matplotlib because it's using subplots as part of \texttt{corner}}  }
 \end{figure*}
 
