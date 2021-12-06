@@ -103,15 +103,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Methods}\label{sec:methods}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-We 
+We assumed a Keplerian model for the dynamics of the M31-MW system, accounting for the reflex motion of the Milky Way disk, and constrained the mass of the Local Group using observed kinematics of M31.  
 
-
-\textbf{Overview statement about what we did}
-
-
-
-\textbf{Par 1: The dynamics of the M31-MW system can be approximated by simple Keplerian orbits.}
-Local Group dynamics are dominated by the local gravitational potential where the Hubble flow can be neglected~\cite{}. We construct a Keplerian orbital model where the kinematics of the M31-MW system are completely set by 4 model parameters: (\mlg, $a$, $e$, $\eta$) where \mlg is the mass of the Local Group, and $a$, $e$, and $\eta$ are the semi-major axis, eccentricity, and eccentric anomaly of an orbit of M31 about the MW. The analytic equations for the separation, the elapsed time since pericenter, and the velocity components from the equations of motion for a two body Keplerian interaction are:
+\textbf{The dynamics of the M31-MW system can be approximated by simple Keplerian orbits.}
+Local Group dynamics are dominated by the local gravitational potential where the Hubble flow can be neglected~\cite{}. We construct a Keplerian orbital model where the kinematics of the M31-MW system are completely determined by 4 model parameters: (\mlg, $a$, $e$, $\eta$) where \mlg is the mass of the Local Group, and $a$, $e$, and $\eta$ are the semi-major axis, eccentricity, and eccentric anomaly of an orbit of M31 about the MW. The analytic equations for the separation, the elapsed time since pericenter, and the velocity components from the equations of motion for a two body Keplerian interaction are:
 \begin{equation}\label{eq:r}
   r = a(1-e\cos\eta)\\
 \end{equation}
@@ -130,7 +125,7 @@ Local Group dynamics are dominated by the local gravitational potential where th
 where, in our model, $r$ is the distance between the centers of mass of M31 and the Milky Way, $t$ is the time that has elapsed since the M31-MW was at pericenter, and $v_{rad}$ ($v_{tan}$) is the radial (tangential) velocity of M31 toward the MW. 
 
 % info about coordinate system setup
-\textbf{The choose a coordinate system centered on the disk of the MW, where positive x is along the line of sight between the MW disk and the center of M31's disk, and positive y is in the direction of the tangential motion of M31.} Thus, the velocity vector of M31 in the Keplerian coordinate system is $(v_x, v_y, v_z) =(v_{rad},v_{tan},0)$. 
+\textbf{We choose a coordinate system centered on the disk of the MW, where positive x is along the line of sight between the MW disk and the center of M31's disk, and positive y is in the direction of the tangential motion of M31.} Thus, the velocity vector of M31 in this Keplerian coordinate system is $(v_x, v_y, v_z) =(v_{rad},v_{tan},0)$. 
 
 \textbf{To compare our model predictions of the M31-MW system to the observed kinematics, we must translate these quantities into observables to constrain our model with observational data.}
 We adopt the notation of~\cite{Penarrubia2016}, where $\vel{A}{B}$ represents the velocity vector of \textit{A} as measured in the reference frame of \textit{B}. With this notation, $\vel{A}{B}$=-$\vel{B}{A}$ and $\vel{A}{C}$=$\vel{A}{B}$+$\vel{B}{C}$. Thus, the velocity of M31 with respect to the center of mass of the MW can be represented by $\vel{M31}{MW}$. To convert this quantity to a heliocentric reference frame, 
@@ -157,6 +152,11 @@ Then, $\vel{\odot}{\mwdisk}$ is the velocity vector of the Sun about the MW disk
 
 
 We used a No-U-Turn Sampler (NUTS) implemented with \texttt{pymc3}~\citep{Salvatier2016} to sample from the posterior distribution of model parameters \mlg, $a$, $e$, $\eta$, \kc{and $\alpha$, where $\alpha$ is a parameter that fixes the pole of the orbital plane of M31, and thus establishes the angle between the Keplerian tangential velocity and the proper motion measurements -- did we end up utilizing alpha?}. We set normal priors on the distance to M31 and the Local Group mass, a uniform prior on $\ln(1-e)$, and \kc{an angle prior implemented in the pymc3\_ext package, don't know how to describe this} (see Table~\ref{table:priors} for details). We ran our model with 1 chain for 4000 tuning steps and 2000 draws. 
+
+% \begin{equation}
+%   \mathcal{L}(| \boldsymbol{S})
+% \end{equation}
+% where $\boldsymbol{S} = ($\mlg$, a, e, \eta)$
 
 
 
@@ -224,17 +224,16 @@ See~\ref{table:data} for values.
 \section{Results: Local group mass estimates}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:results}
-We used a Bayesian model to place constraints on the mass of the Local Group and the distance between M31 and the Sun using the Timing Argument. Our model of the Local Group includes the reflex motion of the Milky Way disk and results in new constrains on the mass of the Local Group to 4.69$\pm0.71 \times 10^{12}\Msun$. This mass is higher than reported by both~\cite{vdm2012} ($4.93\pm 1.63\times 10^{12}\Msun$) and~\cite{Penarrubia2016} ($\sim2.64\pm0.4\times 10^{12}\Msun$).
+We used a Bayesian model to place constraints on the mass of the Local Group and the distance between M31 and the Sun using the Timing Argument. Our model of the Local Group includes the reflex motion of the Milky Way disk and results in new constrains on the mass of the Local Group to 4.69$\pm0.71 \times 10^{12}\Msun$. This mass is lower than reported by~\cite{vdm2012} ($4.93\pm 1.63\times 10^{12}\Msun$) though significantly higher than~\cite{Penarrubia2016} ($\sim2.64\pm0.4\times 10^{12}\Msun$).
 
-\kc{Why are we interested in constraining local group mass?}
-\kc{What did we find Fig.~\ref{fig:contour}?}
-\begin{itemize}
-  \item r stays the same 
-  \item M decreases for both datasets
-  \item eccentricity decreases in our model
-  \item why does dataset 1 differ from dataset 2 in r and e? 
-\end{itemize}
-\kc{What does this mean? - should this be in discussion instead? }
+We found that, for both considered datasets, our model prefers lower Local Group masses and a lower eccentricity orbit compared to models that do not include MW disk reflex motion. Fig.~\ref{fig:contour} shows the 95\% contours from the sampled posterior PDFs of the distance to M31, the eccentricity of the orbit of M31 with a fixed MW, and the inferred Local Group mass. Arrows in the bottom left panel of the corner plot indicate the shift to lower masses and eccentricities when introducing the reflex motion of the MW. 
+
+The direction of the motion of the disk is directly tied to the behavior of the inferred mass of the Local Group.In this case, the orbit of the LMC and location of the LMC at pericenter are in the same region of the sky as M31 such that the radial component of motion is in the direction of M31. Thus, the observed radial velocity of M31 will be higher than for an unperturbed MW halo. Since $-v_{rad}\propto M^{1/2}$ for an infalling system, a smaller (but still negative) radial velocity will yield a lower Local Group mass. 
+
+The eccentricity decreases significantly for Dataset 2 compared to Dataset 1. This is primarily due to the larger measured proper motions of Dataset 2. \kc{Why does e decrease with our model? disk motion must be somewhat tangential to the proper motion of andromeda? }
+
+Constraints on the distance to M31 remain roughly unchanged for both datasets, primarily because our model does not introduce a physical displacement of the MW disk, since we assume the motion of the disk over the past XX years since the LMC achieved pericenter is negligible compared to the separation between M31 and the MW. Thus, the inclusion of the reflex motion of the disk in our model does not affect constraints on the distance to M31. 
+
 
 \kc{Why are we interested in local group mass as a function of travel vel and why did we test it?}
 \begin{itemize}
