@@ -188,24 +188,22 @@ We used a No-U-Turn Sampler (NUTS) implemented with \texttt{pymc3}~\citep{Salvat
 We use heliocentric radial velocities and proper motions. 
 
 See~\ref{table:data} for values.
-\begin{table}
+\begin{table*}
   \centering
   \begin{tabular}{lc|c}
     \hline\hline
                     & Dataset 1                     & Dataset 2 \\\hline
-  $D$               &  770 $\pm$ 40 \rm kpc\cite{}     &           \\
-  $v_{\rm rad}$     &           &           \\
-  $\mu_\alpha^*$    & 44.6$\pm$12.66\cite{} \\
-  $\mu_\delta$      & -32.1$\pm$12.21 $\mu\rm as/yr$ & \\
-  (U$_{\rm pec}$, V$_{\rm pec}$, W$_{\rm pec}$) & (11.1, 12.24, 7.25)& \\
-  V$_0$             & 239.3$\pm$10.3 km/s & \\
+  $D$               &  770 $\pm$ 40 \rm kpc\cite{}     &   761$\pm$11 \rm kpc~\cite{Li2021}        \\
+  $v_{\rm rad}$     &     -301$\pm$1 km/s       &   -301$\pm$1 km/s        \\
+  ($\mu_\alpha^*$,  $\mu_\delta$)    & (44.6$\pm$12.66, -32.1$\pm$12.21) $\mu$as/yr\cite{} & (48.98 $\pm$10.47, -36.85$\pm$8.03) $\mu$as/yr \cite{Salomon2021}\\ 
+  (U$_{\rm pec}$, V$_{\rm pec}$+V$_0$, W$_{\rm pec}$) & (11.1, 12.24, 7.25) km/s& (12.9, 245.6, 7.78) km/s \cite{Drimmel2018}\\
   %              &           &           \\
   %              &           &           \\ 
   \hline\hline
   
   \end{tabular}
   \caption{\label{table:data}Observational datasets used for comparison throughout analysis.}
-\end{table}
+\end{table*}
 
 % \footnote{note: Dataset 1 values of the proper motions are given as ($v_{w}, v_{N}$), then $(\mu_\alpha^*, \mu_\delta)$ were derived given $v_W=-\mua D$ and $v_N=\mud D$}
 
@@ -282,6 +280,7 @@ We find that as proper motion measurements improve by a factor of $\sim2$, the c
   \item What have we shown about the importance of including the reflex motion of the disk when studying dynamics in the Local Group? 
   \item How will these measurements improve in the era of future Gaia data releases?
   \item Why did we not include M31-M33 reflex motion
+
 \end{itemize}
 
 
