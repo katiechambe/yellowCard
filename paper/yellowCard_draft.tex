@@ -105,7 +105,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \kc{Note: one issue that I had was trying to describe how the parameters in our model vs the parameters that we sampled over? like a vs. r? }
 
-We assumed a Keplerian model for the dynamics of the M31-MW system, accounting for the reflex motion of the Milky Way disk, and constrained the mass of the Local Group using observed kinematics of M31.  
+We assume a Keplerian model for the dynamics of the M31-MW system, accounting for the reflex motion of the Milky Way disk, to constrain the mass of the Local Group using observed kinematics of M31.  
 
 \textbf{The dynamics of the M31-MW system can be approximated by simple Keplerian orbits.}
 Local Group dynamics are dominated by the local gravitational potential where the Hubble flow can be neglected~\cite{}. We construct a Keplerian orbital model where the kinematics of the M31-MW system are completely determined by 4 model parameters: (\mlg, $a$, $e$, $\eta$) where \mlg\ is the mass of the Local Group, and $a$, $e$, and $\eta$ are the semi-major axis, eccentricity, and eccentric anomaly of an orbit of M31 about the MW. The analytic equations for the separation, the elapsed time since pericenter, and the velocity components from the equations of motion for a two body Keplerian interaction are:
@@ -150,7 +150,9 @@ Then, $\vel{\odot}{\mwdisk}$ is the velocity vector of the Sun about the MW disk
   \vel{\odot}{\mwdisk}=({\rm U}_\odot, {\rm V}_\odot + V_0, {\rm W}_\odot)  
 \end{equation}
 
-We used a No-U-Turn Sampler (NUTS) implemented with \texttt{pymc3}~\citep{Salvatier2016} to sample from the posterior distribution of model parameters \mlg, $a$, $e$, $\eta$, \kc{and $\alpha$, where $\alpha$ is a parameter that fixes the pole of the orbital plane of M31, and thus establishes the angle between the Keplerian tangential velocity and the proper motion measurements -- did we end up utilizing alpha?}. We set normal priors on the distance to M31 and the Local Group mass, a uniform prior on $\ln(1-e)$, and \kc{an angle prior implemented in the pymc3\_ext package, don't know how to describe this} (see Table~\ref{table:priors} for details). We ran our model with 1 chain for 4000 tuning steps and 2000 draws. 
+We use a No-U-Turn Sampler (NUTS) implemented with \texttt{pymc3}~\citep{Salvatier2016} to sample from the posterior distribution of model parameters \mlg, $a$, $e$, $\eta$, \kc{and $\alpha$, where $\alpha$ is a parameter that fixes the pole of the orbital plane of M31, and thus establishes the angle between the Keplerian tangential velocity and the proper motion measurements -- did we end up utilizing alpha?}. We set normal priors on the distance to M31 and the Local Group mass, a uniform prior on $\ln(1-e)$, and \kc{an angle prior implemented in the pymc3\_ext package, don't know how to describe this} (see Table~\ref{table:priors} for details). We ran our model with 1 chain for 4000 tuning steps and 2000 draws. 
+
+
 
 % \begin{equation}
 %   \mathcal{L}(| \boldsymbol{S})
@@ -185,7 +187,7 @@ We used a No-U-Turn Sampler (NUTS) implemented with \texttt{pymc3}~\citep{Salvat
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Datasets}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-We use heliocentric radial velocities and proper motions. 
+We use heliocentric radial velocities \kc{and proper motions?}
 
 See~\ref{table:data} for values.
 \begin{table*}
@@ -223,7 +225,12 @@ See~\ref{table:data} for values.
 \label{sec:results}
 \kc{Include the velocity vector of M31 from the halo frame?}
 
-We used a Bayesian model to place constraints on the mass of the Local Group and the distance between M31 and the Sun using the Timing Argument. Our model of the Local Group includes the reflex motion of the Milky Way disk and results in new constrains on the mass of the Local Group to 4.69$\pm0.71 \times 10^{12}\Msun$. Previous studies have used the Timing Argument and found both higher masses~\cite{vdm2012} ($4.93\pm 1.63\times 10^{12}\Msun$) and lower masses ~\cite{Penarrubia2016} ($\sim2.64\pm0.4\times 10^{12}\Msun$). 
+We use a Bayesian model to place constraints on the mass of the Local Group and the distance between M31 and the Sun using the Timing Argument. Our model of the Local Group includes the reflex motion of the Milky Way disk and results in new constrains on the mass of the Local Group to 4.69$\pm0.71 \times 10^{12}\Msun$. 
+
+% this will maybe go in discussion? 
+Previous studies that have used the Timing Argument to constrain the mass of the Local Group have found a range of masses. ~\cite{vdm2012} used the timing argument with Dataset 1 and derived a mass of $4.27\pm 0.53\times 10^{12}\Msun$) \kc{note: our value of \mlg is $\sim$.3 times higher than found in vdm2012 with the same set of data with no travel velocity. probably just in implementation of mcmc or something?}. 
+~\cite{Penarrubia2016} finds a Local Group mass of ($\sim2.64\pm0.4\times 10^{12}\Msun$) which is significantly lower than our expectations, although this constraint combines the observed kinematics of 35 Local Volume galaxies and the dynamics of the M31-MW system. Fitting for the distances and velocities of the 35 LV galaxies drastically lowers the inferred Local Group mass compared to the Timing Argument. 
+
 
 We found that, for both considered datasets, our model prefers lower Local Group masses and a lower eccentricity orbit compared to models that do not include MW disk reflex motion. Fig.~\ref{fig:contour} shows the 95\% contours from the sampled posterior PDFs of the distance to M31, the eccentricity of the orbit of M31 with a fixed MW, and the inferred Local Group mass. Arrows in the bottom left panel of the corner plot indicate the shift to lower masses and eccentricities when introducing the reflex motion of the MW. 
 
