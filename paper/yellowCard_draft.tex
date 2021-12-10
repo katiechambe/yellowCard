@@ -49,6 +49,7 @@
 
 \author[0000-0001-8765-8670]{Katie~Chamberlain}
 \affiliation{\affuofa}
+\affiliation{\affcca}
 
 \author[0000-0003-0872-7098]{Adrian~M.~Price-Whelan}
 \affiliation{\affcca}
@@ -187,7 +188,10 @@ We use a No-U-Turn Sampler (NUTS) implemented with \texttt{pymc3}~\citep{Salvati
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Datasets}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-We use heliocentric radial velocities \kc{and proper motions?}
+
+The two datasets used in our analysis are summarized in Table~\ref{table:data}. Of note are the changes in the distance to M31 and the updated proper motions from \textit{Gaia} eDR3. The distance to M31 in Dataset 2 comes from \textit{HST} Cepheid observations in~\cite{Li2021} and are slightly smaller but much more precise than the distance from Dataset 1. Dataset 2 also has higher proper motion measurements for the motion of M31. We expect this increased transverse velocity to translate to a higher inferred Local Group mass compared to the slightly more radial orbit of Dataset 1.
+
+
 
 See~\ref{table:data} for values.
 \begin{table*}
@@ -195,19 +199,18 @@ See~\ref{table:data} for values.
   \begin{tabular}{lc|c}
     \hline\hline
                     & Dataset 1                     & Dataset 2 \\\hline
-  $D$               &  770 $\pm$ 40 \rm kpc\cite{}     &   761$\pm$11 \rm kpc~\cite{Li2021}        \\
+  $D$               &  770 $\pm$ 40 \rm kpc\cite{}     &   761$\pm$11 \rm kpc~\citep{Li2021}        \\
   $v_{\rm rad}$     &     -301$\pm$1 km/s       &   -301$\pm$1 km/s        \\
-  ($\mu_\alpha^*$,  $\mu_\delta$)    & (44.6$\pm$12.66, -32.1$\pm$12.21) $\mu$as/yr\cite{} & (48.98 $\pm$10.47, -36.85$\pm$8.03) $\mu$as/yr \cite{Salomon2021}\\ 
-  (U$_{\rm pec}$, V$_{\rm pec}$+V$_0$, W$_{\rm pec}$) & (11.1, 12.24, 7.25) km/s& (12.9, 245.6, 7.78) km/s \cite{Drimmel2018}\\
+  ($\mu_\alpha^*$,  $\mu_\delta$)    & (44.6$\pm$12.66, -32.1$\pm$12.21) $\mu$as/yr \citep{} & (48.98 $\pm$10.47, -36.85$\pm$8.03) $\mu$as/yr \citep{Salomon2021}\\ 
+  (U$_{\rm pec}$, V$_{\rm pec}$+V$_0$, W$_{\rm pec}$) & (11.1, 251.54, 7.25) km/s& (12.9, 245.6, 7.78) km/s \citep{Drimmel2018}\\
+  $t_{\rm peri}$ & 13.75$\pm$0.11 Gyr ~\citep{Jarosik2011} & 13.801$\pm$0.024 Gyr~\citep{??}\\
   %              &           &           \\
   %              &           &           \\ 
   \hline\hline
   
   \end{tabular}
-  \caption{\label{table:data}Observational datasets used for comparison throughout analysis.}
+  \caption{\label{table:data}Observational datasets used for comparison throughout analysis. Each value is measured for M31 with respect to the sun. $D$ is the distance, $v_{\rm rad}$ is the radial velocity, $(\mu^*_{\alpha}, \mu_{\delta})$ are proper motions in RA cosdec and Dec, and (U$_{\rm pec}$, V$_{\rm pec}$+V$_0$, W$_{\rm pec}$) the solar motion with respect to the galactic center. $t_{\rm peri}$ is the time elapsed since the last pericenter of the M31 Keplerian orbit, which in this case is the age of the Universe. }
 \end{table*}
-
-% \footnote{note: Dataset 1 values of the proper motions are given as ($v_{w}, v_{N}$), then $(\mu_\alpha^*, \mu_\delta)$ were derived given $v_W=-\mua D$ and $v_N=\mud D$}
 
 %%% Schematic %%%
 \begin{figure*}[htb]
@@ -216,8 +219,6 @@ See~\ref{table:data} for values.
     \caption{\label{fig:schematic} Placeholder for whatever schematic we're going to end up creating
     }
   \end{figure*}
-
-\kc{need tables with the data values and referencces for the observables used to constrain our model}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results: Local group mass estimates}
@@ -234,7 +235,7 @@ Previous studies that have used the Timing Argument to constrain the mass of the
 
 We found that, for both considered datasets, our model prefers lower Local Group masses and a lower eccentricity orbit compared to models that do not include MW disk reflex motion. Fig.~\ref{fig:contour} shows the 95\% contours from the sampled posterior PDFs of the distance to M31, the eccentricity of the orbit of M31 with a fixed MW, and the inferred Local Group mass. Arrows in the bottom left panel of the corner plot indicate the shift to lower masses and eccentricities when introducing the reflex motion of the MW. 
 
-The direction of the motion of the disk is directly tied to the behavior of the inferred mass of the Local Group.In this case, the orbit of the LMC and location of the LMC at pericenter are in the same region of the sky as M31 such that the radial component of motion is in the direction of M31. Thus, the observed radial velocity of M31 will be higher than for an unperturbed MW halo. Since $-v_{rad}\propto M^{1/2}$ for an infalling system, a smaller (but still negative) radial velocity will yield a lower Local Group mass. 
+The direction of the motion of the disk is directly tied to the behavior of the inferred mass of the Local Group. In this case, the orbit of the LMC and location of the LMC at pericenter are in the same region of the sky as M31 such that the radial component of motion is in the direction of M31. Thus, the observed radial velocity of M31 will be higher than for an unperturbed MW halo. Since $-v_{rad}\propto M^{1/2}$ for an infalling system, a smaller (but still negative) radial velocity will yield a lower Local Group mass. 
 
 The eccentricity decreases significantly for Dataset 2 compared to Dataset 1, due to the larger measured proper motions of Dataset 2.  Additionally, a smaller radial velocity corresponds to a lower eccentricity for a fixed mass and distance, which can be seen in the bottom right panel of~\ref{fig:contour}.
 
@@ -272,21 +273,23 @@ We find that as proper motion measurements improve by a factor of $\sim2$, the c
     }
 \end{figure}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Comparison to M33--M31 system}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\kc{I don't know what's going to be in this section?}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary and Discussion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:discussion}
+The Timing Argument has been used to constrain the mass of the Local Group by simplifying the dynamics to a Keplerian model and using observations of the distance and 3D velocities of M31. However, these observations have not accounted for the reflex motion of the Milky Way disk with respect to the outer halo, and thus previous constraints on the LG mass do not include the crucial dynamical effect of the velocity boost of the disk.
+
+We show that introducing the travel velocity of the MW disk into the Keplerian model lowers the inferred Local Group mass from the Timing Argument for two M31 datasets. We provide an updated constraint on the mass of the Local Group of 4.69$\pm\times$0.71 $10^{12}\Msun$ using recent 
+\textit{Gaia} eDR3 proper motions~\citep{Salomon2021}, precise Cepheid distance measurements~\citep{Li2021}, and assuming a disk travel velocity of 32km/s from~\cite{Petersen2021}, and show that an increase in the travel velocity of the disk will result in even lower inferred LG masses.
+
 \begin{itemize}
   \item What does a lower/higher local group mass mean? 
+  Our findings of a high mass Local Group are consistent with findings that the mass of M31 is XXbig and the MW is $1-1.5\times10^{12}\Msun$~\citep{??}. However, this high group mass also has cosmological implications: big LG -> many satellites, . 
+
   \item What have we shown about the importance of including the reflex motion of the disk when studying dynamics in the Local Group? 
   \item How will these measurements improve in the era of future Gaia data releases?
   \item Why did we not include M31-M33 reflex motion
+  \item Comparison to M33--M31 system
 
 \end{itemize}
 
@@ -299,9 +302,6 @@ We find that as proper motion measurements improve by a factor of $\sim2$, the c
 %     pymc3 \citep{Salvatier2016},
 %     scipy \citep{scipy}
 % }
-\appendix
-\section{Todo:}
-Does Katie get a CCA affiliation or no?
 
 \bibliography{refs}{}
 \bibliographystyle{aasjournal}
