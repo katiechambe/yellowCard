@@ -11,6 +11,7 @@
 \newcommand{\kc}[1]{\textcolor{pink}{\textbf{#1}} }
 
 \newcommand{\mlg}{\ensuremath{\textrm{M}_{\rm LG}}}
+\newcommand{\msun}{\ensuremath{\textrm{M}_{\odot}}}
 \newcommand{\vtan}{\ensuremath{v_\textrm{tan}}}
 \newcommand{\vrad}{\ensuremath{v_\textrm{rad}}}
 \newcommand{\mud}{\ensuremath{\mu_\delta}}
@@ -26,7 +27,6 @@
 % \renewcommand{\twocolumngrid}{\onecolumngrid}
 % \setlength{\parindent}{1.1\baselineskip}
 % \sloppy\sloppypar\raggedbottom\frenchspacing
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \shorttitle{Updated Local Group Mass from Timing Argument}
@@ -61,22 +61,44 @@
 
 \author{Others!}
 
-
 \begin{abstract}
     % \textbf{Context}
-    The Local Group mass sets the distribution and kinematics of its constituent galaxies and is necessary to place it in a cosmological context. Though challenging to measure, one method that has been used to estimate the Local Group mass is the Timing Argument, which constructs a Keplerian orbital model that is matched to the observed kinematics of M31 with respect to the Milky Way.
-    However, recent observations of stellar tracers in the outer MW halo have revealed an excess velocity dipole in the radial velocities that can be interpretted as a bulk motion of the Milky Way disk with respect to its outer halo.
-    This motion of the disk has previously been unaccounted for in Timing Argument models.
+    The Local Group mass sets the distribution and kinematics of its constituent
+    galaxies and is necessary to place it in a cosmological context. 
+    Though challenging to measure, one method that has been used to estimate the
+    Local Group mass is the Timing Argument, which constructs a Keplerian
+    orbital model that is matched to the observed kinematics of M31 with 
+    respect to the Milky Way.
+    However, recent observations of stellar tracers in the outer MW halo have
+    revealed an excess velocity dipole in the radial velocities that can be
+    interpretted as a bulk motion of the Milky Way disk with respect to its
+    outer halo.
+    This motion of the disk has previously been unaccounted for in Timing
+    Argument models.
     % \textbf{Aims}
-    We aim to infer a Local Group mass that accounts for the reflex motion of the Milky Way disk.
+    We aim to infer a Local Group mass that accounts for the reflex motion of
+    the Milky Way disk.
     % \textbf{Methods}
-    We use Bayesian techniques to fit collected datasets of 6D phase-space information of M31 and determine the dependence of the inferred Local Group mass on the magnitude of the reflex motion.
+    We use Bayesian techniques to fit collected datasets of 6D phase-space
+    information of M31 and determine the dependence of the inferred Local Group
+    mass on the magnitude of the reflex motion.
     % \textbf{Results}
-    We provide an updated Local Group mass of $4.69\pm0.71 \times 10^{12}$M$_\odot$ assuming a disk travel velocity of $32\rm km/s$.
-    Additionally, we find that the inclusion of the reflex motion of the MW disk systematically lowers the inferred Local Group mass via the Timing Argument, and that the recovered mass depends strongly on the assumed travel velocity of the disk.
-    Further measurements of the reflex motion of the disk will likely yield a larger observed travel velocity, and therefore a lower Local Group mass. In addition, improvements to proper motion measurements from future Gaia data releases may improve the constraint on the Local Group mass by a factor of $\sim2$.
+    We provide an updated Local Group mass of $4.69\pm0.71 \times 10^{12}$
+    \msun\ assuming a disk travel velocity of $32\rm km/s$.
+    Additionally, we find that the inclusion of the reflex motion of the MW disk
+    systematically lowers the inferred Local Group mass via the Timing Argument,
+    and that the recovered mass depends strongly on the assumed travel velocity
+    of the disk.
+    Further measurements of the reflex motion of the disk will likely yield a
+    larger observed travel velocity, and therefore a lower Local Group mass. 
+    In addition, improvements to proper motion measurements from future Gaia 
+    data releases may improve the constraint on the Local Group mass by a factor
+    of $\sim2$.
     % \textbf{Conclusions}
-    The Timing Argument remains one of the only ways to measure the Local Group mass independently of the masses of the individual component galaxies, but it is clear that the effect of the LMC must be accounted for when using these techniques.
+    The Timing Argument remains one of the only ways to measure the Local Group
+    mass independently of the masses of the individual component galaxies, but
+    it is clear that the effect of the LMC must be accounted for when using
+    these techniques.
 
 \end{abstract}
 
@@ -274,8 +296,20 @@ describe this} (see Table~\ref{table:priors} for details). We ran our model with
 \section{Datasets}
 \label{sec:datasets}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+We performed our analysis with two observational datasets to see how various
+new measurements have improved our ability to constrain the LG mass.
+The two datasets used in our analysis are summarized in Table~\ref{table:data}.
+Dataset 1 comes from the collection of observational data used to constrain the
+mass of the Local Group via the Timing Argument in~\cite{vdm2012}. 
 
-The two datasets used in our analysis are summarized in Table~\ref{table:data}. Of note are the changes in the distance to M31 and the updated proper motions from \textit{Gaia} eDR3. The distance to M31 in Dataset 2 comes from \textit{HST} Cepheid observations in~\cite{Li2021} and are slightly smaller but much more precise than the distance from Dataset 1. Dataset 2 also has higher proper motion measurements for the motion of M31. We expect this increased transverse velocity to translate to a higher inferred Local Group mass compared to the slightly more radial orbit of Dataset 1.
+Of note are the changes in the distance to M31 and the updated proper motions
+from \textit{Gaia} eDR3. 
+The distance to M31 in Dataset 2 comes from \textit{HST} Cepheid observations 
+in~\cite{Li2021} and are slightly smaller but much more precise than the 
+distance from Dataset 1. 
+Dataset 2 also has higher proper motion measurements for the motion of M31. 
+We expect this increased transverse velocity to translate to a higher inferred 
+Local Group mass compared to the slightly more radial orbit of Dataset 1.
 
 
 
@@ -422,7 +456,7 @@ only passed somewhat far from the disk of M31, then M33's effect on the disk
 of M31 would be somewhat minimal. 
 
 \subsection{Other?}
-
+Concluding remarks
 
 
 
