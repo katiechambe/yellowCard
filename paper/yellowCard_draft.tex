@@ -277,7 +277,7 @@ describe this} (see Table~\ref{table:priors} for details). We ran our model with
   \begin{tabular}{lc}
   \hline\hline
   Prior  & Description \\\hline
-  \mlg: $\mathcal{N}(4.5,3)\times10^{12}\Msun$ & Mass of the Local Group\\
+  \mlg: $\mathcal{N}(4.5,3)\times10^{12}\msun$ & Mass of the Local Group\\
   %
   $r$: $\mathcal{N}(700,100)$kpc & Distance from M31 to $\mwdisk$\\
   %
@@ -347,11 +347,11 @@ Local Group mass compared to the slightly more radial orbit of Dataset 1.
 
 % We use recent measurements of the present-day kinematics of M31 as observed from the solar system, updated measurements of the solar position and motion with respect to the Milky Way center, and a recent measurement of the velocity of the Milky Way disk with respect to the outer stellar halo to measure the mass of the Local Group using observed kinematics of M31.
 
-We use a Bayesian model to place constraints on the mass of the Local Group and the distance between M31 and the Sun using the Timing Argument. Our model of the Local Group includes the reflex motion of the Milky Way disk and results in new constrains on the mass of the Local Group to 4.69$\pm0.71 \times 10^{12}\Msun$.
+We use a Bayesian model to place constraints on the mass of the Local Group and the distance between M31 and the Sun using the Timing Argument. Our model of the Local Group includes the reflex motion of the Milky Way disk and results in new constrains on the mass of the Local Group to 4.69$\pm0.71 \times 10^{12}\msun$.
 
 % this will maybe go in discussion?
-Previous studies that have used the Timing Argument to constrain the mass of the Local Group have found a range of masses. ~\cite{vdm2012} used the timing argument with Dataset 1 and derived a mass of $4.27\pm 0.53\times 10^{12}\Msun$) \kc{note: our value of \mlg is $\sim$.3 times higher than found in vdm2012 with the same set of data with no travel velocity. probably just in implementation of mcmc or something?}.
-~\cite{Penarrubia2016} finds a Local Group mass of ($\sim2.64\pm0.4\times 10^{12}\Msun$) which is significantly lower than our expectations, although this constraint combines the observed kinematics of 35 Local Volume galaxies and the dynamics of the M31-MW system. Fitting for the distances and velocities of the 35 LV galaxies drastically lowers the inferred Local Group mass compared to the Timing Argument.
+Previous studies that have used the Timing Argument to constrain the mass of the Local Group have found a range of masses. ~\cite{vdm2012} used the timing argument with Dataset 1 and derived a mass of $4.27\pm 0.53\times 10^{12}\msun$) \kc{note: our value of \mlg is $\sim$.3 times higher than found in vdm2012 with the same set of data with no travel velocity. probably just in implementation of mcmc or something?}.
+~\cite{Penarrubia2016} finds a Local Group mass of ($\sim2.64\pm0.4\times 10^{12}\msun$) which is significantly lower than our expectations, although this constraint combines the observed kinematics of 35 Local Volume galaxies and the dynamics of the M31-MW system. Fitting for the distances and velocities of the 35 LV galaxies drastically lowers the inferred Local Group mass compared to the Timing Argument.
 
 
 We found that, for both considered datasets, our model prefers lower Local Group masses and a lower eccentricity orbit compared to models that do not include MW disk reflex motion. Fig.~\ref{fig:contour} shows the 95\% contours from the sampled posterior PDFs of the distance to M31, the eccentricity of the orbit of M31 with a fixed MW, and the inferred Local Group mass. Arrows in the bottom left panel of the corner plot indicate the shift to lower masses and eccentricities when introducing the reflex motion of the MW.
@@ -410,7 +410,7 @@ We show that introducing the travel velocity of the MW disk into the Keplerian
 model lowers the inferred Local Group mass from the Timing Argument for two M31 
 datasets. 
 We provide an updated constraint on the mass of the Local Group of 
-4.69$\pm\times$0.71 $10^{12}\Msun$ using recent \textit{Gaia} eDR3 proper 
+4.69$\pm\times$0.71 $10^{12}\msun$ using recent \textit{Gaia} eDR3 proper 
 motions~\citep{Salomon2021}, precise Cepheid distance measurements
 ~\citep{Li2021}, and assuming a disk travel velocity of 32km/s from
 ~\cite{Petersen2021}, and show that an increase in the travel velocity of the 
@@ -427,6 +427,7 @@ disk will result in even lower inferred LG masses.
     {Timing (3D + cosmic bias and scatter)} & {4.93$\pm$1.63$\times 10^{12}$\msun} & \cite{vdm2012} \\
     Timing (radial + cosmo sim calibration)  & $5.27\times10^{12}$ \msun & \cite{LiWhite2008} \\
     Timing & $3.6\times10^{12}\msun$ & \cite{Lynden-Bell:1981} \\
+    $2.5\pm0.4\times10^{12}\msun$ & \cite{Diaz2014}\\
     %  &  &  \\
     \hline
     Kinematics of M31 Sats & \mmto$ <(300 kpc) = (1.40 \pm 0.43) \times 10^{12} \msun$ & \cite{Watkins2010}\\
@@ -450,7 +451,7 @@ related to the Local Group mass?
 
 
 Our findings of a high mass Local Group are consistent with findings that the 
-mass of M31 is XXbig and the MW is $1-1.5\times10^{12}\Msun$~\citep{??}. 
+mass of M31 is XXbig and the MW is $1-1.5\times10^{12}\msun$~\citep{??}. 
 However, this high group mass also has cosmological implications. 
 A high Local Group mass could also be consistent with tk that propose that M31 
 has undergone recent (XX Gyrs) major? accretion events with other massive 
