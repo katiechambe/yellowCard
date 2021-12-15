@@ -220,12 +220,13 @@ that this displacement is likely much smaller than the distance between the MW
 and M31 $\pos{\mwouter}{\mwdisk} \ll r$ \citep[as expected from simulations,
 e.g., ][]{Nico}.
 
-% APW: I'm not sure we need to go into detail about the coordinate system --
-% that might be an implementation detail!
+% APW: I'm not sure we need to go into detail about the coordinate system here
 % info about coordinate system setup
 % \textbf{We choose a coordinate system centered on the disk of the MW, where positive x is along the line of sight between the MW disk and the center of M31's disk, and positive y is in the direction of the tangential motion of M31.} Thus, the velocity vector of M31 in this Keplerian coordinate system is $(v_x, v_y, v_z) =(v_{rad},v_{tan},0)$, and $v_{rad}<0$ means M31 is moving towards the MW disk.
 
 \subsection{Bayesian Inference}
+
+We construct a likelihood function for the observed position and velocity of M31 and the XX for the parameters
 
 We use a No-U-Turn Sampler (NUTS) implemented with
 \texttt{pymc3}~\citep{Salvatier2016} to sample from the posterior distribution
