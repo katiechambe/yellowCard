@@ -130,12 +130,11 @@
 
 \end{itemize}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Methods}\label{sec:methods}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \kc{Note: one issue that I had was trying to describe how the parameters in our model vs the parameters that we sampled over? like a vs. r? }
 
-\subsection{The Timing Argument}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The Timing Argument}
+\label{sec:timingarg}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Following past work \citep[e.g.,][]{Lynden-Bell:1981, vdm2012, Penarrubia2016},
 we assume that the orbital trajectories of the M31 and MW --- the Local Group
@@ -248,51 +247,13 @@ e.g., ][]{Nico}.
 % info about coordinate system setup
 % \textbf{We choose a coordinate system centered on the disk of the MW, where positive x is along the line of sight between the MW disk and the center of M31's disk, and positive y is in the direction of the tangential motion of M31.} Thus, the velocity vector of M31 in this Keplerian coordinate system is $(v_x, v_y, v_z) =(v_{rad},v_{tan},0)$, and $v_{rad}<0$ means M31 is moving towards the MW disk.
 
-\subsection{Bayesian Inference}
-
-We construct a likelihood function for the observed position and velocity of M31 and the XX for the parameters
-
-We use a No-U-Turn Sampler (NUTS) implemented with
-\texttt{pymc3}~\citep{Salvatier2016} to sample from the posterior distribution
-of model parameters \mlg, $a$, $e$, $\eta$, \kc{and $\alpha$, where $\alpha$ is
-a parameter that fixes the pole of the orbital plane of M31, and thus
-establishes the angle between the Keplerian tangential velocity and the proper
-motion measurements -- did we end up utilizing alpha?}. We set normal priors on
-the distance to M31 and the Local Group mass, a uniform prior on $\ln(1-e)$, and
-\kc{an angle prior implemented in the pymc3\_ext package, don't know how to
-describe this} (see Table~\ref{table:priors} for details). We ran our model with
-1 chain for 4000 tuning steps and 2000 draws.
-
-
-
-% \begin{equation}
-%   \mathcal{L}(| \boldsymbol{S})
-% \end{equation}
-% where $\boldsymbol{S} = ($\mlg$, a, e, \eta)$
-
-
-
-
-\begin{table}
+%%% Schematic %%%
+\begin{figure*}[htb]
   \centering
-  \begin{tabular}{lc}
-  \hline\hline
-  Prior  & Description \\\hline
-  \mlg: $\mathcal{N}(4.5,3)\times10^{12}\msun$ & Mass of the Local Group\\
-  %
-  $r$: $\mathcal{N}(700,100)$kpc & Distance from M31 to $\mwdisk$\\
-  %
-  $\ln(1-e)$: $\mathcal{U}$(-10,0) & Eccentricity (close to 1) \\
-  %
-  $\eta$: angle(0,2$\pi$)& Eccentric anomaly\\
-  \multirow{2}{*}{$\alpha$: angle(0,2$\pi$)} & Angle between M31 orbital\\
-  & pole and Galactocentric\\
-  \hline\hline
-  \end{tabular}
-  \caption{\label{table:priors}Priors \kc{note: on \mlg and $r$, we also set bounds? how should I show those here? or should they go in the text?}}
-\end{table}
-
-
+  \includegraphics[width=0.8\columnwidth]{schematic_placeholder.png}
+  \caption{\label{fig:schematic} Placeholder for whatever schematic we're going to end up creating
+  }
+\end{figure*}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -303,15 +264,15 @@ We performed our analysis with two observational datasets to see how various
 new measurements have improved our ability to constrain the LG mass.
 The two datasets used in our analysis are summarized in Table~\ref{table:data}.
 Dataset 1 comes from the collection of observational data used to constrain the
-mass of the Local Group via the Timing Argument in~\cite{vdm2012}. 
+mass of the Local Group via the Timing Argument in~\cite{vdm2012}.
 
 Of note are the changes in the distance to M31 and the updated proper motions
-from \textit{Gaia} eDR3. 
-The distance to M31 in Dataset 2 comes from \textit{HST} Cepheid observations 
-in~\cite{Li2021} and are slightly smaller but much more precise than the 
-distance from Dataset 1. 
-Dataset 2 also has higher proper motion measurements for the motion of M31. 
-We expect this increased transverse velocity to translate to a higher inferred 
+from \textit{Gaia} eDR3.
+The distance to M31 in Dataset 2 comes from \textit{HST} Cepheid observations
+in~\cite{Li2021} and are slightly smaller but much more precise than the
+distance from Dataset 1.
+Dataset 2 also has higher proper motion measurements for the motion of M31.
+We expect this increased transverse velocity to translate to a higher inferred
 Local Group mass compared to the slightly more radial orbit of Dataset 1.
 
 \begin{table*}
@@ -332,13 +293,49 @@ Local Group mass compared to the slightly more radial orbit of Dataset 1.
   \caption{\label{table:data}Observational datasets used for comparison throughout analysis. Each value is measured for M31 with respect to the sun. $D$ is the distance, $v_{\rm rad}$ is the radial velocity, $(\mu^*_{\alpha}, \mu_{\delta})$ are proper motions in RA cosdec and Dec, and (U$_{\rm pec}$, V$_{\rm pec}$+V$_0$, W$_{\rm pec}$) the solar motion with respect to the galactic center. $t_{\rm peri}$ is the time elapsed since the last pericenter of the M31 Keplerian orbit, which in this case is the age of the Universe. }
 \end{table*}
 
-%%% Schematic %%%
-\begin{figure*}[htb]
-    \centering
-    \includegraphics[width=0.8\columnwidth]{schematic_placeholder.png}
-    \caption{\label{fig:schematic} Placeholder for whatever schematic we're going to end up creating
-    }
-  \end{figure*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Bayesian Inference}
+\label{sec:bayes}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We construct a likelihood function for the observed position and velocity of M31 and the XX for the parameters
+
+We use a No-U-Turn Sampler (NUTS) implemented with
+\texttt{pymc3}~\citep{Salvatier2016} to sample from the posterior distribution
+of model parameters \mlg, $a$, $e$, $\eta$, \kc{and $\alpha$, where $\alpha$ is
+a parameter that fixes the pole of the orbital plane of M31, and thus
+establishes the angle between the Keplerian tangential velocity and the proper
+motion measurements -- did we end up utilizing alpha?}. We set normal priors on
+the distance to M31 and the Local Group mass, a uniform prior on $\ln(1-e)$, and
+\kc{an angle prior implemented in the pymc3\_ext package, don't know how to
+describe this} (see Table~\ref{table:priors} for details). We ran our model with
+1 chain for 4000 tuning steps and 2000 draws.
+
+% \begin{equation}
+%   \mathcal{L}(| \boldsymbol{S})
+% \end{equation}
+% where $\boldsymbol{S} = ($\mlg$, a, e, \eta)$
+
+\begin{table}
+  \centering
+  \begin{tabular}{lc}
+  \hline\hline
+  Prior  & Description \\\hline
+  \mlg: $\mathcal{N}(4.5,3)\times10^{12}\msun$ & Mass of the Local Group\\
+  %
+  $r$: $\mathcal{N}(700,100)$kpc & Distance from M31 to $\mwdisk$\\
+  %
+  $\ln(1-e)$: $\mathcal{U}$(-10,0) & Eccentricity (close to 1) \\
+  %
+  $\eta$: angle(0,2$\pi$)& Eccentric anomaly\\
+  \multirow{2}{*}{$\alpha$: angle(0,2$\pi$)} & Angle between M31 orbital\\
+  & pole and Galactocentric\\
+  \hline\hline
+  \end{tabular}
+  \caption{\label{table:priors}Priors \kc{note: on \mlg and $r$, we also set bounds? how should I show those here? or should they go in the text?}}
+\end{table}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results: Local group mass estimates}
