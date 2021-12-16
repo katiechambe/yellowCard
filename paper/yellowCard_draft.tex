@@ -351,9 +351,8 @@ However, we set the priors as follows:
   \item Orbital plane orientation $\alpha$: we assume a uniform prior.
 \end{itemize}
 
-For each dataset, we run the sampler with XX chains for 4000 tuning steps and
-2000 draws.
-% TODO: let's up this to 4 chains, 4000 tuning, 8000 draws
+For each dataset, we run the sampler with 4 chains for 4000 tuning steps and
+8000 draws.
 
 % \begin{equation}
 %   \mathcal{L}(| \boldsymbol{S})
@@ -534,15 +533,17 @@ Do we expect Gaia DR3 proper motions to improve by a factor of ~4?
 This would provide the tightest constraints on the Local Group mass from the 
 Timing Argument! 
 
-\subsection{The M31--M33 subsystem}
-It is likely that the close passage of M33 is inducing a
-reflex motion of the M31 disk \citep{?}. Our model assumes that the disk of 
-M31 is moving coherently with its outer halo, but if the disk is also 
-experiencing its own reflex motion, then the measured velocities of the M31 
-disk will differ from those of the halo. This is the same effect that we have 
-accounted for with the MW but for the M31 system. 
- % need to find proper reference for this
-We have neglected any effects of the reflex motion of M31, as simulations of the M31--M33 system from \cite{Patel2017} and \cite{} imply that M33 is currently on its closest approach to M31. As M33 has likely not undergone a pericentric passage of M31, any induced reflex motion would be minimal and subdominant to that of the MW disk. 
+\subsection{The M31--M33 system}
+We do not account for the effects of reflex motion of M31 due to 
+uncertainties in both its interaction history and the orbital history of 
+M33. 
+A first infall scenario for M33 would rule out the possibility of a 
+strong reflex response resulting due to a close pericentric passage. 
+On the other hand, M31 has likely experienced significant disturbances, as
+evidenced by the double nucleus and Giant Southern Stream, 
+which may have been resulted in a substantial reflex motion. 
+Thus, we elect to disregard the effects of an M31 reflex motion. 
+
 
 \subsection{Other?}
 Concluding remarks
