@@ -167,10 +167,10 @@ two-body quantities like the separation between the masses $r$, the elapsed time
 since last pericenter $t$, and the radial and tangential velocity components
 \vrad\ and \vtan\ are given by:
 \begin{align}
-  r &= a(1-e\cos\eta) \label{eq:r} \\
-  t &= \left( \frac{a^3}{GM} \right)^{1/2}(\eta-e\sin\eta) \label{eq:t} \\
-  \vrad &= \left( \frac{GM}{a} \right)^{1/2} \frac{e\sin\eta}{1-e\cos\eta} \label{eq:vrad} \\
-  \vtan &= \left( \frac{GM}{a} \right)^{1/2} \frac{\sqrt{1-e^2}}{1-e\cos\eta} \label{eq:vtan} \quad .
+  r &= a \, (1-e\,\cos\eta) \label{eq:r} \\
+  t &= \left( \frac{a^3}{GM} \right)^{1/2}(\eta-e\,\sin\eta) \label{eq:t} \\
+  \vrad &= \left( \frac{GM}{a} \right)^{1/2} \frac{e\,\sin\eta}{1-e\,\cos\eta} \label{eq:vrad} \\
+  \vtan &= \left( \frac{GM}{a} \right)^{1/2} \frac{\sqrt{1-e^2}}{1-e\,\cos\eta} \label{eq:vtan} \quad .
 \end{align}
 In our model, the separation $r$ is the distance between the centers of mass of
 M31 and the MW, the time since last pericenter $t$ is the age of the Universe,
@@ -233,11 +233,14 @@ We also assume that the sun, Galactic disk, and inner MW moved as a solid body
 so that $\vel{\mwdisk}{\odot}$ and $\vel{\mwdisk}{\odot}$ are equivalent to the
 solar position and velocity with respect to the Galactic center (as in
 Equations~\ref{eq:xoffset1}--\ref{eq:voffset1}).
+Figure~\ref{fig:schematic} shows a schematic of these different vectors --- all
+drawn in a frame that is comoving with the \mwouter\ frame --- and a rough
+illustration of the geometry we assume.
 
 In what follows, we will assume that we have access to a direct measurement of
 $\vel{\mwouter}{\mwdisk}$; This is different from \citet{Penarrubia2016} who
 instead parametrize this term as a function of an additional parameter that sets
-the mass ratio of the LMC to the MW.
+the mass ratio of the LMC and the MW.
 We also assume that $\pos{\mwouter}{\mwdisk} \approx 0$ motivated by the fact
 that this displacement is likely much smaller than the distance between the MW
 and M31 $\pos{\mwouter}{\mwdisk} \ll r$ \citep[as expected from simulations,
@@ -251,8 +254,10 @@ e.g., ][]{Nico}.
 \begin{figure*}[htb]
   \centering
   \includegraphics[width=0.8\columnwidth]{schematic_placeholder.png}
-  \caption{\label{fig:schematic} Placeholder for whatever schematic we're going to end up creating
+  \caption{
+    Placeholder for whatever schematic we're going to end up creating
   }
+  \label{fig:schematic}
 \end{figure*}
 
 
@@ -260,20 +265,23 @@ e.g., ][]{Nico}.
 \section{Datasets}
 \label{sec:datasets}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-We performed our analysis with two observational datasets to see how various
-new measurements have improved our ability to constrain the LG mass.
-The two datasets used in our analysis are summarized in Table~\ref{table:data}.
-Dataset 1 comes from the collection of observational data used to constrain the
-mass of the Local Group via the Timing Argument in~\cite{vdm2012}.
 
-Of note are the changes in the distance to M31 and the updated proper motions
-from \textit{Gaia} eDR3.
-The distance to M31 in Dataset 2 comes from \textit{HST} Cepheid observations
-in~\cite{Li2021} and are slightly smaller but much more precise than the
-distance from Dataset 1.
-Dataset 2 also has higher proper motion measurements for the motion of M31.
-We expect this increased transverse velocity to translate to a higher inferred
-Local Group mass compared to the slightly more radial orbit of Dataset 1.
+Key input into Timing Argument inferences of the Local Group mass are the
+present position and velocity of M31 and the age of the universe (used in in
+Equation~\ref{eq:t}).
+Here we consider two compilations of data that provide this information to have
+as comparisons.
+The two datasets used in our analysis are summarized in Table~\ref{table:data}.
+Briefly, ``Dataset 1'' comes from the measured proper motion of M31 and a
+collection of other data used to constrain the mass of the Local Group via the
+Timing Argument in~\citet{vdm2012}.
+``Dataset 2'' is a compilation of more recent measurements, including a more
+precise Cepheid-based distance measure to M31 \citep{Li2021} and updated proper
+motions of M31 measured using data from \textit{Gaia} eDR3 \citep{Salomon2021}.
+The \textit{Gaia}-based M31 proper motion measurement is slightly higher,
+leading to an increased implied transverse velocity that will likely lead to a
+higher inferred Local Group mass compared to the more radial orbit implied by
+Dataset 1.
 
 \begin{table*}
   \centering
@@ -299,24 +307,64 @@ Local Group mass compared to the slightly more radial orbit of Dataset 1.
 \label{sec:bayes}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We construct a likelihood function for the observed position and velocity of M31 and the XX for the parameters
+We construct a likelihood function for the observed, heliocentric position and
+velocity of M31 and the time since last pericenter given the four parameters of
+the Timing Argument model $(\mlg, a, e, \eta)$, assign prior probability
+distribution functions (pdfs) for the parameters, and use these to compute the
+posterior pdf over the parameters given the data.
+In detail, we first use the four Timing Argument parameters to compute the
+present day separation between the MW and M31, and the relative radial and
+tangential velocities as defined in Equations~\ref{eq:r}--\ref{eq:vtan}.
+These velocity components represent the relative velocity M31 would have as
+observed from the barycenter of the MW--LMC subsystem; We then use the measured
+``travel velocity'' of the MW disk $\vel{\mwouter}{\mwdisk}$ to compute the
+relative velocity of M31 that would be observed from a frame moving with the
+center of the Milky Way disk (i.e. a Galactocentric frame).
+We finally then transform from this Galactocentric frame to a heliocentric
+reference frame moving with the solar system barycenter (i.e. ICRS coordinates).
+At this final stage, we must introduce an additional nuisance parameter $\alpha$
+which represents the orientation of the MW--M31 orbital plane as it intersects
+the tangent plane located at the sky position of M31 on the celestial sphere.
+This is necessary because the Kepler equations only provide the magnitude of the
+tangential velocity (i.e. Equation~\ref{eq:vtan}), but in order to compute
+proper motion components we must also know the exact orientation of the M31
+velocity vector.
 
-We use a No-U-Turn Sampler (NUTS) implemented with
-\texttt{pymc3}~\citep{Salvatier2016} to sample from the posterior distribution
-of model parameters \mlg, $a$, $e$, $\eta$, \kc{and $\alpha$, where $\alpha$ is
-a parameter that fixes the pole of the orbital plane of M31, and thus
-establishes the angle between the Keplerian tangential velocity and the proper
-motion measurements -- did we end up utilizing alpha?}. We set normal priors on
-the distance to M31 and the Local Group mass, a uniform prior on $\ln(1-e)$, and
-\kc{an angle prior implemented in the pymc3\_ext package, don't know how to
-describe this} (see Table~\ref{table:priors} for details). We ran our model with
-1 chain for 4000 tuning steps and 2000 draws.
+We specify this model using the \texttt{Python} probabilistic programming
+package \texttt{pymc3}~\citep{Salvatier2016} and our adopted prior pdfs are
+summarized in Table~\ref{table:priors}.
+We use the No-U-Turn Sampler (NUTS) \citep{gelman?} implemented in
+\texttt{pymc3} to generate samples from this posterior pdf, given data from each
+of the datasets defined in Table~\ref{table:data}.
+We sample over the parameter Local Group mass $\mlg$, (true) present-day MW--M31
+separation $r$, log eccentricity $\ln\left(1 - e\right)$, eccentric anomaly
+$\eta$, and the orbital plane orientation nuisance parameter $\alpha$.
+However, we set the priors as follows:
+\begin{itemize}
+  \item Mass of the Local Group $\mlg$: we use a broad, truncated normal
+  distribution centered on a past measured value of the local group mass.
+  \item Present MW--M31 separation $r$: we again use a broad, truncated normal
+  distribution centered on past measurements of the distance to M31.
+  % TODO: oops - we should center it on ~770 ot 750, not 700 kpc like we chose!
+  \item Eccentricity $e$: we assume a uniform prior on eccentricity but sample
+  in the transformed parameter $\ln(1-e)$ to improve the acceptance fraction
+  when generating posterior samples.
+  \item Eccentric anomaly $\eta$: we assume a uniform prior.
+  \item Orbital plane orientation $\alpha$: we assume a uniform prior.
+\end{itemize}
+
+For each dataset, we run the sampler with XX chains for 4000 tuning steps and
+2000 draws.
+% TODO: let's up this to 4 chains, 4000 tuning, 8000 draws
 
 % \begin{equation}
 %   \mathcal{L}(| \boldsymbol{S})
 % \end{equation}
 % where $\boldsymbol{S} = ($\mlg$, a, e, \eta)$
 
+% TODO: Letters have a 1 table max limit, so we might have to move the prior
+% details into the list above. But we could always submit as a short regular
+% paper instead of a letter...
 \begin{table}
   \centering
   \begin{tabular}{lc}
