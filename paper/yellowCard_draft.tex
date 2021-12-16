@@ -219,10 +219,9 @@ motion of the MW disk with respect to the outer halo.
 Thus, the observed position and velocity vector of M31 from the solar reference
 frame is instead given by
 \begin{align}
-  \pos{M31}{\odot} &= \pos{M31}{\mwouter} + \pos{\mwouter}{\mwdisk} + \pos{\mwdisk}{\odot} \\
-  \vel{M31}{\odot} &= \vel{M31}{\mwouter} + \vel{\mwouter}{\mwdisk} + \vel{\mwdisk}{\odot}
+  \pos{M31}{\odot} &= \pos{M31}{\mwouter} + \pos{\mwouter}{\mwdisk}+\pos{\mwdisk}{\odot} \\
+  \vel{M31}{\odot} &= \vel{M31}{\mwouter} + \vel{\mwouter}{\mwdisk}+\vel{\mwdisk}{\odot}
 \end{align}
-% It is slightly more instructive to think of $\bov{\rm MW_{disk} \to MW_{bary}}=-\bov{\rm MW_{bary} \to MW_{disk}}$, as~\cite{Petersen2021}
 where ``\mwouter'' refers to a reference frame centered at and moving with the
 center of mass of the outer MW halo and ``\mwdisk'' refers to a reference frame
 centered at and moving with the center of the MW disk.
@@ -465,22 +464,32 @@ disk will result in even lower inferred LG masses.
 \subsection{Cosmological implications}
 \begin{table*}
   \centering
-  \begin{tabular}{lc|c}
+  \begin{tabular}{clc|c}
     \hline\hline
-    Method & Result & Citation \\\hline
-    {LV Galaxies + Timing Argument} & {2.64$\pm0.4\times 10^{12}\msun$} & \cite{Penarrubia2016} \\
-    {Timing only} & {4.27$\pm$0.45$\times 10^{12}$\msun} & \cite{vdm2012} \\
-    {Timing (3D + cosmic bias and scatter)} & {4.93$\pm$1.63$\times 10^{12}$\msun} & \cite{vdm2012} \\
-    Timing (radial + cosmo sim calibration)  & $5.27\times10^{12}$ \msun & \cite{LiWhite2008} \\
-    Timing & $3.6\times10^{12}\msun$ & \cite{Lynden-Bell:1981} \\
-    $2.5\pm0.4\times10^{12}\msun$ & \cite{Diaz2014}\\
+    Mass & Method & Result ($ 10^{12}\msun$ ) & Citation \\\hline
+    \multirow{7}{*}{\mlg}  &{LV Galaxies + Timing Argument} & {2.64$\pm0.4$} & \cite{Penarrubia2016} \\
+    &{Timing only} & {4.27$\pm$0.45} & \cite{vdm2012} \\
+    &{Timing (3D + cosmic bias and scatter)} & {4.93$\pm$1.63} & \cite{vdm2012} \\
+    &Timing (radial + cosmo sim calibration)  & $5.27$& \cite{LiWhite2008} \\
+    &Timing & $3.6$ & \cite{Lynden-Bell:1981} \\
+    & Cosmo Sims & 4.4$^{+2.4}_{-1.5}$ & \cite{Zhai2020}\\
+    & LG Dynamics &$2.5\pm0.4$ & \cite{Diaz2014}\\
     %  &  &  \\
     \hline
-    Kinematics of M31 Sats & \mmto$ <(300 kpc) = (1.40 \pm 0.43) \times 10^{12} \msun$ & \cite{Watkins2010}\\
+    \multirow{3}{*}{\mmto}& Kinematics of M31 Sats & $1.4 \pm 0.4$ ($<$300 kpc) & \cite{Watkins2010}\\
+    & Cosmo Sims & 2.5$^{+1.3}_{-1.1}$ & \cite{Zhai2020}\\
+    & LG Dynamics &$1.7\pm0.3$ & \cite{Diaz2014}\\
+    \hline
+    \multirow{4}{*}{\mmw}&  Kinematics of LG sats & $1.4 \pm 0.3$ ($<$300 kpc) & \cite{Watkins2010}\\
+    & Cosmo Sims & 1.5$^{+1.4}_{-0.7}$ & \cite{Zhai2020} \\
+    & LG Dynamics &$0.8\pm0.5$ & \cite{Diaz2014}\\
+    & & & \\
   \hline\hline
   \end{tabular}
   \caption{\label{table:masses}Can remove this, this is just to keep me sane}
 \end{table*}
+
+By including reflex motion, we move in the direction of the expected summed masses of the Milky Way and M31 which is good.
 
 How does the mass that we found compare to mass estimates from other means? 
 - like hubble flow constraints, previous timing argument, previous MW--M31 measurements, etc.
