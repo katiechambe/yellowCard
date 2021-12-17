@@ -411,13 +411,13 @@ Of all our observational data, the proper motions have the largest relative erro
 We find that as proper motion measurements improve by a factor of $\sim2$, the constraints on the Local Group mass from the timing argument will improve by a factor of more than 1.5. These results are compiled in Fig.~\ref{fig:mvspm}.
 
 
-\begin{figure*}[htb]
+\begin{figure}[htb]
   \centering
-  \includegraphics[width=0.8\textwidth]{analyze-runs-contour-arrows.png}
+  \includegraphics[width=\columnwidth,trim=1.3cm 0.8cm 1.3cm 1.3cm,clip=true]{analyze-runs-contour.png}
   \caption{\label{fig:contour} 95\% contours of sampled posterior distributions for two observational datasets (pink and yellow) of a subset of our model parameters: the total mass of the Local Group (\mlg), the distance between the Sun and M31 ($r$), and the eccentricity of the orbit of M31 about a fixed MW ($e$). A stationary MW disk is shown in the dotted contours, while our model, which includes the reflex motion of the MW disk, is shown in solid lines.
   The distributions for the separations are unchanged between models, as our model does not implement a spatial shift to the location of the MW disk. A comparison between the two models shows that \textbf{the inclusion of the reflex motion of the MW disk systematically lowers the inferred mass of the Local Group} regardless of observational dataset. See text for discussion on the effects on eccentricity.
   \kc{should I change this plot to have color represent our model and grey be no travel velocity?, also should I only include 2 sets of contours (68 and 95) instead of just 95? also not rn this is a bad quality screenshot but didn't know how to put arrows on the figure w matplotlib because it's using subplots as part of \texttt{corner}}  }
-\end{figure*}
+\end{figure}
 
 \begin{figure}[htb]
     \centering
