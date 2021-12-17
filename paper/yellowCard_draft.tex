@@ -413,24 +413,57 @@ We find that as proper motion measurements improve by a factor of $\sim2$, the c
 
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=\columnwidth,trim=1.3cm 0.8cm 1.3cm 1.3cm,clip=true]{analyze-runs-contour.png}
-  \caption{\label{fig:contour} 95\% contours of sampled posterior distributions for two observational datasets (pink and yellow) of a subset of our model parameters: the total mass of the Local Group (\mlg), the distance between the Sun and M31 ($r$), and the eccentricity of the orbit of M31 about a fixed MW ($e$). A stationary MW disk is shown in the dotted contours, while our model, which includes the reflex motion of the MW disk, is shown in solid lines.
-  The distributions for the separations are unchanged between models, as our model does not implement a spatial shift to the location of the MW disk. A comparison between the two models shows that \textbf{the inclusion of the reflex motion of the MW disk systematically lowers the inferred mass of the Local Group} regardless of observational dataset. See text for discussion on the effects on eccentricity.
-  \kc{should I change this plot to have color represent our model and grey be no travel velocity?, also should I only include 2 sets of contours (68 and 95) instead of just 95? also not rn this is a bad quality screenshot but didn't know how to put arrows on the figure w matplotlib because it's using subplots as part of \texttt{corner}}  }
+  \includegraphics[width=\columnwidth,trim=1.3cm 0.8cm 1.3cm 1.3cm,clip=true]
+  {analyze-runs-contour.png}
+  \caption{\label{fig:contour} 95\% confidence contours of sampled posterior 
+  distributions with three observational datasets for a subset of our model 
+  parameters: the total mass of the Local Group (\mlg)
+  % , the distance between the Sun and M31 ($r$), 
+  and the eccentricity of the orbit of M31 about a fixed MW ($e$). 
+  The more radial orbit implied by the~\cite{vdm2012} \textit{HST} proper 
+  motions leads to a lower inferred \mlg\ and a higher
+  eccentricity, while the larger \textit{Gaia} proper motions of
+  ~\cite{Salomon2021} yield a more circular orbit, and thus a lower eccentricity
+   and higher mass system. 
+  % A stationary MW disk is shown in the dotted contours, while our model, 
+  %which includes the reflex motion of the MW disk, is shown in solid lines.
+  % The distributions for the separations are unchanged between models, as our 
+  % model does not implement a spatial shift to the location of the MW disk. 
+  }
 \end{figure}
 
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=\columnwidth]{analyze-runs-MvV.png}
-    \caption{\label{fig:mvsv} Mean inferred Local Group mass as a function of travel velocity magnitude of the MW disk. Dataset 1 (yellow) yields masses that are systematically lower than Dataset 2 (pink), though they display the same general trends with increasing travel velocity. The vertical lines represent simulated travel velocities for stellar tracers at different distances in~\cite{Garavito-Camargo2021b}.
-    The mean Local Group mass corresponding to the observed travel velocity from~\cite{Petersen2021} of 32km/s by the triangle points, including the 1-$\sigma$ spread on the mass at that travel velocity. \textbf{As the travel velocity of the Milky Way disk increases, the inferred Local Group mass decreases} before leveling off around 80km/s.
+    \includegraphics[width=\columnwidth]{analyze-runs-MvsV.png}
+    \caption{\label{fig:mvsv} 
+    Mean inferred Local Group mass as a function of travel velocity 
+    magnitude of the MW disk. 
+    The larger \textit{Gaia} proper motions (yellow) lead to higher transverse
+    motion and thus higher mass than either of the \textit{HST} proper motion
+    datasets (pink and purple), though they display the same general trends with increasing travel velocity. 
+    The vertical lines represent simulated travel velocities for 
+    stellar tracers at different distances in~\cite{Garavito-Camargo2021b}.
+    The mean Local Group mass corresponding to the observed travel velocity 
+    from~\cite{Petersen2021} of 32km/s (triangle points) and the 1-$\sigma$ 
+    spread on the mass is shown for comparison. 
+    \textbf{The inclusion of the reflex motion of the MW disk systematically 
+    lowers the inferred mass of the Local Group} regardless of observational 
+    dataset.
+    \kc{make sense of the leveling off at 70km/s.}
+    \kc{also maybe add to x values of points to put them next to each other? 
+    instead of overlapping?}
     }
   \end{figure}
 
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\columnwidth]{analyze-runs-deltaMvsPM.png}
-    \caption{\label{fig:mvspm} Improvement in the inferred Local Group mass as a function of fractional improvement in proper motion errors. The standard deviation in the mass decreases with decreasing proper motion error, and in particular, decrease by a factor of $\sim2.5$ for PMs that are 4 times smaller than in Dataset 2. \textbf{As future \textit{Gaia} data releases provide improved proper motion errors, constraints on the Local Group mass from the Timing Argument can improve by a factor of $>$2.}
+    \caption{\label{fig:mvspm} Improvement in the inferred Local Group mass as a function of fractional improvement in proper motion errors. 
+    The standard deviation in the mass decreases with decreasing proper motion 
+    error, and in particular, decrease by a factor of $\sim2.5$ for PMs that are 
+    4 times smaller than in Dataset 2. 
+    \textbf{As future \textit{Gaia} data releases provide improved proper motion errors, constraints on the Local Group mass from the Timing Argument can 
+    improve by a factor of $>$2.}
     }
 \end{figure}
 
@@ -545,7 +578,26 @@ Thus, we elect to disregard the effects of an M31 reflex motion.
 \subsection{Other?}
 Concluding remarks
 
-
+\appendix
+Currently, appendix only includes the corner plots for all of the 5 model parameters for each of the three datasets. 
+\begin{figure*}[htb]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{analyze-runs-all-vdm2012.png}
+  \caption{\label{fig:contour-vdm}
+  }
+\end{figure*}
+\begin{figure*}[htb]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{analyze-runs-all-fiducial2021.png}
+  \caption{\label{fig:contour-fiducial}
+  }
+\end{figure*}
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{analyze-runs-all-Dataset3.png}
+  \caption{\label{fig:contour-dataset3}
+  }
+\end{figure}
 
 % \software{
 %     Astropy \citep{astropy, astropy:2018},
