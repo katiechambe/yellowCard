@@ -14,27 +14,27 @@
 # - {name: tperi, unit: Gyr, datatype: float64}
 # - {name: tperi_err, unit: Gyr, datatype: float64}
 # meta: !!omap
-# - {title: van der Marel et al. 2012}
+# - {title: Dataset 3 - vdm2012 PMs and Li 2021 distance}
 # - galcen_frame_attrs:
 #     galcen_distance: !astropy.units.Quantity
 #       unit: &id003 !astropy.units.Unit {unit: kpc}
-#       value: 8.29
+#       value: 8.122
 #     galcen_v_sun: !astropy.coordinates.CartesianDifferential
 #       d_x: !astropy.units.Quantity
 #         unit: &id001 !astropy.units.Unit {unit: km / s}
-#         value: 11.1
+#         value: 12.9
 #       d_y: !astropy.units.Quantity
 #         unit: *id001
-#         value: 251.54000000000002
+#         value: 245.6
 #       d_z: !astropy.units.Quantity
 #         unit: *id001
-#         value: 7.25
+#         value: 7.78
 #     roll: !astropy.units.Quantity
 #       unit: &id002 !astropy.units.Unit {unit: deg}
 #       value: 0.0
 #     z_sun: !astropy.units.Quantity
 #       unit: !astropy.units.Unit {unit: pc}
-#       value: 0.0
+#       value: 20.8
 # - __serialized_columns__:
 #     dec:
 #       __class__: astropy.units.quantity.Quantity
@@ -86,4 +86,4 @@
 #       value: !astropy.table.SerializedColumn {name: tperi_err}
 # schema: astropy-2.0
 ra dec distance distance_err pm_ra_cosdec pm_ra_cosdec_err pm_dec pm_dec_err radial_velocity radial_velocity_err tperi tperi_err
-10.68470833 41.26875 770.0 40.0 34.29984509938478 8.247707381973601 -20.2182792997971 7.709259168440903 -301.0 1.0 13.75 0.11
+10.68470833 41.26875 761.0 11.0 34.29984509938478 8.247707381973601 -20.2182792997971 7.709259168440903 -301.0 1.0 13.801 0.024

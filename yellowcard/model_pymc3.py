@@ -97,7 +97,7 @@ class TimingArgumentModelPymc3(ModelMixin):
             # TODO: make these customizable
             rlim = (1e2, 1e4)
             Mlim = (0.5, 20)
-            r = pm.Bound(pm.Normal, *rlim)('r', 700, 100)  # kpc
+            r = pm.Bound(pm.Normal, *rlim)('r', 750, 100)  # kpc
             M = pm.Bound(pm.Normal, *Mlim)('M', 4.5, 3)  # 1e12 Msun
 
             eta = pmx.Angle('eta')  # radians
