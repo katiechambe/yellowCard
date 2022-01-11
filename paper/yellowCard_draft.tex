@@ -113,8 +113,14 @@
 
 \section{Introduction}
 \label{sec:intro}
-\textbf{The mass of the local group is a fundamental quantity in many local 
-cosmological and MW applications - what a lower/higher group mass means.}
+\textbf{Importance of local group mass and measuring it}
+The mass of the Local Group is a fundamental quantity in many local 
+cosmological and MW applications. 
+The masses, spatial and kinematic 
+distribution, and merger history of galaxies in the Local Group are determined 
+by its total mass. 
+However, the existence of dark matter in the Local Group 
+makes the total mass challenging to measure.
 
 \textbf{Ways to measure the local group mass.}
 Numerous techniques have been used to pin down the mass of the Local Group 
@@ -300,9 +306,9 @@ Dataset 1.
   \begin{tabular}{lc|c}
     \hline\hline
                     & Dataset 1                     & Dataset 2 \\\hline
-  $D$               &  770 $\pm$ 40 \rm kpc\cite{}     &   761$\pm$11 \rm kpc~\citep{Li2021}        \\
+  $D$               &  770 $\pm$ 40 \rm kpc (vdMG08)     &   761$\pm$11 \rm kpc~\citep{Li2021}        \\
   $v_{\rm rad}$     &     -301$\pm$1 km/s       &   -301$\pm$1 km/s        \\
-  ($\mu_\alpha^*$,  $\mu_\delta$)    & (44.6$\pm$12.66, -32.1$\pm$12.21) $\mu$as/yr \citep{} & (48.98 $\pm$10.47, -36.85$\pm$8.03) $\mu$as/yr \citep{Salomon2021}\\
+  ($\mu_\alpha^*$,  $\mu_\delta$)    & (44.6$\pm$12.66, -32.1$\pm$12.21) $\mu$as/yr (vdMG08) & (48.98 $\pm$10.47, -36.85$\pm$8.03) $\mu$as/yr \citep{Salomon2021}\\
   (U$_{\rm pec}$, V$_{\rm pec}$+V$_0$, W$_{\rm pec}$) & (11.1, 251.54, 7.25) km/s& (12.9, 245.6, 7.78) km/s \citep{Drimmel2018}\\
   $t_{\rm peri}$ & 13.75$\pm$0.11 Gyr ~\citep{Jarosik2011} & 13.801$\pm$0.024 Gyr~\citep{??}\\
   %              &           &           \\
@@ -310,7 +316,7 @@ Dataset 1.
   \hline\hline
 
   \end{tabular}
-  \caption{\label{table:data}Observational datasets used for comparison throughout analysis. Each value is measured for M31 with respect to the sun. $D$ is the distance, $v_{\rm rad}$ is the radial velocity, $(\mu^*_{\alpha}, \mu_{\delta})$ are proper motions in RA cosdec and Dec, and (U$_{\rm pec}$, V$_{\rm pec}$+V$_0$, W$_{\rm pec}$) the solar motion with respect to the galactic center. $t_{\rm peri}$ is the time elapsed since the last pericenter of the M31 Keplerian orbit, which in this case is the age of the Universe. }
+  \caption{\label{table:data}Observational datasets used for comparison throughout analysis and their references (vdMG08 is \cite{vdm2008}) Each value is measured for M31 with respect to the sun. $D$ is the distance, $v_{\rm rad}$ is the radial velocity, $(\mu^*_{\alpha}, \mu_{\delta})$ are proper motions in RA cosdec and Dec, and (U$_{\rm pec}$, V$_{\rm pec}$+V$_0$, W$_{\rm pec}$) the solar motion with respect to the galactic center. $t_{\rm peri}$ is the time elapsed since the last pericenter of the M31 Keplerian orbit, which in this case is the age of the Universe. }
 \end{table*}
 
 
@@ -407,8 +413,21 @@ For each dataset, we run the sampler with 4 chains for 4000 tuning steps and
 We use a Bayesian model to place constraints on the mass of the Local Group and the distance between M31 and the Sun using the Timing Argument. Our model of the Local Group includes the reflex motion of the Milky Way disk and results in new constrains on the mass of the Local Group to 4.69$\pm0.71 \times 10^{12}\msun$.
 
 % this will maybe go in discussion?
-Previous studies that have used the Timing Argument to constrain the mass of the Local Group have found a range of masses. ~\cite{vdm2012} used the timing argument with Dataset 1 and derived a mass of $4.27\pm 0.53\times 10^{12}\msun$) \kc{note: our value of \mlg is $\sim$.3 times higher than found in vdm2012 with the same set of data with no travel velocity. probably just in implementation of mcmc or something?}.
-~\cite{Penarrubia2016} finds a Local Group mass of ($\sim2.64\pm0.4\times 10^{12}\msun$) which is significantly lower than our expectations, although this constraint combines the observed kinematics of 35 Local Volume galaxies and the dynamics of the M31-MW system. Fitting for the distances and velocities of the 35 LV galaxies drastically lowers the inferred Local Group mass compared to the Timing Argument.
+Previous studies that have used the Timing Argument to constrain the mass of the
+Local Group have found a range of masses. 
+~\cite{vdm2012} used the timing argument with Dataset 1 and derived a mass of 
+$4.27\pm 0.53\times 10^{12}\msun$) \kc{note: our value of \mlg is $\sim.3 \times 10^{12}\msun$ higher than found in vdm2012 with the same set of data with no travel velocity. probably just in implementation of mcmc or something?}.
+~\cite{Penarrubia2016} finds a Local Group mass of ($\sim2.64\pm0.4\times 
+10^{12}\msun$) which is significantly lower than our expectations, although this
+constraint combines the observed kinematics of 35 Local Volume galaxies in 
+addition to the dynamics of the M31--MW system. 
+Each of the Local Volume Galaxies is fit to a radial Keplerian orbital model.
+However, inclusion of any transverse motion will increase the inferred total 
+mass of the system, so it is likely the assumption of radial orbits leads to 
+an underestimate of the mass of the Local Group with LV galaxies only.
+Including the dynamics of the M31--MW system increased their recovered 
+total mass by $0.6\times10^{12}\msun$.
+
 
 
 We found that, for both considered datasets, our model prefers lower Local Group masses and a lower eccentricity orbit compared to models that do not include MW disk reflex motion. Fig.~\ref{fig:contour} shows the 95\% contours from the sampled posterior PDFs of the distance to M31, the eccentricity of the orbit of M31 with a fixed MW, and the inferred Local Group mass. Arrows in the bottom left panel of the corner plot indicate the shift to lower masses and eccentricities when introducing the reflex motion of the MW.
