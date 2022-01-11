@@ -114,41 +114,41 @@
 \section{Introduction}
 \label{sec:intro}
 \textbf{Importance of local group mass and measuring it}
-The mass of the Local Group is a fundamental quantity in many local 
-cosmological and MW applications. 
-The masses, spatial and kinematic 
-distribution, and merger history of galaxies in the Local Group are determined 
-by its total mass. 
-However, the existence of dark matter in the Local Group 
+The mass of the Local Group is a fundamental quantity in many local
+cosmological and MW applications.
+The masses, spatial and kinematic
+distribution, and merger history of galaxies in the Local Group are determined
+by its total mass.
+However, the existence of dark matter in the Local Group
 makes the total mass challenging to measure.
 
 \textbf{Ways to measure the local group mass.}
-Numerous techniques have been used to pin down the mass of the Local Group 
-more precisely. 
-Many of these techniques determine the individual masses of the MW and M31 
-independently, often via the dynamics of their satellites, then combine them to 
-get an estimate of the total LG mass~\citep{Patel??}. 
-Other techniques aim to pin down the mass of the Local Group en masse, for 
-example looking for Local Group analogs in cosmological simulations 
+Numerous techniques have been used to pin down the mass of the Local Group
+more precisely.
+Many of these techniques determine the individual masses of the MW and M31
+independently, often via the dynamics of their satellites, then combine them to
+get an estimate of the total LG mass~\citep{Patel??}.
+Other techniques aim to pin down the mass of the Local Group en masse, for
+example looking for Local Group analogs in cosmological simulations
 based on stellar mass and kinematic criteria~\citep{Zhai2020}.
-In particular, one of these 'total mass measurement techniques word vom' 
-that has been historically used to infer the 
-Local Group mass in total (and not component by component) is the Timing 
-Argument, which we summarize in~\ref{sec:timingarg}, which models the Local 
+In particular, one of these 'total mass measurement techniques word vom'
+that has been historically used to infer the
+Local Group mass in total (and not component by component) is the Timing
+Argument, which we summarize in~\ref{sec:timingarg}, which models the Local
 Group as the interaction between the MW and M31 via a radial Keplerian orbit.
 
 \textbf{What about what we've done is new!}
-Recent studies of the dynamics of the Local Group have shown that there should 
+Recent studies of the dynamics of the Local Group have shown that there should
 be a velocity shift of the MW disk due to the recent close passage of the LMC
-\citep{Gomez2015,Garavito-Camargo2021b}. 
-Previous studies that have modelled the dynamics of the Local Group using the 
-Timing Argument have neglected to include this velocity shift in the velocity 
-separation between M31--MW. 
+\citep{Gomez2015,Garavito-Camargo2021b}.
+Previous studies that have modelled the dynamics of the Local Group using the
+Timing Argument have neglected to include this velocity shift in the velocity
+separation between M31--MW.
 In this paper, we introduce the reflex motion of the
-MW disk as a model parameter in the Timing Argument for the first time and 
-constrain the inferred LG mass via the TA as a function of the disk travel 
-velocity. 
-    
+MW disk as a model parameter in the Timing Argument for the first time and
+constrain the inferred LG mass via the TA as a function of the disk travel
+velocity.
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -414,18 +414,18 @@ We use a Bayesian model to place constraints on the mass of the Local Group and 
 
 % this will maybe go in discussion?
 Previous studies that have used the Timing Argument to constrain the mass of the
-Local Group have found a range of masses. 
-~\cite{vdm2012} used the timing argument with Dataset 1 and derived a mass of 
+Local Group have found a range of masses.
+~\cite{vdm2012} used the timing argument with Dataset 1 and derived a mass of
 $4.27\pm 0.53\times 10^{12}\msun$) \kc{note: our value of \mlg is $\sim.3 \times 10^{12}\msun$ higher than found in vdm2012 with the same set of data with no travel velocity. probably just in implementation of mcmc or something?}.
-~\cite{Penarrubia2016} finds a Local Group mass of ($\sim2.64\pm0.4\times 
+~\cite{Penarrubia2016} finds a Local Group mass of ($\sim2.64\pm0.4\times
 10^{12}\msun$) which is significantly lower than our expectations, although this
-constraint combines the observed kinematics of 35 Local Volume galaxies in 
-addition to the dynamics of the M31--MW system. 
+constraint combines the observed kinematics of 35 Local Volume galaxies in
+addition to the dynamics of the M31--MW system.
 Each of the Local Volume Galaxies is fit to a radial Keplerian orbital model.
-However, inclusion of any transverse motion will increase the inferred total 
-mass of the system, so it is likely the assumption of radial orbits leads to 
+However, inclusion of any transverse motion will increase the inferred total
+mass of the system, so it is likely the assumption of radial orbits leads to
 an underestimate of the mass of the Local Group with LV galaxies only.
-Including the dynamics of the M31--MW system increased their recovered 
+Including the dynamics of the M31--MW system increased their recovered
 total mass by $0.6\times10^{12}\msun$.
 
 
@@ -451,42 +451,42 @@ We find that as proper motion measurements improve by a factor of $\sim2$, the c
   \centering
   \includegraphics[width=\columnwidth,trim=1.3cm 0.8cm 1.3cm 1.3cm,clip=true]
   {analyze-runs-contour.png}
-  \caption{\label{fig:contour} 95\% confidence contours of sampled posterior 
-  distributions with three observational datasets for a subset of our model 
+  \caption{\label{fig:contour} 95\% confidence contours of sampled posterior
+  distributions with three observational datasets for a subset of our model
   parameters: the total mass of the Local Group (\mlg)
-  % , the distance between the Sun and M31 ($r$), 
-  and the eccentricity of the orbit of M31 about a fixed MW ($e$). 
-  The more radial orbit implied by the~\cite{vdm2012} \textit{HST} proper 
+  % , the distance between the Sun and M31 ($r$),
+  and the eccentricity of the orbit of M31 about a fixed MW ($e$).
+  The more radial orbit implied by the~\cite{vdm2012} \textit{HST} proper
   motions leads to a lower inferred \mlg\ and a higher
   eccentricity, while the larger \textit{Gaia} proper motions of
   ~\cite{Salomon2021} yield a more circular orbit, and thus a lower eccentricity
-   and higher mass system. 
-  % A stationary MW disk is shown in the dotted contours, while our model, 
+   and higher mass system.
+  % A stationary MW disk is shown in the dotted contours, while our model,
   %which includes the reflex motion of the MW disk, is shown in solid lines.
-  % The distributions for the separations are unchanged between models, as our 
-  % model does not implement a spatial shift to the location of the MW disk. 
+  % The distributions for the separations are unchanged between models, as our
+  % model does not implement a spatial shift to the location of the MW disk.
   }
 \end{figure}
 
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\columnwidth]{analyze-runs-MvsV.png}
-    \caption{\label{fig:mvsv} 
-    Mean inferred Local Group mass as a function of travel velocity 
-    magnitude of the MW disk. 
+    \caption{\label{fig:mvsv}
+    Mean inferred Local Group mass as a function of travel velocity
+    magnitude of the MW disk.
     The larger \textit{Gaia} proper motions (yellow) lead to higher transverse
     motion and thus higher mass than either of the \textit{HST} proper motion
-    datasets (pink and purple), though they display the same general trends with increasing travel velocity. 
-    The vertical lines represent simulated travel velocities for 
+    datasets (pink and purple), though they display the same general trends with increasing travel velocity.
+    The vertical lines represent simulated travel velocities for
     stellar tracers at different distances in~\cite{Garavito-Camargo2021b}.
-    The mean Local Group mass corresponding to the observed travel velocity 
-    from~\cite{Petersen2021} of 32km/s (triangle points) and the 1-$\sigma$ 
-    spread on the mass is shown for comparison. 
-    \textbf{The inclusion of the reflex motion of the MW disk systematically 
-    lowers the inferred mass of the Local Group} regardless of observational 
+    The mean Local Group mass corresponding to the observed travel velocity
+    from~\cite{Petersen2021} of 32km/s (triangle points) and the 1-$\sigma$
+    spread on the mass is shown for comparison.
+    \textbf{The inclusion of the reflex motion of the MW disk systematically
+    lowers the inferred mass of the Local Group} regardless of observational
     dataset.
     \kc{make sense of the leveling off at 70km/s.}
-    \kc{also maybe add to x values of points to put them next to each other? 
+    \kc{also maybe add to x values of points to put them next to each other?
     instead of overlapping?}
     }
   \end{figure}
@@ -494,11 +494,11 @@ We find that as proper motion measurements improve by a factor of $\sim2$, the c
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\columnwidth]{analyze-runs-deltaMvsPM.png}
-    \caption{\label{fig:mvspm} Improvement in the inferred Local Group mass as a function of fractional improvement in proper motion errors. 
-    The standard deviation in the mass decreases with decreasing proper motion 
-    error, and in particular, decrease by a factor of $\sim2.5$ for PMs that are 
-    4 times smaller than in Dataset 2. 
-    \textbf{As future \textit{Gaia} data releases provide improved proper motion errors, constraints on the Local Group mass from the Timing Argument can 
+    \caption{\label{fig:mvspm} Improvement in the inferred Local Group mass as a function of fractional improvement in proper motion errors.
+    The standard deviation in the mass decreases with decreasing proper motion
+    error, and in particular, decrease by a factor of $\sim2.5$ for PMs that are
+    4 times smaller than in Dataset 2.
+    \textbf{As future \textit{Gaia} data releases provide improved proper motion errors, constraints on the Local Group mass from the Timing Argument can
     improve by a factor of $>$2.}
     }
 \end{figure}
@@ -507,24 +507,24 @@ We find that as proper motion measurements improve by a factor of $\sim2$, the c
 \section{Summary and Discussion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:discussion}
-In this Letter, we use the Timing Argument to constrain the mass of the Local 
-Group by 
-simplifying the dynamics of the MW--M31 pair to a Keplerian orbital model and 
-given two compilations of data for the position and velocity of M31. 
-However, these observations have not accounted for the reflex motion of the 
+In this Letter, we use the Timing Argument to constrain the mass of the Local
+Group by
+simplifying the dynamics of the MW--M31 pair to a Keplerian orbital model and
+given two compilations of data for the position and velocity of M31.
+However, these observations have not accounted for the reflex motion of the
 Milky Way disk with respect to the outer halo, and thus previous Timing
-constraints on 
-the LG mass do not include the crucial dynamical effect of the velocity boost 
+constraints on
+the LG mass do not include the crucial dynamical effect of the velocity boost
 of the disk.
 
-We show that introducing the travel velocity of the MW disk into the Keplerian 
+We show that introducing the travel velocity of the MW disk into the Keplerian
 model lowers the inferred Local Group mass from the Timing Argument for two 6D
-M31 datasets. 
-We provide an updated constraint on the mass of the Local Group of 
-4.69$\pm\times$0.71 $10^{12}\msun$ using recent \textit{Gaia} eDR3 proper 
+M31 datasets.
+We provide an updated constraint on the mass of the Local Group of
+4.69$\pm\times$0.71 $10^{12}\msun$ using recent \textit{Gaia} eDR3 proper
 motions~\citep{Salomon2021}, precise Cepheid distance measurements
 ~\citep{Li2021}, and assuming a disk travel velocity of 32km/s from
-~\cite{Petersen2021}, and show that an increase in the travel velocity of the 
+~\cite{Petersen2021}, and show that an increase in the travel velocity of the
 disk will result in even lower inferred LG masses.
 
 \subsection{Cosmological implications}
@@ -554,68 +554,68 @@ disk will result in even lower inferred LG masses.
   \end{tabular}
   \caption{\label{table:masses}Can remove this, this is just to keep me sane}
 \end{table*}
-Previous uses of the Timing Argument have placed constraints on the mass of the Local Group 
+Previous uses of the Timing Argument have placed constraints on the mass of the Local Group
 
 By including reflex motion, we move in the direction of the expected summed masses of the Milky Way and M31 which is good.
 
-How does the mass that we found compare to mass estimates from other means? 
+How does the mass that we found compare to mass estimates from other means?
 - like hubble flow constraints, previous timing argument, previous MW--M31 measurements, etc.
 
 
 
-If our mass is higher, what does that mean? 
+If our mass is higher, what does that mean?
 If our mass is lower, what does that mean?
-What does this high mass mean to the Local Group? What about to the 
-constituents? 
+What does this high mass mean to the Local Group? What about to the
+constituents?
 
-What is context for mergers and M31 and why they might be 
+What is context for mergers and M31 and why they might be
 related to the Local Group mass?
 
 
-Our findings of a high mass Local Group are consistent with findings that the 
-mass of M31 is XXbig and the MW is $1-1.5\times10^{12}\msun$~\citep{??}. 
-However, this high group mass also has cosmological implications. 
-A high Local Group mass could also be consistent with tk that propose that M31 
-has undergone recent (XX Gyrs) major? accretion events with other massive 
-subhalos, resulting in morphological features like the Giant Southern Stream and 
-XX (what are other M31 things that indicate recent interactions? Do we think 
-much about M32? ) 
+Our findings of a high mass Local Group are consistent with findings that the
+mass of M31 is XXbig and the MW is $1-1.5\times10^{12}\msun$~\citep{??}.
+However, this high group mass also has cosmological implications.
+A high Local Group mass could also be consistent with tk that propose that M31
+has undergone recent (XX Gyrs) major? accretion events with other massive
+subhalos, resulting in morphological features like the Giant Southern Stream and
+XX (what are other M31 things that indicate recent interactions? Do we think
+much about M32? )
 
 \subsection{Inclusion of reflex motion in dynamics of the Local Group}
-The inclusion of the reflex motion of the Milky Way disk can result in up to 
-$1\times10^{12}$ difference in the estimated mass of the Local Group, which 
-means that by not accounting for this motion, we could get measurements of the 
+The inclusion of the reflex motion of the Milky Way disk can result in up to
+$1\times10^{12}$ difference in the estimated mass of the Local Group, which
+means that by not accounting for this motion, we could get measurements of the
 Local group mass that are overestimated by 20-25\%.
-Other dynamical interactions within the Local Group will also be affected by 
-the reflex motion of the disk. (What is the distribution of satellite velocities 
-about the MW now and w reflex motion? Cause should there maybe be an excess of 
+Other dynamical interactions within the Local Group will also be affected by
+the reflex motion of the disk. (What is the distribution of satellite velocities
+about the MW now and w reflex motion? Cause should there maybe be an excess of
 -vrad satellites in the MW halo? )
 
 
 \subsection{Expectations for future observations.}
 \kc{Adrian!}
 
-Do we expect Gaia DR3 proper motions to improve by a factor of ~4? 
-This would provide the tightest constraints on the Local Group mass from the 
-Timing Argument! 
+Do we expect Gaia DR3 proper motions to improve by a factor of ~4?
+This would provide the tightest constraints on the Local Group mass from the
+Timing Argument!
 
 \subsection{The M31--M33 system}
-We do not account for the effects of reflex motion of M31 due to 
-uncertainties in both its interaction history and the orbital history of 
-M33. 
-A first infall scenario for M33 would rule out the possibility of a 
-strong reflex response resulting due to a close pericentric passage. 
+We do not account for the effects of reflex motion of M31 due to
+uncertainties in both its interaction history and the orbital history of
+M33.
+A first infall scenario for M33 would rule out the possibility of a
+strong reflex response resulting due to a close pericentric passage.
 On the other hand, M31 has likely experienced significant disturbances, as
-evidenced by the double nucleus and Giant Southern Stream, 
-which may have been resulted in a substantial reflex motion. 
-Thus, we elect to disregard the effects of an M31 reflex motion. 
+evidenced by the double nucleus and Giant Southern Stream,
+which may have been resulted in a substantial reflex motion.
+Thus, we elect to disregard the effects of an M31 reflex motion.
 
 
 \subsection{Other?}
 Concluding remarks
 
 \appendix
-Currently, appendix only includes the corner plots for all of the 5 model parameters for each of the three datasets. 
+Currently, appendix only includes the corner plots for all of the 5 model parameters for each of the three datasets.
 \begin{figure*}[htb]
   \centering
   \includegraphics[width=0.8\columnwidth]{analyze-runs-all-vdm2012.png}
