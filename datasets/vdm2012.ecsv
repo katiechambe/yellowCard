@@ -86,4 +86,4 @@
 #       value: !astropy.table.SerializedColumn {name: tperi_err}
 # schema: astropy-2.0
 ra dec distance distance_err pm_ra_cosdec pm_ra_cosdec_err pm_dec pm_dec_err radial_velocity radial_velocity_err tperi tperi_err
-10.68470833 41.26875 770.0 40.0 34.29984509938478 8.247707381973601 -20.2182792997971 7.709259168440903 -301.0 1.0 13.75 0.11
+10.68470833 41.26875 770.0 40.0 45.14867789439786 12.6607323932054 -32.10816170645285 12.214864186187869 -301.0 1.0 13.75 0.11
