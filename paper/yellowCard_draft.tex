@@ -419,6 +419,27 @@ For each dataset, we run the sampler with 4 chains for 4000 tuning steps and
 \label{sec:results}
 \kc{Include the velocity vector of M31 from the halo frame?}
 
+\begin{figure*}[htb]
+  \centering
+  \includegraphics[width=\textwidth,trim=1.3cm 0.8cm 1.3cm 0cm,clip=true]
+  {analyze-runs-contour.pdf}
+  \caption{\label{fig:contour} 95\% confidence contours of sampled posterior
+  distributions with three observational datasets for a subset of our model
+  parameters: the total mass of the Local Group (\mlg)
+  % , the distance between the Sun and M31 ($r$),
+  and the eccentricity of the orbit of M31 about a fixed MW ($e$).
+  The more radial orbit implied by the~\cite{vdm2012} \textit{HST} proper
+  motions leads to a lower inferred \mlg\ and a higher
+  eccentricity, while the larger \textit{Gaia} proper motions of
+  ~\cite{Salomon2021} yield a more circular orbit, and thus a lower eccentricity
+   and higher mass system.
+  % A stationary MW disk is shown in the dotted contours, while our model,
+  %which includes the reflex motion of the MW disk, is shown in solid lines.
+  % The distributions for the separations are unchanged between models, as our
+  % model does not implement a spatial shift to the location of the MW disk.
+  }
+\end{figure*}
+
 % We use recent measurements of the present-day kinematics of M31 as observed from the solar system, updated measurements of the solar position and motion with respect to the Milky Way center, and a recent measurement of the velocity of the Milky Way disk with respect to the outer stellar halo to measure the mass of the Local Group using observed kinematics of M31.
 
 We use a Bayesian model to place constraints on the mass of the Local Group and the distance between M31 and the Sun using the Timing Argument. Our model of the Local Group includes the reflex motion of the Milky Way disk and results in new constrains on the mass of the Local Group to 4.69$\pm0.71 \times 10^{12}\msun$.
@@ -458,30 +479,11 @@ Of all our observational data, the proper motions have the largest relative erro
 We find that as proper motion measurements improve by a factor of $\sim2$, the constraints on the Local Group mass from the timing argument will improve by a factor of more than 1.5. These results are compiled in Fig.~\ref{fig:mvspm}.
 
 
-\begin{figure}[htb]
-  \centering
-  \includegraphics[width=\columnwidth,trim=1.3cm 0.8cm 1.3cm 1.3cm,clip=true]
-  {analyze-runs-contour.png}
-  \caption{\label{fig:contour} 95\% confidence contours of sampled posterior
-  distributions with three observational datasets for a subset of our model
-  parameters: the total mass of the Local Group (\mlg)
-  % , the distance between the Sun and M31 ($r$),
-  and the eccentricity of the orbit of M31 about a fixed MW ($e$).
-  The more radial orbit implied by the~\cite{vdm2012} \textit{HST} proper
-  motions leads to a lower inferred \mlg\ and a higher
-  eccentricity, while the larger \textit{Gaia} proper motions of
-  ~\cite{Salomon2021} yield a more circular orbit, and thus a lower eccentricity
-   and higher mass system.
-  % A stationary MW disk is shown in the dotted contours, while our model,
-  %which includes the reflex motion of the MW disk, is shown in solid lines.
-  % The distributions for the separations are unchanged between models, as our
-  % model does not implement a spatial shift to the location of the MW disk.
-  }
-\end{figure}
+
 
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=\columnwidth]{analyze-runs-MvsV.png}
+    \includegraphics[width=\columnwidth]{analyze-runs-MvV.pdf}
     \caption{\label{fig:mvsv}
     Mean inferred Local Group mass as a function of travel velocity
     magnitude of the MW disk.
@@ -504,7 +506,7 @@ We find that as proper motion measurements improve by a factor of $\sim2$, the c
 
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=\columnwidth]{analyze-runs-deltaMvsPM.png}
+    \includegraphics[width=\columnwidth]{analyze-runs-deltaMvsPM.pdf}
     \caption{\label{fig:mvspm} Improvement in the inferred Local Group mass as a function of fractional improvement in proper motion errors.
     The standard deviation in the mass decreases with decreasing proper motion
     error, and in particular, decrease by a factor of $\sim2.5$ for PMs that are
@@ -629,22 +631,24 @@ Concluding remarks
 Currently, appendix only includes the corner plots for all of the 5 model parameters for each of the three datasets.
 \begin{figure*}[htb]
   \centering
-  \includegraphics[width=0.8\columnwidth]{analyze-runs-all-vdm2012.png}
+  \includegraphics[width=0.8\columnwidth]{analyze-runs-all-vdm2012.pdf}
   \caption{\label{fig:contour-vdm}
   }
 \end{figure*}
-\begin{figure*}[htb]
-  \centering
-  \includegraphics[width=0.8\columnwidth]{analyze-runs-all-fiducial2021.png}
-  \caption{\label{fig:contour-fiducial}
-  }
-\end{figure*}
+
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=0.8\columnwidth]{analyze-runs-all-Dataset3.png}
+  \includegraphics[width=0.8\columnwidth]{analyze-runs-all-Dataset3.pdf}
   \caption{\label{fig:contour-dataset3}
   }
 \end{figure}
+
+\begin{figure*}[htb]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{analyze-runs-all-fiducial2021.pdf}
+  \caption{\label{fig:contour-fiducial}
+  }
+\end{figure*}
 
 % \software{
 %     Astropy \citep{astropy, astropy:2018},
