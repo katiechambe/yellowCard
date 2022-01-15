@@ -14,10 +14,9 @@
 \definecolor{pink}{RGB}{232,132,161}
 \newcommand{\kc}[1]{\textcolor{pink}{\textbf{#1}} }
 
-\newcommand{\mlg}{\ensuremath{\textrm{M}_{\rm LG}}}
-\newcommand{\mmto}{\ensuremath{\textrm{M}_{\rm M31}}}
-\newcommand{\mmw}{\ensuremath{\textrm{M}_{\rm MW}}}
-\newcommand{\msun}{\ensuremath{\textrm{M}_{\odot}}}
+\newcommand{\mlg}{\ensuremath{M_{\rm LG}}}
+\newcommand{\mmto}{\ensuremath{M_{\rm M31}}}
+\newcommand{\mmw}{\ensuremath{M_{\rm MW}}}
 \newcommand{\vtan}{\ensuremath{v_\textrm{tan}}}
 \newcommand{\vrad}{\ensuremath{v_\textrm{rad}}}
 \newcommand{\mud}{\ensuremath{\mu_\delta}}
@@ -103,7 +102,7 @@
     % \textbf{Results}
     We generally find lower LG masses than past Timing Argument results and
     measure a consistent (between datasets) total mass of
-    $4.5^{+0.8}_{-0.6}\times 10^{12}~\msun$ using the travel velocity $32 \pm
+    $4.5^{+0.8}_{-0.6}\times 10^{12}~\Msun$ using the travel velocity $32 \pm
     4~\kms$ measured in \citet{Petersen2021}.
     However, further measurements of this travel velocity with more distant
     tracers could yield even larger values, which would further decrease the
@@ -292,7 +291,8 @@ instead parametrize this term as a function of an additional parameter that sets
 the mass ratio of the LMC and the MW.
 We also assume that $\pos{\mwouter}{\mwdisk} \approx 0$ motivated by the fact
 that this displacement is likely much smaller than the distance between the MW
-and M31 $\pos{\mwouter}{\mwdisk} \ll r$ \citep[as expected from simulations,e.g.,][]{Garavito-Camargo2021b}.
+and M31 $\pos{\mwouter}{\mwdisk} \ll r$ \citep[as expected from simulations,
+e.g.,][]{Garavito-Camargo2021b}.
 
 % APW: I'm not sure we need to go into detail about the coordinate system here
 % info about coordinate system setup
@@ -337,17 +337,28 @@ Dataset 1.
   \begin{tabular}{lc|c}
     \hline\hline
                     & Dataset 1                     & Dataset 2 \\\hline
-  $D$               &  770 $\pm$ 40 \rm kpc (vdMG08)     &   761$\pm$11 \rm kpc~\citep{Li2021}        \\
-  $v_{\rm rad}$     &     -301$\pm$1 km/s       &   -301$\pm$1 km/s        \\
-  ($\mu_\alpha^*$,  $\mu_\delta$)    & ($34.30\pm$8.25, -20.22$\pm$7.71) $\mu$as/yr (vdM12) & (48.98 $\pm$10.47, -36.85$\pm$8.03) $\mu$as/yr \citep{Salomon2021}\\
-  (U$_{\rm pec}$, V$_{\rm pec}$+V$_0$, W$_{\rm pec}$) & (11.1, 251.54, 7.25) km/s& (12.9, 245.6, 7.78) km/s \citep{Drimmel2018}\\
-  $t_{\rm peri}$ & 13.75$\pm$0.11 Gyr ~\citep{Jarosik2011} & 13.801$\pm$0.024 Gyr~\citep{?}\\
+  $D$               &  $770 \pm 40~\kpc$ \citep{vdm2008}     &   $761\pm11~\kpc$ \citep{Li2021}        \\
+  $v_{\rm rad}$     &     $-301 \pm 1~\kms$ \todo{Citation?}       &   $-301 \pm 1~\kms$        \\
+  $(\mu_{\alpha^*},  \mu_\delta)$    & $(34.30 \pm 8.25, -20.22 \pm 7.71)~\muasyr$ \citep{vdm2012} & $(48.98 \pm 10.47, -36.85 \pm 8.03)~\muasyr$ \citep{Salomon2021}\\
+  $\bs{v}_\odot$ & $(11.1, 251.54, 7.25)~\kms$ \todo{cite} & $(12.9, 245.6, 7.78)~\kms$ \citep{Drimmel2018}\\
+  $t_{\rm peri}$ & $13.75 \pm 0.11~\Gyr$ \citep{Jarosik2011} & $13.801 \pm 0.024~\Gyr$ \todo{cite Planck18}\\
   %              &           &           \\
   %              &           &           \\
   \hline\hline
 
   \end{tabular}
-  \caption{\label{table:data}Observational datasets used for comparison throughout analysis and their references (vdMG08 is \cite{vdm2008}) Each value is measured for M31 with respect to the sun. $D$ is the distance, $v_{\rm rad}$ is the radial velocity, $(\mu^*_{\alpha}, \mu_{\delta})$ are proper motions in RA cosdec and Dec, and (U$_{\rm pec}$, V$_{\rm pec}$+V$_0$, W$_{\rm pec}$) the solar motion with respect to the galactic center. $t_{\rm peri}$ is the time elapsed since the last pericenter of the M31 Keplerian orbit, which in this case is the age of the Universe. }
+  \caption{\label{table:data}
+  Observational datasets used for comparison throughout analysis and their
+  references (vdMG08 is \cite{vdm2008}) Each value is measured for M31 with
+  respect to the sun. $D$ is the distance, $v_{\rm rad}$ is the radial velocity,
+  $(\mu^*_{\alpha}, \mu_{\delta})$ are proper motions in RA cosdec and Dec, and
+  (U$_{\rm pec}$, V$_{\rm pec}$+V$_0$, W$_{\rm pec}$) the solar motion with
+  respect to the galactic center. $t_{\rm peri}$ is the time elapsed since the
+  last pericenter of the M31 Keplerian orbit, which in this case is the age of
+  the Universe.
+  \apw{The references make the table spill over the page. I think we need to do
+  references in footnotes instead?}
+  }
 \end{table*}
 
 
@@ -418,7 +429,7 @@ For each dataset, we run the sampler with 4 chains for 4000 tuning steps and
   \begin{tabular}{lc}
   \hline\hline
   Prior  & Description \\\hline
-  \mlg: $\mathcal{N}(4.5,3)\times10^{12}\msun$ & Mass of the Local Group\\
+  \mlg: $\mathcal{N}(4.5,3)\times10^{12}\Msun$ & Mass of the Local Group\\
   %
   $r$: $\mathcal{N}(700,100)$kpc & Distance from M31 to $\mwdisk$\\
   %
@@ -467,15 +478,15 @@ For each dataset, we run the sampler with 4 chains for 4000 tuning steps and
 
 % We use recent measurements of the present-day kinematics of M31 as observed from the solar system, updated measurements of the solar position and motion with respect to the Milky Way center, and a recent measurement of the velocity of the Milky Way disk with respect to the outer stellar halo to measure the mass of the Local Group using observed kinematics of M31.
 
-We use a Bayesian model to place constraints on the mass of the Local Group and the distance between M31 and the Sun using the Timing Argument. Our model of the Local Group includes the reflex motion of the Milky Way disk and results in new constrains on the mass of the Local Group to 4.69$\pm0.71 \times 10^{12}\msun$.
+We use a Bayesian model to place constraints on the mass of the Local Group and the distance between M31 and the Sun using the Timing Argument. Our model of the Local Group includes the reflex motion of the Milky Way disk and results in new constrains on the mass of the Local Group to 4.69$\pm0.71 \times 10^{12}~\Msun$.
 
 % this will maybe go in discussion?
 Previous studies that have used the Timing Argument to constrain the mass of the
 Local Group have found a range of masses.
 ~\cite{vdm2012} used the timing argument with Dataset 1 and derived a mass of
-$4.27\pm 0.53\times 10^{12}\msun$) \kc{note: our value of \mlg is $\sim.3 \times 10^{12}\msun$ higher than found in vdm2012 with the same set of data with no travel velocity. probably just in implementation of mcmc or something?}.
+$4.27\pm 0.53\times 10^{12}~\Msun$) \kc{note: our value of \mlg is $\sim.3 \times 10^{12}~\Msun$ higher than found in vdm2012 with the same set of data with no travel velocity. probably just in implementation of mcmc or something?}.
 ~\cite{Penarrubia2016} finds a Local Group mass of ($\sim2.64\pm0.4\times
-10^{12}\msun$) which is significantly lower than our expectations, although this
+10^{12}~\Msun$) which is significantly lower than our expectations, although this
 constraint combines the observed kinematics of 35 Local Volume galaxies in
 addition to the dynamics of the M31--MW system.
 Each of the Local Volume Galaxies is fit to a radial Keplerian orbital model.
@@ -483,7 +494,7 @@ However, inclusion of any transverse motion will increase the inferred total
 mass of the system, so it is likely the assumption of radial orbits leads to
 an underestimate of the mass of the Local Group with LV galaxies only.
 Including the dynamics of the M31--MW system increased their recovered
-total mass by $0.6\times10^{12}\msun$.
+total mass by $0.6\times10^{12}~\Msun$.
 
 
 
@@ -559,7 +570,7 @@ We show that introducing the travel velocity of the MW disk into the Keplerian
 model lowers the inferred Local Group mass from the Timing Argument for two 6D
 M31 datasets.
 We provide an updated constraint on the mass of the Local Group of
-4.69$\pm\times$0.71 $10^{12}\msun$ using recent \textit{Gaia} eDR3 proper
+4.69$\pm\times$0.71 $10^{12}~\Msun$ using recent \textit{Gaia} eDR3 proper
 motions~\citep{Salomon2021}, precise Cepheid distance measurements
 ~\citep{Li2021}, and assuming a disk travel velocity of 32km/s from
 ~\cite{Petersen2021}, and show that an increase in the travel velocity of the
@@ -570,7 +581,7 @@ disk will result in even lower inferred LG masses.
   \centering
   \begin{tabular}{clc|c}
     \hline\hline
-    Mass & Method & Result ($ 10^{12}\msun$ ) & Citation \\\hline
+    Mass & Method & Result ($ 10^{12}~\Msun$ ) & Citation \\\hline
     \multirow{7}{*}{\mlg}  &{LV Galaxies + Timing Argument} & {2.64$\pm0.4$} & \cite{Penarrubia2016} \\
     &{Timing only} & {4.27$\pm$0.45} & \cite{vdm2012} \\
     &{Timing (3D + cosmic bias and scatter)} & {4.93$\pm$1.63} & \cite{vdm2012} \\
@@ -611,7 +622,7 @@ related to the Local Group mass?
 
 
 Our findings of a high mass Local Group are consistent with findings that the
-mass of M31 is XXbig and the MW is $1-1.5\times10^{12}\msun$~\citep{??}.
+mass of M31 is XXbig and the MW is $1-1.5\times10^{12}~\Msun$~\citep{??}.
 However, this high group mass also has cosmological implications.
 A high Local Group mass could also be consistent with tk that propose that M31
 has undergone recent (XX Gyrs) major? accretion events with other massive
