@@ -18,3 +18,4 @@
 *.tox
 *.tmp
 *.egg-info*
+cache
