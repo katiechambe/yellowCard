@@ -468,9 +468,11 @@ For each dataset, we run the sampler with 4 chains for 4000 tuning steps and
   % model does not implement a spatial shift to the location of the MW disk.
   \apw{I have some nitpicky requests! I added them as separate points after this. Sorry to be picky: I think this is the key figure, so want it to be very clear!}
   \apw{Change the MLG range to (1.5, 7) and add tick marks at 2, 3, 4, 5, 6, 7}
-  \apw{Change the eccentriity range to (0.5, 1.01)}
-  \apw{Check how the contours are made: they look like they go above e=1, but that shouldn't be possible!}
-  \apw{More bins in the histogram to make it look smoother}
+  \apw{Change the eccentriity range to (0.5, 1)}
+  \apw{Set bins=101 or some bigger number}
+  \apw{try passing smooth=1 or something to smooth out the contours}
+  \apw{Remove the shaded bands (Penarrubia and vdM2012) from the bottom left panel - they should only appaer in the histogram}
+  \apw{For the main case of vtravel=32, run for tune=4000, draws=40000 and remake}
   }
 \end{figure*}
 
@@ -667,6 +669,9 @@ Currently, appendix only includes the corner plots for all of the 5 model parame
   \centering
   \includegraphics[width=0.8\columnwidth]{analyze-runs-all-vdm2012.pdf}
   \caption{\label{fig:contour-vdm}
+  \apw{Can you remove the 99.7 line (so just 68 and 95), change the MLG range to
+  (2.5, 7), change the eccentricity range to (0.5, 1), and set bins=101}
+  \apw{try passing smooth=1 or something to smooth out the contours}
   }
 \end{figure*}
 
@@ -674,6 +679,7 @@ Currently, appendix only includes the corner plots for all of the 5 model parame
   \centering
   \includegraphics[width=0.8\columnwidth]{analyze-runs-all-Dataset3.pdf}
   \caption{\label{fig:contour-dataset3}
+  \apw{same as above}
   }
 \end{figure}
 
@@ -681,6 +687,7 @@ Currently, appendix only includes the corner plots for all of the 5 model parame
   \centering
   \includegraphics[width=0.8\columnwidth]{analyze-runs-all-fiducial2021.pdf}
   \caption{\label{fig:contour-fiducial}
+  \apw{same as above}
   }
 \end{figure*}
 
