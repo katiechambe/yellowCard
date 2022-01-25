@@ -300,10 +300,19 @@ e.g.,][]{Garavito-Camargo2021b}.
 \begin{figure*}[htb]
   \centering
   \includegraphics[width=\textwidth]{schematic-filled.pdf}
-  \includegraphics[width=\textwidth]{schematic-unfilled.pdf}
   \caption{
-    \kc{You can remove whichever one you like less and leave comments about what I
-    should fix in the diagram!}
+    Schematic of the MW and M31 system, not to scale. The shaded regions 
+    represent the halos of both galaxies. Shown are an artistic representation 
+    of the velocity and position vectors that are relevant in our model, 
+    including: $\pos{M31}{\mwdisk}$, the distance between the MW disk and the 
+    M31 disk; 
+    $\pos{M31}{\mwouter}$, the distance between the centers of both halos;
+    $\pos{\mwdisk}{\mwouter}$, the distance between the Galactic center and the 
+    center of the MW halo (resulting from the reflex motion);
+    $\vel{\mwdisk}{\mwouter}$ and $\vel{M31}{\mwouter}$, the velocity of the 
+    Galactic center with respect to the center of the MW halo, and the measured 
+    velocity of M31 from the Galactic center, respectively. \kc{should the 
+    velocity vec for M31 be M31$\to$\Msun?}
   }
   \label{fig:schematic}
 \end{figure*}
@@ -454,7 +463,7 @@ For each dataset, we run the sampler with 4 chains for 4000 tuning steps and
   \centering
   \includegraphics[width=0.8\textwidth,trim=1.3cm 0.8cm 1.3cm 0cm,clip=true]
   {analyze-runs-contour.pdf}
-  \caption{\label{fig:contour} 95\% confidence contours of sampled posterior
+  \caption{\label{fig:contour} 68\% confidence contours of sampled posterior
   distributions with three observational datasets for a subset of our model
   parameters: the total mass of the Local Group (\mlg)
   % , the distance between the Sun and M31 ($r$),
@@ -464,12 +473,11 @@ For each dataset, we run the sampler with 4 chains for 4000 tuning steps and
   eccentricity, while the larger \textit{Gaia} proper motions of
   ~\cite{Salomon2021} yield a more circular orbit, and thus a lower eccentricity
    and higher mass system.
+   }
   % A stationary MW disk is shown in the dotted contours, while our model,
   %which includes the reflex motion of the MW disk, is shown in solid lines.
   % The distributions for the separations are unchanged between models, as our
   % model does not implement a spatial shift to the location of the MW disk.
-  \apw{For the main case of vtravel=32, run for tune=4000, draws=40000 and remake}
-  }
 \end{figure*}
 
 % We use recent measurements of the present-day kinematics of M31 as observed from the solar system, updated measurements of the solar position and motion with respect to the Milky Way center, and a recent measurement of the velocity of the Milky Way disk with respect to the outer stellar halo to measure the mass of the Local Group using observed kinematics of M31.
@@ -665,9 +673,9 @@ Currently, appendix only includes the corner plots for all of the 5 model parame
   \centering
   \includegraphics[width=0.8\columnwidth]{analyze-runs-all-vdm2012.pdf}
   \caption{\label{fig:contour-vdm}
-  \apw{Can you remove the 99.7 line (so just 68 and 95), change the MLG range to
-  (2.5, 7), change the eccentricity range to (0.5, 1), and set bins=101}
-  \apw{try passing smooth=1 or something to smooth out the contours}
+  68\% and 95\% confidence contours of sampled posterior distributions for all 
+  model parameters for the vdMG08 (how to make link to citation?) distance
+  measurement $770\pm 40 \rm kpc$ and proper motions from \textit{HST}. 
   }
 \end{figure*}
 
@@ -675,7 +683,9 @@ Currently, appendix only includes the corner plots for all of the 5 model parame
   \centering
   \includegraphics[width=0.8\columnwidth]{analyze-runs-all-Dataset3.pdf}
   \caption{\label{fig:contour-dataset3}
-  \apw{same as above}
+    68\% and 95\% confidence contours of sampled posterior distributions for all 
+    model parameters for the vdMG08 (how to make link to citation?) distance
+    measurement $770\rm kpc$ and proper motions from \textit{HST}. 
   }
 \end{figure}
 
@@ -683,7 +693,9 @@ Currently, appendix only includes the corner plots for all of the 5 model parame
   \centering
   \includegraphics[width=0.8\columnwidth]{analyze-runs-all-fiducial2021.pdf}
   \caption{\label{fig:contour-fiducial}
-  \apw{same as above}
+  68\% and 95\% confidence contours of sampled posterior distributions for all 
+  model parameters for the cepheid distance
+  measurement $761\pm 11 \rm kpc$ and proper motions from \textit{Gaia}. 
   }
 \end{figure*}
 
