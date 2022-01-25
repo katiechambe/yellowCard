@@ -299,9 +299,11 @@ e.g.,][]{Garavito-Camargo2021b}.
 %%% Schematic %%%
 \begin{figure*}[htb]
   \centering
-  \includegraphics[width=0.8\columnwidth]{schematic_placeholder.png}
+  \includegraphics[width=\textwidth]{schematic-filled.pdf}
+  \includegraphics[width=\textwidth]{schematic-unfilled.pdf}
   \caption{
-    Placeholder for whatever schematic we're going to end up creating
+    \kc{You can remove whichever one you like less and leave comments about what I
+    should fix in the diagram!}
   }
   \label{fig:schematic}
 \end{figure*}
@@ -466,12 +468,6 @@ For each dataset, we run the sampler with 4 chains for 4000 tuning steps and
   %which includes the reflex motion of the MW disk, is shown in solid lines.
   % The distributions for the separations are unchanged between models, as our
   % model does not implement a spatial shift to the location of the MW disk.
-  \apw{I have some nitpicky requests! I added them as separate points after this. Sorry to be picky: I think this is the key figure, so want it to be very clear!}
-  \apw{Change the MLG range to (1.5, 7) and add tick marks at 2, 3, 4, 5, 6, 7}
-  \apw{Change the eccentriity range to (0.5, 1)}
-  \apw{Set bins=101 or some bigger number}
-  \apw{try passing smooth=1 or something to smooth out the contours}
-  \apw{Remove the shaded bands (Penarrubia and vdM2012) from the bottom left panel - they should only appaer in the histogram}
   \apw{For the main case of vtravel=32, run for tune=4000, draws=40000 and remake}
   }
 \end{figure*}
@@ -519,7 +515,7 @@ We find that as proper motion measurements improve by a factor of $\sim2$, the c
 
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=\columnwidth]{analyze-runs-MvV.pdf}
+    \includegraphics[width=\columnwidth]{analyze-runs-MvsV.pdf}
     \caption{\label{fig:mvsv}
     Mean inferred Local Group mass as a function of travel velocity
     magnitude of the MW disk.
