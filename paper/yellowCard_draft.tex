@@ -120,7 +120,7 @@
 \section{Introduction}
 \label{sec:intro}
 % \textbf{Importance of local group mass and measuring it}
-The total mass of the Local Group is a fundamental quantity in many local
+The total mass of the Local Group is an important quantity in many local
 cosmological and Milky Way (MW) applications.
 For example, it is used to identify analogous halos in cosmological simulations
 and thus allows comparing host galaxy and satellite galaxy number counts and
@@ -177,37 +177,36 @@ reference frame that would exist in the absence of the MCs) in a Timing Argument
 model to infer the mass of the Local Group using recent measurements of the
 distance and proper motions of M31.
 
+\section{Methods and Data}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{The Timing Argument}
+\subsection{Dynamical Model: The Timing Argument}
 \label{sec:timingarg}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Following past work \citep[e.g.,][]{Lynden-Bell:1981, vdm2012, Penarrubia2016},
-we assume that the orbital trajectories of the M31 and MW --- the Local Group
+we assume that the orbital trajectories of the MW and M31 --- the Local Group
 system --- over cosmic history are well-described by Keplerian orbits.
 By assuming that the M31 and MW are gravitationally bound and were last at
 closest approach in the early universe (i.e. the two galaxies have not yet
-strongly interacted), we can then use the present-day kinematics of M31 to
-estimate the total mass of the Local Group (i.e. using the ``Timing Argument'').
+strongly interacted), we can then use the present-day kinematics of M31 relative
+to the Milky Way to estimate the total mass of the Local Group (i.e. using the
+``Timing Argument'').
 
 % \textbf{The dynamics of the M31-MW system can be approximated by simple Keplerian orbits.}
 We largely follow the methodology and notation defined in
 \citet{Penarrubia2016}, but the Timing Argument has been used in many other
-studies \citep[e.g.,][]{stuff}.
-% TODO: we have to put a list of TA references here so people don't get
-% grumpy... but they will still be grumpy!
+studies \citep[e.g.,][]{stuff} \todo{TA refs}.
 Briefly recapping the Timing Argument method, we assume that the dynamics of the
 MW and M31 is dominated by the local gravitational potential of the Local Group
 (LG) and therefore the Hubble flow can be neglected for computing the relative
-orbits of the galaxies \citep[see, e.g.,][]{someone}.
-% TODO: figure out most relevant citation for this!
-Since we observe something close to the relative position and motion between M31
-and the MW, we reduce the dynamics of the galaxies in the LG system to a single
-Keplerian orbit that specifies the relative orbit between the galaxies and is
-completely determined by four model parameters: the total mass of the Local
-Group \mlg, the semi-major axis $a$, the eccentricity $e$, and the present value
-of the eccentric anomaly $\eta$.
+orbits of the galaxies \citep[see, e.g.,][]{Penarrubia2014}.
+Since we observe the relative position and motion between M31 and the MW, we
+reduce the dynamics of the galaxies in the LG system to a single Keplerian orbit
+that specifies the relative orbit between the galaxies and is completely
+determined by four model parameters: the total mass of the Local Group \mlg, the
+semi-major axis $a$, the eccentricity $e$, and the present value of the
+eccentric anomaly $\eta$.
 
 In terms of these four model parameters, the closed-form equations for relevant
 two-body quantities like the separation between the masses $r$, the elapsed time
@@ -221,15 +220,16 @@ since last pericenter $t$, and the radial and tangential velocity components
 \end{align}
 In our model, the separation $r$ is the distance between the centers of mass of
 M31 and the MW, the time since last pericenter $t$ is the age of the Universe,
-and (\vrad, \vtan) expresses the radial and tangential velocity components of
-M31 relative to the MW center.
+and the velocity components $(\vrad, \vtan)$ express the radial and tangential
+velocity components of M31 relative to the MW center.
 
 In a simpler universe where the MW and M31 are point masses and there are no
 other massive bodies in the LG system, we could transform the observed
 heliocentric sky position, distance, and velocity of M31 to a MW Galactocentric
 reference frame and combine these with an estimate of the Hubble time to obtain
-the four ``observables'' $(r, t, \vrad, \vtan)$ and then infer the four model
-parameters $(\mlg, a, e, \eta)$ using Equations~\ref{eq:r}--\ref{eq:vtan}.
+the four ``observables'' $(r, t, \vrad, \vtan)$:
+These observables would be enough to infer the four model parameters $(\mlg, a,
+e, \eta)$ using Equations~\ref{eq:r}--\ref{eq:vtan}.
 % \textbf{To compare our model predictions of the M31-MW system to the observed kinematics, we must translate these quantities into observables to constrain our model with observational data.}
 To describe this ``classical'' Timing Argument approach in more detail and set
 the stage for extending it, we adopt the notation of \citet{Penarrubia2016} in
@@ -276,7 +276,7 @@ We assume that the outer MW halo frame is equivalent to the MW barycentric frame
 in the simpler case where there is no LMC, or in other words we assume that the
 outer MW halo has not yet had time to respond to the infall of the LMC.
 We also assume that the sun, Galactic disk, and inner MW moved as a solid body
-so that $\vel{\mwdisk}{\odot}$ and $\vel{\mwdisk}{\odot}$ are equivalent to the
+so that $\pos{\mwdisk}{\odot}$ and $\vel{\mwdisk}{\odot}$ are equivalent to the
 solar position and velocity with respect to the Galactic center (as in
 Equations~\ref{eq:xoffset1}--\ref{eq:voffset1}).
 Figure~\ref{fig:schematic} shows a schematic of these different vectors --- all
@@ -301,17 +301,17 @@ e.g.,][]{Garavito-Camargo2021b}.
   \centering
   \includegraphics[width=\textwidth]{schematic-filled.pdf}
   \caption{
-    Schematic of the MW and M31 system, not to scale. The shaded regions 
-    represent the halos of both galaxies. Shown are an artistic representation 
-    of the velocity and position vectors that are relevant in our model, 
-    including: $\pos{M31}{\mwdisk}$, the distance between the MW disk and the 
-    M31 disk; 
+    Schematic of the MW and M31 system, not to scale. The shaded regions
+    represent the halos of both galaxies. Shown are an artistic representation
+    of the velocity and position vectors that are relevant in our model,
+    including: $\pos{M31}{\mwdisk}$, the distance between the MW disk and the
+    M31 disk;
     $\pos{M31}{\mwouter}$, the distance between the centers of both halos;
-    $\pos{\mwdisk}{\mwouter}$, the distance between the Galactic center and the 
+    $\pos{\mwdisk}{\mwouter}$, the distance between the Galactic center and the
     center of the MW halo (resulting from the reflex motion);
-    $\vel{\mwdisk}{\mwouter}$ and $\vel{M31}{\mwouter}$, the velocity of the 
-    Galactic center with respect to the center of the MW halo, and the measured 
-    velocity of M31 from the Galactic center, respectively. \kc{should the 
+    $\vel{\mwdisk}{\mwouter}$ and $\vel{M31}{\mwouter}$, the velocity of the
+    Galactic center with respect to the center of the MW halo, and the measured
+    velocity of M31 from the Galactic center, respectively. \kc{should the
     velocity vec for M31 be M31$\to$\Msun?}
   }
   \label{fig:schematic}
@@ -319,27 +319,39 @@ e.g.,][]{Garavito-Camargo2021b}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Datasets}
+\subsection{Datasets}
 \label{sec:datasets}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Key input into Timing Argument inferences of the Local Group mass are the
 present position and velocity of M31 and the age of the universe (used in in
 Equation~\ref{eq:t}).
-Here we consider two compilations of data that provide this information to have
-as comparisons.
-The two datasets used in our analysis are summarized in Table~\ref{table:data}.
-Briefly, ``Dataset 1'' comes from the measured proper motion of M31 and a
-collection of other data used to constrain the mass of the Local Group via the
-Timing Argument in~\citet{vdm2012}.
-\todo{add note that we uses the full weighted pms from satellite kinematics and not just the HST.}
-``Dataset 2'' is a compilation of more recent measurements, including a more
-precise Cepheid-based distance measure to M31 \citep{Li2021} and updated proper
-motions of M31 measured using data from \textit{Gaia} eDR3 \citep{Salomon2021}.
-The \textit{Gaia}-based M31 proper motion measurement is slightly higher,
-leading to an increased implied transverse velocity that will likely lead to a
-higher inferred Local Group mass compared to the more radial orbit implied by
-Dataset 1.
+Here we consider a few compilations of data that provide this information to
+have as comparisons.
+The datasets used in our analysis are summarized in Table~\ref{table:data}.
+We consider three main datasets in this work.
+\begin{description}
+  \item[vdMG08 Dist. + HST PM] The first dataset contains the measured proper
+  motion of M31 and a collection of other data used to constrain the mass of the
+  Local Group via the Timing Argument in~\citet{vdm2012}: This is labeled as
+  ``vdMG08 Dist. + HST PM'' in figures below to reflect that the M31 distance
+  measurement comes from \citet{vdm2008} and the proper motion comes from HST
+  measurements presented in \citet{vdm2012}. For the proper motion components,
+  we use the proper motions measured from a combination of satellite kinematics
+  and astrometric fields \cite{vdm2012}.
+  \item[Cepheid Dist. + Gaia PM] As an independent dataset, we also consider a
+  compilation of more recent M31 kinematic measurements, including a more
+  precise Cepheid-based distance measure to M31 \citep{Li2021} and updated
+  proper motions of M31 measured using data from \textit{Gaia} eDR3
+  \citep{Salomon2021}. The \textit{Gaia}-based M31 proper motion measurement is
+  slightly larger than the HST proper motion of M31, leading to an increased
+  implied transverse velocity that leads to a higher inferred Local Group mass
+  compared to the more radial orbit implied by the first dataset.
+  \item[Cepheid Dist. + HST PM] As another comparison, we also use a hybrid
+  dataset that uses the Cepheid-based distance measure to M31 and the HST-based
+  proper motion measurement \citep{Li2021,vdm2012}.
+\end{description}
+See Table~\ref{table:data} for numerical values used in each of these datasets.
 
 \begin{table*}
   \centering
@@ -357,6 +369,7 @@ Dataset 1.
 
   \end{tabular}
   \caption{\label{table:data}
+  \apw{This needs to be updated to reflect the new dataset stuff}
   Observational datasets used for comparison throughout analysis and their
   references (vdMG08 is \cite{vdm2008}) Each value is measured for M31 with
   respect to the sun. $D$ is the distance, $v_{\rm rad}$ is the radial velocity,
@@ -372,7 +385,7 @@ Dataset 1.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Bayesian Inference}
+\subsection{Bayesian Inference}
 \label{sec:bayes}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -673,9 +686,9 @@ Currently, appendix only includes the corner plots for all of the 5 model parame
   \centering
   \includegraphics[width=0.8\columnwidth]{analyze-runs-all-vdm2012.pdf}
   \caption{\label{fig:contour-vdm}
-  68\% and 95\% confidence contours of sampled posterior distributions for all 
+  68\% and 95\% confidence contours of sampled posterior distributions for all
   model parameters for the vdMG08 (how to make link to citation?) distance
-  measurement $770\pm 40 \rm kpc$ and proper motions from \textit{HST}. 
+  measurement $770\pm 40 \rm kpc$ and proper motions from \textit{HST}.
   }
 \end{figure*}
 
@@ -683,9 +696,9 @@ Currently, appendix only includes the corner plots for all of the 5 model parame
   \centering
   \includegraphics[width=0.8\columnwidth]{analyze-runs-all-Dataset3.pdf}
   \caption{\label{fig:contour-dataset3}
-    68\% and 95\% confidence contours of sampled posterior distributions for all 
+    68\% and 95\% confidence contours of sampled posterior distributions for all
     model parameters for the vdMG08 (how to make link to citation?) distance
-    measurement $770\rm kpc$ and proper motions from \textit{HST}. 
+    measurement $770\rm kpc$ and proper motions from \textit{HST}.
   }
 \end{figure}
 
@@ -693,9 +706,9 @@ Currently, appendix only includes the corner plots for all of the 5 model parame
   \centering
   \includegraphics[width=0.8\columnwidth]{analyze-runs-all-fiducial2021.pdf}
   \caption{\label{fig:contour-fiducial}
-  68\% and 95\% confidence contours of sampled posterior distributions for all 
+  68\% and 95\% confidence contours of sampled posterior distributions for all
   model parameters for the cepheid distance
-  measurement $761\pm 11 \rm kpc$ and proper motions from \textit{Gaia}. 
+  measurement $761\pm 11 \rm kpc$ and proper motions from \textit{Gaia}.
   }
 \end{figure*}
 
