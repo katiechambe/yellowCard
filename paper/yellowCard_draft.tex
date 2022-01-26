@@ -389,19 +389,20 @@ See Table~\ref{table:data} for numerical values used in each of these datasets.
 \label{sec:bayes}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We construct a likelihood function for the observed, heliocentric position and
+We construct a likelihood function for the observed, Heliocentric position and
 velocity of M31 and the time since last pericenter given the four parameters of
 the Timing Argument model $(\mlg, a, e, \eta)$, assign prior probability
 distribution functions (pdfs) for the parameters, and use these to compute the
 posterior pdf over the parameters given the data.
 In detail, we first use the four Timing Argument parameters to compute the
-present day separation between the MW and M31, and the relative radial and
+present day separation between the MW and M31 and the relative radial and
 tangential velocities as defined in Equations~\ref{eq:r}--\ref{eq:vtan}.
 These velocity components represent the relative velocity M31 would have as
-observed from the barycenter of the MW--LMC subsystem; We then use the measured
-``travel velocity'' of the MW disk $\vel{\mwouter}{\mwdisk}$ to compute the
-relative velocity of M31 that would be observed from a frame moving with the
-center of the Milky Way disk (i.e. a Galactocentric frame).
+observed from the barycenter of the MW--LMC subsystem.
+We then use the measured ``travel velocity'' of the MW disk
+$\vel{\mwouter}{\mwdisk}$ to compute the relative velocity of M31 that would be
+observed from a frame moving with the center of the Milky Way disk (i.e. a
+MW Galactocentric frame).
 We finally then transform from this Galactocentric frame to a heliocentric
 reference frame moving with the solar system barycenter (i.e. ICRS coordinates).
 At this final stage, we must introduce an additional nuisance parameter $\alpha$
@@ -415,7 +416,7 @@ velocity vector.
 We specify this model using the \texttt{Python} probabilistic programming
 package \texttt{pymc3}~\citep{Salvatier2016} and our adopted prior pdfs are
 summarized in Table~\ref{table:priors}.
-We use the No-U-Turn Sampler (NUTS) \citep{gelman?} implemented in
+We use the No-U-Turn Sampler (NUTS) \citep{Homan2014} implemented in
 \texttt{pymc3} to generate samples from this posterior pdf, given data from each
 of the datasets defined in Table~\ref{table:data}.
 We sample over the parameter Local Group mass $\mlg$, (true) present-day MW--M31
@@ -427,7 +428,6 @@ However, we set the priors as follows:
   distribution centered on a past measured value of the local group mass.
   \item Present MW--M31 separation $r$: we again use a broad, truncated normal
   distribution centered on past measurements of the distance to M31.
-  % TODO: oops - we should center it on ~770 ot 750, not 700 kpc like we chose!
   \item Eccentricity $e$: we assume a uniform prior on eccentricity but sample
   in the transformed parameter $\ln(1-e)$ to improve the acceptance fraction
   when generating posterior samples.
@@ -435,8 +435,8 @@ However, we set the priors as follows:
   \item Orbital plane orientation $\alpha$: we assume a uniform prior.
 \end{itemize}
 
-For each dataset, we run the sampler with 4 chains for 4000 tuning steps and
-8000 draws.
+For each dataset, we run the sampler with 4 chains for 4,000 tuning steps and
+40,000 draws.
 
 % \begin{equation}
 %   \mathcal{L}(| \boldsymbol{S})
