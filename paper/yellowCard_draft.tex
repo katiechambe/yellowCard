@@ -524,7 +524,7 @@ Using the \gaia\-based proper motions \citep{Salomon2021} leads to a finite
 inferred LG orbital eccentricity of $e\sim 0.85$ and therefore a larger inferred
 LG mass.
 However, enforcing $e=1$ (i.e. a radial LG orbit) produces very consistent mass
-estimates between the datasets considered implying a LG mass $\mlg = 3.6
+estimates between the datasets considered, implying a LG mass $\mlg = 3.6
 \pm 0.3 \times 10^{12}~\Msun$.
 
 % Constraints on the distance to M31 remain roughly unchanged for both datasets, primarily because our model does not introduce a physical displacement of the MW disk, since we assume the motion of the disk over the past XX Myr since the LMC achieved pericenter is negligible compared to the separation between M31 and the MW. Thus, the inclusion of the reflex motion of the disk in our model does not affect constraints on the distance to M31.
@@ -550,52 +550,39 @@ estimates between the datasets considered implying a LG mass $\mlg = 3.6
     \kc{make sense of the leveling off at 70km/s.}
     \kc{also maybe add to x values of points to put them next to each other?
     instead of overlapping?}
+    \apw{Can you change from mean to median? Also I think we can remove the markers at vtravel=32 - I think the point of this figure is to show the scaling. You could just put a vertical dashed line at 32 to highlight where the other curves intersect.}
     }
   \end{figure}
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[width=\columnwidth]{analyze-runs-deltaMvsPM.pdf}
-    \caption{\label{fig:mvspm} Improvement in the inferred Local Group mass as a function of fractional improvement in proper motion errors.
-    The standard deviation in the mass decreases with decreasing proper motion
-    error, and in particular, decrease by a factor of $\sim2.5$ for PMs that are
-    4 times smaller than in Dataset 2.
-    \textbf{As future \textit{Gaia} data releases provide improved proper motion errors, constraints on the Local Group mass from the Timing Argument can
-    improve by a factor of $>$2.}
-    }
-\end{figure}
+% APW SAYS: I think we can remove this figure and just discuss what it shows in
+% the text.
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[width=\columnwidth]{analyze-runs-deltaMvsPM.pdf}
+%     \caption{\label{fig:mvspm} Improvement in the inferred Local Group mass as a function of fractional improvement in proper motion errors.
+%     The standard deviation in the mass decreases with decreasing proper motion
+%     error, and in particular, decrease by a factor of $\sim2.5$ for PMs that are
+%     4 times smaller than in Dataset 2.
+%     \textbf{As future \textit{Gaia} data releases provide improved proper motion errors, constraints on the Local Group mass from the Timing Argument can
+%     improve by a factor of $>$2.}
+%     }
+% \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}
 \label{sec:discussion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The direction and magnitude of the motion of the MW disk is directly tied to the
-inferred mass of the Local Group.
-In this case, the orbit of the LMC and location of the LMC at pericenter are in the same region of the sky as M31 such that the radial component of motion is in the direction of M31.
-Thus, the observed radial velocity of M31 will be higher than for an unperturbed MW halo. Since $-v_{rad}\propto M^{1/2}$ for an infalling system, a smaller (but still negative) radial velocity will yield a lower Local Group mass.
+\subsection{Comparing recent measurements of the Local Group mass}
 
-The eccentricity decreases significantly for Dataset 2 compared to Dataset 1, due to the larger measured proper motions of Dataset 2.  Additionally, a smaller radial velocity corresponds to a lower eccentricity for a fixed mass and distance, which can be seen in the bottom right panel of~\ref{fig:contour}.
+\apw{Add a paragraph comparing our measurements to other values (e.g., summarize aspects of your Table 3)}
 
-
-% bit about the stellar halo tracers and different distances etc
-\cite{Garavito-Camargo2021b} showed that stellar halo tracers at different distances from the MW disk center may result in different measured travel velocities, and it's likely that the current measurements on $v_{travel}$ of 32km/s are just a lower bound on the actual reflex motion of the disk. In Fig.~\ref{fig:mvsv}, we show that for increasing travel velocity magnitudes, the mass of the Local Group from the Timing Argument steadily decreases. Thus, future measurements of the travel velocity of the disk will likely result in a lower inferred Local Group mass. Vertical lines show the travel velocities that are expected for three tracer distances in simulations from~\cite{Garavito-Camargo2021b}. \kc{why does the mass level off after 80kpc / 70km/s? }
-
-% bit about PM improvement
-Of all our observational data, the proper motions have the largest relative errorbars. In order to determine how improved constraints on the proper motions from future Gaia data releases would impact Timing Argument constraints on the Local Group mass, we redid our analysis as a function of the fractional improvement in proper motion errors.
-We find that as proper motion measurements improve by a factor of $\sim2$, the constraints on the Local Group mass from the timing argument will improve by a factor of more than 1.5. These results are compiled in Fig.~\ref{fig:mvspm}.
-
-
-% TODO: move to discussion
-% this will maybe go in discussion?
-% Previous studies that have used the Timing Argument to constrain the mass of the
-% Local Group have found a range of masses.
-
-This is about $XX\%$ lower than the mass inferred in \citet{vdm2012}, which did
-not include the MC-induced reflex motion of the Milky Way disk.
-
-% ~\cite{vdm2012} used the timing argument with Dataset 1 and derived a mass of
-% $4.27\pm 0.53\times 10^{12}~\Msun$) \kc{note: our value of \mlg is $\sim.3 \times 10^{12}~\Msun$ higher than found in vdm2012 with the same set of data with no travel velocity. probably just in implementation of mcmc or something?}.
+Suggested outline:
+- There are two ways of measuring LG mass: go after it directly with LV dynamics / Timing Argument, or measure MW/M31 separately and add the masses
+- Historically, LG dynamics-inferred masses are larger than adding MW+M31 masses: recap rough numbers from your Table 3 (LG dynamics masses have been upwards of $4\times 10^{12}$, adding independent mass measures closer to 2--2.5)
+- One exception is the Penarrubia2016 method, ... (use sentences from paragraph below to describe)
+- Our value is still larger than most added MW+M31 values (except Cosmo sims), but brings it closer to MW+M31
+- Not surprising there is some discrepancy because MW/M31 total mass estimates do not measure full extent of DM distribution and have to extrapolate - there are large uncertainties
 
 ~\cite{Penarrubia2016} finds a Local Group mass of ($\sim2.64\pm0.4\times
 10^{12}~\Msun$) which is significantly lower than our expectations, although this
@@ -608,23 +595,83 @@ an underestimate of the mass of the Local Group with LV galaxies only.
 Including the dynamics of the M31--MW system increased their recovered
 total mass by $0.6\times10^{12}~\Msun$.
 
-\subsection{Inclusion of reflex motion in dynamics of the Local Group}
-The inclusion of the reflex motion of the Milky Way disk can result in up to
-$1\times10^{12}$ difference in the estimated mass of the Local Group, which
-means that by not accounting for this motion, we could get measurements of the
-Local group mass that are overestimated by 20-25\%.
-Other dynamical interactions within the Local Group will also be affected by
-the reflex motion of the disk. (What is the distribution of satellite velocities
-about the MW now and w reflex motion? Cause should there maybe be an excess of
--vrad satellites in the MW halo? )
+
+\subsection{Inclusion of Milky Way disk reflex motion in dynamics of the Local Group}
+
+As shown in our results above, including the reflex motion of the Milky Way disk
+results in now measurable differences in the estimated mass of the Local Group
+through the Timing argument.
+Ignoring this motion at its currently measured travel velocity\footnote{Defined
+as $\vel{\mwouter}{\mwdisk}$ above.} magnitude of $v_\textrm{travel} = 32~\kms$
+\citep{Petersen2021} leads to LG masses that are overestimated by $\sim30\%$.
+However, the direction and magnitude of travel velocity is directly tied to the
+inferred mass of the Local Group.
+As it is currently measured, the (mean) direction of $\vel{\mwouter}{\mwdisk}$
+is just $\sim$$60^\circ$ from the sky position of M31, meaning that the travel
+velocity impacts the conversion of both M31's observed proper motion and radial
+velocity from a Heliocentric reference frame to the ``outer halo'' reference
+frame used above.
+At fixed magnitude, if the true apex of the travel velocity motion is closer
+(farther) to M31's sky position, it would primarily affect the radial velocity
+(proper motions).
+
+% Thus, the observed radial velocity of M31 will be higher than for an unperturbed MW halo. Since $-v_{rad}\propto M^{1/2}$ for an infalling system, a smaller (but still negative) radial velocity will yield a lower Local Group mass.
+
+% The eccentricity decreases significantly for Dataset 2 compared to Dataset 1, due to the larger measured proper motions of Dataset 2.  Additionally, a smaller radial velocity corresponds to a lower eccentricity for a fixed mass and distance, which can be seen in the bottom right panel of~\ref{fig:contour}.
+
+% bit about the stellar halo tracers and different distances etc
+There is reason to believe that the recently measured MW disk travel velocity
+could be a lower bound on the true value, which could be up to a factor of
+$\sim$2--3 higher than the currently measured value
+\cite{Garavito-Camargo2021b}.
+Using an idealized simulation of an equilibrium dark matter halo that has a
+recent merger with an LMC-like halo, \cite{Garavito-Camargo2021b} showed that
+stellar halo tracers at different distances from the MW disk center may result
+in different measured travel velocities.
+% , and it is possible that the current measurement on $v_{travel}$ of 32km/s are just a lower bound on the actual reflex motion of the disk.
+At fixed apex direction, a larger travel velocity would correspond to a lower
+inferred LG mass.
+Figure~\ref{fig:mvsv} shows the effect of increasing the measured travel
+velocity magnitude and its impact on the inferred mass of the Local Group for
+each of the datasets used in this work (see Section~\ref{sec:datasets}).
+The vertical lines in this figure show the travel velocities that are predicted
+for three tracer distances in simulations from~\cite{Garavito-Camargo2021b}.
+% \kc{why does the mass level off after 80kpc / 70km/s? }
+Thus, future measurements of the travel velocity of the disk that use tracers at
+larger distance around the MW stellar halo will likely lead to a lower inferred
+Local Group mass.
 
 
-\subsection{Expectations for future observations.}
-\kc{Adrian!}
+% TODO: move to discussion
+% this will maybe go in discussion?
+% Previous studies that have used the Timing Argument to constrain the mass of the
+% Local Group have found a range of masses.
 
-Do we expect Gaia DR3 proper motions to improve by a factor of ~4?
-This would provide the tightest constraints on the Local Group mass from the
-Timing Argument!
+% This is about $XX\%$ lower than the mass inferred in \citet{vdm2012}, which did
+% not include the MC-induced reflex motion of the Milky Way disk.
+
+% ~\cite{vdm2012} used the timing argument with Dataset 1 and derived a mass of
+% $4.27\pm 0.53\times 10^{12}~\Msun$) \kc{note: our value of \mlg is $\sim.3 \times 10^{12}~\Msun$ higher than found in vdm2012 with the same set of data with no travel velocity. probably just in implementation of mcmc or something?}.
+
+
+\subsection{Improved \mlg\ constraints from future observations}
+
+The biggest source of uncertainty in our inferred LG mass $\mlg$ currently comes
+from the proper motion measurements, which currently have signal-to-noise ratios
+of just 3--4.
+Future data releases from the \gaia\ Mission \citep{GaiaOverview2016} will lead
+to more precise mean proper motions of M31 and thus more precise Timing Argument
+constraints on the LG mass.
+For example, between \gaia\ EDR3 and the end of the extended (10 year) mission,
+the expected individual-source proper motion precision improvement for a $G=20$
+source (i.e. an upper giant-branch star in M31) is a factor of $\sim$6.
+Na\"ively scaling the proper motion uncertainties of M31 as measured with \gaia\
+\citep{Salomon2021} by a factor of 6 leads to a $\sim2\times$ improvement in the
+$\mlg$ precision.
+Of course, the true improvement of the mean M31 proper motion with improved
+individual source kinematics could be even better than linear because more
+sources will be detected and usable in the measurement.
+
 
 \subsection{The M31--M33 system}
 We do not account for the effects of reflex motion of M31 due to
@@ -638,10 +685,18 @@ which may have been resulted in a substantial reflex motion.
 Thus, we elect to disregard the effects of an M31 reflex motion.
 
 
+% TODO: keep this?
+% Other dynamical interactions within the Local Group will also be affected by
+% the reflex motion of the disk. (What is the distribution of satellite velocities
+% about the MW now and w reflex motion? Cause should there maybe be an excess of
+% -vrad satellites in the MW halo? )
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary and Conclusions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:summary}
+
 In this Letter, we use the Timing Argument to constrain the mass of the Local
 Group by
 simplifying the dynamics of the MW--M31 pair to a Keplerian orbital model and
@@ -716,6 +771,33 @@ subhalos, resulting in morphological features like the Giant Southern Stream and
 XX (what are other M31 things that indicate recent interactions? Do we think
 much about M32? )
 
+\begin{acknowledgements}
+
+This project was started at the Big Apple Dynamics School (BADS) hosted by the
+Flatiron Institute July--August 2021.
+We greatly benefitted from discussions with the other students who attended the
+BADS, and received helpful input from:
+Kathryn Johnston (Columbia),
+\todo{Who else?}.
+This work made use of the
+\texttt{PyGaia}\footnote{https://github.com/agabrown/PyGaia} package: We
+acknowledge the Gaia Project Scientist Support Team and the Gaia Data Processing
+and Analysis Consortium (DPAC) for their work on this software tool.
+This research made use of Astropy,\footnote{http://www.astropy.org} a
+community-developed core Python package for Astronomy \citep{astropy:2013,
+astropy:2018}.
+\end{acknowledgements}
+
+\software{
+    Arviz \citep{arviz},
+    Astropy \citep{astropy:2013, astropy:2018},
+    gala \citep{gala},
+    IPython \citep{ipython},
+    matplotlib \citep{matplotlib},
+    numpy \citep{numpy},
+    pymc3 \citep{Salvatier2016},
+    scipy \citep{scipy}
+}
 
 \appendix
 Currently, appendix only includes the corner plots for all of the 5 model parameters for each of the three datasets.
@@ -748,15 +830,6 @@ Currently, appendix only includes the corner plots for all of the 5 model parame
   measurement $761\pm 11 \rm kpc$ and proper motions from \textit{Gaia}.
   }
 \end{figure*}
-
-% \software{
-%     Astropy \citep{astropy, astropy:2018},
-%     gala \citep{gala},
-%     IPython \citep{ipython},
-%     numpy \citep{numpy},
-%     pymc3 \citep{Salvatier2016},
-%     scipy \citep{scipy}
-% }
 
 \bibliography{refs}{}
 \bibliographystyle{aasjournal}
