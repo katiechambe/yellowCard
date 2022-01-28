@@ -27,6 +27,7 @@
 \newcommand{\mwbary}{\ensuremath{\textrm{MW}_\textrm{bary}}}
 \newcommand{\mwouter}{\ensuremath{\textrm{MW}_\textrm{outer}}}
 \newcommand{\mwdisk}{\ensuremath{\textrm{MW}_\textrm{disk}}}
+\newcommand{\reflabel}[1]{\ensuremath{^{\mbox{\scriptsize{#1}}}}}
 
 % Style tweaks
 % \renewcommand{\twocolumngrid}{\onecolumngrid}
@@ -196,7 +197,8 @@ to the Milky Way to estimate the total mass of the Local Group (i.e. using the
 % \textbf{The dynamics of the M31-MW system can be approximated by simple Keplerian orbits.}
 We largely follow the methodology and notation defined in
 \citet{Penarrubia2016}, but the Timing Argument has been used in many other
-studies \citep[e.g.,][]{stuff} \todo{TA refs}.
+studies \citep[e.g.,][]{Kahn1959, Kroeker1991,LiWhite2008,more} \todo{TA refs}.
+\kc{shouldn't these refs go at beginning of this section?}
 Briefly recapping the Timing Argument method, we assume that the dynamics of the
 MW and M31 is dominated by the local gravitational potential of the Local Group
 (LG) and therefore the Hubble flow can be neglected for computing the relative
@@ -311,8 +313,7 @@ e.g.,][]{Garavito-Camargo2021b}.
     center of the MW halo (resulting from the reflex motion);
     $\vel{\mwdisk}{\mwouter}$ and $\vel{M31}{\mwouter}$, the velocity of the
     Galactic center with respect to the center of the MW halo, and the measured
-    velocity of M31 from the Galactic center, respectively. \kc{should the
-    velocity vec for M31 be M31$\to$\Msun?}
+    velocity of M31 from the Galactic center, respectively.
   }
   \label{fig:schematic}
 \end{figure*}
@@ -353,23 +354,53 @@ We consider three main datasets in this work.
 \end{description}
 See Table~\ref{table:data} for numerical values used in each of these datasets.
 
+% \begin{table*}
+%   \centering
+%   \begin{tabular}{lc|c|c}
+%     \hline\hline
+%       & vdMG08 Dist. + HST PM & Cepheid Dist. + Gaia PM & Cepheid Dist. + HST PM\\\hline
+%   $D$ &  $770 \pm 40~\kpc$  \cite{vdm2008}    &   $761\pm11~\kpc$  & test\cite{Li2021}\\
+%   $v_{\rm rad}$     &     $-301 \pm 1~\kms$ \todo{Citation?}       &   $-301 \pm 1~\kms$        \\
+%   $(\mu_{\alpha^*},  \mu_\delta)$    & $(34.30 \pm 8.25, -20.22 \pm 7.71)~\muasyr$ \citep{vdm2012} & $(48.98 \pm 10.47, -36.85 \pm 8.03)~\muasyr$ \citep{Salomon2021}\\
+%   $\bs{v}_\odot$ & $(11.1, 251.54, 7.25)~\kms$ \todo{cite} & $(12.9, 245.6, 7.78)~\kms$ \citep{Drimmel2018}\\
+%   $t_{\rm peri}$ & $13.75 \pm 0.11~\Gyr$ \citep{Jarosik2011} & $13.801 \pm 0.024~\Gyr$ \todo{cite Planck18}\\
+%   %              &           &           \\
+%   %              &           &           \\
+%   \hline\hline
+%   \end{tabular}
+%   \caption{\label{table:data}
+%   \apw{This needs to be updated to reflect the new dataset stuff}
+%   Observational datasets used for comparison throughout analysis and their
+%   references (vdMG08 is \cite{vdm2008}) Each value is measured for M31 with
+%   respect to the sun. $D$ is the distance, $v_{\rm rad}$ is the radial velocity,
+%   $(\mu^*_{\alpha}, \mu_{\delta})$ are proper motions in RA cosdec and Dec, and
+%   (U$_{\rm pec}$, V$_{\rm pec}$+V$_0$, W$_{\rm pec}$) the solar motion with
+%   respect to the galactic center. $t_{\rm peri}$ is the time elapsed since the
+%   last pericenter of the M31 Keplerian orbit, which in this case is the age of
+%   the Universe.
+%   \apw{The references make the table spill over the page. I think we need to do
+%   references in footnotes instead?} % \tablecomments{howdy}
+%   }
+%   \tablecomments{howdy}
+% \end{table*}
+
 \begin{table*}
   \centering
-  \begin{tabular}{lc|c}
+  \begin{tabular}{lc|c|c}
     \hline\hline
-                    & Dataset 1                     & Dataset 2 \\\hline
-  $D$               &  $770 \pm 40~\kpc$ \citep{vdm2008}     &   $761\pm11~\kpc$ \citep{Li2021}        \\
-  $v_{\rm rad}$     &     $-301 \pm 1~\kms$ \todo{Citation?}       &   $-301 \pm 1~\kms$        \\
-  $(\mu_{\alpha^*},  \mu_\delta)$    & $(34.30 \pm 8.25, -20.22 \pm 7.71)~\muasyr$ \citep{vdm2012} & $(48.98 \pm 10.47, -36.85 \pm 8.03)~\muasyr$ \citep{Salomon2021}\\
-  $\bs{v}_\odot$ & $(11.1, 251.54, 7.25)~\kms$ \todo{cite} & $(12.9, 245.6, 7.78)~\kms$ \citep{Drimmel2018}\\
-  $t_{\rm peri}$ & $13.75 \pm 0.11~\Gyr$ \citep{Jarosik2011} & $13.801 \pm 0.024~\Gyr$ \todo{cite Planck18}\\
-  %              &           &           \\
-  %              &           &           \\
+      & \textbf{vdMG08 Dist. + HST PM} & \textbf{Cepheid Dist. + Gaia PM} & \textbf{Cepheid Dist. + HST PM}\\\hline
+  $D~[\kpc]$ & $770 \pm 40\reflabel{a}$ &   $761\pm11~\kpc\reflabel{f}$  & $761\pm11\reflabel{f}$\\
+  $v_{\rm rad}~[\kms]$ & $-301 \pm 1\reflabel{b}$ & $-301\pm 1\reflabel{b}$ & $-301\pm 1\reflabel{b}$ \\
+  $\mu_{\alpha^*}~[\muasyr]$    & $34.30\pm 8.25\reflabel{c}$  & $48.98\pm 10.47\reflabel{g}$ & $34.30\pm 8.25\reflabel{c}$ \\
+  $\mu_\delta~[\muasyr]$ & $-20.22 \pm 7.71$\reflabel{c} & $-36.85\pm 8.03\reflabel{g}$ & $-20.22 \pm 7.71$\reflabel{c} \\
+  $\bs{v}_\odot$~[\kms]& $(11.1, 251.54, 7.25)\reflabel{d}$ & $(12.9, 245.6, 7.78)\reflabel{h}$ & $(12.9, 245.6, 7.78)$ \reflabel{h}\\
+  $t_{\rm peri}~[\Gyr]$ & $13.75\pm 0.11\reflabel{e}$  & $13.801 \pm 0.024$ \reflabel{i} & $13.801 \pm 0.024$ \reflabel{i}\\
   \hline\hline
-
   \end{tabular}
+  \tablerefs{$a.$ \cite{vdm2008}, $b.$ \cite{Courteau1999}, $c.$ \cite{vdm2012}, $d.$ \cite{Schonrich2010,McMillan2011}, $e.$ \cite{Jarosik2011}, $f.$ \cite{Li2021},$g.$ \citep{Salomon2021}, $h.$ \citep{Drimmel2018}, $i.$ \cite{Planck2018}}
+  % \tablenotetext{a}{\cite{vdm2008}}
+  % \tablenotetext{b}{\cite{Li2021}}
   \caption{\label{table:data}
-  \apw{This needs to be updated to reflect the new dataset stuff}
   Observational datasets used for comparison throughout analysis and their
   references (vdMG08 is \cite{vdm2008}) Each value is measured for M31 with
   respect to the sun. $D$ is the distance, $v_{\rm rad}$ is the radial velocity,
@@ -378,8 +409,6 @@ See Table~\ref{table:data} for numerical values used in each of these datasets.
   respect to the galactic center. $t_{\rm peri}$ is the time elapsed since the
   last pericenter of the M31 Keplerian orbit, which in this case is the age of
   the Universe.
-  \apw{The references make the table spill over the page. I think we need to do
-  references in footnotes instead?}
   }
 \end{table*}
 
