@@ -36,7 +36,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \shorttitle{Updated Local Group Mass from Timing Argument}
-\shortauthors{Chamberlain, Price-Whelan et al.}
+\shortauthors{Chamberlain et al.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \graphicspath{{./}{figures/}}
@@ -385,7 +385,6 @@ See Table~\ref{table:data} for numerical values used in each of these datasets.
 % \end{table*}
 
 \begin{table*}
-  \centering
   \begin{tabular}{lc|c|c}
     \hline\hline
       & \textbf{vdMG08 Dist. + HST PM} & \textbf{Cepheid Dist. + Gaia PM} & \textbf{Cepheid Dist. + HST PM}\\\hline
@@ -396,8 +395,10 @@ See Table~\ref{table:data} for numerical values used in each of these datasets.
   $\bs{v}_\odot$~[\kms]& $(11.1, 251.54, 7.25)\reflabel{d}$ & $(12.9, 245.6, 7.78)\reflabel{h}$ & $(12.9, 245.6, 7.78)$ \reflabel{h}\\
   $t_{\rm peri}~[\Gyr]$ & $13.75\pm 0.11\reflabel{e}$  & $13.801 \pm 0.024$ \reflabel{i} & $13.801 \pm 0.024$ \reflabel{i}\\
   \hline\hline
-  \end{tabular}
-  \tablerefs{$a.$ \cite{vdm2008}, $b.$ \cite{Courteau1999}, $c.$ \cite{vdm2012}, $d.$ \cite{Schonrich2010,McMillan2011}, $e.$ \cite{Jarosik2011}, $f.$ \cite{Li2021},$g.$ \citep{Salomon2021}, $h.$ \citep{Drimmel2018}, $i.$ \cite{Planck2018}}
+  \end{tabular} 
+  % \tablerefs{$a.$ \cite{vdm2008}, $b.$ \cite{Courteau1999}, $c.$ \cite{vdm2012},\\
+  %  $d.$ \cite{Schonrich2010,McMillan2011}, $e.$ \cite{Jarosik2011}, $f.$ \cite{Li2021},$g.$ \citep{Salomon2021},\\
+  % $h.$ \citep{Drimmel2018}, $i.$ \cite{Planck2018}}
   % \tablenotetext{a}{\cite{vdm2008}}
   % \tablenotetext{b}{\cite{Li2021}}
   \caption{\label{table:data}
@@ -408,7 +409,7 @@ See Table~\ref{table:data} for numerical values used in each of these datasets.
   (U$_{\rm pec}$, V$_{\rm pec}$+V$_0$, W$_{\rm pec}$) the solar motion with
   respect to the galactic center. $t_{\rm peri}$ is the time elapsed since the
   last pericenter of the M31 Keplerian orbit, which in this case is the age of
-  the Universe.
+  the Universe. 
   }
 \end{table*}
 
@@ -515,7 +516,6 @@ For each dataset, we run the sampler with 4 chains for 4,000 tuning steps and
   eccentricity, while the larger \textit{Gaia} proper motions of
   ~\cite{Salomon2021} yield a more circular orbit, and thus a lower eccentricity
    and higher mass system.
-   \apw{One more idea: Can we add the numerical values of our mass constraints in a text box in the lower left panel? I want to see median with +/- values that contain 68\% of the marginal posterior mass. You computed these from percentiles before, I think, from getting [16, 50, 84]th percentiles. Can we put the 3 median posterior masses and confidence intervals as text in the lower left of the lower left panel?}
    }
   % A stationary MW disk is shown in the dotted contours, while our model,
   %which includes the reflex motion of the MW disk, is shown in solid lines.
@@ -542,19 +542,25 @@ eccentricity $e$.
 The upper left panel shows the marginal posterior pdfs over LG mass for each of
 the datasets (histogram curves) and with 68\% confidence regions plotted for two
 prior LG mass measurements (gray shaded bands).
-To summarize: Using the same dataset as used in \citet{vdm2012}, we find a
-median posterior LG mass of $\mlg = XX ^{+YY}_{-ZZ}~\Msun$ (where error bars
-here report the 68\% confidence interval around the median).
-\apw{We should report median and percentile errorbars! Can you fill in the values? Are these still larger than the vdm2012 values? Also add sentences for the other two datasets}
+To summarize: Using the same dataset as used in \citet{vdm2012} 
+(i.e. dataset \textit{vdMG08 Dist. + HST PM})
+, we find a
+median posterior LG mass of $\mlg = 3.98 ^{+0.63}_{-0.47}~\Msun$ (where error 
+bars here report the 68\% confidence interval around the median), which is
+roughly $0.3\times 10^{12}~\Msun$ smaller than reported in \cite{vdm2012}. With 
+the updated dataset containing \textit{Cepheid Dist + Gaia PM}, we find 
+$\mlg = 4.54 ^{+0.77}_{-0.56}~\Msun$, while for the combined \textit{Cepheid 
+Dist. + HST PM} dataset, we find $\mlg = 4.05^{+0.51}_{-0.34}~\Msun$.
+
 
 For both datasets that use the HST proper motions of M31 \citep{vdm2012}, we
 find that the inferred orbital eccentricity is consistent with a radial orbit.
-Using the \gaia\-based proper motions \citep{Salomon2021} leads to a finite
+Using the \gaia-based proper motions \citep{Salomon2021} leads to a finite
 inferred LG orbital eccentricity of $e\sim 0.85$ and therefore a larger inferred
 LG mass.
 However, enforcing $e=1$ (i.e. a radial LG orbit) produces very consistent mass
 estimates between the datasets considered, implying a LG mass $\mlg = 3.6
-\pm 0.3 \times 10^{12}~\Msun$.
+\pm 0.3 \times 10^{12}~\Msun$. 
 
 % Constraints on the distance to M31 remain roughly unchanged for both datasets, primarily because our model does not introduce a physical displacement of the MW disk, since we assume the motion of the disk over the past XX Myr since the LMC achieved pericenter is negligible compared to the separation between M31 and the MW. Thus, the inclusion of the reflex motion of the disk in our model does not affect constraints on the distance to M31.
 
@@ -570,16 +576,13 @@ estimates between the datasets considered, implying a LG mass $\mlg = 3.6
     datasets (pink and purple), though they display the same general trends with increasing travel velocity.
     The vertical lines represent simulated travel velocities for
     stellar tracers at different distances in~\cite{Garavito-Camargo2021b}.
-    The mean Local Group mass corresponding to the observed travel velocity
-    from~\cite{Petersen2021} of 32km/s (triangle points) and the 1-$\sigma$
-    spread on the mass is shown for comparison.
+    % The mean Local Group mass corresponding to the observed travel velocity
+    % from~\cite{Petersen2021} of 32km/s (triangle points) and the 1-$\sigma$
+    % spread on the mass is shown for comparison.
     \textbf{The inclusion of the reflex motion of the MW disk systematically
     lowers the inferred mass of the Local Group} regardless of observational
     dataset.
     \kc{make sense of the leveling off at 70km/s.}
-    \kc{also maybe add to x values of points to put them next to each other?
-    instead of overlapping?}
-    \apw{Can you change from mean to median? Also I think we can remove the markers at vtravel=32 - I think the point of this figure is to show the scaling. You could just put a vertical dashed line at 32 to highlight where the other curves intersect.}
     }
   \end{figure}
 
@@ -738,10 +741,10 @@ to the outer stellar halo of the Galaxy.
 We show that accounting for the travel velocity of the MW disk lowers the
 inferred Local Group mass from the Timing Argument when compared to a prior
 result using the same compilation of M31 kinematic measurements, finding $\mlg =
-XX$.
+3.98\times 10^{12}~\Msun$.
 Using more recent distance and proper motion measurements of M31 we find that
 the orbit of the Local Group galaxies is less radial than previously found,
-leading to a slightly higher inferred Local Group mass $\mlg = XX$.
+leading to a slightly higher inferred Local Group mass $\mlg = 4.54\times10^{12}~\Msun$. \kc{doesn't more radial mean smaller mass? }
 We find that assuming a radial orbit, all datasets considered here produce
 consistent constraints on the mass $\mlg = XX$.
 
