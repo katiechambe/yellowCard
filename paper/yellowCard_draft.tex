@@ -171,7 +171,15 @@ center of mass reference frame that would exist in the absence of the MCs
 
 In past work, this (then unknown) velocity offset has been included in a Timing
 Argument model of the Local Group by independently modeling the mass of the MW,
-M31, and the MCs (labeled the LMC; \citealt{Penarrubia2016}).
+M31, and the MCs (labeled the LMC; \citealt{Penarrubia2016}). 
+\kc{Additionally, recent work by \cite{Benisty2022} modelled the orbital history
+of M31 and the MW with and without the presence of the LMC to estimate the 
+contribution of 
+the reflex motion of the MW to the measured tangential and radial velocities of 
+M31. This correction was then applied to their TA model to remove the impact of 
+the LMC in their analysis.}
+
+
 However, the velocity offset of the inner MW with respect to the outer halo,
 likely induced by the infall of the MCs, has been directly measured using tracer
 stars in the stellar halo of the MW (the ``travel velocity'';
@@ -181,6 +189,8 @@ of the inner Milky Way with respect to the outer halo (assumed to be the
 reference frame that would exist in the absence of the MCs) in a Timing Argument
 model to infer the mass of the Local Group using recent measurements of the
 distance and proper motions of M31.
+
+
 
 \section{Methods and Data}
 
@@ -298,6 +308,15 @@ that this displacement is likely much smaller than the distance between the MW
 and M31 $\pos{\mwouter}{\mwdisk} \ll r$ \citep[as expected from simulations,
 e.g.,][]{Garavito-Camargo2021b}.
 
+\kc{Detailed studies of cosmological simulations show that the Timing Argument 
+may suffer from cosmic bias and scatter 
+\citep{LiWhite2008,Gonzalez2014,Hartl2021}\todo{more citations?}. 
+However, we do not know how reliable cosmological simulations are for these 
+types of dynamical mass corrections. 
+We have opted to forego these corrections in our Timing Argument model, but
+acknowledge that cosmic bias and scatter will likely lead to lower inferred 
+mass.}
+
 % APW: I'm not sure we need to go into detail about the coordinate system here
 % info about coordinate system setup
 % \textbf{We choose a coordinate system centered on the disk of the MW, where positive x is along the line of sight between the MW disk and the center of M31's disk, and positive y is in the direction of the tangential motion of M31.} Thus, the velocity vector of M31 in this Keplerian coordinate system is $(v_x, v_y, v_z) =(v_{rad},v_{tan},0)$, and $v_{rad}<0$ means M31 is moving towards the MW disk.
@@ -400,9 +419,15 @@ See Table~\ref{table:data} for numerical values used in each of these datasets.
   $t_{\rm peri}~[\Gyr]$ & $13.75\pm 0.11\reflabel{e}$  & $13.801 \pm 0.024$ \reflabel{i} & $13.801 \pm 0.024$ \reflabel{i}\\
   \hline\hline
   \end{tabular}
-  \tablerefs{$a.$ \cite{vdm2008}, $b.$ \cite{Courteau1999}, $c.$ \cite{vdm2012},\\
-   $d.$ \cite{Schonrich2010,McMillan2011}, $e.$ \cite{Jarosik2011}, $f.$ \cite{Li2021},$g.$ \citep{Salomon2021},\\
-  $h.$ \citep{Drimmel2018}, $i.$ \cite{Planck2018}}
+  \tablerefs{$a.$ \cite{vdm2008}, 
+   $b.$ \cite{Courteau1999},
+   $c.$ \cite{vdm2012},\\
+   $d.$ \cite{Schonrich2010,McMillan2011},
+   $e.$ \cite{Jarosik2011},
+   $f.$ \cite{Li2021}, 
+   $g.$ \cite{Salomon2021},\\
+   $h.$ \cite{Drimmel2018}, 
+   $i.$ \cite{Planck2018}}
   % \tablenotetext{a}{\cite{vdm2008}}
   % \tablenotetext{b}{\cite{Li2021}}
   \caption{\label{table:data}
@@ -565,6 +590,15 @@ LG mass.
 However, enforcing $e=1$ (i.e. a radial LG orbit) produces very consistent mass
 estimates between the datasets considered, implying a LG mass $\mlg = 3.6
 \pm 0.3 \times 10^{12}~\Msun$.
+
+\kc{The \cite{Benisty2022} paper reports a Local Group TA mass of 
+$5.6^{+1.6}_{-1.2}\times10^{12}\Msun$ after correcting for the reflex motion 
+of the MW induced by the LMC, which is roughly 25\% larger than our findings. 
+The discrepancy is likely due to differences in correcting for the reflex motion
+of the MW disk. 
+They find that cosmic bias lowers the TA mass by an additional 40\%. 
+The large errorbars are likely due to uncertainties in the orbital modelling of
+M31 about the combined MW--LMC system.}
 
 % Constraints on the distance to M31 remain roughly unchanged for both datasets, primarily because our model does not introduce a physical displacement of the MW disk, since we assume the motion of the disk over the past XX Myr since the LMC achieved pericenter is negligible compared to the separation between M31 and the MW. Thus, the inclusion of the reflex motion of the disk in our model does not affect constraints on the distance to M31.
 
