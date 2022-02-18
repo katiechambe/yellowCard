@@ -131,7 +131,8 @@ cosmological and Milky Way (MW) applications.
 For example, it is used to identify analogous halos in cosmological simulations
 and thus allows comparing host galaxy and satellite galaxy number counts and
 properties \citep[e.g.,][]{Patel2017a, Marinacci:2017, Dooley2017, Besla2018,
-Patel2018, Sawala2022}. It is also used to turn the kinematics of Local Group
+Patel2018, Garrison-Kimmel:2019a, Garrison-Kimmel:2019b, Sawala2022}.
+It is also used to turn the kinematics of Local Group
 galaxies into orbital histories \citep[e.g.,][]{Peebles:2017}, which is used to
 interpret their gas content \citep[e.g.,][]{Fillingham:2018,Putman:2021} and
 star formation histories \citep[e.g.,][]{Tolstoy:2009}.
@@ -164,12 +165,12 @@ because of the simplicity of the two-body equations of motion.
 However, recent studies of the dynamics of the MW and its satellites have
 revealed that the infall of the Magellanic Clouds (MCs) is likely causing
 significant distortions to the dark matter and stellar distribution in the MW
-halo \citep{Laporte:2018a, Laporte:2018b, Garavito-Camargo:2019, Conroy:2021},
-thus impacting the interpretation of observations of the M31 position and
-velocity relative to the MW center of mass.
+halo \citep{Laporte:2018a, Laporte:2018b, Garavito-Camargo:2019, Conroy:2021,
+Erkal:2021}, thus impacting the interpretation of observations of the M31
+position and velocity relative to the MW center of mass.
 In particular, the inner MW and disk are likely being accelerated away from the
 center of mass reference frame that would exist in the absence of the MCs
-\citep{Gomez2015, Garavito-Camargo2021b}.
+\citep{Gomez2015, Cunningham:2020, Garavito-Camargo2021b}.
 
 In past work, this (then unknown) velocity offset has been included in a Timing
 Argument model of the Local Group by independently modeling the mass of the MW,
@@ -458,11 +459,14 @@ We finally then transform from this Galactocentric frame to a heliocentric
 reference frame moving with the solar system barycenter (i.e. ICRS coordinates).
 At this final stage, we must introduce an additional nuisance parameter $\alpha$
 which represents the orientation of the MW--M31 orbital plane as it intersects
-the tangent plane located at the sky position of M31 on the celestial sphere.
+the tangent plane located at the sky position of M31 as viewed from the MW disk
+center.
 This is necessary because the Kepler equations only provide the magnitude of the
 tangential velocity (i.e. Equation~\ref{eq:vtan}), but in order to compute
 proper motion components we must also know the exact orientation of the M31
 velocity vector.
+However, we stress that this position angle has no impact on the fundamental
+dynamical parameters and is only used for coordinate transformations.
 
 We specify this model using the \texttt{Python} probabilistic programming
 package \texttt{pymc3}~\citep{Salvatier2016} and our adopted prior pdfs are
@@ -502,18 +506,25 @@ For each dataset, we run the sampler with 4 chains for 4,000 tuning steps and
   \begin{tabular}{lc}
   \hline\hline
   Prior  & Description \\\hline
-  \mlg: $\mathcal{N}(4.5,3)\times10^{12}\Msun$ & Mass of the Local Group\\
+  \mlg: $\mathcal{N}_T(4.5,3)\times10^{12}\Msun$ & Mass of the Local Group\\
   %
-  $r$: $\mathcal{N}(700,100)$kpc & Distance from M31 to $\mwdisk$\\
+  $r$: $\mathcal{N}_T(700,100)$kpc & Distance from M31 to $\mwdisk$\\
   %
-  $\ln(1-e)$: $\mathcal{U}$(-10,0) & Eccentricity (close to 1) \\
+  $\ln(1-e)$: $\mathcal{U}(-10,0)$ & Eccentricity (close to 1) \\
   %
-  $\eta$: angle(0,2$\pi$)& Eccentric anomaly\\
-  \multirow{2}{*}{$\alpha$: angle(0,2$\pi$)} & Angle between M31 orbital\\
-  & pole and Galactocentric\\
+  $\eta$: $\mathcal{U}(-\pi, \pi)$ & Eccentric anomaly\\
+  \multirow{2}{*}{$\alpha$: $\mathcal{U}(-\pi, \pi)$} & Position angle of M31 orbital\\
+  & plane from MW disk center\\
   \hline\hline
   \end{tabular}
-  \caption{\label{table:priors}Priors \kc{note: on \mlg and $r$, we also set bounds? how should I show those here? or should they go in the text?}}
+  \caption{\label{table:priors} A description of our adopted prior probability
+  distribution functions over the Timing Argument model parameters.
+  Here, $\mathcal{U}(a, b)$ represents a uniform distribution over the domain
+  $(a, b)$, and $\mathcal{N}_T(\mu, \sigma)$ represents a truncated Normal
+  distribution with mean $\mu$ and standard-deviation $\sigma$.
+  We truncate the mass prior pdf to the range \todo{Katie fill in:} $(a, b)$ and
+  the radius prior pdf to the range \todo{Katie fill in:} $(a, b)$.
+  }
 \end{table}
 
 
@@ -573,7 +584,6 @@ the updated dataset containing \textit{Cepheid Dist + Gaia PM}, we find
 $\mlg = 4.54 ^{+0.77}_{-0.56}~\Msun$, while for the combined \textit{Cepheid
 Dist. + HST PM} dataset, we find $\mlg = 4.05^{+0.51}_{-0.34}~\Msun$.
 
-
 For both datasets that use the HST proper motions of M31 \citep{vdm2012}, we
 find that the inferred orbital eccentricity is consistent with a radial orbit.
 Using the \gaia-based proper motions \citep{Salomon2021} leads to a finite
@@ -582,15 +592,6 @@ LG mass.
 However, enforcing $e=1$ (i.e. a radial LG orbit) produces very consistent mass
 estimates between the datasets considered, implying a LG mass $\mlg = 3.6
 \pm 0.3 \times 10^{12}~\Msun$.
-
-\kc{The \cite{Benisty2022} paper reports a Local Group TA mass of
-$5.6^{+1.6}_{-1.2}\times10^{12}\Msun$ after correcting for the reflex motion
-of the MW induced by the LMC, which is roughly 25\% larger than our findings.
-The discrepancy is likely due to differences in correcting for the reflex motion
-of the MW disk.
-They find that cosmic bias lowers the TA mass by an additional 40\%.
-The large errorbars are likely due to uncertainties in the orbital modelling of
-M31 about the combined MW--LMC system.}
 
 % Constraints on the distance to M31 remain roughly unchanged for both datasets, primarily because our model does not introduce a physical displacement of the MW disk, since we assume the motion of the disk over the past XX Myr since the LMC achieved pericenter is negligible compared to the separation between M31 and the MW. Thus, the inclusion of the reflex motion of the disk in our model does not affect constraints on the distance to M31.
 
@@ -656,6 +657,15 @@ mass of the system, so it is likely the assumption of radial orbits leads to
 an underestimate of the mass of the Local Group with LV galaxies only.
 Including the dynamics of the M31--MW system increased their recovered
 total mass by $0.6\times10^{12}~\Msun$.
+
+\kc{The \cite{Benisty2022} paper reports a Local Group TA mass of
+$5.6^{+1.6}_{-1.2}\times10^{12}\Msun$ after correcting for the reflex motion
+of the MW induced by the LMC, which is roughly 25\% larger than our findings.
+The discrepancy is likely due to differences in correcting for the reflex motion
+of the MW disk.
+They find that cosmic bias lowers the TA mass by an additional 40\%.
+The large errorbars are likely due to uncertainties in the orbital modelling of
+M31 about the combined MW--LMC system.}
 
 \subsection{Correction for ``Cosmic Bias''}
 
@@ -761,9 +771,10 @@ velocity of M31's disk relative to its equivalent outer halo reference frame:
 Recent work predicts that M33 is likely on first infall into the M31 halo and
 has a much larger orbital pericenter than the MCs \citep[e.g.,][]{Patel2017a}.
 On the other hand, M31 has likely experienced other significant mergers, as
-evidenced by the double nucleus and Giant Southern Stream \citep{TODO} \todo{GSS
-reference?}, but these were likely lower mass-ratio mergers and thus will have
-less of an impact on the bulk motion of the M31 disk.
+evidenced by the double nucleus and Giant Southern Stream
+\citep[e.g.][]{Ibata:2001, Font:2006}, but these were likely lower mass-ratio
+mergers \citep[e.g.][]{Gilbert:2019, Milo:2022} and thus will have less of an
+impact on the bulk motion of the M31 disk.
 Given current knowledge of the M31 system and uncertainties in the orbital
 histories of its most massive satellites, here we neglect the (likely
 subdominant) reflex motion of the M31 disk.
