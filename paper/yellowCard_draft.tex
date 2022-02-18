@@ -125,29 +125,30 @@
 \section{Introduction}
 \label{sec:intro}
 % \textbf{Importance of local group mass and measuring it}
+\todo{Review references - any obvious missing?}
 The total mass of the Local Group is an important quantity in many local
 cosmological and Milky Way (MW) applications.
 For example, it is used to identify analogous halos in cosmological simulations
 and thus allows comparing host galaxy and satellite galaxy number counts and
-properties \citep{Patel2017a, Dooley2017, Besla2018, Patel2018, Sawala2022}
-\todo{Any additional citations?}.
-It is also used to turn the kinematics of Local Group galaxies into orbital
-histories, which is used to interpret their gas content (\todo{Geha, Putman
-papers}) and star formation histories (\todo{Weisz, others} \citep{Weisz2011}).
+properties \citep[e.g.,][]{Patel2017a, Marinacci:2017, Dooley2017, Besla2018,
+Patel2018, Sawala2022}. It is also used to turn the kinematics of Local Group
+galaxies into orbital histories \citep[e.g.,][]{Peebles:2017}, which is used to
+interpret their gas content \citep[e.g.,][]{Fillingham:2018,Putman:2021} and
+star formation histories \citep[e.g.,][]{Tolstoy:2009}.
 However, as most of the mass in the Local Group is in dark matter distributed
 over megaparsec scales, it is difficult to directly measure its total mass.
 
 Given its utility in studies of the local universe, several methods have been
 used to dynamically infer the mass of the Local Group.
 Many of these techniques determine the individual masses of the MW and M31
-independently, often via the dynamics of their satellites and stellar streams,
-then combine them to get an estimate of the total LG
-mass \citep{Watkins2010,Diaz2014,Patel2018} \todo{Eadie papers}.
+independently \citep[e.g.][]{Watkins2010, Diaz2014, Patel2018, Eadie:2019,
+Fritz:2020, Deason:2021, Wang:2022}, often via the dynamics of their satellites
+and stellar streams, then combine them to get an estimate of the total LG mass.
 Other techniques aim to more directly measure the mass of the Local Group en
 masse, for example looking for Local Group analogs in cosmological simulations
-based on stellar mass and kinematic criteria \citep{Zhai2020}, or by studying
-the kinematics of Local Volume galaxies \citep{Penarrubia2014} \todo{check this
-reference}.
+based on stellar mass and kinematic criteria \citep[e.g.,][]{Zhai2020}, or by
+studying the kinematics of Local Volume galaxies
+\citep[e.g.,][]{Penarrubia2014}.
 One of the earliest methods utilized in this vein is the ``Timing Argument,''
 which uses the fact that the local group galaxies (most often the MW and M31)
 are bound and approaching pericenter in their relative orbit, but must have been
@@ -158,31 +159,32 @@ Section~\ref{sec:timingarg}
 The Timing Argument (using the MW and M31) uses the observed kinematics of M31
 to model the relative orbit of the two galaxies as a Keplerian orbit.
 Assuming Keplerian dynamics enables dynamically measuring the total mass of the
-MW and M31 because of symmetries \todo{is it symmetries?} of the Kepler
-equations.
+MW and M31 with analytic expressions for all relevant kinematic quantities
+because of the simplicity of the two-body equations of motion.
 However, recent studies of the dynamics of the MW and its satellites have
 revealed that the infall of the Magellanic Clouds (MCs) is likely causing
 significant distortions to the dark matter and stellar distribution in the MW
-halo \todo{People, Conroy}, thus impacting the interpretation of observations of
-the M31 position and velocity relative to the MW center of mass.
+halo \citep{Laporte:2018a, Laporte:2018b, Garavito-Camargo:2019, Conroy:2021},
+thus impacting the interpretation of observations of the M31 position and
+velocity relative to the MW center of mass.
 In particular, the inner MW and disk are likely being accelerated away from the
 center of mass reference frame that would exist in the absence of the MCs
 \citep{Gomez2015, Garavito-Camargo2021b}.
 
 In past work, this (then unknown) velocity offset has been included in a Timing
 Argument model of the Local Group by independently modeling the mass of the MW,
-M31, and the MCs (labeled the LMC; \citealt{Penarrubia2016}). 
+M31, and the MCs (labeled the LMC; \citealt{Penarrubia2016}).
 \kc{Additionally, recent work by \cite{Benisty2022} modelled the orbital history
-of M31 and the MW with and without the presence of the LMC to estimate the 
-contribution of 
-the reflex motion of the MW to the measured tangential and radial velocities of 
-M31. This correction was then applied to their TA model to remove the impact of 
-the LMC in their analysis.}
+of M31 and the MW with and without a mass model of the LMC to estimate the
+contribution of the reflex motion of the MW to the measured tangential and
+radial velocities of M31.
+This correction was then applied to their TA model to remove the impact of the
+LMC in their analysis.}
 
 
 However, the velocity offset of the inner MW with respect to the outer halo,
-likely induced by the infall of the MCs, has been directly measured using tracer
-stars in the stellar halo of the MW (the ``travel velocity'';
+likely induced by the infall of the MCs, has now been directly measured using
+tracer stars in the stellar halo of the MW (the ``travel velocity'';
 \citealt{Petersen2021}).
 In this Article, we use this measurement of the travel velocity or reflex motion
 of the inner Milky Way with respect to the outer halo (assumed to be the
@@ -199,20 +201,19 @@ distance and proper motions of M31.
 \label{sec:timingarg}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Following past work \citep[e.g.,][]{Lynden-Bell:1981, vdm2012, Penarrubia2016},
-we assume that the orbital trajectories of the MW and M31 --- the Local Group
-system --- over cosmic history are well-described by Keplerian orbits.
+Following past work that utilize the ``Timing Argument,'' we assume that the
+orbital trajectories of the MW and M31 --- the Local Group system --- over
+cosmic history are well-described by Keplerian orbits \citep[e.g.,][]{Kahn1959,
+Kroeker1991, Lynden-Bell:1981, LiWhite2008, vdm2012, Penarrubia2016}.
 By assuming that the M31 and MW are gravitationally bound and were last at
 closest approach in the early universe (i.e. the two galaxies have not yet
 strongly interacted), we can then use the present-day kinematics of M31 relative
 to the Milky Way to estimate the total mass of the Local Group (i.e. using the
-``Timing Argument'').
+Timing Argument).
 
 % \textbf{The dynamics of the M31-MW system can be approximated by simple Keplerian orbits.}
-We largely follow the methodology and notation defined in
-\citet{Penarrubia2016}, but the Timing Argument has been used in many other
-studies \citep[e.g.,][]{Kahn1959, Kroeker1991,LiWhite2008,more} \todo{TA refs}.
-\kc{shouldn't these refs go at beginning of this section?}
+In this work, we largely follow the methodology and notation defined in
+\citet{Penarrubia2016}
 Briefly recapping the Timing Argument method, we assume that the dynamics of the
 MW and M31 is dominated by the local gravitational potential of the Local Group
 (LG) and therefore the Hubble flow can be neglected for computing the relative
@@ -307,15 +308,6 @@ We also assume that $\pos{\mwouter}{\mwdisk} \approx 0$ motivated by the fact
 that this displacement is likely much smaller than the distance between the MW
 and M31 $\pos{\mwouter}{\mwdisk} \ll r$ \citep[as expected from simulations,
 e.g.,][]{Garavito-Camargo2021b}.
-
-\kc{Detailed studies of cosmological simulations show that the Timing Argument 
-may suffer from cosmic bias and scatter 
-\citep{LiWhite2008,Gonzalez2014,Hartl2021}\todo{more citations?}. 
-However, we do not know how reliable cosmological simulations are for these 
-types of dynamical mass corrections. 
-We have opted to forego these corrections in our Timing Argument model, but
-acknowledge that cosmic bias and scatter will likely lead to lower inferred 
-mass.}
 
 % APW: I'm not sure we need to go into detail about the coordinate system here
 % info about coordinate system setup
@@ -419,14 +411,14 @@ See Table~\ref{table:data} for numerical values used in each of these datasets.
   $t_{\rm peri}~[\Gyr]$ & $13.75\pm 0.11\reflabel{e}$  & $13.801 \pm 0.024$ \reflabel{i} & $13.801 \pm 0.024$ \reflabel{i}\\
   \hline\hline
   \end{tabular}
-  \tablerefs{$a.$ \cite{vdm2008}, 
+  \tablerefs{$a.$ \cite{vdm2008},
    $b.$ \cite{Courteau1999},
    $c.$ \cite{vdm2012},\\
    $d.$ \cite{Schonrich2010,McMillan2011},
    $e.$ \cite{Jarosik2011},
-   $f.$ \cite{Li2021}, 
+   $f.$ \cite{Li2021},
    $g.$ \cite{Salomon2021},\\
-   $h.$ \cite{Drimmel2018}, 
+   $h.$ \cite{Drimmel2018},
    $i.$ \cite{Planck2018}}
   % \tablenotetext{a}{\cite{vdm2008}}
   % \tablenotetext{b}{\cite{Li2021}}
@@ -591,12 +583,12 @@ However, enforcing $e=1$ (i.e. a radial LG orbit) produces very consistent mass
 estimates between the datasets considered, implying a LG mass $\mlg = 3.6
 \pm 0.3 \times 10^{12}~\Msun$.
 
-\kc{The \cite{Benisty2022} paper reports a Local Group TA mass of 
-$5.6^{+1.6}_{-1.2}\times10^{12}\Msun$ after correcting for the reflex motion 
-of the MW induced by the LMC, which is roughly 25\% larger than our findings. 
+\kc{The \cite{Benisty2022} paper reports a Local Group TA mass of
+$5.6^{+1.6}_{-1.2}\times10^{12}\Msun$ after correcting for the reflex motion
+of the MW induced by the LMC, which is roughly 25\% larger than our findings.
 The discrepancy is likely due to differences in correcting for the reflex motion
-of the MW disk. 
-They find that cosmic bias lowers the TA mass by an additional 40\%. 
+of the MW disk.
+They find that cosmic bias lowers the TA mass by an additional 40\%.
 The large errorbars are likely due to uncertainties in the orbital modelling of
 M31 about the combined MW--LMC system.}
 
@@ -664,6 +656,24 @@ mass of the system, so it is likely the assumption of radial orbits leads to
 an underestimate of the mass of the Local Group with LV galaxies only.
 Including the dynamics of the M31--MW system increased their recovered
 total mass by $0.6\times10^{12}~\Msun$.
+
+\subsection{Correction for ``Cosmic Bias''}
+
+Given the simplicity of the Timing Argument dynamical model --- in particular,
+the assumption that the MW and M31 are point masses with constant masses --- it
+is reasonable to wonder whether this methodology provides unbiased estimates of
+the true LG mass.
+An early study of a dark-matter-only cosmological simulation found that the
+Timing Argument applied to pairs of galaxies did provide unbiased estimates of
+the sum of masses of the pairs \citep{LiWhite2008}.
+However, more recently it was found that conditioning on LG-analogs with similar
+radial and tangential velocities to the MW and M31 leads to slightly biased
+(overestimated) inferred total masses of those systems \citep{Gonzalez2014,
+Hartl2021}.
+In this work, we do not attempt to ``correct'' our inferred LG masses for this
+cosmic bias effect, because it is unclear whether cosmological simulations
+accurately reproduce the detailed properties of LG systems.
+Accounting for this effect would likely lower our LG mass measurements.
 
 
 \subsection{Inclusion of Milky Way disk reflex motion in dynamics of the Local Group}
