@@ -170,7 +170,7 @@ Erkal:2021}, thus impacting the interpretation of observations of the M31
 position and velocity relative to the MW center of mass.
 In particular, the inner MW and disk are likely being accelerated away from the
 center of mass reference frame that would exist in the absence of the MCs
-\citep{Gomez2015, Cunningham:2020, Garavito-Camargo2021b}.
+\citep{Gomez2015, Cunningham:2020, Petersen2020, Garavito-Camargo2021b}.
 
 In past work, this (then unknown) velocity offset has been included in a Timing
 Argument model of the Local Group by independently modeling the mass of the MW,
@@ -179,7 +179,8 @@ M31, and the MCs (labeled the LMC; \citealt{Penarrubia2016}).
 of M31 and the MW with and without a mass model of the LMC to estimate the
 contribution of the reflex motion of the MW to the measured tangential and
 radial velocities of M31.
-This correction was then applied to their TA model to remove the impact of the
+This correction was then applied to their Timing Argument model to remove
+the impact of the
 LMC in their analysis.}
 
 
@@ -202,7 +203,7 @@ distance and proper motions of M31.
 \label{sec:timingarg}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Following past work that utilize the ``Timing Argument,'' we assume that the
+Following past work that utilizes the ``Timing Argument,'' we assume that the
 orbital trajectories of the MW and M31 --- the Local Group system --- over
 cosmic history are well-described by Keplerian orbits \citep[e.g.,][]{Kahn1959,
 Kroeker1991, Lynden-Bell:1981, LiWhite2008, vdm2012, Penarrubia2016}.
@@ -341,9 +342,9 @@ e.g.,][]{Garavito-Camargo2021b}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Key input into Timing Argument inferences of the Local Group mass are the
-present position and velocity of M31 and the age of the universe (used in in
+present position and velocity of M31 and the age of the universe (used in
 Equation~\ref{eq:t}).
-Here we consider a few compilations of data that provide this information to
+Here we consider different compilations of data that provide this information to
 have as comparisons.
 The datasets used in our analysis are summarized in Table~\ref{table:data}.
 We consider three main datasets in this work.
@@ -559,9 +560,11 @@ For each dataset, we run the sampler with 4 chains for 4,000 tuning steps and
 
 We use a Bayesian implementation of a Timing Argument model to place constraints
 on the mass of the Local Group and the distance between M31 and the Milky Way.
-Our model of the Local Group accounts for the reflex motion of the Milky Way
+Our model of the Local Group accounts for the observed reflex motion of 
+the Milky Way
 disk imparted by the infall of the Magellanic Clouds and results in new,
 less-biased constraints on the mass of the Local Group.
+\todo{due to the LMC only? maybe need to be more general about the source?}
   % 4.69$\pm0.71 \times 10^{12}~\Msun$.
 
 We find that our model prefers lower Local Group masses and a lower eccentricity
