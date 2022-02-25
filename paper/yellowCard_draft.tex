@@ -95,6 +95,7 @@
     One of the few methods that enables inferring the total mass directly is the
     ``Timing Argument,'' which models the relative orbit of the Milky Way (MW)
     and M31.
+    \todo{maybe this should be something closer to "previous encounters + mergers with dwarf galaxies have imparted a reflex motion of the disk, especially the LMC" ? }
     However, recent models of stellar tracers in the outer MW halo have shown
     that the inner MW and disk are moving with respect to the outer halo, likely
     because of the infall of the Large Magellanic Cloud, thus biasing past
@@ -131,6 +132,7 @@
 % \textbf{Importance of local group mass and measuring it}
 \todo{Review references - any obvious missing?}
 \todo{do we need to rethink the language of "Milky Way disk" vs. inner MW halo?}
+\todo{need to specify the parameters of the travel velocity that we are using somewhere!}
 The total mass of the Local Group is an important quantity in many local
 cosmological and Milky Way (MW) applications.
 For example, it is used to identify analogous halos in cosmological simulations
@@ -183,7 +185,7 @@ Erkal:2021}, thus impacting the interpretation of observations of the M31
 position and velocity relative to the MW center of mass.
 In particular, the inner MW and disk are likely being accelerated away from the
 center of mass reference frame that would exist in the absence of the MCs
-\citep{Gomez2015, Cunningham:2020, Petersen2020, Garavito-Camargo2021b}.
+\citep{Gomez2015, Cunningham:2020, Petersen:2020, Garavito-Camargo2021b}.
 
 In past work, this (then unknown) velocity offset has been included in a Timing
 Argument model of the Local Group by independently modeling the mass of the MW,
@@ -230,7 +232,7 @@ Timing Argument).
 In this work, we largely follow the methodology and notation defined in
 \citet{Penarrubia2016}
 Briefly recapping the Timing Argument method, we assume that the dynamics of the
-MW and M31 is dominated by the local gravitational potential of the Local Group
+MW and M31 pair is dominated by the local gravitational potential of the Local Group
 (LG) and therefore the Hubble flow can be neglected for computing the relative
 orbits of the galaxies \citep[see, e.g.,][]{Penarrubia2014}.
 Since we observe the relative position and motion between M31 and the MW, we
@@ -253,16 +255,17 @@ since last pericenter $t$, and the radial and tangential velocity components
 In our model, the separation $r$ is the distance between the centers of mass of
 M31 and the MW, the time since last pericenter $t$ is the age of the Universe,
 and the velocity components $(\vrad, \vtan)$ express the radial and tangential
-velocity components of M31 relative to the MW center.
+velocity components of M31 relative to the \todo{MW center.}
 
-In a simpler universe where the MW and M31 are point masses and there are no
+\todo{In a simpler universe where the MW and M31 are point masses and there are no
 other massive bodies in the LG system, we could transform the observed
 heliocentric sky position, distance, and velocity of M31 to a MW Galactocentric
 reference frame and combine these with an estimate of the Hubble time to obtain
-the four ``observables'' $(r, t, \vrad, \vtan)$:
+the four ``observables'' $(r, t, \vrad, \vtan)$:}
 These observables would be enough to infer the four model parameters $(\mlg, a,
 e, \eta)$ using Equations~\ref{eq:r}--\ref{eq:vtan}.
 % \textbf{To compare our model predictions of the M31-MW system to the observed kinematics, we must translate these quantities into observables to constrain our model with observational data.}
+
 To describe this ``classical'' Timing Argument approach in more detail and set
 the stage for extending it, we adopt the notation of \citet{Penarrubia2016} in
 which $\vel{A}{B}$ represents the velocity vector of A as measured in
@@ -270,32 +273,32 @@ the reference frame of B and $\pos{A}{B}$ represents the position vector of A as
 measured from B.
 With this notation, $\vel{A}{B} = -\vel{B}{A}$ and $\vel{A}{C} = \vel{A}{B} +
 \vel{B}{C}$.
-Thus, the position and velocity of M31 with respect to the center of mass of the
+\todo{Thus, the position and velocity of M31 with respect to the center of mass of the
 MW can be represented by $\pos{M31}{\mwbary}$ and $\vel{M31}{\mwbary}$
 respectively, and the position and velocity of M31 as measured in a heliocentric
 reference frame are given by
 \begin{align}
   \pos{M31}{\odot} &= \pos{M31}{\mwbary} + \pos{\mwbary}{\odot} \label{eq:xoffset1}\\
   \vel{M31}{\odot} &= \vel{M31}{\mwbary} + \vel{\mwbary}{\odot} \label{eq:voffset1}\quad .
-\end{align}
-Here $\left|\pos{M31}{\mwbary}\right| = r$, $\vel{M31}{\mwbary}$ is determined
+\end{align}}
+\todo{Here $\left|\pos{M31}{\mwbary}\right| = r$, $\vel{M31}{\mwbary}$ is determined
 completely by the Keplerian model parameters (through \vrad\ and \vtan), and the
 position and velocity of the center of mass of the MW as measured from the sun
 are $\pos{\mwbary}{\odot}$ and $\vel{\mwbary}{\odot}$, respectively, and are
 given by the adopted solar position and velocity in the Galaxy (the values we
-adopt are given in Section~\ref{sec:datasets} below).
+adopt are given in Section~\ref{sec:datasets} below).}
 
-As noted above and in \citet{Penarrubia2016}, the dynamics of the MW--M31 system
+\todo{As noted above and in \citet{Penarrubia2016}, the dynamics of the MW--M31 system
 is now thought to be more complex because of the infall of the LMC into the MW's
-dark matter halo:
-It is thought that the recent pericentric passage of the LMC has, to first
+dark matter halo:}
+\todo{It is thought that the recent pericentric passage of the LMC has, to first
 order, imparted a velocity boost on the disk and central regions of the MW,
 shifting its position and velocity with respect to the mean position and
-velocity of tracers in the outer MW \citep{Nico, Erkal, Petersen}.
+velocity of tracers in the outer MW \citep{Nico, Erkal, Petersen}.}
 This implies that we must account for additional terms in
 Equations~\ref{eq:xoffset1} and \ref{eq:voffset1} to account for the reflex
-motion of the MW disk with respect to the outer halo.
-Thus, the observed position and velocity vector of M31 from the solar reference
+motion of the \todo{MW disk with respect to the outer halo.}
+\todo{Thus, the observed position and velocity vector of M31 from the solar reference
 frame is instead given by
 \begin{align}
   \pos{M31}{\odot} &= \pos{M31}{\mwouter} + \pos{\mwouter}{\mwdisk}+\pos{\mwdisk}{\odot} \\
@@ -303,26 +306,26 @@ frame is instead given by
 \end{align}
 where ``\mwouter'' refers to a reference frame centered at and moving with the
 center of mass of the outer MW halo and ``\mwdisk'' refers to a reference frame
-centered at and moving with the center of the MW disk.
-We assume that the outer MW halo frame is equivalent to the MW barycentric frame
+centered at and moving with the center of the MW disk.}
+\todo{We assume that the outer MW halo frame is equivalent to the MW barycentric frame
 in the simpler case where there is no LMC, or in other words we assume that the
-outer MW halo has not yet had time to respond to the infall of the LMC.
-We also assume that the sun, Galactic disk, and inner MW moved as a solid body
+outer MW halo has not yet had time to respond to the infall of the LMC.}
+\todo{We also assume that the sun, Galactic disk, and inner MW moved as a solid body
 so that $\pos{\mwdisk}{\odot}$ and $\vel{\mwdisk}{\odot}$ are equivalent to the
 solar position and velocity with respect to the Galactic center (as in
-Equations~\ref{eq:xoffset1}--\ref{eq:voffset1}).
-Figure~\ref{fig:schematic} shows a schematic of these different vectors --- all
+Equations~\ref{eq:xoffset1}--\ref{eq:voffset1}).}
+\todo{Figure~\ref{fig:schematic} shows a schematic of these different vectors --- all
 drawn in a frame that is comoving with the \mwouter\ frame --- and a rough
-illustration of the geometry we assume.
+illustration of the geometry we assume.}
 
-In what follows, we will assume that we have access to a direct measurement of
+\todo{In what follows, we will assume that we have access to a direct measurement of
 $\vel{\mwouter}{\mwdisk}$; This is different from \citet{Penarrubia2016} who
 instead parametrize this term as a function of an additional parameter that sets
-the mass ratio of the LMC and the MW.
-We also assume that $\pos{\mwouter}{\mwdisk} \approx 0$ motivated by the fact
+the mass ratio of the LMC and the MW.}
+\todo{We also assume that $\pos{\mwouter}{\mwdisk} \approx 0$ motivated by the fact
 that this displacement is likely much smaller than the distance between the MW
 and M31 $\pos{\mwouter}{\mwdisk} \ll r$ \citep[as expected from simulations,
-e.g.,][]{Garavito-Camargo2021b}.
+e.g.,][]{Garavito-Camargo2021b}.}
 
 % APW: I'm not sure we need to go into detail about the coordinate system here
 % info about coordinate system setup
@@ -344,7 +347,7 @@ e.g.,][]{Garavito-Camargo2021b}.
     $\vel{\mwdisk}{\mwouter}$ and $\vel{M31}{\mwouter}$, the velocity of the
     Galactic center with respect to the center of the MW halo, and the measured
     velocity of M31 from the Galactic center, respectively.
-  }
+    \todo{remove LMC and add note that the travel velocity of the Milky way is from the composite perturbations of many interactions etc.}  }
   \label{fig:schematic}
 \end{figure*}
 
@@ -354,65 +357,37 @@ e.g.,][]{Garavito-Camargo2021b}.
 \label{sec:datasets}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Key input into Timing Argument inferences of the Local Group mass are the
+\todo{Key input into Timing Argument inferences of the Local Group mass are the
 present position and velocity of M31 and the age of the universe (used in
-Equation~\ref{eq:t}).
-Here we consider different compilations of data that provide this information to
+Equation~\ref{eq:t}).}
+Here we consider three different compilations of data that provide this information to
 have as comparisons.
-The datasets used in our analysis are summarized in Table~\ref{table:data}.
-We consider three main datasets in this work.
+The datasets used in our analysis are summarized in Table~\ref{table:data}. 
+\todo{In particular, we consider proper motions from both \textit{HST}~\citep{sohn} and \textit{Gaia}~\citep{Salomon2021} , as well as distance measurements from \cite{vdm2008} and \cite{Li2021}.} 
+We have split these measurements into three considered datasets: 
 \begin{description}
-  \item[vdMG08 Dist. + HST PM] The first dataset contains the measured proper
+  \item[vdMG08 Dist. + HST PM] \todo{The first dataset contains the measured proper
   motion of M31 and a collection of other data used to constrain the mass of the
   Local Group via the Timing Argument in~\citet{vdm2012}: This is labeled as
   ``vdMG08 Dist. + HST PM'' in figures below to reflect that the M31 distance
   measurement comes from \citet{vdm2008} and the proper motion comes from HST
   measurements presented in \citet{vdm2012}. For the proper motion components,
   we use the proper motions measured from a combination of satellite kinematics
-  and astrometric fields \cite{vdm2012}.
-  \item[Cepheid Dist. + Gaia PM] As an independent dataset, we also consider a
+  and astrometric fields \cite{vdm2012}.}
+  \item[Cepheid Dist. + Gaia PM] \todo{As an independent dataset, we also consider a
   compilation of more recent M31 kinematic measurements, including a more
   precise Cepheid-based distance measure to M31 \citep{Li2021} and updated
   proper motions of M31 measured using data from \textit{Gaia} eDR3
   \citep{Salomon2021}. The \textit{Gaia}-based M31 proper motion measurement is
   slightly larger than the HST proper motion of M31, leading to an increased
   implied transverse velocity that leads to a higher inferred Local Group mass
-  compared to the more radial orbit implied by the first dataset.
-  \item[Cepheid Dist. + HST PM] As another comparison, we also use a hybrid
+  compared to the more radial orbit implied by the first dataset.}
+  \item[Cepheid Dist. + HST PM] \todo{As another comparison, we also use a hybrid
   dataset that uses the Cepheid-based distance measure to M31 and the HST-based
-  proper motion measurement \citep{Li2021,vdm2012}.
+  proper motion measurement \citep{Li2021,vdm2012}.}
 \end{description}
 See Table~\ref{table:data} for numerical values used in each of these datasets.
 
-% \begin{table*}
-%   \centering
-%   \begin{tabular}{lc|c|c}
-%     \hline\hline
-%       & vdMG08 Dist. + HST PM & Cepheid Dist. + Gaia PM & Cepheid Dist. + HST PM\\\hline
-%   $D$ &  $770 \pm 40~\kpc$  \cite{vdm2008}    &   $761\pm11~\kpc$  & test\cite{Li2021}\\
-%   $v_{\rm rad}$     &     $-301 \pm 1~\kms$ \todo{Citation?}       &   $-301 \pm 1~\kms$        \\
-%   $(\mu_{\alpha^*},  \mu_\delta)$    & $(34.30 \pm 8.25, -20.22 \pm 7.71)~\muasyr$ \citep{vdm2012} & $(48.98 \pm 10.47, -36.85 \pm 8.03)~\muasyr$ \citep{Salomon2021}\\
-%   $\bs{v}_\odot$ & $(11.1, 251.54, 7.25)~\kms$ \todo{cite} & $(12.9, 245.6, 7.78)~\kms$ \citep{Drimmel2018}\\
-%   $t_{\rm peri}$ & $13.75 \pm 0.11~\Gyr$ \citep{Jarosik2011} & $13.801 \pm 0.024~\Gyr$ \todo{cite Planck18}\\
-%   %              &           &           \\
-%   %              &           &           \\
-%   \hline\hline
-%   \end{tabular}
-%   \caption{\label{table:data}
-%   \apw{This needs to be updated to reflect the new dataset stuff}
-%   Observational datasets used for comparison throughout analysis and their
-%   references (vdMG08 is \cite{vdm2008}) Each value is measured for M31 with
-%   respect to the sun. $D$ is the distance, $v_{\rm rad}$ is the radial velocity,
-%   $(\mu^*_{\alpha}, \mu_{\delta})$ are proper motions in RA cosdec and Dec, and
-%   (U$_{\rm pec}$, V$_{\rm pec}$+V$_0$, W$_{\rm pec}$) the solar motion with
-%   respect to the galactic center. $t_{\rm peri}$ is the time elapsed since the
-%   last pericenter of the M31 Keplerian orbit, which in this case is the age of
-%   the Universe.
-%   \apw{The references make the table spill over the page. I think we need to do
-%   references in footnotes instead?} % \tablecomments{howdy}
-%   }
-%   \tablecomments{howdy}
-% \end{table*}
 
 \begin{table*}
   \begin{tabular}{lc|c|c}
@@ -464,15 +439,15 @@ In detail, we first use the four Timing Argument parameters to compute the
 present day separation between the MW and M31 and the relative radial and
 tangential velocities as defined in Equations~\ref{eq:r}--\ref{eq:vtan}.
 These velocity components represent the relative velocity M31 would have as
-observed from the barycenter of the MW--LMC subsystem.
-We then use the measured ``travel velocity'' of the MW disk
-$\vel{\mwouter}{\mwdisk}$ to compute the relative velocity of M31 that would be
-observed from a frame moving with the center of the Milky Way disk (i.e. a
-MW Galactocentric frame).
-We finally then transform from this Galactocentric frame to a heliocentric
+observed from \todo{the barycenter of the MW--LMC subsystem.}
+We then use the measured ``travel velocity'' of \todo{the MW disk
+$\vel{\mwouter}{\mwdisk}$} to compute the relative velocity of M31 that would be
+\todo{observed from a frame moving with the center of the Milky Way disk (i.e. a
+MW Galactocentric frame).}
+We finally transform from this Galactocentric frame to a heliocentric
 reference frame moving with the solar system barycenter (i.e. ICRS coordinates).
 At this final stage, we must introduce an additional nuisance parameter $\alpha$
-which represents the orientation of the MW--M31 orbital plane as it intersects
+which represents the orientation of the MW--M31 orbital plane, \kc{ this part sounds confusing to me: }as it intersects
 the tangent plane located at the sky position of M31 as viewed from the MW disk
 center.
 This is necessary because the Kepler equations only provide the magnitude of the
@@ -488,10 +463,10 @@ summarized in Table~\ref{table:priors}.
 We use the No-U-Turn Sampler (NUTS) \citep{Homan2014} implemented in
 \texttt{pymc3} to generate samples from this posterior pdf, given data from each
 of the datasets defined in Table~\ref{table:data}.
-We sample over the parameter Local Group mass $\mlg$, (true) present-day MW--M31
+We sample over the parameter Local Group mass $\mlg$, \todo{(true) present-day MW--M31}
 separation $r$, log eccentricity $\ln\left(1 - e\right)$, eccentric anomaly
 $\eta$, and the orbital plane orientation nuisance parameter $\alpha$.
-However, we set the priors as follows:
+We set the priors as follows:
 \begin{itemize}
   \item Mass of the Local Group $\mlg$: we use a broad, truncated normal
   distribution centered on a past measured value of the local group mass.
@@ -574,15 +549,15 @@ For each dataset, we run the sampler with 4 chains for 4,000 tuning steps and
 
 We use a Bayesian implementation of a Timing Argument model to place constraints
 on the mass of the Local Group and the distance between M31 and the Milky Way.
-Our model of the Local Group accounts for the observed reflex motion of 
+Our model of the Local Group accounts for the \todo{observed reflex motion of 
 the Milky Way
-disk imparted by the infall of the Magellanic Clouds and results in new,
+disk imparted by the infall of the Magellanic Clouds} and results in new,
 less-biased constraints on the mass of the Local Group.
 \todo{due to the LMC only? maybe need to be more general about the source?}
   % 4.69$\pm0.71 \times 10^{12}~\Msun$.
 
 We find that our model prefers lower Local Group masses and a lower eccentricity
-orbit compared to models that do not include MW disk reflex motion.
+orbit compared to models that do not include the travel velocity of the \todo{MW disk}.
 We also find that the inferred mass is larger and LG orbit is less eccentric
 when using the (larger) \gaia\ proper motion of M31.
 Figure~\ref{fig:contour} shows a summary of our key results, showing the 68\%
@@ -595,13 +570,15 @@ To summarize: Using the same dataset as used in \citet{vdm2012}
 (i.e. dataset \textit{vdMG08 Dist. + HST PM})
 , we find a
 median posterior LG mass of $\mlg = 3.98 ^{+0.63}_{-0.47}~\Msun$ (where error
-bars here report the 68\% confidence interval around the median), which is
+bars here report the \todo{68\% confidence interval} around the median), which is
 roughly $0.3\times 10^{12}~\Msun$ smaller than reported in \cite{vdm2012}. With
 the updated dataset containing \textit{Cepheid Dist + Gaia PM}, we find
 $\mlg = 4.54 ^{+0.77}_{-0.56}~\Msun$, while for the combined \textit{Cepheid
 Dist. + HST PM} dataset, we find $\mlg = 4.05^{+0.51}_{-0.34}~\Msun$.
 
-For both datasets that use the HST proper motions of M31 \citep{vdm2012}, we
+For both datasets that use the HST proper motions of M31 
+%\citep{vdm2012}
+, we
 find that the inferred orbital eccentricity is consistent with a radial orbit.
 Using the \gaia-based proper motions \citep{Salomon2021} leads to a finite
 inferred LG orbital eccentricity of $e\sim 0.85$ and therefore a larger inferred
@@ -631,6 +608,9 @@ estimates between the datasets considered, implying a LG mass $\mlg = 3.6
     lowers the inferred mass of the Local Group} regardless of observational
     dataset.
     \kc{make sense of the leveling off at 70km/s.}
+    \todo{make text larger on figure}
+    \todo{add large solid line for measured travel velocity}
+    \todo{add shaded bands for the estimated vtravel for different mass models of the LMC.}
     }
   \end{figure}
 
@@ -714,13 +694,13 @@ accurately reproduce the detailed properties of LG systems.
 Accounting for this effect would likely lower our LG mass measurements.
 
 
-\subsection{Inclusion of Milky Way disk reflex motion in dynamics of the Local Group}
+\subsection{Inclusion of \todo{Milky Way disk reflex motion in dynamics of the Local Group}}
 
-As shown in our results above, including the reflex motion of the Milky Way disk
-results in now measurable differences in the estimated mass of the Local Group
+As shown in our results above, including the \todo{reflex motion of the Milky Way disk
+results in measurable differences in the estimated mass of the Local Group
 through the Timing argument.
-Ignoring this motion at its currently measured travel velocity\footnote{Defined
-as $\vel{\mwouter}{\mwdisk}$ above.} magnitude of $v_\textrm{travel} = 32~\kms$
+Ignoring this motion at its currently measured travel velocity}\footnote{Defined
+as \todo{$\vel{\mwouter}{\mwdisk}$ above.} magnitude of $v_\textrm{travel} = 32~\kms$}
 \citep{Petersen2021} leads to LG masses that are overestimated by $\sim30\%$.
 However, the direction and magnitude of travel velocity is directly tied to the
 inferred mass of the Local Group.
@@ -740,12 +720,12 @@ At fixed magnitude, if the true apex of the travel velocity motion is closer
 % bit about the stellar halo tracers and different distances etc
 There is reason to believe that the recently measured MW disk travel velocity
 could be a lower bound on the true value, which could be up to a factor of
-$\sim$2--3 higher than the currently measured value
-\cite{Garavito-Camargo2021b}.
+$\sim$2--3 higher than the currently measured value.
 Using an idealized simulation of an equilibrium dark matter halo that has a
 recent merger with an LMC-like halo, \cite{Garavito-Camargo2021b} showed that
 stellar halo tracers at different distances from the MW disk center may result
 in different measured travel velocities.
+\todo{while this simulation does not span previous mergers in the MW's history, it gives a good first order approximation of what we may expect}
 % , and it is possible that the current measurement on $v_{travel}$ of 32km/s are just a lower bound on the actual reflex motion of the disk.
 At fixed apex direction, a larger travel velocity would correspond to a lower
 inferred LG mass.
@@ -753,28 +733,15 @@ Figure~\ref{fig:mvsv} shows the effect of increasing the measured travel
 velocity magnitude and its impact on the inferred mass of the Local Group for
 each of the datasets used in this work (see Section~\ref{sec:datasets}).
 The vertical lines in this figure show the travel velocities that are predicted
-for three tracer distances in simulations from~\cite{Garavito-Camargo2021b}.
+for three tracer distances in simulations from~\cite{Garavito-Camargo2021b} \todo{If adding shaded bands to the plot, going to have to explain those here}.
 % \kc{why does the mass level off after 80kpc / 70km/s? }
 Thus, future measurements of the travel velocity of the disk that use tracers at
 larger distance around the MW stellar halo will likely lead to a lower inferred
 Local Group mass.
 
-
-% TODO: move to discussion
-% this will maybe go in discussion?
-% Previous studies that have used the Timing Argument to constrain the mass of the
-% Local Group have found a range of masses.
-
-% This is about $XX\%$ lower than the mass inferred in \citet{vdm2012}, which did
-% not include the MC-induced reflex motion of the Milky Way disk.
-
-% ~\cite{vdm2012} used the timing argument with Dataset 1 and derived a mass of
-% $4.27\pm 0.53\times 10^{12}~\Msun$) \kc{note: our value of \mlg is $\sim.3 \times 10^{12}~\Msun$ higher than found in vdm2012 with the same set of data with no travel velocity. probably just in implementation of mcmc or something?}.
-
-
 \subsection{Improved \mlg\ constraints from future observations}
 
-The biggest source of uncertainty in our inferred LG mass $\mlg$ currently comes
+The biggest source of uncertainty in our empirically inferred LG mass $\mlg$ currently comes
 from the proper motion measurements, which currently have signal-to-noise ratios
 of just 3--4.
 Future data releases from the \gaia\ Mission \citep{GaiaOverview2016} will lead
@@ -791,8 +758,8 @@ individual source kinematics could be even better than linear because more
 sources will be detected and usable in the measurement.
 
 
-\subsection{The M31--M33 system}
-
+\subsection{The M31--M33 system\todo{change}}
+\todo{short sentence about the M31 subsystem and how we absolutely do not attempt to add in a travel velocity.}
 While M31 has a massive satellite (M33) of comparable mass ratio to the
 MCs--Milky Way system, we do not expect there to be a significant reflex
 velocity of M31's disk relative to its equivalent outer halo reference frame:
@@ -803,18 +770,11 @@ evidenced by the double nucleus and Giant Southern Stream
 \citep[e.g.][]{Ibata:2001, Font:2006}, but these were likely lower mass-ratio
 mergers \citep[e.g.][]{Gilbert:2019, Milo:2022} and thus will have less of an
 impact on the bulk motion of the M31 disk.
-Given current knowledge of the M31 system and uncertainties in the orbital
+\todo{Given current knowledge of the M31 system and uncertainties in the orbital
 histories of its most massive satellites, here we neglect the (likely
-subdominant) reflex motion of the M31 disk.
-However, a measurement or upper limit on the M31 disk travel velocity would
-enable further unbiased constraints on the Local Group mass.
-
-% TODO: keep this?
-% Other dynamical interactions within the Local Group will also be affected by
-% the reflex motion of the disk. (What is the distribution of satellite velocities
-% about the MW now and w reflex motion? Cause should there maybe be an excess of
-% -vrad satellites in the MW halo? )
-
+subdominant) reflex motion of the M31 disk.}
+\todo{However, a measurement or upper limit on the M31 disk travel velocity would
+enable further unbiased constraints on the Local Group mass.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary and Conclusions}
@@ -832,8 +792,6 @@ result using the same compilation of M31 kinematic measurements, finding $\mlg =
 Using more recent distance and proper motion measurements of M31 we find that
 the orbit of the Local Group galaxies is less radial than previously found,
 leading to a slightly higher inferred Local Group mass $\mlg = 4.54\times10^{12}~\Msun$.
-We find that assuming a radial orbit, all datasets considered here produce
-consistent constraints on the mass $\mlg = XX$. \kc{to adrian: we didn't do this, right?}
 
 \todo{clean up or rewrite a big-picture concluding paragraph?}
 Our findings of a high mass Local Group are consistent with findings that the
