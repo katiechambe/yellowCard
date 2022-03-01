@@ -334,20 +334,21 @@ e.g.,][]{Garavito-Camargo2021b}.}
 %%% Schematic %%%
 \begin{figure*}[htb]
   \centering
-  \includegraphics[width=0.8\textwidth]{schematic-filled.pdf}
+  \includegraphics[width=0.8\textwidth]{schematic.pdf}
   \caption{
     Schematic of the MW and M31 system, not to scale. The shaded regions
     represent the halos of both galaxies. Shown are an artistic representation
     of the velocity and position vectors that are relevant in our model,
-    including: $\pos{M31}{\mwdisk}$, the distance between the MW disk and the
-    M31 disk;
+    including: 
+    $D=\pos{M31}{\odot}$, the measured distance between the \todo{MW 
+    and the M31 disk;}
     $\pos{M31}{\mwouter}$, the distance between the centers of both halos;
-    $\pos{\mwdisk}{\mwouter}$, the distance between the Galactic center and the
-    center of the MW halo (resulting from the reflex motion);
-    $\vel{\mwdisk}{\mwouter}$ and $\vel{M31}{\mwouter}$, the velocity of the
-    Galactic center with respect to the center of the MW halo, and the measured
-    velocity of M31 from the Galactic center, respectively.
-    \todo{remove LMC and add note that the travel velocity of the Milky way is from the composite perturbations of many interactions etc.}  }
+    and $\boldsymbol{v}_{\rm obs}$, the measured 3D velocity of M31.
+    Finally, $\boldsymbol{x}_{\rm travel}$ and $\boldsymbol{v}_{\rm travel}$ 
+    are the distance and velocity between the MW disk and the center of the 
+    MW halo and represent the measured components of the reflex motions from the composite 
+    perturbations of many interactions in the MW halo.
+    \todo{is it fair to say x and v travel are the measured displacements dur to reflex motion and then set x=0 since we have no measured displacement? "while we have no measured xtravel, simulations suggest it could be order 10 kpc."}}
   \label{fig:schematic}
 \end{figure*}
 
@@ -360,8 +361,7 @@ e.g.,][]{Garavito-Camargo2021b}.}
 \todo{Key input into Timing Argument inferences of the Local Group mass are the
 present position and velocity of M31 and the age of the universe (used in
 Equation~\ref{eq:t}).}
-Here we consider three different compilations of data that provide this information to
-have as comparisons.
+Here we consider three different compilations of data for comparison.
 The datasets used in our analysis are summarized in Table~\ref{table:data}. 
 \todo{In particular, we consider proper motions from both \textit{HST}~\citep{sohn} and \textit{Gaia}~\citep{Salomon2021} , as well as distance measurements from \cite{vdm2008} and \cite{Li2021}.} 
 We have split these measurements into three considered datasets: 
@@ -414,11 +414,11 @@ See Table~\ref{table:data} for numerical values used in each of these datasets.
   % \tablenotetext{b}{\cite{Li2021}}
   \caption{\label{table:data}
   Observational datasets used for comparison throughout analysis and their
-  references (vdMG08 is \cite{vdm2008}) Each value is measured for M31 with
+  references. Each value is measured for M31 with
   respect to the sun. $D$ is the distance, $v_{\rm rad}$ is the radial velocity,
   $(\mu^*_{\alpha}, \mu_{\delta})$ are proper motions in RA cosdec and Dec, and
   (U$_{\rm pec}$, V$_{\rm pec}$+V$_0$, W$_{\rm pec}$) the solar motion with
-  respect to the galactic center. $t_{\rm peri}$ is the time elapsed since the
+  respect to the Galactic center. $t_{\rm peri}$ is the time elapsed since the
   last pericenter of the M31 Keplerian orbit, which in this case is the age of
   the Universe.
   }
@@ -525,60 +525,56 @@ For each dataset, we run the sampler with 4 chains for 4,000 tuning steps and
 
 \begin{figure*}[htb]
   \centering
-  \includegraphics[width=0.8\textwidth,trim=1.3cm 0.8cm 1.3cm 0cm,clip=true]
+  \includegraphics[width=0.8\textwidth,trim = 2.3cm 1.5cm 1cm 0cm,clip=true]
   {analyze-runs-contour.pdf}
-  \caption{\label{fig:contour} 68\% confidence contours of sampled posterior
+  \caption{\label{fig:contour} 68\% credible regions of sampled posterior
   distributions with three observational datasets for a subset of our model
   parameters: the total mass of the Local Group (\mlg)
-  % , the distance between the Sun and M31 ($r$),
-  and the eccentricity of the orbit of M31 about a fixed MW ($e$).
+  and the eccentricity of the orbit of M31 about a fixed MW ($e$). 
+  Masses (in units of $10^{12}\Msun$) reported in the bottom left panel are 
+  the median mass and 68\% credible region for each dataset.
+  The shaded regions in the upper left panel are the 68\% credible region mass 
+  estimates of previous TA studies from~\cite{vdm2012} 
+  and~\cite{Penarrubia2016}.
+   %
   The more radial orbit implied by the~\cite{vdm2012} \textit{HST} proper
   motions leads to a lower inferred \mlg\ and a higher
   eccentricity, while the larger \textit{Gaia} proper motions of
   ~\cite{Salomon2021} yield a more circular orbit, and thus a lower eccentricity
    and higher mass system.
-   \kc{change title of plot}
    }
-  % A stationary MW disk is shown in the dotted contours, while our model,
-  %which includes the reflex motion of the MW disk, is shown in solid lines.
-  % The distributions for the separations are unchanged between models, as our
-  % model does not implement a spatial shift to the location of the MW disk.
 \end{figure*}
 
 % We use recent measurements of the present-day kinematics of M31 as observed from the solar system, updated measurements of the solar position and motion with respect to the Milky Way center, and a recent measurement of the velocity of the Milky Way disk with respect to the outer stellar halo to measure the mass of the Local Group using observed kinematics of M31.
 
 We use a Bayesian implementation of a Timing Argument model to place constraints
 on the mass of the Local Group and the distance between M31 and the Milky Way.
-Our model of the Local Group accounts for the \todo{observed reflex motion of 
-the Milky Way
-disk imparted by the infall of the Magellanic Clouds} and results in new,
+Our model of the Local Group accounts for the observed travel velocity of 
+the Milky Way disk from~\cite{Petersen2021}, and results in new,
 less-biased constraints on the mass of the Local Group.
-\todo{due to the LMC only? maybe need to be more general about the source?}
-  % 4.69$\pm0.71 \times 10^{12}~\Msun$.
 
 We find that our model prefers lower Local Group masses and a lower eccentricity
-orbit compared to models that do not include the travel velocity of the \todo{MW disk}.
-We also find that the inferred mass is larger and LG orbit is less eccentric
+orbit compared to models that do not include the travel velocity of the MW disk.
+We also find that the inferred mass is larger and the LG orbit is less eccentric
 when using the (larger) \gaia\ proper motion of M31.
-Figure~\ref{fig:contour} shows a summary of our key results, showing the 68\%
-confidence regions from the sampled posterior pdfs of LG mass \mlg\ and
+Figure~\ref{fig:contour} is a summary of our key results, showing the 68\%
+credible regions from the sampled posterior pdfs of the LG mass \mlg\ and
 eccentricity $e$.
 The upper left panel shows the marginal posterior pdfs over LG mass for each of
-the datasets (histogram curves) and with 68\% confidence regions plotted for two
+the datasets (histogram curves) and with 68\% credible regions plotted for two
 prior LG mass measurements (gray shaded bands).
-To summarize: Using the same dataset as used in \citet{vdm2012}
-(i.e. dataset \textit{vdMG08 Dist. + HST PM})
-, we find a
-median posterior LG mass of $\mlg = 3.98 ^{+0.63}_{-0.47}~\Msun$ (where error
-bars here report the \todo{68\% confidence interval} around the median), which is
-roughly $0.3\times 10^{12}~\Msun$ smaller than reported in \cite{vdm2012}. With
-the updated dataset containing \textit{Cepheid Dist + Gaia PM}, we find
-$\mlg = 4.54 ^{+0.77}_{-0.56}~\Msun$, while for the combined \textit{Cepheid
-Dist. + HST PM} dataset, we find $\mlg = 4.05^{+0.51}_{-0.34}~\Msun$.
+To summarize: With dataset \textit{vdMG08 Dist. + HST PM}, we find a
+median posterior LG mass of $\mlg = 3.98 ^{+0.63}_{-0.47}\times10^{12}~\Msun$ 
+(where error
+bars here report the 68\% credible regions around the median), which is
+roughly $0.3\times 10^{12}~\Msun$ smaller than reported in \cite{vdm2012} for
+the same dataset.
+With the updated dataset containing \textit{Cepheid Dist + Gaia PM}, we find
+$\mlg = 4.54 ^{+0.77}_{-0.56}\times10^{12}~\Msun$, while for the combined
+ \textit{Cepheid Dist. + HST PM} dataset, we find 
+ $\mlg = 4.05^{+0.51}_{-0.34}\times 10^{12}~\Msun$.
 
-For both datasets that use the HST proper motions of M31 
-%\citep{vdm2012}
-, we
+For both datasets that use the HST proper motions of M31, we
 find that the inferred orbital eccentricity is consistent with a radial orbit.
 Using the \gaia-based proper motions \citep{Salomon2021} leads to a finite
 inferred LG orbital eccentricity of $e\sim 0.85$ and therefore a larger inferred
@@ -586,8 +582,6 @@ LG mass.
 However, enforcing $e=1$ (i.e. a radial LG orbit) produces very consistent mass
 estimates between the datasets considered, implying a LG mass $\mlg = 3.6
 \pm 0.3 \times 10^{12}~\Msun$.
-
-% Constraints on the distance to M31 remain roughly unchanged for both datasets, primarily because our model does not introduce a physical displacement of the MW disk, since we assume the motion of the disk over the past XX Myr since the LMC achieved pericenter is negligible compared to the separation between M31 and the MW. Thus, the inclusion of the reflex motion of the disk in our model does not affect constraints on the distance to M31.
 
 
 \begin{figure}[htb]
@@ -883,7 +877,7 @@ Currently, appendix only includes the corner plots for all of the 5 model parame
   \centering
   \includegraphics[width=0.8\columnwidth]{analyze-runs-all-vdm2012.pdf}
   \caption{\label{fig:contour-vdm}
-  68\% and 95\% confidence contours of sampled posterior distributions for all
+  68\% and 95\% credible regions of sampled posterior distributions for all
   model parameters for the vdMG08 (how to make link to citation?) distance
   measurement $770\pm 40 \rm kpc$ and proper motions from \textit{HST}.
   }
@@ -893,7 +887,7 @@ Currently, appendix only includes the corner plots for all of the 5 model parame
   \centering
   \includegraphics[width=0.8\columnwidth]{analyze-runs-all-Dataset3.pdf}
   \caption{\label{fig:contour-dataset3}
-    68\% and 95\% confidence contours of sampled posterior distributions for all
+    68\% and 95\% credible regions of sampled posterior distributions for all
     model parameters for the vdMG08 (how to make link to citation?) distance
     measurement $770\rm kpc$ and proper motions from \textit{HST}.
   }
@@ -903,7 +897,7 @@ Currently, appendix only includes the corner plots for all of the 5 model parame
   \centering
   \includegraphics[width=0.8\columnwidth]{analyze-runs-all-fiducial2021.pdf}
   \caption{\label{fig:contour-fiducial}
-  68\% and 95\% confidence contours of sampled posterior distributions for all
+  68\% and 95\% credible regions of sampled posterior distributions for all
   model parameters for the cepheid distance
   measurement $761\pm 11 \rm kpc$ and proper motions from \textit{Gaia}.
   }
