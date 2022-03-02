@@ -19,6 +19,7 @@
 \newcommand{\mmw}{\ensuremath{M_{\rm MW}}}
 \newcommand{\vtan}{\ensuremath{v_\textrm{tan}}}
 \newcommand{\vrad}{\ensuremath{v_\textrm{rad}}}
+\newcommand{\vtrav}{\ensuremath{\bov_{\rm travel}}}
 \newcommand{\mud}{\ensuremath{\mu_\delta}}
 \newcommand{\mua}{\ensuremath{\mu_\alpha^*}}
 \newcommand{\bov}{\ensuremath{\boldsymbol{v}}}
@@ -58,8 +59,8 @@
 \begin{document}
 
 \title{
-    A timing argument mass for the Local Group accounting for the
-    Milky Way--LMC reflex motion
+  Implications of the travel velocity of the Milky Way on Local Group mass\\ 
+  estimates from the Timing Argument
 }
 
 \author[0000-0001-8765-8670]{Katie~Chamberlain}
@@ -357,35 +358,45 @@ e.g.,][]{Garavito-Camargo2021b}.}
 \subsection{Datasets}
 \label{sec:datasets}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The present distance and relative velocity of M31, as well as the age of the 
+universe (used in Equation~\ref{eq:t}), are key observables that are used to 
+constrain our Timing Argument model. In this paper, we consider three different compilations of data to understand how different measurements might affect the 
+Timing Argument model with the addition of the travel velocity. In particular, 
+we consider two different M31 distance measures: an approximated distance 
+measure from~\cite{vdm2008}, and a more accurate Cepheid-based distance measure 
+from~\cite{Li2021}. We also consider two different M31 proper motion 
+measurements: \hst-based proper motions from~\cite{vdm2012}, and a more recent 
+\gaia\ eDR3-based proper motion measure from~\cite{Salomon2021}. 
 
-\todo{Key input into Timing Argument inferences of the Local Group mass are the
-present position and velocity of M31 and the age of the universe (used in
-Equation~\ref{eq:t}).}
-Here we consider three different compilations of data for comparison.
-The datasets used in our analysis are summarized in Table~\ref{table:data}. 
-\todo{In particular, we consider proper motions from both \textit{HST}~\citep{sohn} and \textit{Gaia}~\citep{Salomon2021} , as well as distance measurements from \cite{vdm2008} and \cite{Li2021}.} 
 We have split these measurements into three considered datasets: 
 \begin{description}
-  \item[vdMG08 Dist. + HST PM] \todo{The first dataset contains the measured proper
-  motion of M31 and a collection of other data used to constrain the mass of the
-  Local Group via the Timing Argument in~\citet{vdm2012}: This is labeled as
-  ``vdMG08 Dist. + HST PM'' in figures below to reflect that the M31 distance
-  measurement comes from \citet{vdm2008} and the proper motion comes from HST
-  measurements presented in \citet{vdm2012}. For the proper motion components,
-  we use the proper motions measured from a combination of satellite kinematics
-  and astrometric fields \cite{vdm2012}.}
-  \item[Cepheid Dist. + Gaia PM] \todo{As an independent dataset, we also consider a
+  %
+  \item[vdMG08 Dist. + HST PM] the 
+  M31 distance measure from~\cite{vdm2008} and \hst\ proper motions 
+  from~\citet{vdm2012} -- the same dataset as used to constrain the Local Group
+  mass via the Timing Argument 
+  in~\citet{vdm2012}
+  %
+  \item[Cepheid Dist. + Gaia PM]  a
   compilation of more recent M31 kinematic measurements, including a more
   precise Cepheid-based distance measure to M31 \citep{Li2021} and updated
-  proper motions of M31 measured using data from \textit{Gaia} eDR3
-  \citep{Salomon2021}. The \textit{Gaia}-based M31 proper motion measurement is
-  slightly larger than the HST proper motion of M31, leading to an increased
-  implied transverse velocity that leads to a higher inferred Local Group mass
-  compared to the more radial orbit implied by the first dataset.}
-  \item[Cepheid Dist. + HST PM] \todo{As another comparison, we also use a hybrid
-  dataset that uses the Cepheid-based distance measure to M31 and the HST-based
-  proper motion measurement \citep{Li2021,vdm2012}.}
+  \gaia\ eDR3 proper motions from \citep{Salomon2021}. 
+  %
+  \item[Cepheid Dist. + HST PM] a hybrid dataset with the Cepheid-based distance 
+  measure to M31 and the \hst-based proper motion measurement 
+  \citep{Li2021,vdm2012}.
 \end{description}
+The \hst-based proper motions were originally presented in~\cite{Sohn:2012}, 
+and were then corrected for the internal kinematics and space motion of 
+M31 in~\cite{vdm2012},
+from which we used the ``Weighted Average'' heliocentric 
+velocities\footnote{\todo{in order to get the proper motions instead of 
+velocities, we had to blahblah and blah}}
+in Table~3.
+The \textit{Gaia}-based M31 proper motion measurement is
+slightly larger than the \hst\ proper motion of M31, leading to an increased
+implied transverse velocity that leads to a higher inferred Local Group mass
+compared to the more radial orbit implied by the \hst\ proper motions.
 See Table~\ref{table:data} for numerical values used in each of these datasets.
 
 
@@ -430,24 +441,23 @@ See Table~\ref{table:data} for numerical values used in each of these datasets.
 \label{sec:bayes}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We construct a likelihood function for the observed, Heliocentric position and
-velocity of M31 and the time since last pericenter given the four parameters of
+We construct a likelihood function for the observed heliocentric distance and
+relative velocity of M31 and the time since last pericenter given the four parameters of
 the Timing Argument model $(\mlg, a, e, \eta)$, assign prior probability
 distribution functions (pdfs) for the parameters, and use these to compute the
 posterior pdf over the parameters given the data.
+
 In detail, we first use the four Timing Argument parameters to compute the
-present day separation between the MW and M31 and the relative radial and
+present day separation between the MW and M31 halos and their relative radial and
 tangential velocities as defined in Equations~\ref{eq:r}--\ref{eq:vtan}.
 These velocity components represent the relative velocity M31 would have as
-observed from \todo{the barycenter of the MW--LMC subsystem.}
-We then use the measured ``travel velocity'' of \todo{the MW disk
-$\vel{\mwouter}{\mwdisk}$} to compute the relative velocity of M31 that would be
-\todo{observed from a frame moving with the center of the Milky Way disk (i.e. a
-MW Galactocentric frame).}
+observed from the center of an unperturbed MW halo.
+We then use the measured ``travel velocity'' of the MW disk,
+$\vtrav$, to find the relative velocity of M31 with respect to the center of the moving MW disk (i.e. a moving MW Galactocentric frame).
 We finally transform from this Galactocentric frame to a heliocentric
 reference frame moving with the solar system barycenter (i.e. ICRS coordinates).
 At this final stage, we must introduce an additional nuisance parameter $\alpha$
-which represents the orientation of the MW--M31 orbital plane, \kc{ this part sounds confusing to me: }as it intersects
+which represents the orientation of the MW--M31 orbital plane, as it intersects
 the tangent plane located at the sky position of M31 as viewed from the MW disk
 center.
 This is necessary because the Kepler equations only provide the magnitude of the
@@ -463,10 +473,11 @@ summarized in Table~\ref{table:priors}.
 We use the No-U-Turn Sampler (NUTS) \citep{Homan2014} implemented in
 \texttt{pymc3} to generate samples from this posterior pdf, given data from each
 of the datasets defined in Table~\ref{table:data}.
-We sample over the parameter Local Group mass $\mlg$, \todo{(true) present-day MW--M31}
+We sample over the parameter Local Group mass $\mlg$, the present-day MW--M31 halo
 separation $r$, log eccentricity $\ln\left(1 - e\right)$, eccentric anomaly
 $\eta$, and the orbital plane orientation nuisance parameter $\alpha$.
 We set the priors as follows:
+\kc{do we need the following bullets if we have the table?}
 \begin{itemize}
   \item Mass of the Local Group $\mlg$: we use a broad, truncated normal
   distribution centered on a past measured value of the local group mass.
@@ -478,7 +489,7 @@ We set the priors as follows:
   \item Eccentric anomaly $\eta$: we assume a uniform prior.
   \item Orbital plane orientation $\alpha$: we assume a uniform prior.
 \end{itemize}
-
+This information is summarized in Table~\ref{table:priors}. 
 For each dataset, we run the sampler with 4 chains for 4,000 tuning steps and
 40,000 draws.
 
@@ -590,21 +601,18 @@ estimates between the datasets considered, implying a LG mass $\mlg = 3.6
     \caption{\label{fig:mvsv}
     Mean inferred Local Group mass as a function of travel velocity
     magnitude of the MW disk.
-    The larger \textit{Gaia} proper motions (yellow) lead to higher transverse
+    The larger \textit{Gaia} proper motions (purple) lead to higher transverse
     motion and thus higher mass than either of the \textit{HST} proper motion
-    datasets (pink and purple), though they display the same general trends with increasing travel velocity.
-    The vertical lines represent simulated travel velocities for
+    datasets (pink and yellow), though they display the same general trends with
+     increasing travel velocity.
+    The solid vertical line and accompanying shaded region represent the median 
+    and 67\% confidence interval of the travel velocity measured
+    by~\cite{Petersen2021} of $\vtrav=32\pm 4\kms$. 
+    The dotted vertical lines represent simulated travel velocities for
     stellar tracers at different distances in~\cite{Garavito-Camargo2021b}.
-    % The mean Local Group mass corresponding to the observed travel velocity
-    % from~\cite{Petersen2021} of 32km/s (triangle points) and the 1-$\sigma$
-    % spread on the mass is shown for comparison.
-    \textbf{The inclusion of the reflex motion of the MW disk systematically
+    \textbf{The inclusion of the travel velocity of the MW disk systematically
     lowers the inferred mass of the Local Group} regardless of observational
     dataset.
-    \kc{make sense of the leveling off at 70km/s.}
-    \todo{make text larger on figure}
-    \todo{add large solid line for measured travel velocity}
-    \todo{add shaded bands for the estimated vtravel for different mass models of the LMC.}
     }
   \end{figure}
 
