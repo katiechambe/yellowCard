@@ -26,7 +26,7 @@
 \newcommand{\pos}[2]{\ensuremath{\boldsymbol{x}_{\rm #1 \to #2}}}
 \newcommand{\vel}[2]{\ensuremath{\bov_{\rm #1 \to #2}}}
 \newcommand{\mwbary}{\ensuremath{\textrm{MW}_\textrm{bary}}}
-\newcommand{\mwouter}{\ensuremath{\textrm{MW}_\textrm{outer}}}
+\newcommand{\mwouter}{\ensuremath{\textrm{MW}_\textrm{halo}}}
 \newcommand{\mwdisk}{\ensuremath{\textrm{MW}_\textrm{disk}}}
 \newcommand{\reflabel}[1]{\ensuremath{^{\mbox{\scriptsize{#1}}}}}
 
@@ -222,8 +222,8 @@ distance and proper motions of M31.
 Following past work that utilizes the ``Timing Argument,'' we assume that the
 orbital trajectories of the MW and M31 --- the Local Group system --- over
 cosmic history are well-described by Keplerian orbits \citep[e.g.,][]{Kahn1959,
-Kroeker1991, Lynden-Bell:1981, LiWhite2008, vdm2012, Penarrubia2016}.
-By assuming that the M31 and MW are gravitationally bound and were last at
+Lynden-Bell:1981, Kroeker1991, LiWhite2008, vdm2012, Penarrubia2016}.
+By assuming that M31 and the MW are gravitationally bound and were last at
 closest approach in the early universe (i.e. the two galaxies have not yet
 strongly interacted), we can then use the present-day kinematics of M31 relative
 to the Milky Way to estimate the total mass of the Local Group (i.e. using the
@@ -253,19 +253,18 @@ since last pericenter $t$, and the radial and tangential velocity components
   \vrad &= \left( \frac{GM}{a} \right)^{1/2} \frac{e\,\sin\eta}{1-e\,\cos\eta} \label{eq:vrad} \\
   \vtan &= \left( \frac{GM}{a} \right)^{1/2} \frac{\sqrt{1-e^2}}{1-e\,\cos\eta} \label{eq:vtan} \quad .
 \end{align}
-In our model, the separation $r$ is the distance between the centers of mass of
-M31 and the MW, the time since last pericenter $t$ is the age of the Universe,
+where $r$ is the separation between the centers of the MW and M31 halos,
+the time since last pericenter $t$ is the age of the Universe,
 and the velocity components $(\vrad, \vtan)$ express the radial and tangential
-velocity components of M31 relative to the \todo{MW center.}
+velocity components of M31 relative to the center of the MW halo.
 
-\todo{In a simpler universe where the MW and M31 are point masses and there are no
+In a simpler universe where the MW and M31 are point masses and there are no
 other massive bodies in the LG system, we could transform the observed
 heliocentric sky position, distance, and velocity of M31 to a MW Galactocentric
 reference frame and combine these with an estimate of the Hubble time to obtain
-the four ``observables'' $(r, t, \vrad, \vtan)$:}
+the four ``observables'' $(r, t, \vrad, \vtan)$:
 These observables would be enough to infer the four model parameters $(\mlg, a,
 e, \eta)$ using Equations~\ref{eq:r}--\ref{eq:vtan}.
-% \textbf{To compare our model predictions of the M31-MW system to the observed kinematics, we must translate these quantities into observables to constrain our model with observational data.}
 
 To describe this ``classical'' Timing Argument approach in more detail and set
 the stage for extending it, we adopt the notation of \citet{Penarrubia2016} in
@@ -274,20 +273,49 @@ the reference frame of B and $\pos{A}{B}$ represents the position vector of A as
 measured from B.
 With this notation, $\vel{A}{B} = -\vel{B}{A}$ and $\vel{A}{C} = \vel{A}{B} +
 \vel{B}{C}$.
-\todo{Thus, the position and velocity of M31 with respect to the center of mass of the
-MW can be represented by $\pos{M31}{\mwbary}$ and $\vel{M31}{\mwbary}$
-respectively, and the position and velocity of M31 as measured in a heliocentric
+
+In the classical Timing Argument, the MW disk and M31 are assumed to occupy the 
+center of the potential well of their dark matter halos and have zero velocity 
+with respect to the halos. 
+We refer to this reference frame in the MW dark matter halo 
+as `\mwouter'. 
+Thus, the position and velocity of M31 with respect to MW can be
+represented by $\pos{M31}{\mwouter}$ and $\vel{M31}{\mwouter}$, which are 
+assumed to be equivalent to the position and velocity of M31 with respect to the
+center of the MW disk.
+Then, the position and velocity of M31 as measured in a heliocentric
 reference frame are given by
 \begin{align}
-  \pos{M31}{\odot} &= \pos{M31}{\mwbary} + \pos{\mwbary}{\odot} \label{eq:xoffset1}\\
-  \vel{M31}{\odot} &= \vel{M31}{\mwbary} + \vel{\mwbary}{\odot} \label{eq:voffset1}\quad .
-\end{align}}
-\todo{Here $\left|\pos{M31}{\mwbary}\right| = r$, $\vel{M31}{\mwbary}$ is determined
+  \pos{M31}{\odot} &= \pos{M31}{\mwouter} + \pos{\mwouter}{\odot} \label{eq:xoffset1}\\
+  \vel{M31}{\odot} &= \vel{M31}{\mwouter} + \vel{\mwouter}{\odot} \label{eq:voffset1}\quad .
+\end{align}
+Here $\left|\pos{M31}{\mwouter}\right| = r$ as determined from Eq.~\ref{eq:r}, 
+$\vel{M31}{\mwouter}$ is determined
 completely by the Keplerian model parameters (through \vrad\ and \vtan), and the
-position and velocity of the center of mass of the MW as measured from the sun
-are $\pos{\mwbary}{\odot}$ and $\vel{\mwbary}{\odot}$, respectively, and are
+position and velocity of the center of the MW halo as measured from the sun
+are $\pos{\mwouter}{\odot}$ and $\vel{\mwouter}{\odot}$, respectively, and are
 given by the adopted solar position and velocity in the Galaxy (the values we
-adopt are given in Section~\ref{sec:datasets} below).}
+adopt are given in Section~\ref{sec:datasets} below).
+
+However, the true dynamics of the MW--M31 system are not so simple.
+Perturbations introduced by interactions and mergers between the MW and its 
+satellite galaxies, such as the merger of the Sagittarius dwarf galaxy or the 
+recent pericentric passage of the LMC, break the assumption that the MW disk 
+tracks with the center of its dark matter halo. 
+In fact, these interactions will introduce an additional reflex motion component 
+in observations from the MW disk. 
+The LMC's impact, in particular, on the dynamics of the MW disk and inner halo 
+have been studied in detail by~\cite[e.g.,][]{Garavito-Camargo2021b, petersen 2021? and garciaz2016?
+
+These works imply that we must account for additional terms in
+Equations~\ref{eq:xoffset1} and \ref{eq:voffset1} to account for the reflex
+motion of the MW disk with respect to the center of the halo in its unperturbed 
+state.
+In this study, we will account for the reflex motion of the MW disk in an 
+empirically-driven manner, avoiding uncertainties in the LMC orbital 
+history and mass profile, as well as uncertainties in the MW merger history.
+
+
 
 \todo{As noted above and in \citet{Penarrubia2016}, the dynamics of the MW--M31 system
 is now thought to be more complex because of the infall of the LMC into the MW's
@@ -319,6 +347,11 @@ Equations~\ref{eq:xoffset1}--\ref{eq:voffset1}).}
 drawn in a frame that is comoving with the \mwouter\ frame --- and a rough
 illustration of the geometry we assume.}
 
+In principle, there is also a term $\vec{M31halo}{M31disk}$, but as no measurements of the differential motion of the disk/inner regions of m31 haven't been measured, we drop this term.  See discussion in Sec.~\ref{sec:discussion-m31}.
+
+\subsubsection{In terms of observables:}
+
+
 \todo{In what follows, we will assume that we have access to a direct measurement of
 $\vel{\mwouter}{\mwdisk}$; This is different from \citet{Penarrubia2016} who
 instead parametrize this term as a function of an additional parameter that sets
@@ -328,9 +361,7 @@ that this displacement is likely much smaller than the distance between the MW
 and M31 $\pos{\mwouter}{\mwdisk} \ll r$ \citep[as expected from simulations,
 e.g.,][]{Garavito-Camargo2021b}.}
 
-% APW: I'm not sure we need to go into detail about the coordinate system here
-% info about coordinate system setup
-% \textbf{We choose a coordinate system centered on the disk of the MW, where positive x is along the line of sight between the MW disk and the center of M31's disk, and positive y is in the direction of the tangential motion of M31.} Thus, the velocity vector of M31 in this Keplerian coordinate system is $(v_x, v_y, v_z) =(v_{rad},v_{tan},0)$, and $v_{rad}<0$ means M31 is moving towards the MW disk.
+
 
 %%% Schematic %%%
 \begin{figure*}[htb]
@@ -341,8 +372,7 @@ e.g.,][]{Garavito-Camargo2021b}.}
     represent the halos of both galaxies. Shown are an artistic representation
     of the velocity and position vectors that are relevant in our model,
     including: 
-    $D=\pos{M31}{\odot}$, the measured distance between the \todo{MW 
-    and the M31 disk;}
+    $D=\pos{M31}{\odot}$, the measured distance to M31;
     $\pos{M31}{\mwouter}$, the distance between the centers of both halos;
     and $\boldsymbol{v}_{\rm obs}$, the measured 3D velocity of M31.
     Finally, $\boldsymbol{x}_{\rm travel}$ and $\boldsymbol{v}_{\rm travel}$ 
@@ -761,6 +791,7 @@ sources will be detected and usable in the measurement.
 
 
 \subsection{The M31--M33 system\todo{change}}
+\label{sec:discussion-m31}
 \todo{short sentence about the M31 subsystem and how we absolutely do not attempt to add in a travel velocity.}
 While M31 has a massive satellite (M33) of comparable mass ratio to the
 MCs--Milky Way system, we do not expect there to be a significant reflex
@@ -795,6 +826,8 @@ Using more recent distance and proper motion measurements of M31 we find that
 the orbit of the Local Group galaxies is less radial than previously found,
 leading to a slightly higher inferred Local Group mass $\mlg = 4.54\times10^{12}~\Msun$.
 
+
+
 \todo{clean up or rewrite a big-picture concluding paragraph?}
 Our findings of a high mass Local Group are consistent with findings that the
 mass of M31 is XXbig and the MW is $1-1.5\times10^{12}~\Msun$~\citep{??}.
@@ -804,6 +837,21 @@ has undergone recent (XX Gyrs) major? accretion events with other massive
 subhalos, resulting in morphological features like the Giant Southern Stream and
 XX (what are other M31 things that indicate recent interactions? Do we think
 much about M32? )
+
+this allows us to take a purely empirical approach which differs from previous timing argument studies. 
+
+different velocity values of M31 to get different results for the same TA model setup. 
+
+
+what will improve the work in the future? proper motions etc. what could our work directly motivate? 
+
+
+
+
+it's critical to refine our measurements of PM of M31, as well as the measured travel velocity of the MW disk with tracers at further distance. it is crucial to clarify these measurements in the near future.
+
+
+
 
 % \subsection{Cosmological implications}
 \begin{table*}
