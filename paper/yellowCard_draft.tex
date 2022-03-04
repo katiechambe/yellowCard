@@ -19,11 +19,13 @@
 \newcommand{\mmw}{\ensuremath{M_{\rm MW}}}
 \newcommand{\vtan}{\ensuremath{v_\textrm{tan}}}
 \newcommand{\vrad}{\ensuremath{v_\textrm{rad}}}
-\newcommand{\vtrav}{\ensuremath{\bov_{\rm travel}}}
 \newcommand{\mud}{\ensuremath{\mu_\delta}}
 \newcommand{\mua}{\ensuremath{\mu_\alpha^*}}
 \newcommand{\bov}{\ensuremath{\boldsymbol{v}}}
-\newcommand{\pos}[2]{\ensuremath{\boldsymbol{x}_{\rm #1 \to #2}}}
+\newcommand{\boldx}{\ensuremath{\boldsymbol{x}}}
+\newcommand{\vtrav}{\ensuremath{\bov_{\rm travel}}}
+\newcommand{\xtrav}{\ensuremath{\boldx_{\rm travel}}}
+\newcommand{\pos}[2]{\ensuremath{\boldx_{\rm #1 \to #2}}}
 \newcommand{\vel}[2]{\ensuremath{\bov_{\rm #1 \to #2}}}
 \newcommand{\mwbary}{\ensuremath{\textrm{MW}_\textrm{bary}}}
 \newcommand{\mwouter}{\ensuremath{\textrm{MW}_\textrm{halo}}}
@@ -132,8 +134,6 @@
 \label{sec:intro}
 % \textbf{Importance of local group mass and measuring it}
 \todo{Review references - any obvious missing?}
-\todo{do we need to rethink the language of "Milky Way disk" vs. inner MW halo?}
-\todo{need to specify the parameters of the travel velocity that we are using somewhere!}
 The total mass of the Local Group is an important quantity in many local
 cosmological and Milky Way (MW) applications.
 For example, it is used to identify analogous halos in cosmological simulations
@@ -279,12 +279,12 @@ center of the potential well of their dark matter halos and have zero velocity
 with respect to the halos. 
 We refer to this reference frame in the MW dark matter halo 
 as `\mwouter'. 
-Thus, the position and velocity of M31 with respect to MW can be
+Thus, the position and velocity of M31 with respect to the MW can be
 represented by $\pos{M31}{\mwouter}$ and $\vel{M31}{\mwouter}$, which are 
 assumed to be equivalent to the position and velocity of M31 with respect to the
 center of the MW disk.
-Then, the position and velocity of M31 as measured in a heliocentric
-reference frame are given by
+Then, the \textit{observed} position and velocity of M31, measured in a heliocentric
+reference frame, are given by
 \begin{align}
   \pos{M31}{\odot} &= \pos{M31}{\mwouter} + \pos{\mwouter}{\odot} \label{eq:xoffset1}\\
   \vel{M31}{\odot} &= \vel{M31}{\mwouter} + \vel{\mwouter}{\odot} \label{eq:voffset1}\quad .
@@ -301,65 +301,64 @@ However, the true dynamics of the MW--M31 system are not so simple.
 Perturbations introduced by interactions and mergers between the MW and its 
 satellite galaxies, such as the merger of the Sagittarius dwarf galaxy or the 
 recent pericentric passage of the LMC, break the assumption that the MW disk 
-tracks with the center of its dark matter halo. 
+is stationary in the center of its dark matter halo. 
 In fact, these interactions will introduce an additional reflex motion component 
-in observations from the MW disk. 
+in observations from the MW disk compared to the \mwouter reference frame. 
 The LMC's impact, in particular, on the dynamics of the MW disk and inner halo 
-have been studied in detail by~\cite[e.g.,][]{Garavito-Camargo2021b, petersen 2021? and garciaz2016?
-
-These works imply that we must account for additional terms in
-Equations~\ref{eq:xoffset1} and \ref{eq:voffset1} to account for the reflex
-motion of the MW disk with respect to the center of the halo in its unperturbed 
-state.
-In this study, we will account for the reflex motion of the MW disk in an 
-empirically-driven manner, avoiding uncertainties in the LMC orbital 
-history and mass profile, as well as uncertainties in the MW merger history.
+have been studied in detail by~\cite[e.g.,][]{Gomez2015,Garavito-Camargo:2019,
+Petersen:2020, Garavito-Camargo2021b}.
 
 
 
-\todo{As noted above and in \citet{Penarrubia2016}, the dynamics of the MW--M31 system
-is now thought to be more complex because of the infall of the LMC into the MW's
-dark matter halo:}
-\todo{It is thought that the recent pericentric passage of the LMC has, to first
-order, imparted a velocity boost on the disk and central regions of the MW,
-shifting its position and velocity with respect to the mean position and
-velocity of tracers in the outer MW \citep{Nico, Erkal, Petersen}.}
-This implies that we must account for additional terms in
-Equations~\ref{eq:xoffset1} and \ref{eq:voffset1} to account for the reflex
-motion of the \todo{MW disk with respect to the outer halo.}
-\todo{Thus, the observed position and velocity vector of M31 from the solar reference
-frame is instead given by
+These works imply that we must include additional terms in
+Equations~\ref{eq:xoffset1} and \ref{eq:voffset1} to account for the travel 
+velocity of the MW disk with respect to the center of the halo in its 
+unperturbed state.
+Thus, the observed position and velocity vectors of M31 from the solar reference
+frame become
 \begin{align}
-  \pos{M31}{\odot} &= \pos{M31}{\mwouter} + \pos{\mwouter}{\mwdisk}+\pos{\mwdisk}{\odot} \\
-  \vel{M31}{\odot} &= \vel{M31}{\mwouter} + \vel{\mwouter}{\mwdisk}+\vel{\mwdisk}{\odot}
+  \pos{M31}{\odot} &= \pos{M31}{\mwouter} + \pos{\mwouter}{\mwdisk}+\pos{\mwdisk}{\odot} \label{eq:xm31-solar}\\
+  \vel{M31}{\odot} &= \vel{M31}{\mwouter} + \vel{\mwouter}{\mwdisk}+\vel{\mwdisk}{\odot}\label{eq:vm31-solar}
 \end{align}
-where ``\mwouter'' refers to a reference frame centered at and moving with the
+where ``\mwouter'' again refers to a reference frame centered at and moving with the
 center of mass of the outer MW halo and ``\mwdisk'' refers to a reference frame
-centered at and moving with the center of the MW disk.}
-\todo{We assume that the outer MW halo frame is equivalent to the MW barycentric frame
-in the simpler case where there is no LMC, or in other words we assume that the
-outer MW halo has not yet had time to respond to the infall of the LMC.}
-\todo{We also assume that the sun, Galactic disk, and inner MW moved as a solid body
-so that $\pos{\mwdisk}{\odot}$ and $\vel{\mwdisk}{\odot}$ are equivalent to the
-solar position and velocity with respect to the Galactic center (as in
-Equations~\ref{eq:xoffset1}--\ref{eq:voffset1}).}
-\todo{Figure~\ref{fig:schematic} shows a schematic of these different vectors --- all
-drawn in a frame that is comoving with the \mwouter\ frame --- and a rough
-illustration of the geometry we assume.}
+centered at and moving with the center of the MW disk. 
 
-In principle, there is also a term $\vec{M31halo}{M31disk}$, but as no measurements of the differential motion of the disk/inner regions of m31 haven't been measured, we drop this term.  See discussion in Sec.~\ref{sec:discussion-m31}.
+% We assume that the outer MW halo frame is equivalent to the MW barycentric frame
+% in the simpler case where there is no LMC, or in other words we assume that the
+% outer MW halo has not yet had time to respond to the infall of the LMC.
+% We also assume that the sun, Galactic disk, and inner MW moved as a solid body
+% so that $\pos{\mwdisk}{\odot}$ and $\vel{\mwdisk}{\odot}$ are equivalent to the
+% solar position and velocity with respect to the Galactic center (as in
+% Equations~\ref{eq:xoffset1}--\ref{eq:voffset1}).
 
-\subsubsection{In terms of observables:}
-
-
-\todo{In what follows, we will assume that we have access to a direct measurement of
-$\vel{\mwouter}{\mwdisk}$; This is different from \citet{Penarrubia2016} who
-instead parametrize this term as a function of an additional parameter that sets
-the mass ratio of the LMC and the MW.}
-\todo{We also assume that $\pos{\mwouter}{\mwdisk} \approx 0$ motivated by the fact
+Observationally, the reflex motion of the disk imprints itself on velocity
+measurements as an instantaneous velocity shift.
+Recently,~\cite{Petersen2021} used tracers in the outer MW stellar halo to 
+measure this instantaneous travel velocity
+$\vtrav=\vel{\mwouter}{\mwdisk}$.
+They find $\big|\vtrav\big|=32\pm4\kms$ and highest likelihood apex 
+direction in Galactocentric coordinates 
+$(\ell, b)_{\rm apex} = (56^{+9}_{-9},-34^{+10}_{-9})$ degrees. 
+We also assume that $\pos{\mwouter}{\mwdisk} \approx 0$ motivated by the fact
 that this displacement is likely much smaller than the distance between the MW
 and M31 $\pos{\mwouter}{\mwdisk} \ll r$ \citep[as expected from simulations,
-e.g.,][]{Garavito-Camargo2021b}.}
+e.g.,][]{Garavito-Camargo2021b}.
+However, it's important to note that this displacement is still significant on
+scales relevent for many other MW studies. 
+
+\todo{\%\%\%\%\%\%}
+
+\todo{Figure~\ref{fig:schematic} shows a schematic of these different vectors --- all
+drawn in a frame that is comoving with the \mwouter\ frame --- and a rough
+illustration of the geometry we assume. Need this part to show what each of the vector is called in the simplified diagram, 
+i.e. $\bov_{\rm obs} = \vel{M31}{\mwouter} + \vtrav + \bov_{\odot}$}
+
+
+\todo{In principle, there is also a term $\vec{M31halo}{M31disk}$, 
+however, there is no observational data measuring the differential motion of the
+M31 disk with respect to the M31 halo, so we choose to neglect this term.
+See discussion in Sec.~\ref{sec:discussion-m31}.}
 
 
 
@@ -375,11 +374,11 @@ e.g.,][]{Garavito-Camargo2021b}.}
     $D=\pos{M31}{\odot}$, the measured distance to M31;
     $\pos{M31}{\mwouter}$, the distance between the centers of both halos;
     and $\boldsymbol{v}_{\rm obs}$, the measured 3D velocity of M31.
-    Finally, $\boldsymbol{x}_{\rm travel}$ and $\boldsymbol{v}_{\rm travel}$ 
-    are the distance and velocity between the MW disk and the center of the 
-    MW halo and represent the measured components of the reflex motions from the composite 
-    perturbations of many interactions in the MW halo.
-    \todo{is it fair to say x and v travel are the measured displacements dur to reflex motion and then set x=0 since we have no measured displacement? "while we have no measured xtravel, simulations suggest it could be order 10 kpc."}}
+    Finally, \xtrav\ and \vtrav\ are the present distance and velocity 
+    between the center of the MW halo and the center of the MW disk.
+    For this study, we assume $\xtrav\ll r,D$, and $\vtrav = 32\pm4 \kms$ 
+    from~\cite{Petersen2021}. \todo{change label on r}
+    }
   \label{fig:schematic}
 \end{figure*}
 
@@ -650,7 +649,46 @@ estimates between the datasets considered, implying a LG mass $\mlg = 3.6
 % the text.
 % \begin{figure}[htb]
 %     \centering
-%     \includegraphics[width=\columnwidth]{analyze-runs-deltaMvsPM.pdf}
+%     \includegraphics[width=\c\todo{
+% \apw{Add a paragraph comparing our measurements to other values (e.g., summarize aspects of your Table 3)}}
+
+% \todo{Suggested outline:}
+% \todo{- There are two ways of measuring LG mass: go after it directly with LV dynamics / Timing Argument, or measure MW/M31 separately and add the masses}
+
+% \todo{- Historically, LG dynamics-inferred masses are larger than adding MW+M31 masses: recap rough numbers from your Table 3 (LG dynamics masses have been upwards of $4\times 10^{12}$, adding independent mass measures closer to 2--2.5)}
+
+% \todo{- One exception is the Penarrubia2016 method, ... (use sentences from paragraph below to describe)}
+
+% \todo{- Our value is still larger than most added MW+M31 values (except Cosmo sims), but brings it closer to MW+M31}
+
+% \todo{- Not surprising there is some discrepancy because MW/M31 total mass estimates do not measure full extent of DM distribution and have to extrapolate - there are large uncertainties}
+
+% \todo{- Other TA models and what their differences have been. Namely, here compare Benisty and the fact that they use: 
+% model-dependent transverse velocity corrections
+% Gaia PMs only}
+
+
+% \todo{~\cite{Penarrubia2016} finds a Local Group mass of ($\sim2.64\pm0.4\times
+% 10^{12}~\Msun$) which is significantly lower than our expectations, although this
+% constraint combines the observed kinematics of 35 Local Volume galaxies in
+% addition to the dynamics of the M31--MW system.
+% Each of the Local Volume Galaxies is fit to a radial Keplerian orbital model.
+% However, inclusion of any transverse motion will increase the inferred total
+% mass of the system, so it is likely the assumption of radial orbits leads to
+% an underestimate of the mass of the Local Group with LV galaxies only.
+% Including the dynamics of the M31--MW system increased their recovered
+% total mass by $0.6\times10^{12}~\Msun$. This is different from \citet{Penarrubia2016} who
+% instead parametrize this term as a function of an additional parameter that sets
+% the mass ratio of the LMC and the MW.}
+
+% \todo{The \cite{Benisty2022} paper reports a Local Group TA mass of
+% $5.6^{+1.6}_{-1.2}\times10^{12}\Msun$ after correcting for the reflex motion
+% of the MW induced by the LMC, which is roughly 25\% larger than our findings.
+% The discrepancy is likely due to differences in correcting for the reflex motion
+% of the MW disk.
+% They find that cosmic bias lowers the TA mass by an additional 40\%.
+% The large errorbars are likely due to uncertainties in the orbital modelling of
+% M31 about the combined MW--LMC system.}olumnwidth]{analyze-runs-deltaMvsPM.pdf}
 %     \caption{\label{fig:mvspm} Improvement in the inferred Local Group mass as a function of fractional improvement in proper motion errors.
 %     The standard deviation in the mass decreases with decreasing proper motion
 %     error, and in particular, decrease by a factor of $\sim2.5$ for PMs that are
@@ -666,26 +704,25 @@ estimates between the datasets considered, implying a LG mass $\mlg = 3.6
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Comparing recent measurements of the Local Group mass}
+\todo{\apw{Add a paragraph comparing our measurements to other values (e.g., summarize aspects of your Table 3)}}
 
-\apw{Add a paragraph comparing our measurements to other values (e.g., summarize aspects of your Table 3)}
+\todo{Suggested outline:}
+\todo{- There are two ways of measuring LG mass: go after it directly with LV dynamics / Timing Argument, or measure MW/M31 separately and add the masses}
 
-Suggested outline:
-- There are two ways of measuring LG mass: go after it directly with LV dynamics / Timing Argument, or measure MW/M31 separately and add the masses
+\todo{- Historically, LG dynamics-inferred masses are larger than adding MW+M31 masses: recap rough numbers from your Table 3 (LG dynamics masses have been upwards of $4\times 10^{12}$, adding independent mass measures closer to 2--2.5)}
 
-- Historically, LG dynamics-inferred masses are larger than adding MW+M31 masses: recap rough numbers from your Table 3 (LG dynamics masses have been upwards of $4\times 10^{12}$, adding independent mass measures closer to 2--2.5)
+\todo{- One exception is the Penarrubia2016 method, ... (use sentences from paragraph below to describe)}
 
-- One exception is the Penarrubia2016 method, ... (use sentences from paragraph below to describe)
+\todo{- Our value is still larger than most added MW+M31 values (except Cosmo sims), but brings it closer to MW+M31}
 
-- Our value is still larger than most added MW+M31 values (except Cosmo sims), but brings it closer to MW+M31
+\todo{- Not surprising there is some discrepancy because MW/M31 total mass estimates do not measure full extent of DM distribution and have to extrapolate - there are large uncertainties}
 
-- Not surprising there is some discrepancy because MW/M31 total mass estimates do not measure full extent of DM distribution and have to extrapolate - there are large uncertainties
-
-- Other TA models and what their differences have been. Namely, here compare Benisty and the fact that they use: 
+\todo{- Other TA models and what their differences have been. Namely, here compare Benisty and the fact that they use: 
 model-dependent transverse velocity corrections
-Gaia PMs only
+Gaia PMs only}
 
 
-~\cite{Penarrubia2016} finds a Local Group mass of ($\sim2.64\pm0.4\times
+\todo{~\cite{Penarrubia2016} finds a Local Group mass of ($\sim2.64\pm0.4\times
 10^{12}~\Msun$) which is significantly lower than our expectations, although this
 constraint combines the observed kinematics of 35 Local Volume galaxies in
 addition to the dynamics of the M31--MW system.
@@ -694,9 +731,11 @@ However, inclusion of any transverse motion will increase the inferred total
 mass of the system, so it is likely the assumption of radial orbits leads to
 an underestimate of the mass of the Local Group with LV galaxies only.
 Including the dynamics of the M31--MW system increased their recovered
-total mass by $0.6\times10^{12}~\Msun$.
+total mass by $0.6\times10^{12}~\Msun$. This is different from \citet{Penarrubia2016} who
+instead parametrize this term as a function of an additional parameter that sets
+the mass ratio of the LMC and the MW.}
 
-\kc{The \cite{Benisty2022} paper reports a Local Group TA mass of
+\todo{The \cite{Benisty2022} paper reports a Local Group TA mass of
 $5.6^{+1.6}_{-1.2}\times10^{12}\Msun$ after correcting for the reflex motion
 of the MW induced by the LMC, which is roughly 25\% larger than our findings.
 The discrepancy is likely due to differences in correcting for the reflex motion
@@ -851,6 +890,12 @@ what will improve the work in the future? proper motions etc. what could our wor
 it's critical to refine our measurements of PM of M31, as well as the measured travel velocity of the MW disk with tracers at further distance. it is crucial to clarify these measurements in the near future.
 
 
+In this study, we account for the reflex motion of the MW disk 
+empirically, which allows us to avoid modelling uncertainties in the LMC orbital 
+history and mass profile, as well as uncertainties in the MW merger history.
+Recent measurements of stellar tracers in the outer MW halo 
+by~\cite{Petersen2021} measure an instantaneous 
+
 
 
 % \subsection{Cosmological implications}
@@ -905,7 +950,7 @@ This project was started at the Big Apple Dynamics School (BADS) hosted by the
 Flatiron Institute July--August 2021.
 We greatly benefitted from discussions with the other students who attended the
 BADS, and received helpful input from:
-Kathryn Johnston (Columbia),
+Kathryn Johnston (Columbia), Alex Riley (Texas A\&M)
 \todo{Who else?}.
 This work made use of the
 \texttt{PyGaia}\footnote{https://github.com/agabrown/PyGaia} package: We
