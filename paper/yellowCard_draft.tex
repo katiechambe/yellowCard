@@ -98,10 +98,11 @@
     One of the few methods that enables inferring the total mass directly is the
     ``Timing Argument,'' which models the relative orbit of the Milky Way (MW)
     and M31.
-    \todo{maybe this should be something closer to "previous encounters + mergers with dwarf galaxies have imparted a reflex motion of the disk, especially the LMC" ? }
-    However, recent models of stellar tracers in the outer MW halo have shown
-    that the inner MW and disk are moving with respect to the outer halo, likely
-    because of the infall of the Large Magellanic Cloud, thus biasing past
+    However, the MW is not in equilibrium with its dark matter halo, a byproduct
+    of its merger history and the recent pericentric passage of the LMC.
+    Recent studies of tracers in the MW stellar halo have found that 
+    the MW disk is moving with a lower bound “travel velocity” of $32\pm4$
+    \kms\ with respect to its outer halo \citep{Petersen2021}, thus biasing past
     Timing Argument measurements that do not account for this motion.
     % \textbf{Aims}
     % \textbf{Methods}
@@ -110,9 +111,8 @@
     different compilations of recent kinematic measurements of M31.
     % \textbf{Results}
     We generally find lower LG masses than past Timing Argument results and
-    measure a consistent (between datasets) total mass of
-    $4.5^{+0.8}_{-0.6}\times 10^{12}~\Msun$ using the travel velocity $32 \pm
-    4~\kms$ measured in \citet{Petersen2021}.
+    measure a total mass of $4.5^{+0.8}_{-0.6}\times 10^{12}~\Msun$ 
+    that is consistent between datasets.
     Measurements of the travel velocity with more distant tracers could yield
     even larger values, which would further decrease the inferred LG mass.
     Additionally, we find that future data releases from \emph{Gaia} will lead 
@@ -120,14 +120,9 @@
     of M31's proper motion that will improve the precision of Timing Argument
     mass constraints by a factor of $\sim2$.
     % \textbf{Conclusions}
-    Thus, this newly measured travel velocity implies a lower LG mass than from 
-    a system with a static MW halo and must be considered in future dynamical 
-    studies.
-    % The Timing Argument remains one of few ways to measure the Local Group
-    % mass independent of the masses of the individual component galaxies, but
-    % it is clear that the dynamical impact of the MCs must be accounted for when
-    % using these techniques.
-
+    As a result, the newly measured travel velocity directly implies a lower LG 
+    mass than from a system with a static MW halo, and must be considered in 
+    future dynamical studies of the Local Volume. 
 \end{abstract}
 
 \section{Introduction}
@@ -169,47 +164,66 @@ The Timing Argument (using the MW and M31) uses the observed kinematics of M31
 to model the relative orbit of the two galaxies as a Keplerian orbit.
 Assuming Keplerian dynamics enables dynamically measuring the total mass of the
 MW and M31 with analytic expressions for all relevant kinematic quantities
-because of the simplicity of the two-body equations of motion.
+because of the simplicity of the two-body equations of motion. 
+The inferred mass from the Timing Argument is thus very sensitive on the
+observationally measured kinematics of M31. 
 
-\kc{\begin{itemize}
-  \item here, talk about how the assembly history of the MW and M31 has an impact on the dynamics of the pair. In the past, the impact of the LMC on the change in MW+LMC barycenter has been studied by Penarrubia et al. 
-  \item Talk about predictions of reflex motion of disk -- how the LMC has pulled on the disk of the MW and about the predictions etc from that. (would solid body stuff have to go here?) Recent work by Benisty 
-  \item Introduce travel velocity (the instantaneous measurement of velocity dipole between outer and inner halo -- inherently includes effect of all previous encounters, including LMC/SMC, Sag, GES, etc.) and that for the first time we have observations of this effect! 
-  \item the travel velocity thus implies BLAH about how the timing argument works and how it's applied.
-\end{itemize}}
-
-However, recent studies of the dynamics of the MW and its satellites have
+% the assembly of the Local Group is complicated and has been accounted for in 
+% The assembly history of the MW and M31 has an impact on the dynamics of the
+% pair, as interactions and mergers with massive satellites lead to a 
+% non-equilibrium system. 
+% In particular, the Large Magellanic Cloud (LMC) is 
+% very massive ($\sim1/10$ of the total halo mass of the MW) and has 
+% likely recently made 
+% its first close pericentric passage around the MW \citep[see e.g.,][]{Besla2007,Patel2017a}. %\citep{} 
+Recent studies of the dynamics of the MW and its satellites have
 revealed that the infall of the Magellanic Clouds (MCs) is likely causing
 significant distortions to the dark matter and stellar distribution in the MW
 halo \citep{Laporte:2018a, Laporte:2018b, Garavito-Camargo:2019, Conroy:2021,
 Erkal:2021}, thus impacting the interpretation of observations of the M31
 position and velocity relative to the MW center of mass.
-In particular, the inner MW and disk are likely being accelerated away from the
-center of mass reference frame that would exist in the absence of the MCs
-\citep{Gomez2015, Cunningham:2020, Petersen:2020, Garavito-Camargo2021b}.
+Timing Argument studies that do not account for these perturbations are thus 
+likely only biased estimates of the LG mass.
+\citet{Penarrubia2016} studied the impact of the presence of the LMC on the 
+total mass of the LG via the Timing Argument parametrized as a function of the 
+ratio between the LMC and MW masses. 
 
-In past work, this (then unknown) velocity offset has been included in a Timing
-Argument model of the Local Group by independently modeling the mass of the MW,
-M31, and the MCs (labeled the LMC; \citealt{Penarrubia2016}).
-\kc{Additionally, recent work by \cite{Benisty2022} modelled the orbital history
+In addition, numerous studies of the interaction between the MW and LMC have 
+quantified the expected LMC-induced reflex motion of the MW disk and inner halo,
+which are likely being accelerated away from the center of mass reference frame 
+of a static MW halo 
+\citep{Gomez2015, Cunningham:2020, Petersen:2020, Garavito-Camargo2021b}.
+In fact, previous mergers such as the merger with the dwarf Sagittarius galaxy, 
+as well as the progenitor of the GES, have likely imparted their own reflex 
+motion to the inner MW halo as well. 
+Recent Timing Argument work by \cite{Benisty2022} modelled the orbital history
 of M31 and the MW with and without a mass model of the LMC to estimate the
 contribution of the reflex motion of the MW to the measured tangential and
-radial velocities of M31.
-This correction was then applied to their Timing Argument model to remove
-the impact of the
-LMC in their analysis.}
+radial velocities of M31, then applied these corrections to their model to 
+remove the impact of the LMC in their analysis. 
 
+% introduce travel velocity
+Previous Timing Argument studies are somewhat limited by uncertainties in the 
+mass model of the LMC and the orbital histories of the other galaxies in 
+the LG. 
+% We have not simulated the cumulative effect of all previous MW mergers on the reflex motion of the disk, and so accounting for this through modelling is basically impossible. 
+However, the instantaneous velocity offset of the inner MW with respect to the
+outer halo has now been directly measured using tracer stars in the stellar halo
+of the MW (the ``travel velocity''; \citealt{Petersen2021}). 
+The measured travel velocity can thus be used in Timing Argument studies in 
+place of orbital modelling to account for the expected perturbations of the 
+inner MW halo without having to make assumptions about the mass or dynamical 
+history of the LMC or other satellites. 
 
-However, the velocity offset of the inner MW with respect to the outer halo,
-likely induced by the infall of the MCs, has now been directly measured using
-tracer stars in the stellar halo of the MW (the ``travel velocity'';
-\citealt{Petersen2021}).
-In this Article, we use this measurement of the travel velocity or reflex motion
-of the inner Milky Way with respect to the outer halo (assumed to be the
-reference frame that would exist in the absence of the MCs) in a Timing Argument
-model to infer the mass of the Local Group using recent measurements of the
-distance and proper motions of M31.
-
+In this Article, we use the measurement of the travel velocity of the inner 
+Milky Way to empirically infer the mass of the Local Group, thus accounting for 
+observational misinterpretations in a model-independent way for the first time. 
+We also explore a combination of recent measurements of the 
+distance and proper motions of M31 to infer the effect of the travel velocity 
+in a dataset-independent way. 
+As a result, we find that the travel velocity non-negligibly impacts the 
+inferred mass of the LG in Timing Argument studies, and thus care must be 
+exercized in further dynamical studies of the Local Volume. 
 
 
 \section{Methods and Data}
@@ -293,9 +307,7 @@ Here $\left|\pos{M31}{\mwouter}\right| = r$ as determined from Eq.~\ref{eq:r},
 $\vel{M31}{\mwouter}$ is determined
 completely by the Keplerian model parameters (through \vrad\ and \vtan), and the
 position and velocity of the center of the MW halo as measured from the sun
-are $\pos{\mwouter}{\odot}$ and $\vel{\mwouter}{\odot}$, respectively, and are
-given by the adopted solar position and velocity in the Galaxy (the values we
-adopt are given in Section~\ref{sec:datasets} below).
+are $\pos{\mwouter}{\odot}$ and $\vel{\mwouter}{\odot}$.
 
 However, the true dynamics of the MW--M31 system are not so simple.
 Perturbations introduced by interactions and mergers between the MW and its 
@@ -320,9 +332,19 @@ frame become
   \pos{M31}{\odot} &= \pos{M31}{\mwouter} + \pos{\mwouter}{\mwdisk}+\pos{\mwdisk}{\odot} \label{eq:xm31-solar}\\
   \vel{M31}{\odot} &= \vel{M31}{\mwouter} + \vel{\mwouter}{\mwdisk}+\vel{\mwdisk}{\odot}\label{eq:vm31-solar}
 \end{align}
-where ``\mwouter'' again refers to a reference frame centered at and moving with the
-center of mass of the outer MW halo and ``\mwdisk'' refers to a reference frame
-centered at and moving with the center of the MW disk. 
+where ``\mwouter'' refers to a reference frame centered at and moving with the
+center of mass of the outer MW halo, ``\mwdisk'' refers to a reference frame
+centered at and moving with the center of the MW disk, 
+and $\pos{\mwdisk}{\odot}$ and $\vel{\mwdisk}{\odot}$, respectively, are
+the adopted solar position and velocity in the Galaxy (the values we
+adopt for $\vel{\mwdisk}{\odot}$ (shortened to $\bov_{\odot}$) 
+are given in Table~\ref{table:data} below). 
+
+Note that in principle, there is also a term 
+$\vel{\rm M31_{halo}}{\rm M31_{disk}}$, 
+however, there is no observational data measuring the differential motion of the
+M31 disk with respect to the M31 halo, so we neglect this term.
+See further discussion in Sec.~\ref{sec:discussion-m31}.
 
 % We assume that the outer MW halo frame is equivalent to the MW barycentric frame
 % in the simpler case where there is no LMC, or in other words we assume that the
@@ -337,28 +359,25 @@ measurements as an instantaneous velocity shift.
 Recently,~\cite{Petersen2021} used tracers in the outer MW stellar halo to 
 measure this instantaneous travel velocity
 $\vtrav=\vel{\mwouter}{\mwdisk}$.
-They find $\big|\vtrav\big|=32\pm4\kms$ and highest likelihood apex 
-direction in Galactocentric coordinates 
+They find $\big|\vtrav\big|=32\pm4\kms$ with a highest likelihood apex 
+direction in Galactocentric coordinates of
 $(\ell, b)_{\rm apex} = (56^{+9}_{-9},-34^{+10}_{-9})$ degrees. 
-We also assume that $\pos{\mwouter}{\mwdisk} \approx 0$ motivated by the fact
+We assume that $\pos{\mwouter}{\mwdisk} \approx 0$ motivated by the fact
 that this displacement is likely much smaller than the distance between the MW
 and M31 $\pos{\mwouter}{\mwdisk} \ll r$ \citep[as expected from simulations,
 e.g.,][]{Garavito-Camargo2021b}.
 However, it's important to note that this displacement is still significant on
 scales relevent for many other MW studies. 
 
-\todo{\%\%\%\%\%\%}
-
-\todo{Figure~\ref{fig:schematic} shows a schematic of these different vectors --- all
+Figure~\ref{fig:schematic} shows a schematic of these different vectors --- all
 drawn in a frame that is comoving with the \mwouter\ frame --- and a rough
-illustration of the geometry we assume. Need this part to show what each of the vector is called in the simplified diagram, 
-i.e. $\bov_{\rm obs} = \vel{M31}{\mwouter} + \vtrav + \bov_{\odot}$}
+illustration of the geometry we assume. For clarity, we show 
+$\pos{\mwouter}{\mwdisk}= \xtrav$, $\vel{\mwouter}{\mwdisk}=\vtrav$, and
+$\vel{M31}{\odot}=\bov_{\rm obs}$.
 
 
-\todo{In principle, there is also a term $\vec{M31halo}{M31disk}$, 
-however, there is no observational data measuring the differential motion of the
-M31 disk with respect to the M31 halo, so we choose to neglect this term.
-See discussion in Sec.~\ref{sec:discussion-m31}.}
+
+
 
 
 
