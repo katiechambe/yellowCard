@@ -396,7 +396,7 @@ $\vel{M31}{\odot}=\bov_{\rm obs}$.
     Finally, \xtrav\ and \vtrav\ are the present distance and velocity 
     between the center of the MW halo and the center of the MW disk.
     For this study, we assume $\xtrav\ll r,D$, and $\vtrav = 32\pm4 \kms$ 
-    from~\cite{Petersen2021}. \todo{change label on r}
+    from~\cite{Petersen2021}.
     }
   \label{fig:schematic}
 \end{figure*}
@@ -723,36 +723,61 @@ estimates between the datasets considered, implying a LG mass $\mlg = 3.6
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Comparing recent measurements of the Local Group mass}
-\todo{\apw{Add a paragraph comparing our measurements to other values (e.g., summarize aspects of your Table 3)}}
+There have been two primary pathways to measure the mass of the LG in past years: measure the masses of MW and M31 individually and add them, or going after the total mass directly with LV dynamics, the Timing Argument, or cosmological simulations. 
 
-\todo{Suggested outline:}
-\todo{- There are two ways of measuring LG mass: go after it directly with LV dynamics / Timing Argument, or measure MW/M31 separately and add the masses}
+Historically, total mass estimates are much larger than the sum of the 
+individual MW and M31 masses. 
+Typical LG masses are upwards of $4\times 10^{12}\Msun$, while the sum of 
+independent MW+M31 mass measures result in a total mass closer to 
+$2-2.5\times 10^{12}\Msun$, as can be seen in the collection of previous mass
+estimates for the LG, M31, and the MW in Table~\ref{table:masses}. 
+It is not surprising that there is a discrepancy between the total and summed 
+values of the LG mass, since MW+M31 mass estimates do not measure the full 
+extent of the distribution of dark matter in the LG, and thus must extrapolate 
+in regions where there may be large uncertainties. \todo{citations?}
 
-\todo{- Historically, LG dynamics-inferred masses are larger than adding MW+M31 masses: recap rough numbers from your Table 3 (LG dynamics masses have been upwards of $4\times 10^{12}$, adding independent mass measures closer to 2--2.5)}
 
-\todo{- One exception is the Penarrubia2016 method, ... (use sentences from paragraph below to describe)}
+There have been a few exceptions to the trend of high total mass measurements, 
+namely in~\cite{Diaz2014} and~\cite{Penarrubia2016}. 
+\todo{describe the Diaz method}
+
+Additionally, ~\cite{Penarrubia2016} finds a Local Group mass of 
+$\sim2.64\pm0.4\times 10^{12}~\Msun$, which is significantly lower than our 
+expectations, although this constraint combines the Timing Argument dynamics of 
+the M31--MW system in addition to the observed kinematics of 35 Local Volume 
+galaxies. They parametrize the offset of the LMC+MW barycenter from a 
+MW-only barycenter as a function of the mass ratio between the LMC and MW, and 
+find that the LMC likely has $~0.25\%$ of the mass of the MW halo, resulting in 
+a large shift in the barycenter of the LMC+MW.
+% Each of the Local Volume Galaxies is fit to a radial Keplerian orbital model.
+% However, inclusion of any transverse motion will increase the inferred total
+% mass of the system, so it is likely the assumption of radial orbits leads to
+% an underestimate of the mass of the Local Group with LV galaxies only.
+While the recovered mass using the dynamics of the LV galaxies was quite low  
+($\sim 2\times 10^{12}\Msun$) compared to many Timing Argument-only studies, 
+including the dynamics of the M31--MW system increased their recovered total 
+mass by $0.6\times10^{12}~\Msun$. 
+
+
+Our LG mass estimates are consistent with a number of other recent studies that
+estimate the mass of the LG through dynamical methods. 
+We find we are roughly consistent with the previous Timing Argument model 
+of~\cite{vdm2012}, who use the same values for the distance and velocity of 
+M31 as in our \textit{vdMG08 Dist. + HST PM} dataset, and find a total mass 
+of $4.27\pm0.45\times 10^{12}\Msun$ (neglecting for cosmic bias and 
+scatter). 
+
+and \cite{vdm2012,Zhai2020} and \cite{Benisty2022}
+
 
 \todo{- Our value is still larger than most added MW+M31 values (except Cosmo sims), but brings it closer to MW+M31}
 
-\todo{- Not surprising there is some discrepancy because MW/M31 total mass estimates do not measure full extent of DM distribution and have to extrapolate - there are large uncertainties}
 
 \todo{- Other TA models and what their differences have been. Namely, here compare Benisty and the fact that they use: 
 model-dependent transverse velocity corrections
 Gaia PMs only}
 
 
-\todo{~\cite{Penarrubia2016} finds a Local Group mass of ($\sim2.64\pm0.4\times
-10^{12}~\Msun$) which is significantly lower than our expectations, although this
-constraint combines the observed kinematics of 35 Local Volume galaxies in
-addition to the dynamics of the M31--MW system.
-Each of the Local Volume Galaxies is fit to a radial Keplerian orbital model.
-However, inclusion of any transverse motion will increase the inferred total
-mass of the system, so it is likely the assumption of radial orbits leads to
-an underestimate of the mass of the Local Group with LV galaxies only.
-Including the dynamics of the M31--MW system increased their recovered
-total mass by $0.6\times10^{12}~\Msun$. This is different from \citet{Penarrubia2016} who
-instead parametrize this term as a function of an additional parameter that sets
-the mass ratio of the LMC and the MW.}
 
 \todo{The \cite{Benisty2022} paper reports a Local Group TA mass of
 $5.6^{+1.6}_{-1.2}\times10^{12}\Msun$ after correcting for the reflex motion
@@ -923,26 +948,33 @@ by~\cite{Petersen2021} measure an instantaneous
   \begin{tabular}{clc|c}
     \hline\hline
     Mass & Method & Result ($ 10^{12}~\Msun$ ) & Citation \\\hline
-    \multirow{7}{*}{\mlg}  &{LV Galaxies + Timing Argument} & {2.64$\pm0.4$} & \cite{Penarrubia2016} \\
+    \multirow{9}{*}{\mlg}  &Timing & $3.6$ & \cite{Lynden-Bell:1981} \\
+    &Timing (radial + cosmo sim calibration)  & $5.27$& \cite{LiWhite2008} \\
     &{Timing only} & {4.27$\pm$0.45} & \cite{vdm2012} \\
     &{Timing (3D + cosmic bias and scatter)} & {4.93$\pm$1.63} & \cite{vdm2012} \\
-    &Timing (radial + cosmo sim calibration)  & $5.27$& \cite{LiWhite2008} \\
-    &Timing & $3.6$ & \cite{Lynden-Bell:1981} \\
-    & Cosmo Sims & 4.4$^{+2.4}_{-1.5}$ & \cite{Zhai2020}\\
     & LG Dynamics &$2.5\pm0.4$ & \cite{Diaz2014}\\
+    &{LV Galaxies + Timing Argument} & {2.64$\pm0.4$} & \cite{Penarrubia2016} \\
+    & Cosmo Sims & 4.4$^{+2.4}_{-1.5}$ & \cite{Zhai2020}\\
+    & TA + LMC & 5.6$^{+1.6}_{-1.2}$ & \cite{Benisty2022}\\
+    & TA + CB + LMC & 3.4$^{+1.4}_{-1.1}$ & \cite{Benisty2022}\\
+    
     %  &  &  \\
     \hline
-    \multirow{3}{*}{\mmto}& Kinematics of M31 Sats & $1.4 \pm 0.4$ ($<$300 kpc) & \cite{Watkins2010}\\
-    & Cosmo Sims & 2.5$^{+1.3}_{-1.1}$ & \cite{Zhai2020}\\
+    \multirow{4}{*}{\mmto}& Kinematics of M31 Sats & $1.4 \pm 0.4$ ($<$300 kpc) & \cite{Watkins2010}\\
     & LG Dynamics &$1.7\pm0.3$ & \cite{Diaz2014}\\
+    & M31 Orbital Ang. Mom. & $1.37^{+1.39}_{-0.75}$ & \cite{Patel2017b}\\
+    & Cosmo Sims & 2.5$^{+1.3}_{-1.1}$ & \cite{Zhai2020}\\
+
     \hline
-    \multirow{4}{*}{\mmw}&  Kinematics of LG sats & $1.4 \pm 0.3$ ($<$300 kpc) & \cite{Watkins2010}\\
-    & Cosmo Sims & 1.5$^{+1.4}_{-0.7}$ & \cite{Zhai2020} \\
+    \multirow{5}{*}{\mmw}&  Kinematics of LG sats & $1.4 \pm 0.3$ ($<$300 kpc) & \cite{Watkins2010}\\
+    
     & LG Dynamics &$0.8\pm0.5$ & \cite{Diaz2014}\\
-    & MW Sats & $0.96^{+0.29}_{-0.28}$ & \cite{Patel2017}\\
+    & MW Sats & $0.96^{+0.29}_{-0.28}$ & \cite{Patel2017b}\\
+    & LMC Orbital Ang. Mom. & $1.02^{+0.77}_{-0.55}$ & \cite{Patel2017b}\\
+    & Cosmo Sims & 1.5$^{+1.4}_{-0.7}$ & \cite{Zhai2020} \\
   \hline\hline
   \end{tabular}
-  \caption{\label{table:masses}Can remove this, this is just to keep me sane}
+  \caption{\label{table:masses}A collection of previous mass measurements from dynamics.}
 \end{table*}
 
 % Previous uses of the Timing Argument have placed constraints on the mass of the Local Group
@@ -971,6 +1003,7 @@ We greatly benefitted from discussions with the other students who attended the
 BADS, and received helpful input from:
 Kathryn Johnston (Columbia), Alex Riley (Texas A\&M)
 \todo{Who else?}.
+KC would like to thank Ekta Patel for sharing a collection of M31 mass measurements from the literature.
 This work made use of the
 \texttt{PyGaia}\footnote{https://github.com/agabrown/PyGaia} package: We
 acknowledge the Gaia Project Scientist Support Team and the Gaia Data Processing
