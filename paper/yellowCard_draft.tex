@@ -128,7 +128,7 @@
 \section{Introduction}
 \label{sec:intro}
 % \textbf{Importance of local group mass and measuring it}
-\todo{Review references - any obvious missing?}
+% \todo{Review references - any obvious missing?}
 The total mass of the Local Group is an important quantity in many local
 cosmological and Milky Way (MW) applications.
 For example, it is used to identify analogous halos in cosmological simulations
@@ -148,6 +148,9 @@ Many of these techniques determine the individual masses of the MW and M31
 independently \citep[e.g.][]{Watkins2010, Diaz2014, Patel2018, Eadie:2019,
 Fritz:2020, Deason:2021, Wang:2022}, often via the dynamics of their satellites
 and stellar streams, then combine them to get an estimate of the total LG mass.
+However, these methods generally only measure the enclosed mass of the MW or M31
+within some internal radius (i.e. much smaller than LG scales) and then
+extrapolate, leading to mass-profile-dependent estimates of the total LG mass.
 Other techniques aim to more directly measure the mass of the Local Group en
 masse, for example looking for Local Group analogs in cosmological simulations
 based on stellar mass and kinematic criteria \citep[e.g.,][]{Zhai2020}, or by
@@ -165,8 +168,8 @@ to model the relative orbit of the two galaxies as a Keplerian orbit.
 Assuming Keplerian dynamics enables dynamically measuring the total mass of the
 MW and M31 with analytic expressions for all relevant kinematic quantities
 because of the simplicity of the two-body equations of motion.
-The inferred mass from the Timing Argument is thus very sensitive on the
-observationally measured kinematics of M31.
+The inferred mass from the Timing Argument is thus very sensitive to the
+observationally-measured kinematics of the M31 center.
 
 % the assembly of the Local Group is complicated and has been accounted for in
 % The assembly history of the MW and M31 has an impact on the dynamics of the
@@ -185,45 +188,46 @@ position and velocity relative to the MW center of mass.
 Timing Argument studies that do not account for these perturbations are thus
 likely only biased estimates of the LG mass.
 \citet{Penarrubia2016} studied the impact of the presence of the LMC on the
-total mass of the LG via the Timing Argument parametrized as a function of the
-ratio between the LMC and MW masses.
+total mass of the LG via the Timing Argument by explicitly modeling the masses
+of the MW, LMC, and M31 as a dynamical system.
+% as a function of the ratio between the LMC and MW masses.
 
-In addition, numerous studies of the interaction between the MW and LMC have
-quantified the expected LMC-induced reflex motion of the MW disk and inner halo,
-which are likely being accelerated away from the center of mass reference frame
-of a static MW halo
-\citep{Gomez2015, Cunningham:2020, Petersen:2020, Garavito-Camargo2021b}.
-In fact, previous mergers such as the merger with the dwarf Sagittarius galaxy,
-as well as the progenitor of the GES, have likely imparted their own reflex
-motion to the inner MW halo as well.
+In addition, numerous studies of the interaction between the MW and LMC (using
+simulated analogs) have quantified the expected LMC-induced reflex motion of the
+MW disk and inner halo, which are likely being accelerated away from the center
+of mass reference frame of a static MW halo \citep{Gomez2015, Cunningham:2020,
+Petersen:2020, Garavito-Camargo2021b}.
 Recent Timing Argument work by \cite{Benisty2022} modelled the orbital history
 of M31 and the MW with and without a mass model of the LMC to estimate the
-contribution of the reflex motion of the MW to the measured tangential and
-radial velocities of M31, then applied these corrections to their model to
-remove the impact of the LMC in their analysis.
-
-% introduce travel velocity
-Previous Timing Argument studies are somewhat limited by uncertainties in the
-mass model of the LMC and the orbital histories of the other galaxies in
+contribution of the LMC-induced reflex motion of the MW to the measured
+tangential and radial velocities of M31, then applied these corrections to their
+model to remove the impact of the LMC in their analysis.
+In fact, other satellite mergers such as the ongoing merger with the Sagittarius
+dwarf galaxy, as well as the past merger with the progenitor of the
+Gaia--Enceladus--Sausage, have likely also imparted their own reflex motion to
+the inner MW halo.
+Previous Timing Argument studies have therefore only accounted for the impact of
+an LMC-induced reflex motion on the orbital histories of the other galaxies in
 the LG.
 % We have not simulated the cumulative effect of all previous MW mergers on the reflex motion of the disk, and so accounting for this through modelling is basically impossible.
-However, the instantaneous velocity offset of the inner MW with respect to the
-outer halo has now been directly measured using tracer stars in the stellar halo
+
+However, recently the instantaneous velocity offset of the inner MW with respect
+to the outer halo was directly measured using tracer stars in the stellar halo
 of the MW (the ``travel velocity''; \citealt{Petersen2021}).
 The measured travel velocity can thus be used in Timing Argument studies in
 place of orbital modelling to account for the expected perturbations of the
 inner MW halo without having to make assumptions about the mass or dynamical
 history of the LMC or other satellites.
 
-In this Article, we use the measurement of the travel velocity of the inner
-Milky Way to empirically infer the mass of the Local Group, thus accounting for
-observational misinterpretations in a model-independent way for the first time.
-We also explore a combination of recent measurements of the
-distance and proper motions of M31 to infer the effect of the travel velocity
-in a dataset-independent way.
-As a result, we find that the travel velocity non-negligibly impacts the
-inferred mass of the LG in Timing Argument studies, and thus care must be
-exercized in further dynamical studies of the Local Volume.
+In this Article, we use the measured travel velocity of the inner Milky Way to
+empirically infer the mass of the Local Group, thus accounting for observational
+misinterpretations in a model-independent way for the first time.
+We also explore a combination of recent measurements of the distance and proper
+motions of M31 to infer the effect of the travel velocity in a
+dataset-independent way.
+As a result, we find that the travel velocity significantly impacts the inferred
+mass of the LG in Timing Argument studies, and thus must be accounted for in
+further dynamical studies of the Local Volume.
 
 
 \section{Methods and Data}
