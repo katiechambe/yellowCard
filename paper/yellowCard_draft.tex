@@ -249,7 +249,7 @@ Timing Argument).
 
 % \textbf{The dynamics of the M31-MW system can be approximated by simple Keplerian orbits.}
 In this work, we largely follow the methodology and notation defined in
-\citet{Penarrubia2016}
+\citet{Penarrubia2016}.
 Briefly recapping the Timing Argument method, we assume that the dynamics of the
 MW and M31 pair is dominated by the local gravitational potential of the Local Group
 (LG) and therefore the Hubble flow can be neglected for computing the relative
@@ -262,18 +262,18 @@ semi-major axis $a$, the eccentricity $e$, and the present value of the
 eccentric anomaly $\eta$.
 
 In terms of these four model parameters, the closed-form equations for relevant
-two-body quantities like the separation between the masses $r$, the elapsed time
-since last pericenter $t$, and the radial and tangential velocity components
-\vrad\ and \vtan\ are given by:
+two-body quantities that are closer to observables, like the separation between
+the masses $r$, the elapsed time since last pericenter $t$, and the radial and
+tangential velocity components \vrad\ and \vtan, are given by:
 \begin{align}
   r &= a \, (1-e\,\cos\eta) \label{eq:r} \\
   t &= \left( \frac{a^3}{GM} \right)^{1/2}(\eta-e\,\sin\eta) \label{eq:t} \\
   \vrad &= \left( \frac{GM}{a} \right)^{1/2} \frac{e\,\sin\eta}{1-e\,\cos\eta} \label{eq:vrad} \\
   \vtan &= \left( \frac{GM}{a} \right)^{1/2} \frac{\sqrt{1-e^2}}{1-e\,\cos\eta} \label{eq:vtan} \quad .
 \end{align}
-where $r$ is the separation between the centers of the MW and M31 halos,
-the time since last pericenter $t$ is the age of the Universe,
-and the velocity components $(\vrad, \vtan)$ express the radial and tangential
+In the expressions above, $r$ is the separation between the centers of the MW
+and M31 halos, the time since last pericenter, $t$, is the age of the Universe,
+and the velocity components, $(\vrad, \vtan)$, express the radial and tangential
 velocity components of M31 relative to the center of the MW halo.
 
 In a simpler universe where the MW and M31 are point masses and there are no
@@ -307,11 +307,11 @@ reference frame, are given by
   \pos{M31}{\odot} &= \pos{M31}{\mwouter} + \pos{\mwouter}{\odot} \label{eq:xoffset1}\\
   \vel{M31}{\odot} &= \vel{M31}{\mwouter} + \vel{\mwouter}{\odot} \label{eq:voffset1}\quad .
 \end{align}
-Here $\left|\pos{M31}{\mwouter}\right| = r$ as determined from Eq.~\ref{eq:r},
-$\vel{M31}{\mwouter}$ is determined
-completely by the Keplerian model parameters (through \vrad\ and \vtan), and the
-position and velocity of the center of the MW halo as measured from the sun
-are $\pos{\mwouter}{\odot}$ and $\vel{\mwouter}{\odot}$.
+Here $\left|\pos{M31}{\mwouter}\right| = r$ as determined from
+Equation~\ref{eq:r}, $\vel{M31}{\mwouter}$ is determined completely by the
+Keplerian model parameters (through \vrad\ and \vtan), and the position and
+velocity of the center of the MW halo as measured from the sun are
+$\pos{\mwouter}{\odot}$ and $\vel{\mwouter}{\odot}$.
 
 However, the true dynamics of the MW--M31 system are not so simple.
 Perturbations introduced by interactions and mergers between the MW and its
@@ -319,13 +319,10 @@ satellite galaxies, such as the merger of the Sagittarius dwarf galaxy or the
 recent pericentric passage of the LMC, break the assumption that the MW disk
 is stationary in the center of its dark matter halo.
 In fact, these interactions will introduce an additional reflex motion component
-in observations from the MW disk compared to the \mwouter reference frame.
-The LMC's impact, in particular, on the dynamics of the MW disk and inner halo
-have been studied in detail by~\cite[e.g.,][]{Gomez2015,Garavito-Camargo:2019,
-Petersen:2020, Garavito-Camargo2021b}.
-
-
-
+in observations from the MW disk compared to the \mwouter\ reference frame.
+The LMC's impact on the dynamics of the MW disk and inner halo have been studied
+in detail by~\cite[e.g.,][]{Gomez2015, Garavito-Camargo:2019, Petersen:2020,
+Garavito-Camargo2021b}.
 These works imply that we must include additional terms in
 Equations~\ref{eq:xoffset1} and \ref{eq:voffset1} to account for the travel
 velocity of the MW disk with respect to the center of the halo in its
@@ -342,13 +339,12 @@ centered at and moving with the center of the MW disk,
 and $\pos{\mwdisk}{\odot}$ and $\vel{\mwdisk}{\odot}$, respectively, are
 the adopted solar position and velocity in the Galaxy (the values we
 adopt for $\vel{\mwdisk}{\odot}$ (shortened to $\bov_{\odot}$)
-are given in Table~\ref{table:data} below).
-
-Note that in principle, there is also a term
-$\vel{\rm M31_{halo}}{\rm M31_{disk}}$,
-however, there is no observational data measuring the differential motion of the
-M31 disk with respect to the M31 halo, so we neglect this term.
-See further discussion in Sec.~\ref{sec:discussion-m31}.
+are given in Table~\ref{table:data} below).\footnote{
+Note that in principle, there is also a term $\vel{\rm M31_{halo}}{\rm
+M31_{disk}}$, however, there are not yet measurements of the differential
+motion of the M31 disk with respect to the M31 halo, so we neglect this term.
+See further discussion in Section~\ref{sec:discussion-m31}.
+}
 
 % We assume that the outer MW halo frame is equivalent to the MW barycentric frame
 % in the simpler case where there is no LMC, or in other words we assume that the
