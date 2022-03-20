@@ -493,55 +493,61 @@ See Table~\ref{table:data} for numerical values used in each of these datasets.
 \label{sec:bayes}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We construct a likelihood function for the observed heliocentric distance and
-relative velocity of M31 and the time since last pericenter given the four parameters of
-the Timing Argument model $(\mlg, a, e, \eta)$, assign prior probability
-distribution functions (pdfs) for the parameters, and use these to compute the
-posterior pdf over the parameters given the data.
+We construct a likelihood function for the observed heliocentric distance,
+proper motion components, and radial velocity of M31, along with the time since
+last pericenter, given the four parameters of the Timing Argument model $(\mlg,
+a, e, \eta)$.
+We then adopt prior probability distribution functions (pdfs) for the parameters
+and use these pdfs to compute the posterior pdf over the parameters given the
+data in order to generate samples from the posterior pdf using a Markov Chain
+Monte Carlo (MCMC) method.
 
 In detail, we first use the four Timing Argument parameters to compute the
-present day separation between the MW and M31 halos and their relative radial and
+present-day separation between the MW and M31 halos and their relative radial and
 tangential velocities as defined in Equations~\ref{eq:r}--\ref{eq:vtan}.
 These velocity components represent the relative velocity M31 would have as
 observed from the center of an unperturbed MW halo.
 We then use the measured ``travel velocity'' of the MW disk,
-$\vtrav$, to find the relative velocity of M31 with respect to the center of the moving MW disk (i.e. a moving MW Galactocentric frame).
+\vtrav, to find the relative velocity of M31 with respect to the center of the moving MW disk (i.e. a moving MW Galactocentric frame).
 We finally transform from this Galactocentric frame to a heliocentric
 reference frame moving with the solar system barycenter (i.e. ICRS coordinates).
 At this final stage, we must introduce an additional nuisance parameter $\alpha$
-which represents the orientation of the MW--M31 orbital plane, as it intersects
+that represents the orientation of the MW--M31 orbital plane as it intersects
 the tangent plane located at the sky position of M31 as viewed from the MW disk
-center.
-This is necessary because the Kepler equations only provide the magnitude of the
-tangential velocity (i.e. Equation~\ref{eq:vtan}), but in order to compute
-proper motion components we must also know the exact orientation of the M31
-velocity vector.
+center --- this parameter is needed to convert from the two-dimensional velocity
+components given by Equations~\ref{eq:vrad}--\ref{eq:vtan} to the
+three-dimensional velocity components represented by the two proper motion
+components and the radial velocity of M31.
+% This is necessary because the Kepler equations only provide the magnitude of the
+% tangential velocity (i.e. Equation~\ref{eq:vtan}), but in order to compute
+% proper motion components we must also know the exact orientation of the M31
+% velocity vector.
 However, we stress that this position angle has no impact on the fundamental
 dynamical parameters and is only used for coordinate transformations.
 
 We specify this model using the \texttt{Python} probabilistic programming
-package \texttt{pymc3}~\citep{Salvatier2016} and our adopted prior pdfs are
-summarized in Table~\ref{table:priors}.
-We use the No-U-Turn Sampler (NUTS) \citep{Homan2014} implemented in
-\texttt{pymc3} to generate samples from this posterior pdf, given data from each
-of the datasets defined in Table~\ref{table:data}.
-We sample over the parameter Local Group mass $\mlg$, the present-day MW--M31 halo
-separation $r$, log eccentricity $\ln\left(1 - e\right)$, eccentric anomaly
+package \texttt{pymc3}~\citep{Salvatier2016} and use the No-U-Turn Sampler
+(NUTS) \citep{Homan2014} implemented in \texttt{pymc3} to generate samples from
+this posterior pdf, given data from each of the datasets defined in
+Table~\ref{table:data}.
+We sample over the parameters Local Group mass $\mlg$, the present-day MW--M31
+halo separation $r$, log eccentricity $\ln\left(1 - e\right)$, eccentric anomaly
 $\eta$, and the orbital plane orientation nuisance parameter $\alpha$.
-We set the priors as follows:
-\kc{do we need the following bullets if we have the table?}
-\begin{itemize}
-  \item Mass of the Local Group $\mlg$: we use a broad, truncated normal
-  distribution centered on a past measured value of the local group mass.
-  \item Present MW--M31 separation $r$: we again use a broad, truncated normal
-  distribution centered on past measurements of the distance to M31.
-  \item Eccentricity $e$: we assume a uniform prior on eccentricity but sample
-  in the transformed parameter $\ln(1-e)$ to improve the acceptance fraction
-  when generating posterior samples.
-  \item Eccentric anomaly $\eta$: we assume a uniform prior.
-  \item Orbital plane orientation $\alpha$: we assume a uniform prior.
-\end{itemize}
-This information is summarized in Table~\ref{table:priors}.
+Our adopted prior pdfs are defined in Table~\ref{table:priors}.
+% We set the priors as follows:
+% \kc{do we need the following bullets if we have the table?}
+% \begin{itemize}
+%   \item Mass of the Local Group $\mlg$: we use a broad, truncated normal
+%   distribution centered on a past measured value of the local group mass.
+%   \item Present MW--M31 separation $r$: we again use a broad, truncated normal
+%   distribution centered on past measurements of the distance to M31.
+%   \item Eccentricity $e$: we assume a uniform prior on eccentricity but sample
+%   in the transformed parameter $\ln(1-e)$ to improve the acceptance fraction
+%   when generating posterior samples.
+%   \item Eccentric anomaly $\eta$: we assume a uniform prior.
+%   \item Orbital plane orientation $\alpha$: we assume a uniform prior.
+% \end{itemize}
+% This information is summarized in Table~\ref{table:priors}.
 For each dataset, we run the sampler with 4 chains for 4,000 tuning steps and
 40,000 draws.
 
