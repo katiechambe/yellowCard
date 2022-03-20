@@ -416,7 +416,7 @@ from~\cite{Li2021}. We also consider two different M31 proper motion
 measurements: \hst-based proper motions from~\cite{vdm2012}, and a more recent
 \gaia\ eDR3-based proper motion measure from~\cite{Salomon2021}.
 
-We have split these measurements into three considered datasets:
+We have split these measurements into three compiled datasets:
 \begin{description}
   %
   \item[vdMG08 Dist. + HST PM] the
@@ -438,12 +438,16 @@ The \hst-based proper motions were originally presented in~\cite{Sohn:2012},
 and were then corrected for the internal kinematics and space motion of
 M31 in~\cite{vdm2012},
 from which we used the ``Weighted Average'' heliocentric
-velocities\footnote{\todo{in order to get the proper motions instead of
-velocities, we had to blahblah and blah}}
-in Table~3.
-The \textit{Gaia}-based M31 proper motion measurement is
-slightly larger than the \hst\ proper motion of M31, leading to an increased
-implied transverse velocity that leads to a higher inferred Local Group mass
+velocities in Table~3.\footnote{
+Note that the referenced papers actually report velocity components and
+uncertainties: To transform from velocity back to proper motions, we divide out
+the adopted distance and deconvolve the distance uncertainty to obtain proper
+motions and uncertainties of $\mu_{\alpha^*} = XX pm YY~\masyr$ and
+$\mu_{\delta} = XX pm YY~\masyr$.\todo{Fill in the numberz!}.
+}
+The \textit{Gaia}-based M31 proper motion measurement is slightly larger than
+the \hst\ proper motion of M31, leading to an increased implied transverse
+velocity that, a priori, should lead to a higher inferred Local Group mass
 compared to the more radial orbit implied by the \hst\ proper motions.
 See Table~\ref{table:data} for numerical values used in each of these datasets.
 
