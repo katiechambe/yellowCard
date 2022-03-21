@@ -902,64 +902,103 @@ the M31 disk.
 However, a measurement or upper limit on the M31 disk travel velocity would
 enable further unbiased constraints on the Local Group mass.
 
+
+% \subsection{}
+% If we assume a MW mass of !10^12, 
+% Suddenly putting meaningful constraints on the masses of the individual systems. 
+% Refer to the table. 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary and Conclusions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:summary}
-% In this Letter, we use the Timing Argument to constrain the mass of the Local
-% Group by modeling the relative dynamics of the Milky Way (MW) and M31,
-% accounting for the recently-measured travel velocity of the MW disk with respect
-% to the outer stellar halo of the Galaxy.
-Recent measurements of stellar tracers in the outer MW halo 
-by~\cite{Petersen2021} measure an instantaneous differential "travel velocity"
-of the Milky Way disk compared to the outer stellar halo. 
+Recent measurements of tracers in the outer MW stellar halo $(40<r<120\kpc)$
+by~\cite{Petersen2021} measure an instantaneous differential ``travel velocity''
+of the Milky Way disk compared to the outer stellar halo.
+The travel velocity has been inferred as primarily due to the response of the 
+MW halo to the recent infall of the LMC, as shown in  ~\cite[e.g.][]{Gomez2015,
+Cunningham:2020,Petersen:2020,Garavito-Camargo2021b}. 
 In this study, we use the Timing Argument to infer the LG mass while
 accounting for the travel velocity empirically for the first time.
-This allows us to avoid modelling uncertainties in the LMC orbital 
+This allows us to avoid modeling uncertainties in the LMC orbital
 history and mass profile, as well as uncertainties in the MW merger history.
-We also consider three compilations of kinematic data for the distance and 
-proper motion of M31. 
 
-We show that including the travel velocity of the MW disk lowers the
-inferred Local Group mass from the Timing Argument when compared prior results
-using the same compilation of M31 kinematic measurements, finding $\mlg =
-3.98\times 10^{12}~\Msun$.
-Using more recent distance and proper motion measurements of M31, we find a new,
-completely empirical, measurement for the LG mass of 
-$\mlg = 4.54\times10^{12}~\Msun$.
-
-Our results can be summarized as follows:
+We also consider the three compilations of kinematic data for the distance and 
+proper motion of M31, and find the following inferred masses for each 
+dataset\raggedright{\footnote{Errors correspond to the 68\% credible regions about 
+the median LG mass from the MCMC sampled posterior pdfs
+of our model parameters.}}:
 \begin{itemize}
-  \item[-] \textbf{The travel velocity of the MW disk directly implies a reduced
+  \item[-] For the ``\textit{vdMG08 Dist. + HST PM}'' dataset -- the~\cite{vdm2008}
+  distance and \textit{HST} proper motion measurements~\citep{Sohn:2012,vdm2012}
+  -- we find a LG mass of 
+  $\mlg = 3.98^{+0.63}_{-0.47}\times10^{12}~\Msun$.
+  %
+  \item[-] For the ``\textit{Cepheid Dist. + HST PM}'' dataset -- an updated 
+  Cepheid distance measurement from~\cite{Li2021} and the same \textit{HST} PMs
+  from above -- we find a LG mass of 
+  $\mlg = 4.05^{+0.51}_{-0.34}\times10^{12}~\Msun$.
+  %
+  \item[-] For the ``\textit{Cepheid Dist. + Gaia PM}'' dataset -- a combination of
+  the more recent Cepheid distance and latest \textit{Gaia} proper motion 
+  measurements of M31~\citep{Li2021,Salomon2021} -- we find a new, completely 
+  empirical, measurement for the LG mass of
+  $\mlg = 4.54^{+0.77}_{-0.56}\times10^{12}~\Msun$. 
+\end{itemize}
+
+Our conclusions can be summarized as follows:
+\begin{itemize}
+  \item \textbf{The travel velocity of the MW disk directly implies a reduced
   LG mass from the Timing Argument.}
   For the measured travel velocity of $32\pm4 \kms$ from~\cite{Petersen2021},
   the inferred LG mass is $\sim10-20\%$ lower than a system with a static MW
-  halo.
-  Even larger values of the travel velocity result in an additional decrease
-  in the inferred LG mass.
+  halo. 
+  In addition,  when using the vdm2012 hst PMs and vdm2008 dist., we find $\mlg =
+  3.98\pm XX\times 10^{12}~\Msun$ which is XX lower than in vdm2012.
   %
-  \item[-] \textbf{Recent M31 kinematic data suggests the orbit of MW--M31 
-  is less radial than previously found.} 
-  PMs from \textit{HST}~\citep{vdm2012} are consistent with a highly radial 
-  orbit $e>0.9$ while PMs from \textit{Gaia}~\citep{Salomon2021} result in a 
+  %
+  \item \textbf{Including the travel velocity lowers the inferred eccentricity by blah amount.}
+  This is true regardless of dataset, 
+  Although eccentricity goes down, the inclusion of the travel velocity is dominant. 
+  Recent Gaia PMs of M31 suggest the orbit of MW--M31 is less radial than previously found.
+  PMs from \textit{HST}~\citep{vdm2012} are consistent with a highly radial
+  orbit $e>0.9$ while PMs from \textit{Gaia}~\citep{Salomon2021} result in a
   lower eccentricity of $0.9>e>0.75$.
-  Inferred masses with the Timing Argument are highly sensitive to the 
-  tangential motion of M31, and larger PMs will generically lead to higher 
-  inferred LG masses.  
+  Inferred masses with the Timing Argument are highly sensitive to the
+  tangential motion of M31, and larger PMs will generically lead to higher
+  inferred LG masses. 
   %
-  \item[-] \textbf{Improvements in M31 PM measurements will reduce our error 
-  estimates by a factor of two.}
-  
+  %
+  \item \textbf{Improvements in M31 PM measurements will reduce our error estimates by a factor of two. }
+  We naively divided our PMs errors by blah and found an improvement of blah
+  %
+  %
+  \item \textbf{Higher travel velocity measurements will yield lower LG masses.}
+  If travel velocities are measured to be higher at larger Galactocentric distances, the LG mass will be lower.
+  Current travel velocity measurements go so far out in the halo (quote numbers) simulations (Nico and others? ) suggest that tracers at larger Galactocentric distances (distance range) will yield larger measurements of the travel velocity. This will result in a decrease in the LG mass by blah. Even larger values of the travel velocity result in an additional decrease
+  in the inferred LG mass.
 \end{itemize}
 
+
+%
+%
+%
+%
+
+ 
 This study highlights the importance of improved dynamical measurements within
 the Local Volume in the near future.
-It is critical to refine our measurements of the PM of M31 and to measure the
-travel velocity of the MW disk with stellar tracers at further Galactocentric
-distances. 
-Not only will these endeavors further refine our estimates of the mass of the LG
-to place it in a cosmological context, it will also continue to revolutionize 
-our understanding of the galaxy dynamics at play in our LV.  
+It is critical to refine our measurements of the PM of M31 and to measure the travel velocity of the MW disk with stellar tracers at further Galactocentric distances. Not only will these endeavors further refine our estimates of the mass of the LG to place it in a cosmological context, it will also continue to revolutionize our understanding of the galaxy dynamics at play in our LV. 
+ 
+What does this mean for the MW and M31? It's important to get travel vel measurements at largest gal distances possible because that will set the lower bound of LG masses, which will start to place limits on the masses of the M31 and MW galaxy. 
+
+
+
+%
+%
+%
+%
+%
 
 \begin{table*}
   \centering
