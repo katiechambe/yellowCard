@@ -743,11 +743,10 @@ Typical LG masses are upwards of $4\times 10^{12}\Msun$, while the sum of
 independent MW+M31 mass measures result in a total mass closer to
 $2-2.5\times 10^{12}\Msun$, as can be seen in the collection of previous mass
 estimates for the LG, M31, and the MW in Table~\ref{table:masses}.
-It is not surprising that there is a discrepancy between the total and summed
-values of the LG mass, since MW+M31 mass estimates do not measure the full
+It is not surprising that there are many discrepancies between the total and summed
+values of the LG mass, since MW+M31 mass estimates often cannot measure the full
 extent of the distribution of dark matter in the LG, and thus must extrapolate
-in regions where there may be large uncertainties. \todo{citations?}
-
+in regions where there may be large uncertainties.
 
 There have been a few exceptions in the trend of high total mass measurements,
 namely in~\cite{Diaz2014} and~\cite{Penarrubia2016}.
@@ -761,28 +760,24 @@ galaxies. They parametrize the offset of the LMC+MW barycenter from a
 MW-only barycenter as a function of the mass ratio between the LMC and MW, and
 find that the LMC likely has~$\sim25\%$ of the mass of the MW halo, resulting in
 a large shift in the barycenter of the LMC+MW.
-% Each of the Local Volume Galaxies is fit to a radial Keplerian orbital model.
-% However, inclusion of any transverse motion will increase the inferred total
-% mass of the system, so it is likely the assumption of radial orbits leads to
-% an underestimate of the mass of the Local Group with LV galaxies only.
 The recovered mass using only the dynamics of the LV galaxies was quite low
-($\sim 2\times 10^{12}\Msun$),
+($\sim 2\times 10^{12}\Msun$), though
 including the Timing Argument dynamics of the MW--M31 system increased their
 recovered total
 mass by $0.6\times10^{12}~\Msun$.
 
-Our LG mass estimates are consistent with a number of other recent studies that
+\todo{Our LG mass estimates are consistent with a number of other recent studies that
 estimate the mass of the LG through dynamical methods.
 We find agreement with the previous Timing Argument model
 of~\cite{vdm2012} which found a total mass
 of $4.27\pm0.45\times 10^{12}\Msun$ (neglecting for cosmic bias and
 scatter) using the same values for the distance and velocity of
-M31 as in our \textit{vdMG08 Dist. + HST PM} dataset.
+M31 as in our \textit{vdMG08 Dist. + HST PM} dataset.}
 
-\cite{Zhai2020} found XXX.
+\todo{\cite{Zhai2020} found XXX.}
 
 
-Additionally, \cite{Benisty2022} recently used the Timing Argument to place constraints on the
+\todo{Additionally, \cite{Benisty2022} recently used the Timing Argument to place constraints on the
 LG mass while correcting for the reflex motion of the MW disk induced by the LMC. They find a LG mass of
 $5.6^{+1.6}_{-1.2}\times10^{12}\Msun$, which is roughly 25\% larger than our findings, and that accounting for cosmic bias \& scatter lowers the mass by an additional 40\%.
 
@@ -797,7 +792,7 @@ contribution of the reflex motion of the MW to the measured tangential and
 radial velocities of M31, then applied these corrections to their model to
 remove the impact of the LMC in their analysis.''
 model-dependent transverse velocity corrections
-Gaia PMs only
+Gaia PMs only}
 
 
 \begin{table*}
@@ -839,7 +834,6 @@ Gaia PMs only
 
 
 \subsection{Correction for ``Cosmic Bias''}
-
 Given the simplicity of the Timing Argument dynamical model --- in particular,
 the assumption that the MW and M31 are point masses with constant masses --- it
 is reasonable to wonder whether this methodology provides unbiased estimates of
@@ -854,20 +848,19 @@ Hartl2021}.
 In this work, we do not attempt to ``correct'' our inferred LG masses for this
 cosmic bias effect, because it is unclear whether cosmological simulations
 accurately reproduce the detailed properties of LG systems.
-Accounting for this effect would likely lower our LG mass measurements.
+Accounting for this effect would likely lower our reported LG mass measurements.
 
 
-\subsection{Inclusion of \todo{Milky Way disk reflex motion in dynamics of the Local Group}}
-
-As shown in our results above, including the \todo{reflex motion of the Milky Way disk
+\subsection{Impact of travel velocity on inferred dynamics of the Local Group}
+The existence of the travel velocity of the Milky Way disk
 results in measurable differences in the estimated mass of the Local Group
 through the Timing argument.
-Ignoring this motion at its currently measured travel velocity}\footnote{Defined
-as \todo{$\vel{\mwouter}{\mwdisk}$ above.} magnitude of $v_\textrm{travel} = 32~\kms$}
+As shown in our results above, neglecting this motion at its currently measured
+value of $\vtrav=32\pm4\kms$
 \citep{Petersen2021} leads to LG masses that are overestimated by $\sim30\%$.
-However, the direction and magnitude of travel velocity is directly tied to the
-inferred mass of the Local Group.
-As it is currently measured, the (mean) direction of $\vel{\mwouter}{\mwdisk}$
+However, the both the direction and magnitude of travel velocity are directly 
+tied to the inferred mass of the Local Group.
+As it is currently measured, the (highest likelihood) direction of $\vtrav$
 is just $\sim$$60^\circ$ from the sky position of M31, meaning that the travel
 velocity impacts the conversion of both M31's observed proper motion and radial
 velocity from a Heliocentric reference frame to the ``outer halo'' reference
@@ -875,10 +868,6 @@ frame used above.
 At fixed magnitude, if the true apex of the travel velocity motion is closer
 (farther) to M31's sky position, it would primarily affect the radial velocity
 (proper motions).
-
-% Thus, the observed radial velocity of M31 will be higher than for an unperturbed MW halo. Since $-v_{rad}\propto M^{1/2}$ for an infalling system, a smaller (but still negative) radial velocity will yield a lower Local Group mass.
-
-% The eccentricity decreases significantly for Dataset 2 compared to Dataset 1, due to the larger measured proper motions of Dataset 2.  Additionally, a smaller radial velocity corresponds to a lower eccentricity for a fixed mass and distance, which can be seen in the bottom right panel of~\ref{fig:contour}.
 
 % bit about the stellar halo tracers and different distances etc
 There is reason to believe that the recently measured MW disk travel velocity
@@ -888,25 +877,24 @@ Using an idealized simulation of an equilibrium dark matter halo that has a
 recent merger with an LMC-like halo, \cite{Garavito-Camargo2021b} showed that
 stellar halo tracers at different distances from the MW disk center may result
 in different measured travel velocities.
-\todo{while this simulation does not span previous mergers in the MW's history, it gives a good first order approximation of what we may expect}
-% , and it is possible that the current measurement on $v_{travel}$ of 32km/s are just a lower bound on the actual reflex motion of the disk.
+While this simulation does not span previous mergers in the MW's history, it 
+gives a good first order approximation of what we may expect to observe.
 At fixed apex direction, a larger travel velocity would correspond to a lower
 inferred LG mass.
 Figure~\ref{fig:mvsv} shows the effect of increasing the measured travel
 velocity magnitude and its impact on the inferred mass of the Local Group for
 each of the datasets used in this work (see Section~\ref{sec:datasets}).
-The vertical lines in this figure show the travel velocities that are predicted
-for three tracer distances in simulations from~\cite{Garavito-Camargo2021b}
-% \kc{why does the mass level off after 80kpc / 70km/s? }
+The vertical lines in this figure show the LMC-induced travel velocities that 
+are predicted for three tracer distances in simulations from
+~\cite{Garavito-Camargo2021b}.
 Thus, future measurements of the travel velocity of the disk that use tracers at
 larger distance around the MW stellar halo will likely lead to a lower inferred
 Local Group mass.
 
 \subsection{Improved \mlg\ constraints from future observations}
 \label{sec:discussion-futureobs}
-
 The biggest source of uncertainty in our empirically inferred LG mass $\mlg$ currently comes
-from the proper motion measurements, which currently have signal-to-noise ratios
+from the proper motion measurements, which have signal-to-noise ratios
 of just 3--4.
 Future data releases from the \gaia\ Mission \citep{GaiaOverview2016} will lead
 to more precise mean proper motions of M31 and thus more precise Timing Argument
@@ -922,14 +910,14 @@ individual source kinematics could be even better than linear because more
 sources will be detected and usable in the measurement.
 
 
-\subsection{The M31--M33 system \& M31 reflex motion}
+\subsection{Reflex motion of M31}
 \label{sec:discussion-m31}
 While M31 has a massive satellite (M33) of comparable mass ratio to the
-MCs--Milky Way system, we do not expect there to be a significant reflex
+LMC--Milky Way system, we do not expect there to be a significant reflex
 velocity of M31's disk relative to its equivalent outer halo reference frame:
 Recent work predicts that M33 is likely on first infall into the M31 halo and
 has a much larger orbital pericenter than the MCs \citep[e.g.,][]{Patel2017a}.
-On the other hand, M31 has likely experienced other significant mergers, as
+Additionally, M31 has likely experienced other significant mergers, as
 evidenced by the double nucleus and Giant Southern Stream
 \citep[e.g.][]{Ibata:2001, Font:2006}, but these were likely lower mass-ratio
 mergers \citep[e.g.][]{Gilbert:2019, Milo:2022} and thus will have less of an
@@ -942,14 +930,14 @@ enable further unbiased constraints on the Local Group mass.
 
 %%%%%%%%%%%
 \subsection{MW \& M31 Individual masses}
-If we assume a MW mass of $\sim10^{12}\Msun$, 
+\todo{If we assume a MW mass of $\sim10^{12}\Msun$, 
 Suddenly putting meaningful constraints on the masses of the individual systems. 
-Refer to the table. 
+Refer to the table. }
 %%%%%%%%%%%
 
 %%%%%%%%%%%
 \subsection{The circularity of the MW--M31 orbit}
-It is known that recent Gaia PMs of M31 suggest the orbit of MW--M31 is less radial than previously found.
+\todo{It is known that recent Gaia PMs of M31 suggest the orbit of MW--M31 is less radial than previously found.
 Neglecting the travel velocity, we find that PMs from \textit{HST}~\citep{vdm2012} are consistent with a highly radial
 orbit $e\sim0.96$, while PMs from \textit{Gaia}~\citep{Salomon2021} result in a slightly
 lower eccentricity of $e\sim0.88$.
@@ -962,7 +950,7 @@ Additionally, a less radial orbit (higher tangential velocity) will result in hi
 However, we find that the eccentricity decreases with higher travel velocities ()
 
 As the inferred mass decreases with an increase in the travel velocity, concurrent with a decrease in the eccentricity, the radial velocity contribution to the relative velocity of M31 is dominant
- However, , and thus, even though the eccentricity decreases with large travel velocity, the mass decreases as well. 
+ However, , and thus, even though the eccentricity decreases with large travel velocity, the mass decreases as well. }
  %%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1048,7 +1036,7 @@ It is critical to refine our measurements of the PM of M31 and to measure the
 travel velocity of the MW disk with stellar tracers at further Galactocentric
 distances.
 These endeavors will: 1. further refine our estimates of the mass of the LG to
-place it in a cosmological context and 2. permit travel velocity measurements
+place it in a cosmological context; and 2. permit travel velocity measurements
 at the largest distances possible which will set the lower bound of LG masses
 via the Timing Argument, thus placing meaningful limits on the individual masses
 of the M31 and MW galaxy.
