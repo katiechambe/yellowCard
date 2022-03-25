@@ -226,8 +226,6 @@ dataset-independent way.
 As a result, we find that the travel velocity significantly impacts the inferred
 mass of the LG in Timing Argument studies, and thus must be accounted for in
 further dynamical studies of the Local Volume.
-
-
 \section{Methods and Data}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -743,14 +741,24 @@ Typical LG masses are upwards of $4\times 10^{12}\Msun$, while the sum of
 independent MW+M31 mass measures result in a total mass closer to
 $2-2.5\times 10^{12}\Msun$, as can be seen in the collection of previous mass
 estimates for the LG, M31, and the MW in Table~\ref{table:masses}.
-It is not surprising that there are many discrepancies between the total and summed
-values of the LG mass, since MW+M31 mass estimates often cannot measure the full
-extent of the distribution of dark matter in the LG, and thus must extrapolate
-in regions where there may be large uncertainties.
+It is not surprising that there are many discrepancies between the total and 
+summed values of the LG mass, since MW+M31 mass estimates often cannot measure
+the full extent of the distribution of dark matter in the LG, and thus must
+extrapolate in regions where there may be large uncertainties.
 
 There have been a few exceptions in the trend of high total mass measurements,
 namely in~\cite{Diaz2014} and~\cite{Penarrubia2016}.
-\todo{describe the Diaz method}
+\cite{Diaz2014} utilize the fact that the LG momentum should balance to zero in
+the frame of the LG barycenter to determine the total mass of the LG, as well as
+the mass ratio between M31 and the MW. Using the LG barycenter, indicated by a
+set of 17 LG satellites at $>350\kpc$ from the MW and M31, and the velocities of
+M31 and the MW with respect to the barycenter, they find a LG mass of 
+$2.5\pm0.4\times10^{12}\Msun$, and a mass ratio $\rm M_{M31}/M_{MW}>2.29$. 
+The impact of the LMC and M33 are absorbed by assuming they contribute to the 
+masses of their host galaxies.
+However, the recent measurement of the MW travel velocity will change the 
+measured barycenter and velocities of the MW, M31, and the LG satellites, though
+it is unclear how this would affect the total mass. 
 
 Additionally, ~\cite{Penarrubia2016} finds a Local Group mass of
 $\sim2.64\pm0.4\times 10^{12}~\Msun$, which is significantly lower than our
@@ -763,36 +771,47 @@ a large shift in the barycenter of the LMC+MW.
 The recovered mass using only the dynamics of the LV galaxies was quite low
 ($\sim 2\times 10^{12}\Msun$), though
 including the Timing Argument dynamics of the MW--M31 system increased their
-recovered total
-mass by $0.6\times10^{12}~\Msun$.
+recovered total mass by $0.6\times10^{12}~\Msun$.
 
-\todo{Our LG mass estimates are consistent with a number of other recent studies that
-estimate the mass of the LG through dynamical methods.
-We find agreement with the previous Timing Argument model
+However, our LG mass estimates are consistent with a number of other recent 
+studies that estimate the mass of the LG through dynamical methods.
+For example, we find agreement with the previous Timing Argument model
 of~\cite{vdm2012} which found a total mass
 of $4.27\pm0.45\times 10^{12}\Msun$ (neglecting for cosmic bias and
 scatter) using the same values for the distance and velocity of
-M31 as in our \textit{vdMG08 Dist. + HST PM} dataset.}
+M31 as in our \textit{vdMG08 Dist. + HST PM} dataset.
 
 \todo{\cite{Zhai2020} found XXX.}
 
 
-\todo{Additionally, \cite{Benisty2022} recently used the Timing Argument to place constraints on the
-LG mass while correcting for the reflex motion of the MW disk induced by the LMC. They find a LG mass of
-$5.6^{+1.6}_{-1.2}\times10^{12}\Msun$, which is roughly 25\% larger than our findings, and that accounting for cosmic bias \& scatter lowers the mass by an additional 40\%.
+Additionally, \cite{Benisty2022} recently used the Timing Argument to
+place constraints on the LG mass while removing the impact of the LMC-induced
+reflex motion from their velocity measurements.
+More specifically, they estimate the contribution of the reflex motion of the
+MW disk to the observed velocity vector of M31 by modeling the orbital history
+of the MW--M31 system and the MW+LMC--M31 system.
+Implementing the Timing Argument and removing the LMC-induced reflex motion,
+they find a LG mass of $5.6^{+1.6}_{-1.2}\times10^{12}\Msun$, which is roughly
+25\% larger than our findings, and that accounting for cosmic bias \& scatter
+lowers the mass by an additional 40\% to $3.4^{+1.4}_{-1.1}\times10^{12}\Msun$, 
+25\% lower than our findings. 
+However, they find that in general, inclusion of the motion of the MW disk due 
+to the interaction with the LMC lowers the LG mass by $\sim10\%$, which is 
+consistent with our finding of a reduction in the mass by $\sim10-20\%$.
 
-The discrepancy between this study and the \cite{Benisty2022} work is likely due to differences in correcting for the motion of the MW disk. \cite{Benisty2022} estimated the contribution of the reflex motion of the MW disk to the observed values of the \todo{positions and} velocities
+% The discrepancy between this study and the \cite{Benisty2022} work is likely due to differences in correcting for the motion of the MW disk. 
 
-
-The large errorbars are likely due to uncertainties in the orbital modelling of
-M31 about the combined MW--LMC system.
-From intro ``Recent Timing Argument work by \cite{Benisty2022} modelled the orbital history
-of M31 and the MW with and without a mass model of the LMC to estimate the
-contribution of the reflex motion of the MW to the measured tangential and
-radial velocities of M31, then applied these corrections to their model to
-remove the impact of the LMC in their analysis.''
-model-dependent transverse velocity corrections
-Gaia PMs only}
+A notable difference between this study and~\cite{Benisty2022} is the method by
+which the reflex motion of the MW disk is accounted for. 
+Rather than relying on accurately simulating the reflex motion of the disk, we
+let the travel velocity of the MW disk introduce a coordinate transformation
+(boost) of the measured velocity vectors of M31, and fit for the model
+parameters given the observable data. 
+This method allows us to avoid model uncertainties in the mass profiles of each
+galaxy in the orbital models of the interaction between the MW, M31 and the LMC.
+Additionally, using the measured travel velocity also allows us to innately
+account for the extensive merger history of the MW in a robust way without
+the need to simulate the entire interaction history. 
 
 
 \begin{table*}
@@ -961,22 +980,23 @@ Recent measurements of tracers in the outer MW stellar halo $(40<r<120\kpc)$
 by~\cite{Petersen2021} measure an instantaneous differential ``travel velocity''
 of the Milky Way disk compared to the outer stellar halo.
 The travel velocity has been inferred as primarily due to the response of the 
-MW halo to the recent infall of the LMC, as shown in  ~\cite[e.g.][]{Gomez2015,
+MW halo to the recent infall of the LMC, as shown in  
+~\cite[e.g.][]{Gomez2015,Garavito-Camargo:2019,Erkal2019,
 Cunningham:2020,Petersen:2020,Garavito-Camargo2021b}. 
 In this study, we use the Timing Argument to infer the LG mass while
 accounting for the travel velocity empirically for the first time.
 This allows us to avoid modeling uncertainties in the LMC orbital
 history and mass profile, as well as uncertainties in the MW merger history.
 
-We also consider the three compilations of kinematic data for the distance and 
+We also consider three compilations of kinematic data for the distance and 
 proper motion of M31, and find the following inferred masses for each 
 dataset\footnote{Errors correspond to the 68\% credible regions about 
 the median LG mass from the MCMC sampled posterior pdfs
 of our model parameters.}:
 \begin{itemize}
-  \item[-] For the ``\textit{vdMG08 Dist. + HST PM}'' dataset -- the~\cite{vdm2008}
-  distance and \textit{HST} proper motion measurements~\citep{Sohn:2012,vdm2012}
-  -- we find a LG mass of 
+  \item[-] For the ``\textit{vdMG08 Dist. + HST PM}'' dataset -- the
+  ~\cite{vdm2008} distance and \textit{HST} proper motion 
+  measurements~\citep{Sohn:2012,vdm2012} -- we find a LG mass of 
   $\mlg = 3.98^{+0.63}_{-0.47}\times10^{12}~\Msun$.
   %
   \item[-] For the ``\textit{Cepheid Dist. + HST PM}'' dataset -- an updated 
@@ -984,8 +1004,8 @@ of our model parameters.}:
   from above -- we find a LG mass of 
   $\mlg = 4.05^{+0.51}_{-0.34}\times10^{12}~\Msun$.
   %
-  \item[-] For the ``\textit{Cepheid Dist. + Gaia PM}'' dataset -- a combination of
-  the more recent Cepheid distance and latest \textit{Gaia} proper motion 
+  \item[-] For the ``\textit{Cepheid Dist. + Gaia PM}'' dataset -- a combination
+  of the more recent Cepheid distance and latest \textit{Gaia} proper motion 
   measurements of M31~\citep{Li2021,Salomon2021} -- we find a new, completely 
   empirical, measurement for the LG mass of
   $\mlg = 4.54^{+0.77}_{-0.56}\times10^{12}~\Msun$. 
@@ -993,13 +1013,14 @@ of our model parameters.}:
 
 Our conclusions can be summarized as follows:
 \begin{itemize}
-  \item \textbf{The measured travel velocity of the MW disk directly implies a reduced
-  LG mass from the Timing Argument.}
+  \item \textbf{The measured travel velocity of the MW disk directly implies 
+  a reduced LG mass from the Timing Argument.}
   For the measured travel velocity of $32\pm4 \kms$ from~\cite{Petersen2021},
   the inferred LG mass is $\sim10-20\%$ lower than a system with a static MW
   halo ($\vtrav=0$). 
-  Using the same distance and PMs as in the Timing Argument model of~\cite{vdm2012}, we find that the inclusion of the travel velocity yields a reduction 
-  in the LG mass of $\sim0.3\times 10^{12}\Msun$.
+  Using the same distance and PMs as in the Timing Argument model 
+  of~\cite{vdm2012}, we find that the inclusion of the travel velocity yields
+  a reduction in the LG mass of $\sim0.3\times 10^{12}\Msun$.
   %
   %
   \item \textbf{Higher travel velocity measurements will yield lower LG masses.}
@@ -1024,23 +1045,28 @@ Our conclusions can be summarized as follows:
   We scaled the PMs errors in each dataset by ~6, the expected improvement in
   the proper motion precision between \textit{Gaia} EDR3 and the end of the
   10-year lifetime (see Section~\ref{sec:discussion-futureobs} for more detail),
-  and found an improvement in the uncertainty on the mass by a factor between
-  $2-2.5\times$.
+  and found an expected improvement in the uncertainty on the mass by a factor 
+  of $2-2.5\times$.
   %
   %
 \end{itemize}
  
 This study highlights the importance of improved dynamical measurements within
-the Local Volume in the near future.
+the Local Volume in the near future in order to accurately measure the dark
+matter content of our Local Group.
 It is critical to refine our measurements of the PM of M31 and to measure the
 travel velocity of the MW disk with stellar tracers at further Galactocentric
 distances.
-These endeavors will: 1. further refine our estimates of the mass of the LG to
-place it in a cosmological context; and 2. permit travel velocity measurements
-at the largest distances possible which will set the lower bound of LG masses
-via the Timing Argument, thus placing meaningful limits on the individual masses
-of the M31 and MW galaxy.
+These endeavors will: 1. further refine estimates of the mass of the LG,
+enabling studies to realistically place the LG in a cosmological context; and
+2. permit travel velocity measurements at the largest Galactocentric distances
+possible, which will establish a firm lower bound for the LG mass
+via the Timing Argument and thereby place meaningful limits on the individual
+masses of the M31 and MW galaxy.
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{acknowledgements}
 
 This project was started at the Big Apple Dynamics School (BADS) hosted by the
@@ -1071,7 +1097,8 @@ astropy:2018}.
 }
 
 % \appendix
-% Currently, appendix only includes the corner plots for all of the 5 model parameters for each of the three datasets.
+% Currently, appendix only includes the corner plots for all of the 5 model 
+% parameters for each of the three datasets.
 % \begin{figure*}[htb]
 %   \centering
 %   \includegraphics[width=0.8\columnwidth]{analyze-runs-all-vdm2012.pdf}
