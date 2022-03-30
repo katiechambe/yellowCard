@@ -653,54 +653,6 @@ estimates between the datasets considered, implying a LG mass $\mlg = 3.6
 % \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=\c\todo{
-% \apw{Add a paragraph comparing our measurements to other values (e.g., summarize aspects of your Table 3)}}
-
-% \todo{Suggested outline:}
-% \todo{- There are two ways of measuring LG mass: go after it directly with LV dynamics / Timing Argument, or measure MW/M31 separately and add the masses}
-
-% \todo{- Historically, LG dynamics-inferred masses are larger than adding MW+M31 masses: recap rough numbers from your Table 3 (LG dynamics masses have been upwards of $4\times 10^{12}$, adding independent mass measures closer to 2--2.5)}
-
-% \todo{- One exception is the Penarrubia2016 method, ... (use sentences from paragraph below to describe)}
-
-% \todo{- Our value is still larger than most added MW+M31 values (except Cosmo sims), but brings it closer to MW+M31}
-
-% \todo{- Not surprising there is some discrepancy because MW/M31 total mass estimates do not measure full extent of DM distribution and have to extrapolate - there are large uncertainties}
-
-% \todo{- Other TA models and what their differences have been. Namely, here compare Benisty and the fact that they use:
-% model-dependent transverse velocity corrections
-% Gaia PMs only}
-
-
-% \todo{~\cite{Penarrubia2016} finds a Local Group mass of ($\sim2.64\pm0.4\times
-% 10^{12}~\Msun$) which is significantly lower than our expectations, although this
-% constraint combines the observed kinematics of 35 Local Volume galaxies in
-% addition to the dynamics of the M31--MW system.
-% Each of the Local Volume Galaxies is fit to a radial Keplerian orbital model.
-% However, inclusion of any transverse motion will increase the inferred total
-% mass of the system, so it is likely the assumption of radial orbits leads to
-% an underestimate of the mass of the Local Group with LV galaxies only.
-% Including the dynamics of the M31--MW system increased their recovered
-% total mass by $0.6\times10^{12}~\Msun$. This is different from \citet{Penarrubia2016} who
-% instead parametrize this term as a function of an additional parameter that sets
-% the mass ratio of the LMC and the MW.}
-
-% \todo{The \cite{Benisty2022} paper reports a Local Group TA mass of
-% $5.6^{+1.6}_{-1.2}\times10^{12}\Msun$ after correcting for the reflex motion
-% of the MW induced by the LMC, which is roughly 25\% larger than our findings.
-% The discrepancy is likely due to differences in correcting for the reflex motion
-% of the MW disk.
-% They find that cosmic bias lowers the TA mass by an additional 40\%.
-% The large errorbars are likely due to uncertainties in the orbital modelling of
-% M31 about the combined MW--LMC system.}olumnwidth]{analyze-runs-deltaMvsPM.pdf}
-%     \caption{\label{fig:mvspm} Improvement in the inferred Local Group mass as a function of fractional improvement in proper motion errors.
-%     The standard deviation in the mass decreases with decreasing proper motion
-%     error, and in particular, decrease by a factor of $\sim2.5$ for PMs that are
-%     4 times smaller than in Dataset 2.
-%     \textbf{As future \textit{Gaia} data releases provide improved proper motion errors, constraints on the Local Group mass from the Timing Argument can
-%     improve by a factor of $>$2.}
-%     }
-% \end{figure}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}
 \label{sec:discussion}
@@ -735,7 +687,7 @@ The impact of the LMC and M33 are absorbed by assuming they contribute to the
 masses of their host galaxies.
 However, the recent measurement of the MW travel velocity will change the 
 measured barycenter and velocities of the MW, M31, and the LG satellites, though
-it is unclear how this would affect the total mass. 
+it is unclear how this would affect the total mass in their analysis. 
 
 Additionally, ~\cite{Penarrubia2016} finds a Local Group mass of
 $\sim2.64\pm0.4\times 10^{12}~\Msun$, which is significantly lower than our
@@ -758,7 +710,10 @@ of $4.27\pm0.45\times 10^{12}\Msun$ (neglecting for cosmic bias and
 scatter) using the same values for the distance and velocity of
 M31 as in our \textit{vdMG08 Dist. + HST PM} dataset.
 
-\todo{\cite{Zhai2020} found XXX.}
+\cite{Zhai2020} identified pairs of stellar analogs to the MW and M31, then applied a series of kinematic cuts on the separation, isolation, and velocities of the pair, to determine Local Group analogs in two, $N$-body cosmological simulations, Millenium-WMAP7 and MilleniumII. 
+They find stellar and dynamical LG analogs on mostly radial orbits have total masses of $4.4^{+2.4}_{-1.5}\times 10^{12}\Msun$, which is consistent with our findings for each dataset. 
+They also find that low-ellipticity orbits (where $v_{\rm rad}\sim v_{\rm tan}$), result in a higher LG mass, M31 mass, and MW mass, reporting $6.6^{+2.7}_{-1.5}\times10^{12}\Msun$, $3.8^{+2.8}_{-1.8}\times10^{12}\Msun$, and $2.5^{+2.2}_{-1.4}\times10^{12}\Msun$, respectively. 
+We find that the ellipticity of the orbit decreases dramatically with larger travel velocities, however, in contradiction to \cite{Zhai2020}, we find this leads to lower total LG mass.
 
 Additionally, \cite{Benisty2022} recently used the Timing Argument to
 place constraints on the LG mass while removing the impact of the LMC-induced
@@ -940,23 +895,17 @@ mass of the M31 system.
 
 %%%%%%%%%%%
 \subsection{The circularity of the MW--M31 orbit}
-\todo{It is known that recent Gaia PMs of M31 suggest the orbit of MW--M31 is less radial than previously found.
-Neglecting the travel velocity, we find that PMs from \textit{HST}~\citep{vdm2012} are consistent with a highly radial
-orbit $e\sim0.96$, while PMs from \textit{Gaia}~\citep{Salomon2021} result in a slightly
-lower eccentricity of $e\sim0.88$.
-Inferred masses with the Timing Argument are highly sensitive to the
-tangential motion of M31, and larger PMs will generically lead to higher
-inferred LG masses. 
+The Timing Argument is highly sensitive to the tangential motion of M31, and larger PMs will generically lead to lower eccentricities and higher inferred LG masses. 
+Recent \gaia\ PMs of M31 suggest the orbit of MW--M31 is less radial than previously believed~\citep{vdm2019,Salomon2021}.
+Neglecting the travel velocity ($\vtrav=0$ in above plots), we find that PMs from \textit{HST}~\citep{vdm2012} are consistent with a highly radial
+orbit $e\sim0.96$, while PMs from \textit{Gaia}~\citep{Salomon2021} result in a slightly lower eccentricity of $e\sim0.88$.
+As seen in Fig.~\ref{fig:mvsv}, we find that as the travel velocity increases, the inferred eccentricity of the MW--M31 orbit decreases. 
+However, contrary to expectations, we find that the inferred LG mass \textit{also} decreases. 
+This implies that the velocity contribution to the relative and transverse velocity of M31 is dominant to the change in eccentricity. 
 
-Additionally, a less radial orbit (higher tangential velocity) will result in higher masses.
-  
-However, we find that the eccentricity decreases with higher travel velocities ()
-
-As the inferred mass decreases with an increase in the travel velocity, concurrent with a decrease in the eccentricity, the radial velocity contribution to the relative velocity of M31 is dominant
- However, , and thus, even though the eccentricity decreases with large travel velocity, the mass decreases as well. }
-
- inclusion of the travel velocity makes the local group more cosmologically typical (since we don’t really expect completely radial orbits from these systems) 
- Ferero romero and section 4 of vdm 2020 or something gaia dr2
+Additionally, studies of the Bolshoi $N$-body cosmological simulation by~\cite{Forero-Romero2013} find that typical LG analogs do not have completely radial orbits. 
+As with other studies that find a higher transverse velocity for M31 (and thus a slightly less-than-radial orbit)~\citep{vdm2019,Salomon2021}, we find that the decrease in the eccentricity due to the measured travel velocity makes the LG less eccentric and, thus, more cosmologically typical. 
+ 
  %%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1024,7 +973,9 @@ Our conclusions can be summarized as follows:
   As we increase the travel velocity, the orbit becomes rapidly less radial. 
   The inferred eccentricity decreases by up to $\sim50\%$ for the largest travel
   velocities we consider ($\vtrav=100\kms$) compared to the static MW-halo model
-  ($\vtrav=0$).
+  ($\vtrav=0$). 
+  Less radial orbits are cosmologically preferred, thus the travel velocity
+  makes the LG more typical.
   %
   %
   \item \textbf{Improvements in M31 PM measurements will improve Timing 
