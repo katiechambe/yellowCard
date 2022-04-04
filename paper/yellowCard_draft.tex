@@ -151,15 +151,18 @@ within some internal radius (i.e. much smaller than LG scales) and then
 extrapolate, leading to mass-profile-dependent estimates of the total LG mass.
 Other techniques aim to more directly measure the mass of the Local Group en
 masse, for example looking for Local Group analogs in cosmological simulations
-based on stellar mass and kinematic criteria \citep[e.g.,][]{Zhai2020}, or by
-studying the kinematics of Local Volume galaxies
-\citep[e.g.,][]{Penarrubia2014}.
+based on stellar mass and kinematic criteria
+\citep[e.g.,][]{LiWhite2008, Gonzalez2014, Hartl2021, Zhai2020},
+by studying the kinematics of Local Volume galaxies
+\citep[e.g.,][]{Diaz2014,Penarrubia2014}, or by applying machine learning (ML)
+techniques to hydrodynamic simulation data
+\citep[e.g.,][]{McLeod2017,Villanueva-Domingo2021}.
 One of the earliest methods utilized in this vein is the ``Timing Argument,''
 which uses the fact that the local group galaxies (most often the MW and M31)
 are bound and approaching pericenter in their relative orbit, but must have been
 close enough over cosmic time to not be pulled apart by the Hubble flow. We
 summarize the relevant details of the Timing Argument method in
-Section~\ref{sec:timingarg}
+Section~\ref{sec:timingarg}.
 
 The Timing Argument (using the MW and M31) uses the observed kinematics of M31
 to model the relative orbit of the two galaxies as a Keplerian orbit.
@@ -177,7 +180,7 @@ Erkal:2021}, thus impacting the interpretation of observations of the M31
 position and velocity relative to the MW center of mass.
 Timing Argument studies that do not account for these perturbations are thus
 likely only biased estimates of the LG mass.
-\citet{Penarrubia2016} studied the impact of the presence of the LMC on the
+\citet{Penarrubia2016} studied the impact of the presence of the Large Magellanic Cloud (LMC) on the
 total mass of the LG via the Timing Argument by explicitly modeling the masses
 of the MW, LMC, and M31 as a dynamical system.
 
@@ -352,7 +355,9 @@ that this displacement is likely much smaller than the distance between the MW
 and M31 $\pos{\mwouter}{\mwdisk} \ll r$ \citep[as expected from simulations,
 e.g.,][]{Garavito-Camargo2021b}.
 However, it's important to note that this displacement is still significant on
-scales relevent for many other MW studies.
+scales relevent for many other MW studies
+(see Section~\ref{sec:discussion-impact} for more details).
+% \kc{Simulations show that the MW disk has likely moved up to 50kpc from its current location~\citep[e.g.,][]{Gomez2015,Garavito-Camargo2021b}, though such a displacement of the MW disk from the center dark matter halo has not yet been observed.}
 
 Figure~\ref{fig:schematic} shows a schematic of these different vectors --- all
 drawn in a frame that is comoving with the \mwouter\ frame --- and a rough
@@ -749,36 +754,49 @@ way, without the need to simulate the entire interaction history.
   \begin{tabular}{clc|c}
     \hline\hline
     Mass & Method & Result ($ 10^{12}~\Msun$ ) & Citation \\\hline
-    \multirow{9}{*}{\mlg}  &Timing & $3.6$ & \cite{Lynden-Bell:1981} \\
-    &Timing (radial + cosmo sim calibration)  & $5.27$& \cite{LiWhite2008} \\
-    &{Timing only} & {4.27$\pm$0.45} & \cite{vdm2012} \\
-    &{Timing (3D + cosmic bias and scatter)} & {4.93$\pm$1.63} &\cite{vdm2012}\\
+    \multirow{12}{*}{\mlg}  & TA & $3.6$ & \cite{Lynden-Bell:1981} \\
+    &TA (radial + cosmo sim calibration)  & $5.27$& \cite{LiWhite2008} \\
+    &{TA only} & {4.27$\pm$0.45} & \cite{vdm2012} \\
+    &{TA (3D + cosmic bias and scatter)} & {4.93$\pm$1.63} &\cite{vdm2012}\\
     & LG Dynamics &$2.5\pm0.4$ & \cite{Diaz2014}\\
-    &{LV Galaxies + Timing Argument} & {2.64$\pm0.4$} & \cite{Penarrubia2016} \\
-    & Cosmo Sims & 4.4$^{+2.4}_{-1.5}$ & \cite{Zhai2020}\\
+    &{LV Galaxies + TA} & {2.64$\pm0.4$} & \cite{Penarrubia2016} \\
+    & Machine Learning & $4.9 \pm 0.8$ & \cite{McLeod2017}\\
+    & Machine Learning (+large M31 transverse motion) & $3.6\pm0.3$ & 
+    \cite{McLeod2017}\\
+    & Cosmological Sims & 4.4$^{+2.4}_{-1.5}$ & \cite{Zhai2020}\\
+    & Cosmological Sims (likelihood-free inference) & $4.6^{+2.3}_{-1.8}$ & \cite{Lemos2021}\\
     & TA + LMC & 5.6$^{+1.6}_{-1.2}$ & \cite{Benisty2022}\\
     & TA + CB + LMC & 3.4$^{+1.4}_{-1.1}$ & \cite{Benisty2022}\\
-
-    %  &  &  \\
+    & \textbf{TA + $\boldsymbol{\vtrav}$} & {$\boldsymbol{4.5^{0.8}_{0.6}}$}& \textbf{This work (Chamberlain et al. 2022)}\\
     \hline
-    \multirow{4}{*}{\mmto}& Kinematics of M31 Sats & $1.4 \pm 0.4$ ($<$300 kpc)
+    \multirow{9}{*}{\mmto}& Kinematics of M31 Sats & $1.4 \pm 0.4$ ($<$300 kpc)
     & \cite{Watkins2010}\\
+    & Giant Stellar Stream & $2.00^{+0.52}_{-0.41}$ & \cite{Fardal2013}\\
     & LG Dynamics &$1.7\pm0.3$ & \cite{Diaz2014}\\
+    & Local Hubble Flow &  $1.33\pm0.4$ & \cite{Penarrubia2016}\\
     & M31 Orbital Ang. Mom. & $1.37^{+1.39}_{-0.75}$ & \cite{Patel2017b}\\
-    & Cosmo Sims & 2.5$^{+1.3}_{-1.1}$ & \cite{Zhai2020}\\
+    & Cosmological Sims & 1.0-2.0 & \cite{Carlesi2017} \\
+    & Cosmological Sims & 2.5$^{+1.3}_{-1.1}$ & \cite{Zhai2020}\\
+    & Machine Learning & $2.3-2.5$& \cite{Villanueva-Domingo2021}\\
+    & Machine Learning (+velocity information) & $2.2-2.5$ & \cite{Villanueva-Domingo2021}\\
 
     \hline
-    \multirow{5}{*}{\mmw}&  Kinematics of LG sats & $1.4 \pm 0.3$ ($<$300 kpc)
+    \multirow{9}{*}{\mmw}&  Kinematics of LG sats & $1.4 \pm 0.3$ ($<$300 kpc)
     & \cite{Watkins2010}\\
-
     & LG Dynamics &$0.8\pm0.5$ & \cite{Diaz2014}\\
-    & MW Sats & $0.96^{+0.29}_{-0.28}$ & \cite{Patel2017b}\\
+    & Local Hubble Flow & $1.04 \pm 0.26$ & \cite{Penarrubia2016}\\
     & LMC Orbital Ang. Mom. & $1.02^{+0.77}_{-0.55}$ & \cite{Patel2017b}\\
-    & Cosmo Sims & 1.5$^{+1.4}_{-0.7}$ & \cite{Zhai2020} \\
+    & Cosmological Sims & 0.6-0.8 & \cite{Carlesi2017}\\
+    & MW Sats & $0.96^{+0.29}_{-0.28}$ & \cite{Patel2018}\\
+    & Cosmological Sims & 1.5$^{+1.4}_{-0.7}$ & \cite{Zhai2020} \\
+    & Machine Learning & $\sim1.0-1.3$ & \cite{Villanueva-Domingo2021}\\
+    & Machine Learning (+velocity information) & $\sim2.3-2.6$ & 
+    \cite{Villanueva-Domingo2021}\\
   \hline\hline
   \end{tabular}
   \caption{\label{table:masses}A selected collection of previous mass
-  measurements from dynamics.}
+  measurements from LG dynamics.}
+  %note: added Lemos but they are MW+M31 sum only? do I need to specify? 
 \end{table*}
 
 
@@ -801,10 +819,13 @@ Accounting for this effect would likely lower our reported LG mass measurements.
 
 
 \subsection{Impact of travel velocity on inferred dynamics of the Local Group}
-\label{sec:vtrav}
+\label{sec:discussion-impact}
 The existence of the travel velocity of the Milky Way disk
 results in measurable differences in the estimated mass of the Local Group
 through the Timing argument.
+These results are consistent with \cite{Erkal2020}, who find that neglecting the
+LMC-induced reflex motion of the MW can result in masses that are overestimated
+by up to ~50\%.
 As shown in our results above, neglecting this motion at its currently measured
 value of $\vtrav=32\pm4\kms$
 \citep{Petersen2021} leads to LG masses that are overestimated by $\sim30\%$.
@@ -831,6 +852,8 @@ While this simulation does not span previous mergers in the MW's history, it
 gives a good first order approximation of what we may expect to observe.
 At fixed apex direction, a larger travel velocity would correspond to a lower
 inferred LG mass.
+\todo{Stellar tracers at large Galactocentric distances may yield measurements
+of the apex direction that differ from current measurements.}
 Figure~\ref{fig:mvsv} shows the effect of increasing the measured travel
 velocity magnitude and its impact on the inferred mass of the Local Group for
 each of the datasets used in this work (see Section~\ref{sec:datasets}).
@@ -840,7 +863,6 @@ are predicted for three tracer distances in simulations from
 Thus, future measurements of the travel velocity of the disk that use tracers at
 larger distance around the MW stellar halo will likely lead to a lower inferred
 Local Group mass.
-
 
 \subsection{Improved \mlg\ constraints from future observations}
 \label{sec:discussion-futureobs}
@@ -885,7 +907,8 @@ Reconciling techniques that compute the LG mass, from the summed MW+M31 mass and
 from the Timing Argument, is not straightforward, but the two approaches
 are complimentary.
 Future measurements of the travel velocity at large Galactocentric distances
-will likely exceed current measurements (see Section~\ref{sec:vtrav}), which
+will likely exceed current measurements (see
+Section~\ref{sec:discussion-impact}), which
 directly implies a lower LG mass and may improve agreement between these two
 general methods for estimating the LG mass.
 Since constraints on the MW mass consistently find a mass of
