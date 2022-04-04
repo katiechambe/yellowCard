@@ -108,9 +108,10 @@
     incorporates this measured ``travel velocity'' of the MW disk using several
     different compilations of recent kinematic measurements of M31.
     % \textbf{Results}
-    We generally find lower LG masses than past Timing Argument results and
-    measure a total mass of $4.5^{+0.8}_{-0.6}\times 10^{12}~\Msun$
-    that is consistent between datasets.
+    We generally find that the inclusion of the measured travel velocity lowers
+    the inferred LG mass by 10-20\% compared to a static MW halo, and find an
+    updated total mass of $4.5^{+0.8}_{-0.6}\times 10^{12}~\Msun$ that is
+    consistent between datasets.
     Measurements of the travel velocity with more distant tracers could yield
     even larger values, which would further decrease the inferred LG mass.
     Additionally, we find that future data releases from \emph{Gaia} will lead
@@ -143,8 +144,9 @@ over megaparsec scales, it is difficult to directly measure its total mass.
 Given its utility in studies of the local universe, several methods have been
 used to dynamically infer the mass of the Local Group.
 Many of these techniques determine the individual masses of the MW and M31
-independently \citep[e.g.][]{Watkins2010, Diaz2014, Patel2018, Eadie:2019,
-Fritz:2020, Deason:2021, Wang:2022}, often via the dynamics of their satellites
+independently \citep[e.g.][]{Watkins2010, Fardal2013,Diaz2014,Carlesi2017,
+Patel2018, Eadie:2019, Fritz:2020, Deason:2021, Villanueva-Domingo2021,
+Wang:2022}, often via the dynamics of their satellites
 and stellar streams, then combine them to get an estimate of the total LG mass.
 However, these methods generally only measure the enclosed mass of the MW or M31
 within some internal radius (i.e. much smaller than LG scales) and then
@@ -166,6 +168,10 @@ Section~\ref{sec:timingarg}.
 
 The Timing Argument (using the MW and M31) uses the observed kinematics of M31
 to model the relative orbit of the two galaxies as a Keplerian orbit.
+The Timing Argument can be generalized to simultaneously model the orbits of
+Local Volume galaxies around the Local Group
+~\citep{Penarrubia2016, Penarrubia2017}, but here we restrict our analysis to
+the "classic" Timing Argument using only the MW and M31.
 Assuming Keplerian dynamics enables dynamically measuring the total mass of the
 MW and M31 with analytic expressions for all relevant kinematic quantities
 because of the simplicity of the two-body equations of motion.
@@ -180,9 +186,9 @@ Erkal:2021}, thus impacting the interpretation of observations of the M31
 position and velocity relative to the MW center of mass.
 Timing Argument studies that do not account for these perturbations are thus
 likely only biased estimates of the LG mass.
-\citet{Penarrubia2016} studied the impact of the presence of the Large Magellanic Cloud (LMC) on the
-total mass of the LG via the Timing Argument by explicitly modeling the masses
-of the MW, LMC, and M31 as a dynamical system.
+\citet{Penarrubia2016} studied the impact of the presence of the Large
+Magellanic Cloud (LMC) on the total mass of the LG via the Timing Argument by
+explicitly modeling the masses of the MW, LMC, and M31 as a dynamical system. 
 
 In addition, numerous studies of the interaction between the MW and LMC (using
 simulated analogs) have quantified the expected LMC-induced reflex motion of the
@@ -716,10 +722,21 @@ of $4.27\pm0.45\times 10^{12}\Msun$ (neglecting for cosmic bias and
 scatter) using the same values for the distance and velocity of
 M31 as in our \textit{vdMG08 Dist. + HST PM} dataset.
 
-\cite{Zhai2020} identified pairs of stellar analogs to the MW and M31, then applied a series of kinematic cuts on the separation, isolation, and velocities of the pair to determine Local Group analogs in two $N$-body cosmological simulations, Millenium-WMAP7 and MilleniumII.
-They find stellar and dynamical LG analogs on mostly radial orbits have total masses of $4.4^{+2.4}_{-1.5}\times 10^{12}\Msun$, which is consistent with our findings for each dataset.
-They also find that low-ellipticity orbits (where $v_{\rm rad}\sim v_{\rm tan}$), result in a higher LG mass, M31 mass, and MW mass, reporting $6.6^{+2.7}_{-1.5}\times10^{12}\Msun$, $3.8^{+2.8}_{-1.8}\times10^{12}\Msun$, and $2.5^{+2.2}_{-1.4}\times10^{12}\Msun$, respectively.
-We find that the ellipticity of the orbit decreases dramatically with larger travel velocities, however, in contradiction to \cite{Zhai2020}, we find that this leads to a lower total LG mass.
+\cite{Zhai2020} identified pairs of stellar analogs to the MW and M31, then
+applied a series of kinematic cuts on the separation, isolation, and velocities
+of the pair to determine Local Group analogs in two $N$-body cosmological
+simulations, Millenium-WMAP7 and MilleniumII.
+They find stellar and dynamical LG analogs on mostly radial orbits have total
+masses of $4.4^{+2.4}_{-1.5}\times 10^{12}\Msun$, which is consistent with our
+findings for each dataset.
+They also find that low-ellipticity orbits (where
+$v_{\rm rad}\sim v_{\rm tan}$), result in a higher LG mass, M31 mass, and MW
+mass, reporting $6.6^{+2.7}_{-1.5}\times10^{12}\Msun$,
+$3.8^{+2.8}_{-1.8}\times10^{12}\Msun$, and
+$2.5^{+2.2}_{-1.4}\times10^{12}\Msun$, respectively.
+We find that the ellipticity of the orbit decreases dramatically with larger
+travel velocities, however, in contradiction to \cite{Zhai2020}, we find that
+this leads to a lower total LG mass.
 
 Additionally, \cite{Benisty2022} recently used the Timing Argument to
 place constraints on the LG mass while removing the impact of the LMC-induced
@@ -727,7 +744,8 @@ reflex motion from velocity measurements of M31.
 More specifically, they estimate the contribution of the reflex motion of the
 MW disk to the observed velocity vector of M31 by modeling the orbital history
 of the MW--M31 system and the MW+LMC--M31 system.
-Implementing the Timing Argument and removing the LMC-induced reflex motion,
+Upon implementing the Timing Argument, including a cosmological constant,
+and removing the LMC-induced reflex motion,
 they find a LG mass of $5.6^{+1.6}_{-1.2}\times10^{12}\Msun$, which is roughly
 25\% larger than our findings, and that accounting for cosmic bias \& scatter
 lowers the mass by an additional 40\% to $3.4^{+1.4}_{-1.1}\times10^{12}\Msun$,
@@ -764,10 +782,13 @@ way, without the need to simulate the entire interaction history.
     & Machine Learning (+large M31 transverse motion) & $3.6\pm0.3$ & 
     \cite{McLeod2017}\\
     & Cosmological Sims & 4.4$^{+2.4}_{-1.5}$ & \cite{Zhai2020}\\
-    & Cosmological Sims (likelihood-free inference) & $4.6^{+2.3}_{-1.8}$ & \cite{Lemos2021}\\
+    & Cosmological Sims (likelihood-free inference) & $4.6^{+2.3}_{-1.8}$ &
+    \cite{Lemos2021}\\
+    & TA + Cosmological Sims & $4.75^{+2.22}_{-2.41}$ & \cite{Hartl2021}\\
     & TA + LMC & 5.6$^{+1.6}_{-1.2}$ & \cite{Benisty2022}\\
     & TA + CB + LMC & 3.4$^{+1.4}_{-1.1}$ & \cite{Benisty2022}\\
-    & \textbf{TA + $\boldsymbol{\vtrav}$} & {$\boldsymbol{4.5^{0.8}_{0.6}}$}& \textbf{This work (Chamberlain et al. 2022)}\\
+    & \textbf{TA + $\boldsymbol{\vtrav}$} & {$\boldsymbol{4.5^{+0.8}_{-0.6}}$}&
+    \textbf{This work (Chamberlain et al. 2022)}\\
     \hline
     \multirow{9}{*}{\mmto}& Kinematics of M31 Sats & $1.4 \pm 0.4$ ($<$300 kpc)
     & \cite{Watkins2010}\\
@@ -775,10 +796,11 @@ way, without the need to simulate the entire interaction history.
     & LG Dynamics &$1.7\pm0.3$ & \cite{Diaz2014}\\
     & Local Hubble Flow &  $1.33\pm0.4$ & \cite{Penarrubia2016}\\
     & M31 Orbital Ang. Mom. & $1.37^{+1.39}_{-0.75}$ & \cite{Patel2017b}\\
-    & Cosmological Sims & 1.0-2.0 & \cite{Carlesi2017} \\
+    & Cosmological Sims & $1.0-2.0$ & \cite{Carlesi2017} \\
     & Cosmological Sims & 2.5$^{+1.3}_{-1.1}$ & \cite{Zhai2020}\\
     & Machine Learning & $2.3-2.5$& \cite{Villanueva-Domingo2021}\\
-    & Machine Learning (+velocity information) & $2.2-2.5$ & \cite{Villanueva-Domingo2021}\\
+    & Machine Learning (+velocity information) & $2.2-2.5$ &
+    \cite{Villanueva-Domingo2021}\\
 
     \hline
     \multirow{9}{*}{\mmw}&  Kinematics of LG sats & $1.4 \pm 0.3$ ($<$300 kpc)
@@ -786,17 +808,17 @@ way, without the need to simulate the entire interaction history.
     & LG Dynamics &$0.8\pm0.5$ & \cite{Diaz2014}\\
     & Local Hubble Flow & $1.04 \pm 0.26$ & \cite{Penarrubia2016}\\
     & LMC Orbital Ang. Mom. & $1.02^{+0.77}_{-0.55}$ & \cite{Patel2017b}\\
-    & Cosmological Sims & 0.6-0.8 & \cite{Carlesi2017}\\
+    & Cosmological Sims & $0.6-0.8$ & \cite{Carlesi2017}\\
     & MW Sats & $0.96^{+0.29}_{-0.28}$ & \cite{Patel2018}\\
     & Cosmological Sims & 1.5$^{+1.4}_{-0.7}$ & \cite{Zhai2020} \\
-    & Machine Learning & $\sim1.0-1.3$ & \cite{Villanueva-Domingo2021}\\
-    & Machine Learning (+velocity information) & $\sim2.3-2.6$ & 
+    & Machine Learning & $1.0-1.3$ & \cite{Villanueva-Domingo2021}\\
+    & Machine Learning (+velocity information) & $2.3-2.6$ & 
     \cite{Villanueva-Domingo2021}\\
   \hline\hline
   \end{tabular}
   \caption{\label{table:masses}A selected collection of previous mass
-  measurements from LG dynamics.}
-  %note: added Lemos but they are MW+M31 sum only? do I need to specify? 
+  measurements from LG dynamics focusing on previous TA results as well as a few
+  mass measurements as discussed in the text.}
 \end{table*}
 
 
@@ -884,7 +906,7 @@ sources will be detected and usable in the measurement.
 \subsection{Reflex motion of M31}
 \label{sec:discussion-m31}
 While M31 has a massive satellite (M33) of comparable mass ratio to the
-LMC--Milky Way system, we do not expect there to be a significant reflex
+MW--LMC system, we do not expect there to be a significant reflex
 velocity of M31's disk relative to its equivalent outer halo reference frame:
 Recent work predicts that M33 is likely on first infall into the M31 halo and
 has a much larger orbital pericenter than the MCs \citep[e.g.,][]{Patel2017a}.
@@ -1051,9 +1073,10 @@ This project was started at the Big Apple Dynamics School (BADS) hosted by the
 Flatiron Institute July--August 2021.
 We greatly benefitted from discussions with the other students who attended the
 BADS, and received helpful input from:
-Kathryn Johnston (Columbia), Alex Riley (Texas A\&M)
+Kathryn Johnston (Columbia), Alex Riley (Texas A\&M), and Martin Weinburg ()
 \todo{Who else?}.
-KC would like to thank Ekta Patel for sharing a collection of M31 mass measurements from the literature.
+KC would like to thank Ekta Patel for sharing a collection of M31 mass
+measurements from the literature.
 % This work made use of the
 % \texttt{PyGaia}\footnote{https://github.com/agabrown/PyGaia} package: We
 % acknowledge the Gaia Project Scientist Support Team and the Gaia Data Processing
@@ -1061,9 +1084,7 @@ KC would like to thank Ekta Patel for sharing a collection of M31 mass measureme
 This research made use of Astropy,\footnote{http://www.astropy.org} a
 community-developed core Python package for Astronomy \citep{astropy:2013,
 astropy:2018}.
-\todo{KC and GB are supported by NSF CAREER AST-1941096 and NASA ATP 17-ATP17-0006.
-}
-\todo{APW }
+KC and GB are supported by NSF CAREER AST-1941096 and NASA ATP 17-ATP17-0006.
 \todo{EC}
 \todo{NGC}
 \todo{JP}
