@@ -85,7 +85,7 @@
 \author{Jorge Pe\~{n}arrubia}
 \affiliation{\affedinb}
 
-\author[0000-0003-1517-3935 ]{Michael Petersen}
+\author[0000-0003-1517-3935 ]{Michael S. Petersen}
 \affiliation{\affparis}
 
 \begin{abstract}
@@ -262,8 +262,10 @@ tangential velocity components \vrad\ and \vtan, are given by:
 \begin{align}
   r &= a \, (1-e\,\cos\eta) \label{eq:r} \\
   t &= \left( \frac{a^3}{GM} \right)^{1/2}(\eta-e\,\sin\eta) \label{eq:t} \\
-  \vrad &= \left( \frac{GM}{a} \right)^{1/2} \frac{e\,\sin\eta}{1-e\,\cos\eta} \label{eq:vrad} \\
-  \vtan &= \left( \frac{GM}{a} \right)^{1/2} \frac{\sqrt{1-e^2}}{1-e\,\cos\eta} \label{eq:vtan} \quad .
+  \vrad &= \left( \frac{GM}{a} \right)^{1/2} \frac{e\,\sin\eta}{1-e\,\cos\eta}
+  \label{eq:vrad} \\
+  \vtan &= \left( \frac{GM}{a} \right)^{1/2} \frac{\sqrt{1-e^2}}{1-e\,\cos\eta}
+  \label{eq:vtan} \quad .
 \end{align}
 In the expressions above, $r$ is the separation between the centers of the MW
 and M31 halos, the time since last pericenter, $t$, is the age of the Universe,
@@ -298,8 +300,10 @@ center of the MW disk.
 Then, the \textit{observed} position and velocity of M31, measured in a heliocentric
 reference frame, are given by
 \begin{align}
-  \pos{M31}{\odot} &= \pos{M31}{\mwouter} + \pos{\mwouter}{\odot} \label{eq:xoffset1}\\
-  \vel{M31}{\odot} &= \vel{M31}{\mwouter} + \vel{\mwouter}{\odot} \label{eq:voffset1}\quad .
+  \pos{M31}{\odot} &= \pos{M31}{\mwouter} + \pos{\mwouter}{\odot}
+  \label{eq:xoffset1}\\
+  \vel{M31}{\odot} &= \vel{M31}{\mwouter} + \vel{\mwouter}{\odot}
+  \label{eq:voffset1}\quad .
 \end{align}
 Here $\left|\pos{M31}{\mwouter}\right| = r$ as determined from
 Equation~\ref{eq:r}, $\vel{M31}{\mwouter}$ is determined completely by the
@@ -331,9 +335,10 @@ where ``\mwouter'' refers to a reference frame centered at and moving with the
 center of mass of the outer MW halo, ``\mwdisk'' refers to a reference frame
 centered at and moving with the center of the MW disk,
 and $\pos{\mwdisk}{\odot}$ and $\vel{\mwdisk}{\odot}$, respectively, are
-the adopted solar position and velocity in the Galaxy (the values we
-adopt for $\vel{\mwdisk}{\odot}$ (shortened to $\bov_{\odot}$)
-are given in Table~\ref{table:data} below).\footnote{
+the adopted solar position and velocity in the Galaxy. The values we
+adopt for $\pos{\mwdisk}{\odot}$ and $\vel{\mwdisk}{\odot}$
+(shortened to $\boldx_{\odot}$ and $\bov_{\odot}$)
+are given in Table~\ref{table:data} below.\footnote{
 Note that in principle, there is also a term $\vel{\rm M31_{halo}}{\rm
 M31_{disk}}$, however, there are not yet measurements of the differential
 motion of the M31 disk with respect to the M31 halo, so we neglect this term.
@@ -363,7 +368,6 @@ e.g.,][]{Garavito-Camargo2021b}.
 However, it's important to note that this displacement is still significant on
 scales relevent for many other MW studies
 (see Section~\ref{sec:discussion-impact} for more details).
-% \kc{Simulations show that the MW disk has likely moved up to 50kpc from its current location~\citep[e.g.,][]{Gomez2015,Garavito-Camargo2021b}, though such a displacement of the MW disk from the center dark matter halo has not yet been observed.}
 
 Figure~\ref{fig:schematic} shows a schematic of these different vectors --- all
 drawn in a frame that is comoving with the \mwouter\ frame --- and a rough
@@ -398,7 +402,8 @@ $\vel{M31}{\odot}=\bov_{\rm obs}$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 The present distance and relative velocity of M31, as well as the age of the
 universe (used in Equation~\ref{eq:t}), are key observables that are used to
-constrain our Timing Argument model. In this paper, we consider three different compilations of data to understand how different measurements might affect the
+constrain our Timing Argument model. In this paper, we consider three different
+compilations of data to understand how different measurements might affect the
 Timing Argument model with the addition of the travel velocity. In particular,
 we consider two different M31 distance measures: an approximated distance
 measure from~\cite{vdm2008}, and a more accurate Cepheid-based distance measure
@@ -450,8 +455,9 @@ See Table~\ref{table:data} for numerical values used in each of these datasets.
   $v_{\rm rad}~[\kms]$ & $-301 \pm 1\reflabel{b}$ & $-301\pm 1\reflabel{b}$ & $-301\pm 1\reflabel{b}$ \\
   $\mu_{\alpha^*}~[\muasyr]$    & $34.30\pm 8.25\reflabel{c}$  & $48.98\pm 10.47\reflabel{g}$ & $34.30\pm 8.25\reflabel{c}$ \\
   $\mu_\delta~[\muasyr]$ & $-20.22 \pm 7.71$\reflabel{c} & $-36.85\pm 8.03\reflabel{g}$ & $-20.22 \pm 7.71$\reflabel{c} \\
-  $\bs{v}_\odot$~[\kms]& $(11.1, 251.54, 7.25)\reflabel{d}$ & $(12.9, 245.6, 7.78)\reflabel{h}$ & $(12.9, 245.6, 7.78)$ \reflabel{h}\\
-  $t_{\rm peri}~[\Gyr]$ & $13.75\pm 0.11\reflabel{e}$  & $13.801 \pm 0.024$ \reflabel{i} & $13.801 \pm 0.024$ \reflabel{i}\\
+  $\bs{x}_\odot$~[\kpc]& $(-8.29, 0, 0)\reflabel{d}$ & $(-8.122, 0, 20.8)\reflabel{h}$ & $(-8.122, 0, 20.8)\reflabel{h}$ \\
+  $\bs{v}_\odot$~[\kms]& $(11.1, 251.54, 7.25)\reflabel{d}$ & $(12.9, 245.6, 7.78)\reflabel{i}$ & $(12.9, 245.6, 7.78)\reflabel{i}$ \\
+  $t_{\rm peri}~[\Gyr]$ & $13.75\pm 0.11\reflabel{e}$  & $13.801 \pm 0.024$ \reflabel{j} & $13.801 \pm 0.024$ \reflabel{j}\\
   \hline\hline
   \end{tabular}
   \tablerefs{$a.$ \cite{vdm2008},
@@ -461,19 +467,24 @@ See Table~\ref{table:data} for numerical values used in each of these datasets.
    $e.$ \cite{Jarosik2011},
    $f.$ \cite{Li2021},
    $g.$ \cite{Salomon2021},\\
-   $h.$ \cite{Drimmel2018},
-   $i.$ \cite{Planck2018}}
+   $h.$ \cite{GravityCollab2018,Bennett2019},
+   $i.$ \cite{Drimmel2018},
+   $j.$ \cite{Planck2018}}
   % \tablenotetext{a}{\cite{vdm2008}}
   % \tablenotetext{b}{\cite{Li2021}}
   \caption{\label{table:data}
   Observational datasets used for comparison throughout analysis and their
   references. Each value is measured for M31 with
   respect to the sun. $D$ is the distance, $v_{\rm rad}$ is the radial velocity,
-  $(\mu^*_{\alpha}, \mu_{\delta})$ are proper motions in RA cosdec and Dec, and
-  (U$_{\rm pec}$, V$_{\rm pec}$+V$_0$, W$_{\rm pec}$) the solar motion with
-  respect to the Galactic center. $t_{\rm peri}$ is the time elapsed since the
-  last pericenter of the M31 Keplerian orbit, which in this case is the age of
-  the Universe.
+  and $(\mu^*_{\alpha}, \mu_{\delta})$ are proper motions in RA cosdec and Dec.
+  $\bs{x}_\odot=(x, y, z)$ and
+  $\bov_{\odot}=(\rm U_{\rm pec}, V_{\rm pec}+V_0, W_{\rm pec})$ are the
+  the position of the Sun and the solar motion with respect to the Galactic
+  center, with the x-axis pointing from the projection of the Sun
+  on the disk towards the Galactic center, and the z-axis pointing in the
+  direction of the North Galactic Pole. 
+  $t_{\rm peri}$ is the time elapsed since the last pericenter of the M31
+  Keplerian orbit, which in this case is the age of the Universe.
   }
 \end{table*}
 
@@ -493,8 +504,8 @@ data in order to generate samples from the posterior pdf using a Markov Chain
 Monte Carlo (MCMC) method.
 
 In detail, we first use the four Timing Argument parameters to compute the
-present-day separation between the MW and M31 halos and their relative radial and
-tangential velocities as defined in Equations~\ref{eq:r}--\ref{eq:vtan}.
+present-day separation between the MW and M31 halos and their relative radial
+and tangential velocities as defined in Equations~\ref{eq:r}--\ref{eq:vtan}.
 These velocity components represent the relative velocity M31 would have as
 observed from the center of an unperturbed MW halo.
 We then use the measured ``travel velocity'' of the MW disk,
@@ -509,10 +520,6 @@ center --- this parameter is needed to convert from the two-dimensional velocity
 components given by Equations~\ref{eq:vrad}--\ref{eq:vtan} to the
 three-dimensional velocity components represented by the two proper motion
 components and the radial velocity of M31.
-% This is necessary because the Kepler equations only provide the magnitude of the
-% tangential velocity (i.e. Equation~\ref{eq:vtan}), but in order to compute
-% proper motion components we must also know the exact orientation of the M31
-% velocity vector.
 However, we stress that this position angle has no impact on the fundamental
 dynamical parameters and is only used for coordinate transformations.
 
@@ -556,7 +563,8 @@ For each dataset, we run the sampler with 4 chains for 4,000 tuning steps and
   $\ln(1-e)$: $\mathcal{U}(-10,0)$ & Eccentricity (close to 1) \\
   %
   $\eta$: $\mathcal{U}(-\pi, \pi)$ & Eccentric anomaly\\
-  \multirow{2}{*}{$\alpha$: $\mathcal{U}(-\pi, \pi)$} & Position angle of M31 orbital\\
+  \multirow{2}{*}{$\alpha$: $\mathcal{U}(-\pi, \pi)$} & Position angle of M31
+  orbital\\
   & plane from MW disk center\\
   \hline\hline
   \end{tabular}
@@ -600,13 +608,13 @@ For each dataset, we run the sampler with 4 chains for 4,000 tuning steps and
    }
 \end{figure*}
 
-% We use recent measurements of the present-day kinematics of M31 as observed from the solar system, updated measurements of the solar position and motion with respect to the Milky Way center, and a recent measurement of the velocity of the Milky Way disk with respect to the outer stellar halo to measure the mass of the Local Group using observed kinematics of M31.
-
 We use a Bayesian implementation of a Timing Argument model to infer the mass of
 the Local Group and the distance between M31 and the Milky Way.
 Our model of the Local Group accounts for the observed travel velocity of
 the Milky Way disk from~\cite{Petersen2021}, and results in new,
 less-biased constraints on the mass of the Local Group.
+The mean inferred parameter values and their 68\% credible regions for each
+dataset are presented in Table~\ref{table:convergedparams}.
 
 We find that our model prefers lower Local Group masses and a lower eccentricity
 orbit compared to models that do not include the travel velocity of the MW disk.
@@ -638,6 +646,27 @@ However, enforcing $e=1$ (i.e. a radial LG orbit) produces very consistent mass
 estimates between the datasets considered, implying a LG mass $\mlg = 3.6
 \pm 0.3 \times 10^{12}~\Msun$.
 
+\begin{table*}
+  \begin{tabular}{lc|c|c}
+    \hline\hline
+    Parameter  & \textbf{vdMG08 Dist. + HST PM} & \textbf{Cepheid Dist. + Gaia PM} & \textbf{Cepheid Dist. + HST PM}\\\hline
+    $\mlg$ & $3.98^{+0.6}_{-0.5}$ & $4.54^{+0.8}_{-0.6} $ & $4.05^{+0.5}_{-0.3} $ \\
+    $e$ & $0.92^{+0.1}_{-0.1}$ & $0.84^{+0.1}_{-0.1}$ & $0.92^{+0.1}_{-0.1} $ \\
+    $r$ & $777.72^{+36.6}_{-36.0}$ & $765.17^{+10.9}_{-10.9}$ & $765.44^{+10.8}_{-10.9} $ \\
+    $\eta$ & $-2.14^{+0.05}_{-0.04}$ & $-2.08^{+0.04}_{-0.04}$ & $-2.11^{+0.03}_{-0.03} $\\
+    $\alpha$ & $2.97^{+0.8}_{-0.8}$ & $1.42^{+0.6}_{-0.5} $ &  $2.96^{+0.8}_{-0.8} $ \\
+  \hline\hline
+  \end{tabular}
+  \caption{\label{table:convergedparams}Mean inferred parameter values and the
+  68\% credible region of the sampled posterior region for each dataset.
+  Here, $\mlg$ is the mass of the Local Group, $e$ is the eccentricity of the
+  MW--M31 orbit, $r$ is the distance between the centers of the MW and M31
+  halos, $\eta$ is the eccentric anomaly (a proxy for the phase of the orbit),
+  and $\alpha$ is a nuisance parameter representing the angle between the
+  orbital plane of MW--M31 and the tangent plane located at the sky position of
+  M31 as seen from the center of the MW disk.}
+\end{table*}
+
 
 \begin{figure}[htb]
     \centering
@@ -656,7 +685,8 @@ estimates between the datasets considered, implying a LG mass $\mlg = 3.6
     stellar tracers at different distances in~\cite{Garavito-Camargo2021b}.
     \textbf{The inclusion of the travel velocity of the MW disk systematically
     lowers the inferred mass and eccentricity of the Local Group} regardless of
-    observational dataset. A larger measured travel velocity will yield a lower mass, less radial Local Group.}
+    observational dataset. A larger measured travel velocity will yield a lower
+    mass, less radial Local Group.}
   \end{figure}
 
 % APW SAYS: I think we can remove this figure and just discuss what it shows in
@@ -975,8 +1005,8 @@ Recent measurements of tracers in the outer MW stellar halo $(40<r<120\kpc)$
 by~\cite{Petersen2021} measure an instantaneous differential ``travel velocity''
 of the Milky Way disk compared to the outer stellar halo.
 The travel velocity has been inferred as primarily due to the response of the
-MW halo to the recent infall of the LMC, as shown in
-~\cite[e.g.][]{Gomez2015,Garavito-Camargo:2019,Erkal2019,
+MW halo to the recent infall of the LMC
+~\cite[as shown in e.g.][]{Gomez2015,Garavito-Camargo:2019,Erkal2019,
 Cunningham:2020,Petersen:2020,Garavito-Camargo2021b}.
 In this study, we use the Timing Argument to infer the LG mass while
 accounting for the travel velocity empirically for the first time.
@@ -1073,8 +1103,8 @@ This project was started at the Big Apple Dynamics School (BADS) hosted by the
 Flatiron Institute July--August 2021.
 We greatly benefitted from discussions with the other students who attended the
 BADS, and received helpful input from:
-Kathryn Johnston (Columbia), Alex Riley (Texas A\&M), and Martin Weinburg ()
-\todo{Who else?}.
+Kathryn Johnston (Columbia), Alex Riley (Texas A\&M), and Martin Weinberg 
+(University of Massachusetts at Amherst).
 KC would like to thank Ekta Patel for sharing a collection of M31 mass
 measurements from the literature.
 % This work made use of the
@@ -1088,7 +1118,8 @@ KC and GB are supported by NSF CAREER AST-1941096 and NASA ATP 17-ATP17-0006.
 \todo{EC}
 \todo{NGC}
 \todo{JP}
-\todo{MP}
+MSP acknowledges grant support from Segal ANR-19-CE31-0017 of the French Agence
+Nationale de la Recherche (\url{https://secular-evolution.org}).
 
 \end{acknowledgements}
 
