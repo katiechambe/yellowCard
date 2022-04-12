@@ -93,11 +93,12 @@
     The total mass of the Local Group (LG) is a fundamental quantity that
     enables interpretation of the orbits of its constituent galaxies and is
     needed to place the LG in a cosmological context.
-    One of the few methods that enables inferring the total mass directly is the
+    One of the few methods that allows inferring the total mass directly is the
     ``Timing Argument,'' which models the relative orbit of the Milky Way (MW)
     and M31.
-    However, the MW is not in equilibrium with its dark matter halo, a byproduct
-    of its merger history and the recent pericentric passage of the LMC.
+    However, the MW disk is not in equilibrium with its dark matter halo, a
+    byproduct of its merger history and the recent pericentric passage of the
+    LMC.
     Recent studies of tracers in the MW stellar halo have found that
     the MW disk is moving with a lower bound “travel velocity” of $32\pm4$
     \kms\ with respect to its outer halo \citep{Petersen2021}, thus biasing past
@@ -114,9 +115,8 @@
     consistent between datasets.
     Measurements of the travel velocity with more distant tracers could yield
     even larger values, which would further decrease the inferred LG mass.
-    Additionally, we find that future data releases from \emph{Gaia} will lead
-    to more precise measurements
-    of M31's proper motion that will improve the precision of Timing Argument
+    Additionally, we find that the predicted precision of M31's proper motion
+    measurement from future Gaia data releases will improve Timing Argument
     mass constraints by a factor of $\sim2$.
     % \textbf{Conclusions}
     As a result, the newly measured travel velocity directly implies a lower LG
@@ -547,7 +547,7 @@ Our adopted prior pdfs are defined in Table~\ref{table:priors}.
 % \end{itemize}
 % This information is summarized in Table~\ref{table:priors}.
 For each dataset, we run the sampler with 4 chains for 4,000 tuning steps and
-40,000 draws.
+40,000 draws. 
 % TODO: Letters have a 1 table max limit, so we might have to move the prior
 % details into the list above. But we could always submit as a short regular
 % paper instead of a letter...
@@ -615,6 +615,9 @@ the Milky Way disk from~\cite{Petersen2021}, and results in new,
 less-biased constraints on the mass of the Local Group.
 The mean inferred parameter values and their 68\% credible regions for each
 dataset are presented in Table~\ref{table:convergedparams}.
+We compute convergence statistics using \texttt{Arviz}~\citep{arviz} for all
+MCMC runs and find that the maximum Gelman--Rubin convergence statistic is
+$\leq1.01$ in all cases~\citep{GelmanRubin1992}.
 
 We find that our model prefers lower Local Group masses and a lower eccentricity
 orbit compared to models that do not include the travel velocity of the MW disk.
@@ -1115,8 +1118,6 @@ This research made use of Astropy,\footnote{http://www.astropy.org} a
 community-developed core Python package for Astronomy \citep{astropy:2013,
 astropy:2018}.
 KC and GB are supported by NSF CAREER AST-1941096 and NASA ATP 17-ATP17-0006.
-\todo{EC}
-\todo{NGC}
 \todo{JP}
 MSP acknowledges grant support from Segal ANR-19-CE31-0017 of the French Agence
 Nationale de la Recherche (\url{https://secular-evolution.org}).
