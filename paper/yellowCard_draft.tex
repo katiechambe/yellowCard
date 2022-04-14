@@ -805,48 +805,50 @@ way, without the need to simulate the entire interaction history.
   \begin{tabular}{clc|c}
     \hline\hline
     Mass & Method & Result ($ 10^{12}~\Msun$ ) & Citation \\\hline
-    \multirow{12}{*}{\mlg}  & TA & $3.6$ & \cite{Lynden-Bell:1981} \\
-    &TA (radial + cosmo sim calibration)  & $5.27$& \cite{LiWhite2008} \\
-    &{TA only} & {4.27$\pm$0.45} & \cite{vdm2012} \\
-    &{TA (3D + cosmic bias and scatter)} & {4.93$\pm$1.63} &\cite{vdm2012}\\
-    & LG Dynamics &$2.5\pm0.4$ & \cite{Diaz2014}\\
-    &{LV Galaxies + TA} & {2.64$\pm0.4$} & \cite{Penarrubia2016} \\
-    & Machine Learning & $4.9 \pm 0.8$ & \cite{McLeod2017}\\
+    \multirow{15}{*}{\mlg}  & TA & $3.6$ & \citealt{Lynden-Bell:1981} \\
+    &TA (radial + cosmo sim calibration)  & $5.27$& \citealt{LiWhite2008} \\
+    &{TA only} & {4.27$\pm$0.45} & \citealt{vdm2012} \\
+    &{TA (3D + cosmic bias and scatter)} & {4.93$\pm$1.63} &\citealt{vdm2012}\\
+    & LG Dynamics &$2.5\pm0.4$ & \citealt{Diaz2014}\\
+    &{LV Galaxies + TA} & {2.64$\pm0.4$} & \citealt{Penarrubia2016} \\
+    & Machine Learning & $4.9 \pm 0.8$ & \citealt{McLeod2017}\\
     & Machine Learning (+large M31 transverse motion) & $3.6\pm0.3$ &
-    \cite{McLeod2017}\\
-    & Cosmological Sims & 4.4$^{+2.4}_{-1.5}$ & \cite{Zhai2020}\\
+    \citealt{McLeod2017}\\
+    & Cosmological Sims & 4.4$^{+2.4}_{-1.5}$ & \citealt{Zhai2020}\\
     & Cosmological Sims (likelihood-free inference) & $4.6^{+2.3}_{-1.8}$ &
-    \cite{Lemos2021}\\
-    & TA + Cosmological Sims & $4.75^{+2.22}_{-2.41}$ & \cite{Hartl2021}\\
-    & TA + LMC & 5.6$^{+1.6}_{-1.2}$ & \cite{Benisty2022}\\
-    & TA + CB + LMC & 3.4$^{+1.4}_{-1.1}$ & \cite{Benisty2022}\\
-    & \textbf{TA + $\boldsymbol{\vtrav}$} & {$\boldsymbol{4.5^{+0.8}_{-0.6}}$}&
-    \textbf{This work (Chamberlain et al. 2022)}\\
+    \citealt{Lemos2021}\\
+    & TA + Cosmological Sims & $4.75^{+2.22}_{-2.41}$ & \citealt{Hartl2021}\\
+    & TA + LMC & 5.6$^{+1.6}_{-1.2}$ & \citealt{Benisty2022}\\
+    & TA + CB + LMC & 3.4$^{+1.4}_{-1.1}$ & \citealt{Benisty2022}\\
+    & \textbf{TA + $\boldsymbol{\vtrav}$} (Cepheid + HST) & {$\boldsymbol{4.0^{+0.5}_{-0.3}}$}&
+    \textbf{Chamberlain et al. 2022 (this work)}\\
+    & \textbf{TA + $\boldsymbol{\vtrav}$} (Cepheid + Gaia) & {$\boldsymbol{4.5^{+0.8}_{-0.6}}$}&
+    \textbf{Chamberlain et al. 2022 (this work)}\\
     \hline
     \multirow{9}{*}{\mmto}& Kinematics of M31 Sats & $1.4 \pm 0.4$ ($<$300 kpc)
-    & \cite{Watkins2010}\\
-    & Giant Stellar Stream & $2.00^{+0.52}_{-0.41}$ & \cite{Fardal2013}\\
-    & LG Dynamics &$1.7\pm0.3$ & \cite{Diaz2014}\\
-    & Local Hubble Flow &  $1.33\pm0.4$ & \cite{Penarrubia2016}\\
-    & M31 Orbital Ang. Mom. & $1.37^{+1.39}_{-0.75}$ & \cite{Patel2017b}\\
-    & Cosmological Sims & $1.0-2.0$ & \cite{Carlesi2017} \\
-    & Cosmological Sims & 2.5$^{+1.3}_{-1.1}$ & \cite{Zhai2020}\\
-    & Machine Learning & $2.3-2.5$& \cite{Villanueva-Domingo2021}\\
+    & \citealt{Watkins2010}\\
+    & Giant Stellar Stream & $2.00^{+0.52}_{-0.41}$ & \citealt{Fardal2013}\\
+    & LG Dynamics &$1.7\pm0.3$ & \citealt{Diaz2014}\\
+    & Local Hubble Flow &  $1.33\pm0.4$ & \citealt{Penarrubia2016}\\
+    & M31 Orbital Ang. Mom. & $1.37^{+1.39}_{-0.75}$ & \citealt{Patel2017b}\\
+    & Cosmological Sims & $1.0-2.0$ & \citealt{Carlesi2017} \\
+    & Cosmological Sims & 2.5$^{+1.3}_{-1.1}$ & \citealt{Zhai2020}\\
+    & Machine Learning & $2.3-2.5$& \citealt{Villanueva-Domingo2021}\\
     & Machine Learning (+velocity information) & $2.2-2.5$ &
-    \cite{Villanueva-Domingo2021}\\
+    \citealt{Villanueva-Domingo2021}\\
 
     \hline
     \multirow{9}{*}{\mmw}&  Kinematics of LG sats & $1.4 \pm 0.3$ ($<$300 kpc)
-    & \cite{Watkins2010}\\
-    & LG Dynamics &$0.8\pm0.5$ & \cite{Diaz2014}\\
-    & Local Hubble Flow & $1.04 \pm 0.26$ & \cite{Penarrubia2016}\\
-    & LMC Orbital Ang. Mom. & $1.02^{+0.77}_{-0.55}$ & \cite{Patel2017b}\\
-    & Cosmological Sims & $0.6-0.8$ & \cite{Carlesi2017}\\
-    & MW Sats & $0.96^{+0.29}_{-0.28}$ & \cite{Patel2018}\\
-    & Cosmological Sims & 1.5$^{+1.4}_{-0.7}$ & \cite{Zhai2020} \\
-    & Machine Learning & $1.0-1.3$ & \cite{Villanueva-Domingo2021}\\
+    & \citealt{Watkins2010}\\
+    & LG Dynamics &$0.8\pm0.5$ & \citealt{Diaz2014}\\
+    & Local Hubble Flow & $1.04 \pm 0.26$ & \citealt{Penarrubia2016}\\
+    & LMC Orbital Ang. Mom. & $1.02^{+0.77}_{-0.55}$ & \citealt{Patel2017b}\\
+    & Cosmological Sims & $0.6-0.8$ & \citealt{Carlesi2017}\\
+    & MW Sats & $0.96^{+0.29}_{-0.28}$ & \citealt{Patel2018}\\
+    & Cosmological Sims & 1.5$^{+1.4}_{-0.7}$ & \citealt{Zhai2020} \\
+    & Machine Learning & $1.0-1.3$ & \citealt{Villanueva-Domingo2021}\\
     & Machine Learning (+velocity information) & $2.3-2.6$ &
-    \cite{Villanueva-Domingo2021}\\
+    \citealt{Villanueva-Domingo2021}\\
   \hline\hline
   \end{tabular}
   \caption{\label{table:masses}A selected collection of previous mass
