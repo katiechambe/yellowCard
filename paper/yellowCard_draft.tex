@@ -92,36 +92,35 @@
 \begin{abstract}
     % \textbf{Context}
     The total mass of the Local Group (LG) is a fundamental quantity that
-    enables interpretation of the orbits of its constituent galaxies and is
-    needed to place the LG in a cosmological context.
+    enables interpreting the orbits of its constituent galaxies and placing the
+    LG in a cosmological context.
     One of the few methods that allows inferring the total mass directly is the
     ``Timing Argument,'' which models the relative orbit of the Milky Way (MW)
     and M31.
-    However, the MW disk is not in equilibrium with its dark matter halo, a
-    byproduct of its merger history and the recent pericentric passage of the
-    LMC.
-    Recent studies of tracers in the MW stellar halo have found that
-    the MW disk is moving with a lower bound “travel velocity” of $32\pm4$
-    \kms\ with respect to its outer halo \citep{Petersen2021}, thus biasing past
-    Timing Argument measurements that do not account for this motion.
+    However, the MW itself is not in equilibrium, a byproduct of its merger
+    history and the recent pericentric passage of the LMC/SMC.
+    As a result, recent work has found that the MW disk is moving with a lower
+    bound ``travel velocity'' of $\sim 32~\kms$ with respect to the outer
+    stellar halo \citep{Petersen2021}, thus biasing past Timing Argument
+    measurements that do not account for this motion.
     % \textbf{Aims}
     % \textbf{Methods}
     Here, we measure the total LG mass using a Timing Argument model that
-    incorporates this measured ``travel velocity'' of the MW disk using several
+    incorporates this measured travel velocity of the MW disk using several
     different compilations of recent kinematic measurements of M31.
     % \textbf{Results}
-    We generally find that the inclusion of the measured travel velocity lowers
-    the inferred LG mass by 10-20\% compared to a static MW halo, and find an
-    updated total mass of $4.5^{+0.8}_{-0.6}\times 10^{12}~\Msun$ that is
-    consistent between datasets.
+    We find that the inclusion of the measured travel velocity lowers the
+    inferred LG mass by 10--20\% compared to a static MW halo, and find an
+    updated total mass of either $4.0^{+0.5}_{-0.3}\times 10^{12}~\Msun$ or
+    $4.5^{+0.8}_{-0.6}\times 10^{12}~\Msun$ depending on the adopted dataset.
     Measurements of the travel velocity with more distant tracers could yield
     even larger values, which would further decrease the inferred LG mass.
-    Additionally, we find that the predicted precision of M31's proper motion
-    measurement from future Gaia data releases will improve Timing Argument
-    mass constraints by a factor of $\sim2$.
+    % Additionally, we find that the predicted precision of M31's proper motion
+    % measurement from future Gaia data releases will improve Timing Argument
+    % mass constraints by a factor of $\sim2$.
     % \textbf{Conclusions}
     As a result, the newly measured travel velocity directly implies a lower LG
-    mass than from a system with a static MW halo, and must be considered in
+    mass than from a model with a static MW halo and must be considered in
     future dynamical studies of the Local Volume.
 \end{abstract}
 
@@ -189,7 +188,7 @@ Timing Argument studies that do not account for these perturbations are thus
 likely only biased estimates of the LG mass.
 \citet{Penarrubia2016} studied the impact of the presence of the Large
 Magellanic Cloud (LMC) on the total mass of the LG via the Timing Argument by
-explicitly modeling the masses of the MW, LMC, and M31 as a dynamical system. 
+explicitly modeling the masses of the MW, LMC, and M31 as a dynamical system.
 
 In addition, numerous studies of the interaction between the MW and LMC (using
 simulated analogs) have quantified the expected LMC-induced reflex motion of the
@@ -483,7 +482,7 @@ See Table~\ref{table:data} for numerical values used in each of these datasets.
   the position of the Sun and the solar motion with respect to the Galactic
   center, with the x-axis pointing from the projection of the Sun
   on the disk towards the Galactic center, and the z-axis pointing in the
-  direction of the North Galactic Pole. 
+  direction of the North Galactic Pole.
   $t_{\rm peri}$ is the time elapsed since the last pericenter of the M31
   Keplerian orbit, which in this case is the age of the Universe.
   }
@@ -548,7 +547,7 @@ Our adopted prior pdfs are defined in Table~\ref{table:priors}.
 % \end{itemize}
 % This information is summarized in Table~\ref{table:priors}.
 For each dataset, we run the sampler with 4 chains for 4,000 tuning steps and
-40,000 draws. 
+40,000 draws.
 % TODO: Letters have a 1 table max limit, so we might have to move the prior
 % details into the list above. But we could always submit as a short regular
 % paper instead of a letter...
@@ -813,7 +812,7 @@ way, without the need to simulate the entire interaction history.
     & LG Dynamics &$2.5\pm0.4$ & \cite{Diaz2014}\\
     &{LV Galaxies + TA} & {2.64$\pm0.4$} & \cite{Penarrubia2016} \\
     & Machine Learning & $4.9 \pm 0.8$ & \cite{McLeod2017}\\
-    & Machine Learning (+large M31 transverse motion) & $3.6\pm0.3$ & 
+    & Machine Learning (+large M31 transverse motion) & $3.6\pm0.3$ &
     \cite{McLeod2017}\\
     & Cosmological Sims & 4.4$^{+2.4}_{-1.5}$ & \cite{Zhai2020}\\
     & Cosmological Sims (likelihood-free inference) & $4.6^{+2.3}_{-1.8}$ &
@@ -846,7 +845,7 @@ way, without the need to simulate the entire interaction history.
     & MW Sats & $0.96^{+0.29}_{-0.28}$ & \cite{Patel2018}\\
     & Cosmological Sims & 1.5$^{+1.4}_{-0.7}$ & \cite{Zhai2020} \\
     & Machine Learning & $1.0-1.3$ & \cite{Villanueva-Domingo2021}\\
-    & Machine Learning (+velocity information) & $2.3-2.6$ & 
+    & Machine Learning (+velocity information) & $2.3-2.6$ &
     \cite{Villanueva-Domingo2021}\\
   \hline\hline
   \end{tabular}
@@ -1107,7 +1106,7 @@ This project was started at the Big Apple Dynamics School (BADS) hosted by the
 Flatiron Institute July--August 2021.
 We greatly benefitted from discussions with the other students who attended the
 BADS, and received helpful input from:
-Kathryn Johnston (Columbia), Alex Riley (Texas A\&M), and Martin Weinberg 
+Kathryn Johnston (Columbia), Alex Riley (Texas A\&M), and Martin Weinberg
 (University of Massachusetts at Amherst).
 KC would like to thank Ekta Patel for sharing a collection of M31 mass
 measurements from the literature.
