@@ -4,6 +4,7 @@
 
 \documentclass[twocolumn]{aastex631}
 
+
 % Packages
 \usepackage{microtype}  % ALWAYS!
 \usepackage{amsmath}
@@ -617,7 +618,7 @@ The mean inferred parameter values and their 68\% credible regions for each
 dataset are presented in Table~\ref{table:convergedparams}.
 We compute convergence statistics using \texttt{Arviz}~\citep{arviz} for all
 MCMC runs and find that the maximum Gelman--Rubin convergence statistic is
-$\leq1.01$ in all cases~\citep{GelmanRubin1992}.
+$\leq1.01$ for all parameters and each dataset~\citep{GelmanRubin1992}.
 
 We find that our model prefers lower Local Group masses and a lower eccentricity
 orbit compared to models that do not include the travel velocity of the MW disk.
@@ -1118,7 +1119,6 @@ This research made use of Astropy,\footnote{http://www.astropy.org} a
 community-developed core Python package for Astronomy \citep{astropy:2013,
 astropy:2018}.
 KC and GB are supported by NSF CAREER AST-1941096 and NASA ATP 17-ATP17-0006.
-\todo{JP}
 MSP acknowledges grant support from Segal ANR-19-CE31-0017 of the French Agence
 Nationale de la Recherche (\url{https://secular-evolution.org}).
 
