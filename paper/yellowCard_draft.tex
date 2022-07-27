@@ -1,7 +1,3 @@
-% Some notes / rules:
-% - Things marked \apw{} are APW's requests for Katie
-% - Things marked \todo{} can be addressed by anyone
-
 \documentclass[twocolumn]{aastex631}
 
 
@@ -14,6 +10,8 @@
 
 \definecolor{pink}{RGB}{232,132,161}
 \newcommand{\kc}[1]{\textcolor{pink}{\textbf{#1}} }
+\newcommand{\remove}[1]{\textcolor{red}{#1}}
+\newcommand{\add}[1]{\textcolor{green}{#1}}
 
 \newcommand{\mlg}{\ensuremath{M_{\rm LG}}}
 \newcommand{\mmto}{\ensuremath{M_{\rm M31}}}
@@ -62,8 +60,8 @@
 \begin{document}
 
 \title{
-  Implications of the travel velocity of the Milky Way on Local Group mass\\
-  estimates from the Timing Argument
+  Implications of the Milky Way travel velocity for dynamical\\
+  mass estimates of the Local Group
 }
 
 \author[0000-0001-8765-8670]{Katie~Chamberlain}
@@ -90,38 +88,7 @@
 \affiliation{\affparis}
 
 \begin{abstract}
-    % \textbf{Context}
-    The total mass of the Local Group (LG) is a fundamental quantity that
-    enables interpreting the orbits of its constituent galaxies and placing the
-    LG in a cosmological context.
-    One of the few methods that allows inferring the total mass directly is the
-    ``Timing Argument,'' which models the relative orbit of the Milky Way (MW)
-    and M31.
-    However, the MW itself is not in equilibrium, a byproduct of its merger
-    history and the recent pericentric passage of the LMC/SMC.
-    As a result, recent work has found that the MW disk is moving with a lower
-    bound ``travel velocity'' of $\sim 32~\kms$ with respect to the outer
-    stellar halo \citep{Petersen2021}, thus biasing past Timing Argument
-    measurements that do not account for this motion.
-    % \textbf{Aims}
-    % \textbf{Methods}
-    Here, we measure the total LG mass using a Timing Argument model that
-    incorporates this measured travel velocity of the MW disk using several
-    different compilations of recent kinematic measurements of M31.
-    % \textbf{Results}
-    We find that the inclusion of the measured travel velocity lowers the
-    inferred LG mass by 10--20\% compared to a static MW halo, and find an
-    updated total mass of either $4.0^{+0.5}_{-0.3}\times 10^{12}~\Msun$ or
-    $4.5^{+0.8}_{-0.6}\times 10^{12}~\Msun$ depending on the adopted dataset.
-    Measurements of the travel velocity with more distant tracers could yield
-    even larger values, which would further decrease the inferred LG mass.
-    % Additionally, we find that the predicted precision of M31's proper motion
-    % measurement from future Gaia data releases will improve Timing Argument
-    % mass constraints by a factor of $\sim2$.
-    % \textbf{Conclusions}
-    As a result, the newly measured travel velocity directly implies a lower LG
-    mass than from a model with a static MW halo and must be considered in
-    future dynamical studies of the Local Volume.
+  The total mass of the Local Group (LG) is a fundamental quantity that enables interpreting the orbits of its constituent galaxies and placing the LG in a cosmological context. One of the few methods that allows inferring the total mass directly is the ``Timing Argument,'' which models the relative orbit of the Milky Way (MW) and M31. However, the MW itself is not in equilibrium, a byproduct of its merger history and the recent pericentric passage of the LMC/SMC. As a result, recent work has found that the MW disk is moving with a lower bound ``travel velocity'' of $\sim 32~\kms$ with respect to the outer stellar halo \citep{Petersen2021}, thus biasing past Timing Argument measurements that do not account for this motion. We measure the total LG mass using a Timing Argument model that incorporates this measured travel velocity of the MW disk using several different compilations of recent kinematic measurements of M31. We find that incorporating the measured travel velocity lowers the inferred LG mass by 10--20\% compared to a static MW halo, and find an updated total mass of either $4.0^{+0.5}_{-0.3}\times 10^{12} \Msun$ or $4.5^{+0.8}_{-0.6}\times 10^{12} \Msun$ depending on the adopted dataset. Measurements of the travel velocity with more distant tracers could yield even larger values, which would further decrease the inferred LG mass. Therefore, the newly measured travel velocity directly implies a lower LG mass than from a model with a static MW halo and must be considered in future dynamical studies of the Local Volume.
 \end{abstract}
 
 \section{Introduction}
@@ -175,20 +142,20 @@ the ``classic'' Timing Argument using only the MW and M31.
 Assuming Keplerian dynamics enables dynamically measuring the total mass of the
 MW and M31 with analytic expressions for all relevant kinematic quantities
 because of the simplicity of the two-body equations of motion.
-The inferred mass from the Timing Argument is thus very sensitive to the
-observationally-measured kinematics of the M31 center.
+The inferred mass from the Timing Argument is \remove{thus very sensitive to the} \add{thus directly dependent on the} observationally-measured kinematics of the M31 center.
 
 Recent studies of the dynamics of the MW and its satellites have
-revealed that the infall of the Magellanic Clouds (MCs) is likely causing
+revealed that the infall of the Magellanic Clouds (MCs) is \remove{likely} causing
 significant distortions to the dark matter and stellar distribution in the MW
 halo \citep{Laporte:2018a, Laporte:2018b, Garavito-Camargo:2019, Conroy:2021,
 Erkal:2021}, thus impacting the interpretation of observations of the M31
 position and velocity relative to the MW center of mass.
-Timing Argument studies that do not account for these perturbations are thus
-likely only biased estimates of the LG mass.
+Timing Argument studies that do not account for these perturbations \remove{are thus
+likely} \add{may be} only biased estimates of the LG mass.
 \citet{Penarrubia2016} studied the impact of the presence of the Large
 Magellanic Cloud (LMC) on the total mass of the LG via the Timing Argument by
 explicitly modeling the masses of the MW, LMC, and M31 as a dynamical system.
+\kc{add a bit about what they found!}
 
 In addition, numerous studies of the interaction between the MW and LMC (using
 simulated analogs) have quantified the expected LMC-induced reflex motion of the
@@ -196,7 +163,7 @@ MW disk and inner halo, which are likely being accelerated away from the center
 of mass reference frame of a static MW halo \citep{Gomez2015, Cunningham:2020,
 Petersen:2020, Garavito-Camargo2021b}.
 Recent Timing Argument work by \cite{Benisty2022} modelled the orbital history
-of M31 and the MW with and without a mass model of the LMC to estimate the
+of M31 and the MW with and without a mass and orbital model of the LMC to estimate the
 contribution of the LMC-induced reflex motion of the MW to the measured
 tangential and radial velocities of M31, then applied these corrections to their
 model to remove the impact of the LMC in their analysis.
@@ -530,7 +497,7 @@ this posterior pdf, given data from each of the datasets defined in
 Table~\ref{table:data}.
 We sample over the parameters Local Group mass $\mlg$, the present-day MW--M31
 halo separation $r$, log eccentricity $\ln\left(1 - e\right)$, eccentric anomaly
-$\eta$, and the orbital plane orientation nuisance parameter $\alpha$.
+$\eta$, and the orbital plane orientation nuisance parameter $\alpha$. \kc{add in a formula or specify the form of the likelihood function that we used}
 Our adopted prior pdfs are defined in Table~\ref{table:priors}.
 % We set the priors as follows:
 % \kc{do we need the following bullets if we have the table?}
