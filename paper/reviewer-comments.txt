@@ -27,7 +27,7 @@ Smaller comments
 More broadly, this line of discussion seems to imply that the only reason the MW is not in equilibrium is because the LMC/SMC, which is likely not generally true. The authors in fact allude to this at the end of the introduction when discussing Sagittarius and Gaia-Enceladus-Sausage.
 
 Similarly, the statement at the end of the 4th sentence `...thus biasing past Timing Argument measurements that do not account for this motion." was not proven before it was stated in the abstract. Even if the MW is not in equilibrium, it's not necessarily true that the TA is biased. I suggest rephrasing this statement.
-    > Response: TODO
+    > Response: We have incorporated these suggested changes.
 
 - Introduction, line 86, the statement that the inferred TA mass is very sensitive to the kinematics of the M31 center needs a reference, or to be better justified at that point.
     > Response: Changed to The inferred mass from the Timing Argument is thus directly dependent on the observationally-measured kinematics of the M31 center.}
@@ -39,16 +39,16 @@ Similarly, the statement at the end of the 4th sentence `...thus biasing past Ti
     > Response: Corrected
 
 - Introduction, line 101. I suggest following up to say what the results of Penarrubia et al. 2016 showed.
-    > Response: TODO
+    > Response: Included new text better describing the method and findings.
 
 - Introduction, line 111. 'mass' --> 'mass and orbit'
     > Response: corrected
 
 - Section 2, line 356. This paragraph reviews the codes that are used for the analysis. Can the authors provide a formula for, or at least more specifically described, the form of the likelihood function that is used?
-    > Response: TODO
+    > Response: Added a paragraph describing the likelihood function to this section. 
 
 - I don't think the language of the dismissal of the cosmic bias factor in 4.2 is appropriate. The authors haven't shown that identifying LG systems with LMC like objects reduces this cosmic bias to zero. Indeed, it's hard to see how it doesn't persist even when considering LMCs. If the authors don't want to include this in the error budget then I presume that's ok, but I don't think it's fair to just casually dismiss it.
-    > Response: TODO
+    > Response: This is a fair point. I think that rephrasing the main results of the paper to focus on the relative change in the inferred mass due to the meas. travel velocity rather than the absolute value of the inferred mass that we get resolves this issue, but we have expanded this section to focus on the travel velocity as a perturbation of the TA, in addition to cosmic bias and a cosmological constant. 
 
 - The discussion of the Benisty et al. paper at the end of Sec. 4.1 is confusing. Essentially Benisty et al. calculated the systematic uncertainty in the TA mass due to the systematic uncertainty in the orbit of the LMC, and then from this the corresponding systematic uncertainty on the components of the M31 velocity. This systematic uncertainty needs to be included in present analyses of the impact of the LMC. It seems to me that the coordinate transformation the authors utilize is implicitly embedded in the Benisty et al. analysis. So in this sense, is the analysis performed by the current authors so different than Benisty et al., and it's just a different way of phrasing the systematic uncertainties? I would like to see the authors comment on this in a more concise fashion.
     > Response: TODO
@@ -59,3 +59,4 @@ Similarly, the statement at the end of the 4th sentence `...thus biasing past Ti
 
 Questions for Adrian:
 > In the Salomon paper, they give Vtransverse which is not \sqrt(Valpha^2_Vdelta^2)... so then how is the transverse velocity defined? Should be closer to 72km/s if you do the square root? Also... it says  "consistent with findings from Hubble" for the vtran but,.... Hubble found M31 Vtan  < 34.3km/s, so very inconsistent with Salomon vals. 
+
