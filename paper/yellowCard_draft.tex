@@ -206,7 +206,13 @@ in place of orbital modelling to account for the expected perturbations of the
 inner MW halo without having to make assumptions about the mass or dynamical
 history of the LMC or other satellites.
 
-\kc{Other perturbations to the timing arguement: i.e. Previous works have studied other various pertubrations that one can make to the TA. For example, cosmic biad/scatter, cosmological constant, etc. Name them, their effects, and how much they contribute to TA uncertainty.}
+\add{Studies have considered variations to the standard TA model.
+For example, one such model considered the effect of dark energy, and finds that
+the addition of a cosmological constant to the energy eqautions yield a
+$\sim13\%$ increase in the recovered mass~\citep{Partridge:2013}. 
+Similarly, the travel velocity of the MW disk, which has only recently been
+first measured, introduces it's own complication to the standard Timing Argument
+model.}
 
 \remove{In this Article, we use the measured travel velocity of the inner Milky
 Way to empirically infer the mass of the Local Group,} 
@@ -741,7 +747,6 @@ circular.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Comparing recent measurements of the Local Group mass}
-\kc{Question \#3}
 There have been two primary pathways toward measuring the mass of the LG:
 measure the masses of MW and M31 individually and add them, or go after the
 total mass directly with LV dynamics, the Timing Argument, or cosmological
@@ -775,7 +780,7 @@ it is unclear how this would affect the total mass in their analysis.
 
 Additionally, ~\cite{Penarrubia2016} found a Local Group mass of
 $\sim2.64\pm0.4\times 10^{12}~\Msun$, which is significantly lower than our
-expectations, although this constraint combines the Timing Argument dynamics of
+findings, although this constraint combines the Timing Argument dynamics of
 the M31--MW system in addition to the observed kinematics of 35 Local Volume
 galaxies. They parametrize the offset of the LMC+MW barycenter from a
 MW-only barycenter as a function of the mass ratio between the LMC and MW, and
@@ -786,7 +791,7 @@ The recovered mass using only the dynamics of the LV galaxies was quite low
 including the Timing Argument dynamics of the MW--M31 system increased their
 recovered total mass to $\sim2.64\pm0.4\times 10^{12}~\Msun$.
 
-Our LG mass estimates are consistent with a number of other recent
+Our TA$+$\vtrav\  LG mass estimates are consistent with a number of other recent
 studies that estimate the mass of the LG through dynamical methods.
 For example, we find agreement with the previous Timing Argument model
 of~\cite{vdm2012} which found a total mass
@@ -794,10 +799,10 @@ of $4.27\pm0.45\times 10^{12}\Msun$ (neglecting for cosmic bias and
 scatter) using the same values for the distance and velocity of
 M31 as in our \textit{vdMG08 Dist. + HST PM} dataset.
 
+In two $N$-body cosmological simulations, Millenium-WMAP7 and MilleniumII, 
 \cite{Zhai2020} identified pairs of stellar analogs to the MW and M31, then
 applied a series of kinematic cuts on the separation, isolation, and velocities
-of the pair to determine Local Group analogs in two $N$-body cosmological
-simulations, Millenium-WMAP7 and MilleniumII.
+of the pair to determine Local Group analogs.
 They find stellar and dynamical LG analogs on mostly radial orbits have total
 masses of $4.4^{+2.4}_{-1.5}\times 10^{12}\Msun$, which is consistent with our
 findings for each dataset.
@@ -810,9 +815,9 @@ We find that the ellipticity of the orbit decreases dramatically with larger
 travel velocities, however, in contradiction to \cite{Zhai2020}, we find that
 this leads to a lower total LG mass.
 
-Additionally, \cite{Benisty2022} recently used the Timing Argument to
-place constraints on the LG mass while removing the impact of the LMC-induced
-reflex motion from velocity measurements of M31.
+Additionally, \cite{Benisty2022} \add{recently modelled the contribution of the
+LMC-induced shift in the barycenter of the MW and used the Timing Argument to
+place constraints on the LG mass while removing the impact of the LMC.}
 More specifically, they estimate the contribution of the reflex motion of the
 MW disk to the observed velocity vector of M31 by modeling the orbital history
 of the MW--M31 system and the MW+LMC--M31 system.
@@ -849,16 +854,16 @@ way, without the need to simulate the entire interaction history.
     &{TA only} & {4.27$\pm$0.45} & \citealt{vdm2012} \\
     &{TA (3D + cosmic bias and scatter)} & {4.93$\pm$1.63} &\citealt{vdm2012}\\
     & LG Dynamics &$2.5\pm0.4$ & \citealt{Diaz2014}\\
-    &{LV Galaxies + TA} & {2.64$\pm0.4$} & \citealt{Penarrubia2016} \\
+    &{LV Galaxies + TA + $\Lambda$} & {2.64$\pm0.4$} & \citealt{Penarrubia2016} \\
     & Machine Learning & $4.9 \pm 0.8$ & \citealt{McLeod2017}\\
     & Machine Learning (+large M31 transverse motion) & $3.6\pm0.3$ &
     \citealt{McLeod2017}\\
     & Cosmological Sims & 4.4$^{+2.4}_{-1.5}$ & \citealt{Zhai2020}\\
     & Cosmological Sims (likelihood-free inference) & $4.6^{+2.3}_{-1.8}$ &
     \citealt{Lemos2021}\\
-    & TA + Cosmological Sims & $4.75^{+2.22}_{-2.41}$ & \citealt{Hartl2021}\\
-    & TA + LMC & 5.6$^{+1.6}_{-1.2}$ & \citealt{Benisty2022}\\
-    & TA + CB + LMC & 3.4$^{+1.4}_{-1.1}$ & \citealt{Benisty2022}\\
+    & TA + $\Lambda$ + Cosmological Sims & $4.75^{+2.22}_{-2.41}$ & \citealt{Hartl2021}\\
+    & TA + $\Lambda$ + LMC & 5.6$^{+1.6}_{-1.2}$ & \citealt{Benisty2022}\\
+    & TA + $\Lambda$ + cosmic biad + LMC & 3.4$^{+1.4}_{-1.1}$ & \citealt{Benisty2022}\\
     & \textbf{TA + $\boldsymbol{\vtrav}$} (Cepheid + HST) & {$\boldsymbol{4.0^{+0.5}_{-0.3}}$}&
     \textbf{Chamberlain et al. 2022 (this work)}\\
     & \textbf{TA + $\boldsymbol{\vtrav}$} (Cepheid + Gaia) & {$\boldsymbol{4.5^{+0.8}_{-0.6}}$}&
@@ -896,7 +901,7 @@ way, without the need to simulate the entire interaction history.
 \end{table*}
 
 
-\subsection{Additional perturbations to the Timing Argument}
+\subsection{Additional sources of bias to the Timing Argument}
 Given the simplicity of the Timing Argument dynamical model --- in particular,
 the assumption that the MW and M31 are point masses with constant masses --- it
 is reasonable to wonder whether this methodology provides unbiased estimates of
@@ -912,13 +917,10 @@ In this work, we do not attempt to ``correct'' our inferred LG masses for this
 cosmic bias effect, because it is unclear whether cosmological simulations
 accurately reproduce the detailed properties of LG systems.
 Accounting for this effect would likely lower our reported LG mass measurements.
-
-In addition, \kc{Comment \#2: cosmological constant}
-
 However, as we have shown, the existence of a reflex motion of the
 MW disk as a response to the MW's interaction with its satellite population
 decreases is an additional perturbation to the TA that must be considered in
-future studies alongside cosmic bias and a Cosmological Constant. 
+future studies alongside cosmic bias and a cosmological constant. 
 
 \subsection{Impact of travel velocity on inferred dynamics of the Local Group}
 \label{sec:discussion-impact}
@@ -1070,31 +1072,38 @@ history and mass profile, as well as uncertainties in the MW merger history.
 We also consider three compilations of kinematic data for the distance and
 proper motion of M31, and find \add{a decrease in the inferred mass compared to
 non-travel velocity TA models} . For each
-dataset: \kc{Question \#1: do we need to include errorbars on these values? How?}
- \remove{\footnote{Errors correspond to the 68\% credible regions about
+dataset:
+\footnote{Errors correspond to the 68\% credible regions about
 the median LG mass from the MCMC sampled posterior pdfs
-of our model parameters.}}
+of our model parameters.}
 \begin{itemize}
   \item[-] For the ``\textit{vdMG08 Dist. + HST PM}'' dataset -- the
   ~\cite{vdm2008} distance and \textit{HST} proper motion
   measurements~\citep{Sohn:2012,vdm2012} -- we find a 
-  \remove{LG mass of $\mlg = 3.98^{+0.63}_{-0.47}\times10^{12}~\Msun$} 
-  \add{that the travel velocity decreases the inferred LG mass by 11.36\%}.
+  LG mass of $\mlg = 3.98^{+0.63}_{-0.47}\times10^{12}~\Msun$ 
+  \add{(including the measured travel velocity), and of
+  $\mlg = 4.49^{+0.47}_{-0.42}\times10^{12}~\Msun$ when $\vtrav$=0.
+  Thus, the inclusion of the that the travel velocity decreases the inferred
+  LG mass by 11.36\%}.
   %
   \item[-] For the ``\textit{Cepheid Dist. + HST PM}'' dataset -- an updated
   Cepheid distance measurement from~\cite{Li2021} and the same \textit{HST} PMs
   from above -- 
-  we find
-  \remove{a LG mass of
-  $\mlg = 4.05^{+0.51}_{-0.34}\times10^{12}~\Msun$}
-  \add{that the travel velocity decreases the inferred LG mass by 12.01\%}.
+  we find a LG mass of $\mlg = 4.05^{+0.51}_{-0.34}\times10^{12}~\Msun$ 
+  \add{(including the measured travel velocity), and of
+  $\mlg = 4.61^{+0.42}_{-0.22}\times10^{12}~\Msun$ when $\vtrav$=0.
+  Thus, the inclusion of the that the travel velocity decreases the inferred
+  LG mass by 12.01\%}.
+  
   %
   \item[-] For the ``\textit{Cepheid Dist. + Gaia PM}'' dataset -- a combination
   of the more recent Cepheid distance and latest \textit{Gaia} proper motion
-  measurements of M31~\citep{Li2021,Salomon2021} -- we find 
-  \remove{a new measurement for the LG mass of
-  $\mlg = 4.54^{+0.77}_{-0.56}\times10^{12}~\Msun$}
-  \add{that the travel velocity decreases the inferred LG mass by 10.88\%}.
+  measurements of M31~\citep{Li2021,Salomon2021} -- 
+  we find a LG mass of $\mlg = 4.54^{+0.77}_{-0.56}\times10^{12}~\Msun$
+  \add{(including the measured travel velocity), and of
+  $\mlg = 5.09^{+0.72}_{-0.48}\times10^{12}~\Msun$ when $\vtrav$=0.
+  Thus, the inclusion of the that the travel velocity decreases the inferred
+  LG mass by 10.88\%}..
 \end{itemize}
 
 Our conclusions can be summarized as follows:
@@ -1102,7 +1111,7 @@ Our conclusions can be summarized as follows:
   \item \textbf{The measured travel velocity of the MW disk directly implies
   a reduced LG mass from the Timing Argument.}
   For the measured travel velocity of $32\pm4 \kms$ from~\cite{Petersen2021},
-  the inferred LG mass is $\sim10-20\%$ lower than a system with a static MW
+  the inferred LG mass is $\sim10-15\%$ lower than a system with a static MW
   halo ($\vtrav=0$).
   Using the same distance and proper motions as in the Timing Argument model
   of~\cite{vdm2012}, we find that the inclusion of the travel velocity yields
