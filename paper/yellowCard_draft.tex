@@ -148,19 +148,19 @@ the} \add{thus directly depends on the} observationally-measured kinematics
 of the M31 center.
 
 \add{However, the LG is not in equilibrium.
-In the past decade, a number of studies have begun to consider of the 
+In the past decade, a number of studies have begun to consider of the
 impact of the Large Magellanic Cloud (LMC) on the mass and inferred
 dynamics of the LG.}
-\citet{Penarrubia2016} studied the effect of the presence of the 
+\citet{Penarrubia2016} studied the effect of the presence of the
 \remove{Large Magellanic Cloud (LMC)}
 \add{LMC} on the total mass estimates of the LG via the Timing Argument by
 \remove{explicitly modeling the masses of the MW, LMC, and M31 as a dynamical system.}
 \add{modelling the motion of M31 about the MW-LMC barycenter, and using the
 kinematics of 35 Local Volume Galaxies to simultaneously measure
-a MW mass of $\rm M_{MW} = 1.04^{+0.26}_{-0.23}\times 10^{12} M_\odot$, 
-M31 mass of $\rm M_{M31} = 1.33^{+0.39}_{-0.33}\times 10^{12} M_\odot$, 
+a MW mass of $\rm M_{MW} = 1.04^{+0.26}_{-0.23}\times 10^{12} M_\odot$,
+M31 mass of $\rm M_{M31} = 1.33^{+0.39}_{-0.33}\times 10^{12} M_\odot$,
 LMC mass of $\rm M_{LMC} = 0.25^{+0.09}_{-0.08}\times 10^{12} M_\odot$,
-and Local Group mass of $\rm M_{LG} = 2.64^{+0.42}_{-0.38}\times 10^{12} 
+and Local Group mass of $\rm M_{LG} = 2.64^{+0.42}_{-0.38}\times 10^{12}
 M_\odot$.}
 Another recent Timing Argument work by \cite{Benisty2022} modelled the orbital
 history of M31 and the MW, with and without a mass and orbital model of the LMC,
@@ -173,7 +173,7 @@ Recent studies of the dynamics of the MW and its satellites have
 revealed that the infall of the Magellanic Clouds (MCs) is \remove{likely}
 causing significant distortions to the dark matter and stellar distribution in
 the MW halo \citep{Laporte:2018a, Laporte:2018b, Garavito-Camargo:2019,
-Conroy:2021, Erkal:2021}. 
+Conroy:2021, Erkal:2021}.
 \remove{thus impacting the interpretation of observations of the M31 position
 and velocity relative to the MW center of mass. Timing Argument studies that do
 not account for these perturbations are thus likely only biased estimates of the
@@ -209,13 +209,13 @@ history of the LMC or other satellites.
 \add{Studies have considered variations to the standard TA model.
 For example, one such model considered the effect of dark energy, and finds that
 the addition of a cosmological constant to the energy eqautions yield a
-$\sim13\%$ increase in the recovered mass~\citep{Partridge:2013}. 
+$\sim13\%$ increase in the recovered mass~\citep{Partridge:2013}.
 Similarly, the travel velocity of the MW disk, which has only recently been
 first measured, introduces it's own complication to the standard Timing Argument
 model.}
 
 \remove{In this Article, we use the measured travel velocity of the inner Milky
-Way to empirically infer the mass of the Local Group,} 
+Way to empirically infer the mass of the Local Group,}
 \add{In this Article, we quantify the impact of this newly measured MW disk
 motion on Local Group mass measurements using the Timing Argument,}
 thus accounting for observational
@@ -498,28 +498,33 @@ See Table~\ref{table:data} for numerical values used in each of these datasets.
 \label{sec:bayes}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\add{We construct a likelihood function of measuring the observable quantities
-$\vec y$ given a model with parameters $\vec K$. 
+\add{We construct a likelihood function $\mathcal{L}$ to quantify the probability of
+measuring the observed quantities $\vec y = \{D, \vrad, \mu^*_{\alpha}, \mu_{\delta},
+t_{\rm peri}\}$ given a Timing Argument model with parameters $\vec \theta = (\mlg, a,
+e, \eta, \alpha)$.
+Here, $D$ the distance to M31, $\vrad$ the radial velocity of M31, $\mu^*_{\alpha}$ and
+$\mu_{\delta}$ the proper motion components, and $t_{\rm peri}$ the time since last
+pericenter.
+The parameter vector $\vec \theta$ contains $\mlg$ the total mass of the LG, $a$ the
+semimajor-axis, $e$ the eccentricity, $\eta$ the present value of the eccentric anomaly,
+and $\alpha$ a nuisance parameter discussed in detail later in this section.
+We assume that the measurements are independent and have Gaussian uncertainties such
+that the likelihood function is a product
 \begin{equation}
-  \mathcal{L}(\vec y|\vec K)\\=
-  \prod^y \frac{1}{\sqrt{2\pi \sigma_{\vec y}} } e^{ -\frac{(\vec y_K - \vec y_{\rm obs})^2}{2\sigma_{\vec y}^2} }.
+  \mathcal{L} = p(\vec y|\vec \theta)\\=
+  \prod^n \frac{1}{\sqrt{2\pi} \sigma_{n} } \exp\left[ -\frac{1}{2}\,\frac{(y_n - \tilde{y}_n(\vec{\theta}))^2}{2\sigma_n^2} \right]
 \end{equation}
-Here, $\vec y=\{D, \vrad, \mu^*_{\alpha}, \mu_{\delta}, t_{\rm peri}\}$ are the
-measureable quantities $D$ the distance to M31, $\vrad$ the radial velocity of
-M31, $\mu^*_{\alpha}$ and $\mu_{\delta}$ the proper motion components,
-$t_{\rm peri}$ the time since last pericenter, and the sum is over each
-observable.
-$\vec K$ is a vector of given model parameters $(\mlg, a, e, \eta, \alpha)$,
-where $\mlg$ is the total mass of the LG, $a$ is the semimajor-axis,
-$e$ is the eccentricity, $\eta$ is the present value of the eccentric anomaly,
-and $\alpha$ is a nuisance parameter, discussed in detail later in this section.
+where $n$ indexes the elements of the data vector, $\sigma_{n}$ is the corresponding
+uncertainty for the $n$th data element, and $\tilde{y}_n(\vec{\theta})$ is the
+model-predicted value for a given data component.
 }
+
 We then adopt prior probability distribution functions (pdfs) for the parameters
 and use these pdfs to compute the posterior pdf over the parameters given the
 data in order to generate samples from the posterior pdf using a Markov Chain
-Monte Carlo (MCMC) method. 
+Monte Carlo (MCMC) method.
 \add{In order to recover the estimated mass distribution, we marginalize over
-all other model parameters.} 
+all other model parameters.}
 
 In detail, we first use the four Timing Argument parameters to compute the
 present-day separation between the MW and M31 halos and their relative radial
@@ -548,7 +553,7 @@ this posterior pdf, given data from each of the datasets defined in
 Table~\ref{table:data}.
 We sample over the parameters Local Group mass $\mlg$, the present-day MW--M31
 halo separation $r$, log eccentricity $\ln\left(1 - e\right)$, eccentric anomaly
-$\eta$, and the orbital plane orientation nuisance parameter $\alpha$. 
+$\eta$, and the orbital plane orientation nuisance parameter $\alpha$.
 Our adopted prior pdfs are defined in Table~\ref{table:priors}.
 % We set the priors as follows:
 % \kc{do we need the following bullets if we have the table?}
@@ -630,9 +635,9 @@ For each dataset, we run the sampler with 4 chains for 4,000 tuning steps and
 the Local Group and the distance between M31 and the Milky Way.}
 \remove{Our model of the Local Group accounts for the observed travel velocity of
 the Milky Way disk from~\cite{Petersen2021}, and results in new,
-less-biased constraints on the mass of the Local Group.} 
-\add{We use a Bayesian implementation of a Timing Argument model to quantify the 
-impact of the measured travel velocity of the MW disk from~\cite{Petersen2021} 
+less-biased constraints on the mass of the Local Group.}
+\add{We use a Bayesian implementation of a Timing Argument model to quantify the
+impact of the measured travel velocity of the MW disk from~\cite{Petersen2021}
 on the estimated mass of the Local Group, as well as other orbital parameters
 such as the distance between M31 and the Milky Way.}
 We compute convergence statistics using \texttt{Arviz}~\citep{arviz} for all
@@ -640,19 +645,18 @@ MCMC runs and find that the maximum Gelman--Rubin convergence statistic is
 $\leq1.01$ for all parameters and each dataset~\citep{GelmanRubin1992}.
 \add{The mean inferred parameter values and their 68\% credible regions from the
 sampled posterior pdfs for each dataset are presented in
-Table~\ref{table:convergedparams}. 
+Table~\ref{table:convergedparams}.
 These results are also shown in
 Figure~\ref{fig:contour}, again displaying the 68\% credible regions of the LG
 mass \mlg\ and eccentricity $e$ (lower left panel).}
 The upper left panel shows the marginal posterior pdfs over LG mass for each of
 the datasets (histogram curves) and with 68\% credible regions plotted for two
 prior LG mass measurements (gray shaded bands).
-\add{We note that these values are for reference only, as we currently do not
-include additional perturbations to the TA model -- such as a cosmological
-constant or cosmic bias -- that may yield more
-realistically representative values.}
+\add{We note that these values are for reference only, as we currently do not account
+for other known sources of bias in the TA model -- such as a cosmological constant or
+cosmic bias -- that may yield more accurate values.}
 
-We find that \remove{our model prefers lower} 
+We find that \remove{our model prefers lower}
 \add{the addition of the travel velocity of the MW disk systematically decreases
 the inferred} Local Group mass and \remove{a lower} eccentricity of the
 orbit compared to models that do not include the travel velocity of the MW disk.
@@ -675,7 +679,7 @@ With the updated dataset containing \textit{Cepheid Dist + Gaia PM}, we find
 $\mlg = 4.54 ^{+0.77}_{-0.56}\times10^{12}~\Msun$, while for the combined
  \textit{Cepheid Dist. + HST PM} dataset, we find
  $\mlg = 4.05^{+0.51}_{-0.34}\times 10^{12}~\Msun$.}
- 
+
 \remove{For both datasets that use the HST proper motions of M31, we
 find that the inferred orbital eccentricity is consistent with a radial orbit.
 Using the \gaia-based proper motions \citep{Salomon2021} leads to a finite
@@ -799,7 +803,7 @@ of $4.27\pm0.45\times 10^{12}\Msun$ (neglecting for cosmic bias and
 scatter) using the same values for the distance and velocity of
 M31 as in our \textit{vdMG08 Dist. + HST PM} dataset.
 
-In two $N$-body cosmological simulations, Millenium-WMAP7 and MilleniumII, 
+In two $N$-body cosmological simulations, Millenium-WMAP7 and MilleniumII,
 \cite{Zhai2020} identified pairs of stellar analogs to the MW and M31, then
 applied a series of kinematic cuts on the separation, isolation, and velocities
 of the pair to determine Local Group analogs.
@@ -920,7 +924,7 @@ Accounting for this effect would likely lower our reported LG mass measurements.
 However, as we have shown, the existence of a reflex motion of the
 MW disk as a response to the MW's interaction with its satellite population
 decreases is an additional perturbation to the TA that must be considered in
-future studies alongside cosmic bias and a cosmological constant. 
+future studies alongside cosmic bias and a cosmological constant.
 
 \subsection{Impact of travel velocity on inferred dynamics of the Local Group}
 \label{sec:discussion-impact}
@@ -1061,7 +1065,7 @@ The travel velocity has been inferred as primarily due to the response of the
 MW halo to the recent infall of the LMC
 ~\cite[as shown in e.g.][]{Gomez2015,Garavito-Camargo:2019,Erkal2019,
 Cunningham:2020,Petersen:2020,Garavito-Camargo2021b}.
-In this study, we 
+In this study, we
 \remove{use the Timing Argument to infer the LG mass while
 accounting for the travel velocity empirically for the first time.}
 \add{study the effect of the travel velocity on the inferred LG mass from the
@@ -1079,8 +1083,8 @@ of our model parameters.}
 \begin{itemize}
   \item[-] For the ``\textit{vdMG08 Dist. + HST PM}'' dataset -- the
   ~\cite{vdm2008} distance and \textit{HST} proper motion
-  measurements~\citep{Sohn:2012,vdm2012} -- we find a 
-  LG mass of $\mlg = 3.98^{+0.63}_{-0.47}\times10^{12}~\Msun$ 
+  measurements~\citep{Sohn:2012,vdm2012} -- we find a
+  LG mass of $\mlg = 3.98^{+0.63}_{-0.47}\times10^{12}~\Msun$
   \add{(including the measured travel velocity), and of
   $\mlg = 4.49^{+0.47}_{-0.42}\times10^{12}~\Msun$ when $\vtrav$=0.
   Thus, the inclusion of the that the travel velocity decreases the inferred
@@ -1088,17 +1092,17 @@ of our model parameters.}
   %
   \item[-] For the ``\textit{Cepheid Dist. + HST PM}'' dataset -- an updated
   Cepheid distance measurement from~\cite{Li2021} and the same \textit{HST} PMs
-  from above -- 
-  we find a LG mass of $\mlg = 4.05^{+0.51}_{-0.34}\times10^{12}~\Msun$ 
+  from above --
+  we find a LG mass of $\mlg = 4.05^{+0.51}_{-0.34}\times10^{12}~\Msun$
   \add{(including the measured travel velocity), and of
   $\mlg = 4.61^{+0.42}_{-0.22}\times10^{12}~\Msun$ when $\vtrav$=0.
   Thus, the inclusion of the that the travel velocity decreases the inferred
   LG mass by 12.01\%}.
-  
+
   %
   \item[-] For the ``\textit{Cepheid Dist. + Gaia PM}'' dataset -- a combination
   of the more recent Cepheid distance and latest \textit{Gaia} proper motion
-  measurements of M31~\citep{Li2021,Salomon2021} -- 
+  measurements of M31~\citep{Li2021,Salomon2021} --
   we find a LG mass of $\mlg = 4.54^{+0.77}_{-0.56}\times10^{12}~\Msun$
   \add{(including the measured travel velocity), and of
   $\mlg = 5.09^{+0.72}_{-0.48}\times10^{12}~\Msun$ when $\vtrav$=0.
