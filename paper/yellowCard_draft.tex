@@ -88,7 +88,9 @@
 \affiliation{\affparis}
 
 \begin{abstract}
-  The total mass of the Local Group (LG) is a fundamental quantity that enables interpreting the orbits of its constituent galaxies and placing the LG in a cosmological context. One of the few methods that allows inferring the total mass directly is the ``Timing Argument,'' which models the relative orbit of the Milky Way (MW) and M31. However, the MW itself is not in equilibrium, a byproduct of its merger history and the recent pericentric passage of the LMC/SMC. As a result, recent work has found that the MW disk is moving with a lower bound ``travel velocity'' of $\sim 32~\kms$ with respect to the outer stellar halo \citep{Petersen2021}, thus biasing past Timing Argument measurements that do not account for this motion. We measure the total LG mass using a Timing Argument model that incorporates this measured travel velocity of the MW disk using several different compilations of recent kinematic measurements of M31. We find that incorporating the measured travel velocity lowers the inferred LG mass by 10--20\% compared to a static MW halo, and find an updated total mass of either $4.0^{+0.5}_{-0.3}\times 10^{12} \Msun$ or $4.5^{+0.8}_{-0.6}\times 10^{12} \Msun$ depending on the adopted dataset. Measurements of the travel velocity with more distant tracers could yield even larger values, which would further decrease the inferred LG mass. Therefore, the newly measured travel velocity directly implies a lower LG mass than from a model with a static MW halo and must be considered in future dynamical studies of the Local Volume.
+  The total mass of the Local Group (LG) is a fundamental quantity that enables interpreting the orbits of its constituent galaxies and placing the LG in a cosmological context. One of the few methods that allows inferring the total mass directly is the ``Timing Argument,'' which models the relative orbit of the Milky Way (MW) and M31 \add{in equilibrium}. \remove{However, } The MW itself is not in equilibrium, a byproduct of its merger history \remove{and} \add{including} the recent pericentric passage of the LMC, and recent work has found that the MW disk is moving with a lower bound ``travel velocity'' of $\sim 32~\kms$ with respect to the outer stellar halo \citep{Petersen2021}. \remove{thus biasing past Timing Argument measurements that do not account for this motion.} 
+  \add{Previous Timing Argument measurements attempt to account for this non-equilibrium state, but have been restricted to theoretical predictions for the impact of the LMC specifically.} 
+  In this paper, we quantify the impact of a travel velocity on recovered LG mass estimates \remove{We measure the total LG mass using a Timing Argument model that incorporates this measured travel velocity of the MW disk} using several different compilations of recent kinematic measurements of M31. We find that incorporating the measured \add{value of} the travel velocity lowers the inferred LG mass by 10--12\% compared to a static MW halo.\remove{, and find an updated total mass of either $4.0^{+0.5}_{-0.3}\times 10^{12} \Msun$ or $4.5^{+0.8}_{-0.6}\times 10^{12} \Msun$ depending on the adopted dataset.} Measurements of the travel velocity with more distant tracers could yield even larger values, which would further decrease the inferred LG mass. Therefore, the newly measured travel velocity directly implies a lower LG mass than from a model with a static MW halo and must be considered in future dynamical studies of the Local Volume.
 \end{abstract}
 
 \section{Introduction}
@@ -248,10 +250,11 @@ Timing Argument).
 % dynamics of M31-MW system can be approximated by simple Keplerian orbits
 In this work, we largely follow the methodology and notation defined in
 \citet{Penarrubia2016}.
-Briefly recapping the Timing Argument method, we assume that the dynamics of the
+Briefly recapping the \add{classical} Timing Argument method, we assume that the
+dynamics of the
 MW and M31 pair is dominated by the local gravitational potential of the Local
 Group (LG) and therefore the Hubble flow can be neglected for computing the
-relative orbits of the galaxies \citep[see, e.g.,][]{Penarrubia2014}.{\footnote{\add{Note: The effect of the Hubble flow can be included in the TA \kc{add citation}, but we ignore it for the sake of simplicity in determining the effect of only the measured travel velocity on LG mass measurements.}}
+relative orbits of the galaxies \citep[see, e.g.,][]{Penarrubia2014}.
 Since we observe the relative position and motion between M31 and the MW, we
 reduce the dynamics of the galaxies in the LG system to a single Keplerian orbit
 that specifies the relative orbit between the galaxies and is completely
@@ -555,25 +558,9 @@ We sample over the parameters Local Group mass $\mlg$, the present-day MW--M31
 halo separation $r$, log eccentricity $\ln\left(1 - e\right)$, eccentric anomaly
 $\eta$, and the orbital plane orientation nuisance parameter $\alpha$.
 Our adopted prior pdfs are defined in Table~\ref{table:priors}.
-% We set the priors as follows:
-% \kc{do we need the following bullets if we have the table?}
-% \begin{itemize}
-%   \item Mass of the Local Group $\mlg$: we use a broad, truncated normal
-%   distribution centered on a past measured value of the local group mass.
-%   \item Present MW--M31 separation $r$: we again use a broad, truncated normal
-%   distribution centered on past measurements of the distance to M31.
-%   \item Eccentricity $e$: we assume a uniform prior on eccentricity but sample
-%   in the transformed parameter $\ln(1-e)$ to improve the acceptance fraction
-%   when generating posterior samples.
-%   \item Eccentric anomaly $\eta$: we assume a uniform prior.
-%   \item Orbital plane orientation $\alpha$: we assume a uniform prior.
-% \end{itemize}
-% This information is summarized in Table~\ref{table:priors}.
 For each dataset, we run the sampler with 4 chains for 4,000 tuning steps and
 40,000 draws.
-% TODO: Letters have a 1 table max limit, so we might have to move the prior
-% details into the list above. But we could always submit as a short regular
-% paper instead of a letter...
+
 \begin{table}
   \centering
   \begin{tabular}{lc}
@@ -606,8 +593,6 @@ For each dataset, we run the sampler with 4 chains for 4,000 tuning steps and
 \section{Results: Local group mass estimates}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:results}
-% \kc{Include the velocity vector of M31 from the halo frame?}
-
 \begin{figure}[htb]
   \centering
   \includegraphics[width=0.5\textwidth]
@@ -825,6 +810,10 @@ place constraints on the LG mass while removing the impact of the LMC.}
 More specifically, they estimate the contribution of the reflex motion of the
 MW disk to the observed velocity vector of M31 by modeling the orbital history
 of the MW--M31 system and the MW+LMC--M31 system.
+\add{The impact of the LMC on the mass measurements of the LG thus depend on the
+orbital and mass models of the LMC about the MW. 
+This is in contrast to our work, which need make no assumption about the mass of
+the LMC, its orbital history, or the merger history of the MW.}
 Upon implementing the Timing Argument, including a cosmological constant,
 and removing the LMC-induced reflex motion,
 they find a LG mass of $5.6^{+1.6}_{-1.2}\times10^{12}\Msun$, which is roughly
@@ -833,7 +822,7 @@ lowers the mass by an additional 40\% to $3.4^{+1.4}_{-1.1}\times10^{12}\Msun$,
 25\% lower than our findings.
 However, they find that in general, inclusion of the motion of the MW disk due
 to the interaction with the LMC lowers the LG mass by $\sim10\%$, which is
-consistent with our finding of a reduction in the total LG mass by $\sim10-20\%$.
+consistent with our finding of a reduction in the total LG mass by $\sim10-12\%$.
 
 A notable difference between this study and~\cite{Benisty2022} is the method by
 which the reflex motion of the MW disk is accounted for.
@@ -899,7 +888,7 @@ way, without the need to simulate the entire interaction history.
     \citealt{Villanueva-Domingo2021}\\
   \hline\hline
   \end{tabular}
-  \caption{\label{table:masses}\kc{Question \#4}A selected collection of previous mass
+  \caption{\label{table:masses}A selected collection of previous mass
   measurements from LG dynamics focusing on previous TA results as well as a few
   mass measurements as discussed in the text.}
 \end{table*}
@@ -1045,8 +1034,9 @@ This implies that the velocity contribution to the relative and transverse
 velocity of M31 is dominant to the change in eccentricity.
 
 Additionally, studies of the Bolshoi $N$-body cosmological simulation
-by~\cite{Forero-Romero2013} find that typical LG analogs do not have completely
-radial orbits. \kc{explain what was going on in Bolshoi and the quantitative info about their selection criteria for LGs}
+by~\cite{Forero-Romero2013} find that typical LG analogs 
+\add{, when selected via mass and isolation criteria},
+do not have completely radial orbits.
 As with studies that measure a higher transverse velocity for M31, and thus a
 slightly less-radial orbit~\citep{vdm2019,Salomon2021}, we find that the
 decrease in the eccentricity due to the measured travel velocity makes the LG
