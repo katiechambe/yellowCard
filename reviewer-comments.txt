@@ -1,0 +1,72 @@
+
+We thank the reviewer for the thorough read and thoughtful comments of our manuscript which prompted us to reexamine the primary message of the paper.
+We have made significant changes to the paper, particularly in the introduction, results, and discussion sections, to incorporate the suggestions. These changes are marked throughout the paper as red (\remove{}) and green (\add{}) text.
+Specifically, we have reframed the discussion of our analysis to focus on the effect of the travel velocity on the most basic form of the Timing Argument in order to better understand explicitly how this new measurement will quantifiably impact mass measurements. We make sure to emphasize that, in order to measure the absolute value of the mass of the Local Group, one must include previously studied effects (including the cosmological constant and cosmic bias), but also the Timing argument.
+Please find a detailed description of each of changes below, as responses to individual comments.
+
+Best,
+Katie
+
+Begin reviewer comments:
+__________________________
+
+This paper performs a calculation of the Local Group mass using the Timing Argument. The paper hits on two timely topics: 1) the Local Group mass and 2) the impact of the LMC on the dynamics of the Milky Way - M31 system. The timing argument calculation has been performed many times in the previous literature, including a new wave of papers in recent years updating the analysis to include the impact of improved proper motion data and cosmological simulations. This particular paper includes the impact of the recently measured travel velocity of the Milky Way disk relative to the stellar halo, which is induced by the interaction with the LMC and the MW. The travel velocity ultimately changes the relative velocity between the MW and M31, and this then feeds into the timing argument analysis, which is sensitive to the MW-M31 velocity, distance, and the age of the universe. In the theme of this analysis, there is some overlap with the recent Benisty et al. 2022 paper, but this paper takes a sufficiently different approach that there should ultimately be room for both analyses in the literature.
+
+Overall I find the work to be solid, and it can be a good addition to the literature on this topic. However, from some perspectives I found the message being sent by the paper confusing, and there are some omissions in the analysis that should be included. Below I detail my suggestions for improving this paper in the next iteration.
+
+
+Larger comments
+---------------
+i) In the implementation of the TA, the authors do not account for the impact of the cosmological constant. This allows the dynamics of the MW-M31 system to be solved for analytically, as in equations (1)-(4). However, when included the cosmological constant term increases the LG mass relative to that of a matter-only universe by a little more than 10% (Partridge et al. 2013, Penarrubia et al. 2014), and does cause a slight bias in the mass estimated (Hartl & Strigari 2022). Given its impact, it is unclear why the authors do not include this term in their analysis, especially given that all recent calculations in the literature to include it. Of course a practical issue with this type of analysis (solving e.g. Eq. (1) of Penarrubia et al. 2014) is that the differential equation has no analytic solution, so it does make the subsequent bayesian analysis performed a bit more clunky. Further, including this term confuses the definition of eccentricity, which is constrained as one of the main results of the paper in Figure 2.
+
+Therefore I recommend the authors either run through the analysis including the cosmological constant term, or provide a strong justification of why they do not include it. If they choose the latter route, the authors need to qualify all statements throughout the paper that the deduced Local Group mass from their analysis is likely ~ 10% lower than the true value that would be deduced if it were included. This is especially important since the 10% effect of the cosmological constant is of order the correction the authors derive from v_travel, which is the main result of this paper.
+    >>>RESPONSE: We thank the reviewer for this point. We have clarified text where necessary to make it clear that our results cannot be fairly compared 1:1 with those that include a cosmological constant. This has, additionally, been included in the "Method" section of the compilation table of LG mass measurements.
+
+Finally regarding Fig 3, the authors should caveat that the eccentricity is well-derived in the context of a matter-only universe.
+    >>>RESPONSE: We have added the following sentence in the discussion around fig 3: "We note again that the value of the eccentricity is derived assuming a matter-only universe (i.e. we neglect other cosmological effects in the orbit computation, as discussed above)."
+
+ii) For the primary analysis, the authors use v_travel = 32 \pm 4 km/s, as derived in Petersen & Penarrubia 2021, which represents a relatively precise measurement. The authors then go on to discuss that the measured v_travel depends on the tracer population used, specifically the distance of the tracers. So in this sense, the 4 km/s error is a statistical uncertainty derived using the methods of Petersen & Penarrubia 2021, and there is a much larger systematic uncertainty which results from the assumed tracer population, and this propagates into the magnitude and direction of the travel velocity. Given this significant systematic uncertainty, I propose two options to address this in their analysis: 1) include the travel velocity as a hyper parameter in the bayesian analysis, which would incorporate the full range of uncertainty. Or 2) marginalize over the +/- 4 uncertainty, and address the manner in which this may still underestimate the uncertainty. I believe the above are more robust statistical procedures than simply changing v_travel and using this to generate new values for the LG mass and eccentricity as in Fig. 3. (Refer to above comment regarding eccentricity and why this figure must be better justified).
+    >>>RESPONSE: Thank you for the comment. We do indeed marginalize over uncertainty in travel velocity to infer total mass, and have clarified this in the text. This, however, does not include systemic uncertainty in the measurement.
+
+iii) In Sec. 4.1 the authors discuss the analysis of Penarrubia et al. 2016, which calculates the shift in the MW barycenter as a function of the mass ratio between the LMC and M31. Going from negligible LMC mass to the maximum mass that the authors consider of approximately 40%, there's an approximate 30% shift in the deduced TA mass. Why don't the authors include this term in their formalism in Equations 5-8? The effect appears to be more significant than the travel velocity effect considered in the present paper. I believe it's worth including this term in the analysis to see the interplay between this shift and the travel velocity shift, or again providing a clear justification of why it's not used, and stating the appropriate caveats with the derived LG mass.
+    >>>RESPONSE: Thank you for pointing this out. We have made text changes that clarify that the travel velocity is just one particular perturbation, and other perturbations should be included in future iterations. We note that the positional displacement has not yet been measured, as discussed in Section 2.1, so we opted to neglect this term.
+
+
+Smaller comments
+----------------
+
+- In 4th sentence of the abstract, the occurrence of ``As a result" doesn't seem to logically follow from the previous sentence. A better way to phrase this would be to take the 3rd sentence as the statement, and then say something to the effect of ``As a manifestation, recent work has found..."
+    >>>RESPONSE: We thank the reviewer for this comment and have incorporated the suggested change.
+
+- More broadly, this line of discussion seems to imply that the only reason the MW is not in equilibrium is because the LMC/SMC, which is likely not generally true. The authors in fact allude to this at the end of the introduction when discussing Sagittarius and Gaia-Enceladus-Sausage.
+    >>>RESPONSE: We thank the reviewer for this comment and have incorporated the suggested change.
+
+- Similarly, the statement at the end of the 4th sentence `...thus biasing past Timing Argument measurements that do not account for this motion." was not proven before it was stated in the abstract. Even if the MW is not in equilibrium, it's not necessarily true that the TA is biased. I suggest rephrasing this statement.
+    >>>RESPONSE: We thank the reviewer for this comment and have incorporated the suggested change.
+
+- Introduction, line 86, the statement that the inferred TA mass is very sensitive to the kinematics of the M31 center needs a reference, or to be better justified at that point.
+    >>>RESPONSE: We thank the reviewer for this comment and have changed this statement to: "The inferred mass from the Timing Argument is thus directly dependent on the observationally-measured kinematics of the M31 center."
+
+- Introduction, line 89. Is it ``likely causing"? It seems to me the point of this paper and the papers referenced are that it ``is causing"?
+    >>>RESPONSE: We thank the reviewer for this comment and have incorporated the suggested change.
+
+- Introduction, line 96. I would rephrase: ``are thus likely" --> ``may be"
+    >>>RESPONSE: We thank the reviewer for this comment and have incorporated the suggested change.
+
+- Introduction, line 101. I suggest following up to say what the results of Penarrubia et al. 2016 showed.
+    >>>RESPONSE: We thank the reviewer for this comment and have incorporated the suggested change.
+
+- Introduction, line 111. 'mass' --> 'mass and orbit'
+    >>>RESPONSE: We thank the reviewer for this comment and have incorporated the suggested change.
+
+- Section 2, line 356. This paragraph reviews the codes that are used for the analysis. Can the authors provide a formula for, or at least more specifically described, the form of the likelihood function that is used?
+    >>>RESPONSE: We thank the reviewer for this comment and have added a paragraph describing the likelihood function to this section.
+
+- I don't think the language of the dismissal of the cosmic bias factor in 4.2 is appropriate. The authors haven't shown that identifying LG systems with LMC like objects reduces this cosmic bias to zero. Indeed, it's hard to see how it doesn't persist even when considering LMCs. If the authors don't want to include this in the error budget then I presume that's ok, but I don't think it's fair to just casually dismiss it.
+    >>>RESPONSE: We thank the reviewer for this comment and have incorporated the suggested change. We have rephrased the main results of the paper to focus on the relative change in the inferred mass due to the measured travel velocity rather than the absolute value of the inferred mass that we infer. We have also expanded this section to focus on the travel velocity as a perturbation/extension of the TA, in addition to pointing to cosmic bias and a cosmological constant.
+
+- The discussion of the Benisty et al. paper at the end of Sec. 4.1 is confusing. Essentially Benisty et al. calculated the systematic uncertainty in the TA mass due to the systematic uncertainty in the orbit of the LMC, and then from this the corresponding systematic uncertainty on the components of the M31 velocity. This systematic uncertainty needs to be included in present analyses of the impact of the LMC. It seems to me that the coordinate transformation the authors utilize is implicitly embedded in the Benisty et al. analysis. So in this sense, is the analysis performed by the current authors so different than Benisty et al., and it's just a different way of phrasing the systematic uncertainties? I would like to see the authors comment on this in a more concise fashion.
+    >>>RESPONSE: We thank the reviewer for this comment and have included the following text in the discussion: "The impact of the LMC on the mass measurements of the LG thus depend on the orbital and mass models of the LMC about the MW. This is in contrast to our work, which makes no assumption about the mass of the LMC, its orbital history, or the merger history of the MW."
+
+- The last paragraph of Sec. 4, line 667, referring to the significant LG tangential velocities in Bolshoi is a significant statement. Could the authors be more qualitative about what was going in Bolshoi, and what their selection procedure was? Given the updated constraints on the MW-M31 tangential velocity, it's possible to now select LGs based on this property.
+    >>>RESPONSE: We thank the reviewer for this comment and have specified that the LG analogs selected in the mentioned paper are selected via mass and isolation criteria. They find that LG-mass analogs with lower radial and higher tangential velocities are 3-13 times more common than LG-(mass+velocity) analogs.
